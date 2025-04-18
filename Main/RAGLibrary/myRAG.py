@@ -1,211 +1,11 @@
-import os
 import json
-import torch
 import faiss
 import numpy as np
 from typing import Any, Dict, List
-from transformers import AutoTokenizer, AutoModel
-from sentence_transformers import SentenceTransformer
-from sentence_transformers import CrossEncoder
 import google.generativeai as genai
+from sentence_transformers import CrossEncoder
+from sentence_transformers import SentenceTransformer
 from google.api_core.exceptions import ResourceExhausted
-
-
-""" PREPROCESS TEXT """
-
-def preprocess_text(text):
-    import re
-    if isinstance(text, list):
-        return [preprocess_text(t) for t in text]
-    if isinstance(text, str):
-        text = text.strip()
-        text = re.sub(r'[^\w\s\(\)\.\,\;\:\-–]', '', text)
-        text = re.sub(r'[ ]{2,}', ' ', text)
-        return text
-    return text
-
-
-""" PREPROCESS DATA """
-
-def preprocess_data(data):
-    if isinstance(data, dict):
-        return {key: preprocess_data(value) for key, value in data.items()}
-    elif isinstance(data, list):
-        return [preprocess_data(item) for item in data]
-    else:
-        return preprocess_text(data)
-
-
-""" LOAD SCHEMA """
-
-def load_schema(schema_path):
-    try:
-        with open(schema_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Schema file not found: {schema_path}")
-        return {}
-    except json.JSONDecodeError:
-        print(f"Invalid schema file: {schema_path}")
-        return {}
-
-
-""" FLATTEN JSON """
-
-def flatten_json(data, prefix, schema):
-    flat = {}
-    
-    if schema is None:
-        schema = {}
-
-    # If data is a dictionary
-    if isinstance(data, dict):
-        for key, value in data.items():
-            new_prefix = f"{prefix}{key}" if prefix else key
-            if isinstance(value, (dict, list)):
-                flat.update(flatten_json(value, f"{new_prefix}.", schema))
-            else:
-                flat[new_prefix] = value
-
-    # If data is a non-empty list
-    elif isinstance(data, list) and data:
-        flat[prefix.rstrip('.')] = data
-
-    return flat
-
-
-""" CREATE EMBEDDING """
-
-def create_embedding(model, device, texts, batch_size=32):
-    try:
-        if isinstance(texts, str):
-            texts = [texts]
-        embeddings = model.encode(texts, batch_size=batch_size, convert_to_tensor=True, device=device)
-        return embeddings
-    except RuntimeError as e:
-        if "CUDA out of memory" in str(e):
-            print("VRAM overflow. Switching to CPU.")
-            model.to("cpu")
-            return model.encode(texts, batch_size=batch_size, convert_to_tensor=True, device="cpu")
-        raise e
-
-
-""" CREATE EMBEDDINGS """
-
-def create_embeddings(model, MERGE, data, schema, device, batch_size):
-    flat_data = flatten_json(data, "", schema)
-    embeddings = {}
-    
-    if MERGE == "Merge":
-        merged_texts = []
-        for key, value in flat_data.items():
-            if schema.get(key) in ["string", "array"]:
-                if isinstance(value, str) and value.strip():
-                    merged_texts.append(preprocess_text(value))
-                elif isinstance(value, list):
-                    text = "\n".join([preprocess_text(str(item)) for item in value if str(item).strip()])
-                    if text.strip():
-                        merged_texts.append(text)
-        if merged_texts:
-            merged_text = "\n".join(merged_texts)
-            if merged_text.strip():
-                embedding = create_embedding(model, device, merged_text, batch_size)
-                embeddings["merged_embedding"] = embedding
-    else:
-        for key, value in flat_data.items():
-            if schema.get(key) in ["string", "array"]:
-                if isinstance(value, str) and value.strip():
-                    embedding = create_embedding(model, device, preprocess_text(value), batch_size)
-                    embeddings[f"{key}_embedding"] = embedding
-                elif isinstance(value, list):
-                    text = "\n".join([preprocess_text(str(item)) for item in value if str(item).strip()])
-                    if text.strip():
-                        embedding = create_embedding(model, device, text, batch_size)
-                        embeddings[f"{key}_embedding"] = embedding
-
-    # Combine original data and embeddings
-    if MERGE == "Merge":
-        result = [{} for _ in range(len(data))] if isinstance(data, list) else {}
-    else:
-        result = data.copy()
-
-    for embed_key, embed_value in embeddings.items():
-        if MERGE == "Merge":
-            result["merged_text"] = merged_text
-            result["merged_embedding"] = embed_value.tolist()
-        else:
-            keys = embed_key.split("_embedding")[0].split('.')
-            current = result
-            for i, k in enumerate(keys[:-1]):
-                current = current.setdefault(k, {})
-            current[keys[-1] + "_embedding"] = embed_value.tolist()
-    return result
-
-
-""" JSON EMBEDDINGS """
-
-def json_embeddings(MERGE, json_file_path, torch_path, schema_path, device, DATA_KEY, model, batch_size):
-    # Check if embedding file already exists
-    if os.path.exists(torch_path):
-        print(f"\nEmbedding loaded from {torch_path}\n")
-        return
-
-    print(f"\nCreating embeddings for JSON data...\n")
-    try:
-        # Load schema
-        schema = load_schema(schema_path)
-        if not schema:
-            raise ValueError("Schema is empty or invalid")
-
-        # Read JSON file
-        with open(json_file_path, 'r', encoding='utf-8') as f:
-            data_pairs = json.load(f)
-
-        if not isinstance(data_pairs, list):
-            data_pairs = [data_pairs]
-
-        # Process each JSON object
-        output_data = []
-        for data in data_pairs:
-            # Preprocess text
-            flat_data = flatten_json(data, "", schema)
-            for key, value in flat_data.items():
-                if isinstance(value, (str, list)):
-                    flat_data[key] = preprocess_text(value)
-            
-            # Restore original structure with preprocessed data
-            processed_data = data.copy()
-            for key, value in flat_data.items():
-                keys = key.split('.')
-                current = processed_data
-                for k in keys[:-1]:
-                    current = current[k]
-                current[keys[-1]] = value
-
-            # Create embeddings
-            result = create_embeddings(model, MERGE, processed_data, schema, device, batch_size)
-            output_data.append(result)
-
-        # Save embeddings
-        embeddings_only = []
-        for item in output_data:
-            flat_item = flatten_json(item, "", schema)
-            if MERGE == "Merge":
-                embed_dict = {k: v for k, v in flat_item.items() if k == "merged_embedding"}
-            else:
-                embed_dict = {k: v for k, v in flat_item.items() if k.endswith("_embedding")}
-            embeddings_only.append(embed_dict)
-
-        torch.save({
-            DATA_KEY: output_data,
-            "embeddings": embeddings_only
-        }, torch_path)
-
-        print(f"Embedding tensor saved to {torch_path}")
-
-    except Exception as e:
-        print(f"Error processing JSON with embeddings: {e}")
-        raise
 
 
 """ SEARCH """
@@ -233,7 +33,8 @@ def search_faiss_index(
     mapping_path: str,
     data_path: str,
     device: str = "cuda",
-    k: int = 10
+    k: int = 10,
+    disable: bool = True,
 ) -> List[Dict[str, Any]]:
 
     try:
@@ -301,7 +102,8 @@ def rerank_results(
     results: List[Dict[str, Any]],
     reranker_model: str,
     device: str = "cuda",
-    k: int = 5
+    k: int = 5,
+    disable: bool = True,
 ) -> List[Dict[str, Any]]:
     try:
         if not results:
@@ -359,12 +161,14 @@ Returns:
 """
 
 def respond_naturally(
+    # prompt,
     query: str,
     results: List[Dict[str, Any]],
     responser_model: str = "gemini-2.0-flash-exp",
     score_threshold: float = 0.85,
     max_results: int = 3,
-    gemini_api_key: str = None
+    gemini_api_key: str = None,
+    disable: bool = True,
 ) -> tuple[str, List[Dict[str, Any]]]:
 
     try:

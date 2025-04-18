@@ -1,10 +1,10 @@
 import os
 import json
-import torch
-import faiss
+import torch # type: ignore
+import faiss # type: ignore
 import pickle
 import logging
-import numpy as np
+import numpy as np # type: ignore
 from typing import Any, Dict, List, Tuple
 
 # Thiết lập logging

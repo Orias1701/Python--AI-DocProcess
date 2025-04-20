@@ -72,7 +72,7 @@ def flatten_json(data: Any, prefix: str = "", schema: Dict[str, str] = None) -> 
 
 """ CREATE EMBEDDDING """
 
-def create_embedding(device, model, texts, batch_size=32):
+def create_embedding(device, model, texts, batch_size=32, batches: bool = False):
     print(f"Type of texts: {type(texts)}")
     print(f"Sample texts: {texts[:2] if isinstance(texts, list) else texts}")
     print(f"Device: {device}, Batch size: {batch_size}")
@@ -81,7 +81,8 @@ def create_embedding(device, model, texts, batch_size=32):
             sentences=texts,
             batch_size=batch_size,
             convert_to_tensor=True,
-            device=device
+            device=device,
+            show_progress_bar = batches
         )
         return embeddings
     except RuntimeError as e:
@@ -92,14 +93,15 @@ def create_embedding(device, model, texts, batch_size=32):
                 sentences=texts,
                 batch_size=batch_size,
                 convert_to_tensor=True,
-                device="cpu"
+                device="cpu",
+                show_progress_bar = batches
             )
         raise e
     
 
 """ CREATE EMBEDDDINGS """
 
-def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: torch.device, merge: str = "NO") -> Dict[str, Any]:
+def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: torch.device, merge: str = "no_Merge", batches: bool = False) -> Dict[str, Any]:
     flat_data = flatten_json(data, schema=schema)
     embeddings = {}
     
@@ -119,7 +121,7 @@ def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: t
             merged_text = "\n".join(merged_texts)
             if merged_text.strip():
                 # Sửa lời gọi create_embedding
-                embedding = create_embedding(device, model, merged_text, batch_size=32).to(device)
+                embedding = create_embedding(device, model, merged_text, batch_size=32, batches = batches).to(device)
                 embeddings["merged_embedding"] = embedding
     else:
         # Embedding riêng lẻ
@@ -127,13 +129,13 @@ def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: t
             if schema.get(key) in ["string", "array"]:
                 if isinstance(value, str) and value.strip():
                     # Sửa lời gọi create_embedding
-                    embedding = create_embedding(device, model, preprocess_text(value), batch_size=32).to(device)
+                    embedding = create_embedding(device, model, preprocess_text(value), batch_size=32, batches = batches).to(device)
                     embeddings[f"{key} Embedding"] = embedding
                 elif isinstance(value, list):
                     text = "\n".join([preprocess_text(str(item)) for item in value if str(item).strip()])
                     if text.strip():
                         # Sửa lời gọi create_embedding
-                        embedding = create_embedding(device, model, text, batch_size=32).to(device)
+                        embedding = create_embedding(device, model, text, batch_size=32, batches = batches).to(device)
                         embeddings[f"{key} Embedding"] = embedding
 
     # Kết hợp dữ liệu gốc và embedding
@@ -164,7 +166,8 @@ def json_embeddings(
                     model, 
                     device: torch.device, 
                     DATA_KEY: str, 
-                    EMBE_KEY: str) -> None:
+                    EMBE_KEY: str,
+                    batches: bool = False) -> None:
     
     # Kiểm tra nếu file embedding đã tồn tại
     if os.path.exists(torch_path):
@@ -204,7 +207,7 @@ def json_embeddings(
                 current[keys[-1]] = value
 
             # Tạo embedding
-            result = create_embeddings(MERGE, processed_data, schema, model, device)
+            result = create_embeddings(MERGE, processed_data, schema, model, device, batches)
             output_data.append(result)
 
         # Lưu embedding riêng vào file .pt

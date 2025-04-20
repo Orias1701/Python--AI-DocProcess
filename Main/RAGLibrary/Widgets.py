@@ -84,7 +84,7 @@ def create_name_form():
         description="Type:  ",
         disabled=False,
         layout=widgets.Layout(width="50%"),
-        value=state.get("file_type", "QA"),
+        value=state.get("file_type", "Data"),
     )
     data = widgets.HBox(
         [file_name, file_type],

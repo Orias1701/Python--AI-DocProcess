@@ -22,8 +22,8 @@ Returns:
 
 def respond_naturally(
     # prompt,
-    query: str,
     results: List[Dict[str, Any]],
+    final_prompt: List[Dict[str, Any]],
     responser_model: str = "gemini-2.0-flash-exp",
     score_threshold: float = 0.85,
     max_results: int = 3,
@@ -50,9 +50,8 @@ def respond_naturally(
         
         # Tạo prompt cho mô hình
         prompt = (
-            f"Câu hỏi: {query}\n"
-            f"Thông tin: {context}\n"
-            f"Trả lời ngắn gọn và tự nhiên bằng tiếng Việt:"
+            f"{final_prompt}"
+            f"Tài liệu: {context}"
         )
         
         # Sinh câu trả lời

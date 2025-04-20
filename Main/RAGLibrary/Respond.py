@@ -22,44 +22,45 @@ Returns:
 
 def respond_naturally(
     # prompt,
+    user_question: str,
     results: List[Dict[str, Any]],
-    final_prompt: List[Dict[str, Any]],
+    system_prompt: List[Dict[str, Any]],
     responser_model: str = "gemini-2.0-flash-exp",
     score_threshold: float = 0.85,
     max_results: int = 3,
+    doc: bool = True,
     gemini_api_key: str = None,
 ) -> tuple[str, List[Dict[str, Any]]]:
     
     try:
-        # Lọc kết quả theo ngưỡng rerank_score và độ dài văn bản
-        filtered_results = [
-            r for r in results
-            if r["rerank_score"] > score_threshold and len(r["text"]) > 50
-        ][:max_results]
-        
-        if not filtered_results:
-            return "Không tìm thấy thông tin phù hợp với câu hỏi.", []
-        
-        # Ghép văn bản được lọc thành context
-        context = "\n".join([r["text"] for r in filtered_results])
-        
         genai.configure(api_key=gemini_api_key)
-        
-        # Kiểm tra trạng thái mô hình
         model = genai.GenerativeModel(responser_model)
-        
-        # Tạo prompt cho mô hình
-        prompt = (
-            f"{final_prompt}"
-            f"Tài liệu: {context}"
-        )
+
+        if (doc):
+            # Sort kết quả
+            filtered_results = [
+                r for r in results
+                if r["rerank_score"] > score_threshold and len(r["text"]) > 50
+            ][:max_results]\
+            
+            context = "\n".join([r["text"] for r in filtered_results])      
+            prompt = (
+                f"{system_prompt} \n"
+                f"Tài liệu: {context} \n \n"
+                f"Trả lời cầu hỏi của tôi: {user_question}"
+            )
+        else:
+            prompt = (
+                f"{system_prompt} \n"
+                f"Trả lời cầu hỏi của tôi: {user_question}"
+            )
         
         # Sinh câu trả lời
         response = model.generate_content(
             prompt,
             generation_config={
-                "max_output_tokens": 200,
-                "temperature": 0.7,
+                "max_output_tokens": 512,
+                "temperature": 0.3,
                 "top_p": 0.9
             }
         )

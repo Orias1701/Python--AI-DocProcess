@@ -145,17 +145,17 @@ def create_faiss_index(embeddings: List[Tuple[str, np.ndarray]], nlist: int = 10
     return index, key_to_index
 
 
-def convert_pt_to_faiss(torch_path: str, faiss_path: str, mapping_path: str, data_path: str, data_key: str, nlist: int = 100, use_pickle: bool = False) -> None:
+def convert_pt_to_faiss(torch_path: str, faiss_path: str, mapping_path: str, mapping_data: str, data_key: str, nlist: int = 100, use_pickle: bool = False) -> None:
 
     """
     Chuyển file .pt sang chỉ mục FAISS và lưu ánh xạ khóa cùng dữ liệu thông thường.
-    Sử dụng torch_path (torch_path), faiss_path, mapping_path, data_path từ DEFINE.
+    Sử dụng torch_path (torch_path), faiss_path, mapping_path, mapping_data từ DEFINE.
     
     Args:
         torch_path: Đường dẫn đến file .pt (torch_path)
         faiss_path: Đường dẫn lưu chỉ mục FAISS
         mapping_path: Đường dẫn lưu ánh xạ khóa
-        data_path: Đường dẫn lưu dữ liệu thông thường
+        mapping_data: Đường dẫn lưu dữ liệu thông thường
         use_pickle: Nếu True, lưu dưới dạng pickle thay vì JSON
         nlist: Số lượng cụm cho IndexFlatIP
     """
@@ -203,12 +203,12 @@ def convert_pt_to_faiss(torch_path: str, faiss_path: str, mapping_path: str, dat
                 json.dump(key_to_index, f, indent=4, ensure_ascii=False)
         
         # Lưu dữ liệu thông thường
-        logging.info(f"Đang lưu dữ liệu thông thường vào {data_path}")
+        logging.info(f"Đang lưu dữ liệu thông thường vào {mapping_data}")
         if use_pickle:
-            with open(data_path, 'wb') as f:
+            with open(mapping_data, 'wb') as f:
                 pickle.dump(data_mapping, f)
         else:
-            with open(data_path, 'w', encoding='utf-8') as f:
+            with open(mapping_data, 'w', encoding='utf-8') as f:
                 json.dump(data_mapping, f, indent=4, ensure_ascii=False)
         
         logging.info("Chuyển đổi hoàn tất.")

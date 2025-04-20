@@ -17,7 +17,7 @@ Args:
     embedd_model: Tên mô hình embedding (EMBEDD_MODEL từ DEFINE)
     faiss_path: Đường dẫn chỉ mục FAISS (faiss_path từ DEFINE)
     mapping_path: Đường dẫn file ánh xạ (maping_path từ DEFINE)
-    data_path: Đường dẫn file dữ liệu text (maping_data từ DEFINE)
+    mapping_data: Đường dẫn file dữ liệu text (maping_data từ DEFINE)
     device: Thiết bị PyTorch (device từ DEFINE, ví dụ: cuda hoặc cpu)
     k: Số lượng kết quả trả về
 
@@ -40,7 +40,7 @@ def search_faiss_index(
     embedd_model: str,
     faiss_path: str,
     mapping_path: str,
-    data_path: str,
+    mapping_data: str,
     device: str = "cuda",
     k: int = 10,
     batches: bool = False,
@@ -58,7 +58,7 @@ def search_faiss_index(
         with open(mapping_path, 'r', encoding='utf-8') as f:
             key_to_index = json.load(f)
 
-        with open(data_path, 'r', encoding='utf-8') as f:
+        with open(mapping_data, 'r', encoding='utf-8') as f:
             data_mapping = json.load(f)
         
         # Tìm kiếm k kết quả gần nhất

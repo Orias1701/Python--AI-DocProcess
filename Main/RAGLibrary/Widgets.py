@@ -17,14 +17,16 @@ def create_name_form():
             "file_type": file_type,
             "data_key": data_key,
             "embe_key": embe_key,
+            "switch_model": switch_model,
+            "merge_otp": merge_otp,
+            "path_end": path_end,
             "embedding_model": embedding_model,
             "searching_egine": searching_egine,
             "reranking_model": reranking_model,
             "responing_model": responing_model,
-            "switch_model": switch_model,
-            "merge_otp": merge_otp,
-            "path_end": path_end,
             "API_drop": API_drop,
+            "level_input": level_input,
+            "word_limit": word_limit,
         }
         for key, widget in required_widgets.items():
             if not hasattr(widget, "value"):
@@ -35,14 +37,17 @@ def create_name_form():
             "file_type": file_type.value,
             "data_key": data_key.value,
             "embe_key": embe_key.value,
+            "switch_model": switch_model.value,
+            "merge_otp": merge_otp.value,
+            "path_end": path_end.value,
             "embedding_model": embedding_model.value,
             "searching_egine": searching_egine.value,
             "reranking_model": reranking_model.value,
             "responing_model": responing_model.value,
-            "switch_model": switch_model.value,
-            "merge_otp": merge_otp.value,
-            "path_end": path_end.value,
             "API_drop": API_drop.value,
+            "level_input": level_input.value,
+            "word_limit": word_limit.value,
+            "level_values": {i: text.value for i, text in enumerate(input_box.children)},
         }
         try:
             with open(state_file, "wb") as f:
@@ -64,9 +69,22 @@ def create_name_form():
             print(f"Error loading state: {e}")
         return {}
 
+
     # Đường dẫn thư mục dữ liệu
-    folder_path = "../Data"
-    input_folder = os.listdir(folder_path) if os.path.exists(folder_path) else []
+    folder_path = "../Doc"
+
+    # Kiểm tra folder có tồn tại không
+    if os.path.exists(folder_path):
+        input_folder = []
+        for name in os.listdir(folder_path):
+            full_path = os.path.join(folder_path, name)
+            if os.path.isfile(full_path):
+                # Nếu là file, bỏ phần mở rộng
+                name = os.path.splitext(name)[0]
+            # Nếu là folder, giữ nguyên
+            input_folder.append(name)
+    else:
+        input_folder = []
 
     # Tải trạng thái
     state = load_state()
@@ -76,18 +94,31 @@ def create_name_form():
         options=input_folder or ["No files available"],
         description="File:  ",
         disabled=False,
-        layout=widgets.Layout(width="50%"),
+        layout=widgets.Layout(width="33%"),
         value=state.get("file_name", input_folder[0] if input_folder else None),
     )
     file_type = widgets.Dropdown(
         options=["QA", "Data"],
         description="Type:  ",
         disabled=False,
-        layout=widgets.Layout(width="50%"),
+        layout=widgets.Layout(width="33%"),
         value=state.get("file_type", "Data"),
     )
+    path_end = widgets.Dropdown(
+        options=[
+            ".pt",
+            ".faiss",
+            ".json",
+            ".docx",
+            ".pdf",
+        ],
+        description="End: ",
+        disabled=False,
+        layout=widgets.Layout(width="33%"),
+        value=state.get("path_end", ".json"),
+    )
     data = widgets.HBox(
-        [file_name, file_type],
+        [file_name, file_type, path_end],
         layout=widgets.Layout(
             width="90%", 
             justify_content="space-between", 
@@ -124,7 +155,7 @@ def create_name_form():
         ],
         description="Model: ",
         disabled=False,
-        layout=widgets.Layout(width="33%"),
+        layout=widgets.Layout(width="50%"),
         value=state.get("switch_model", "Auto Model"),
     )
 
@@ -135,23 +166,12 @@ def create_name_form():
         ],
         description="Merge: ",
         disabled=False,
-        layout=widgets.Layout(width="33%"),
+        layout=widgets.Layout(width="50%"),
         value=state.get("merge_otp", "no_Merge"),
     )
 
-    path_end = widgets.Dropdown(
-        options=[
-            ".pt",
-            ".faiss",
-            ".json",
-        ],
-        description="End: ",
-        disabled=False,
-        layout=widgets.Layout(width="33%"),
-        value=state.get("path_end", ".json"),
-    )
     choose = widgets.HBox(
-        [switch_model, merge_otp, path_end],
+        [switch_model, merge_otp],
         layout=widgets.Layout(
             width="90%", 
             justify_content="space-between", 
@@ -162,9 +182,13 @@ def create_name_form():
     # Giao diện thiết lập Model
     embedding_model = widgets.Dropdown(
         options=[
-            "sentence-transformers/bge-small-vi-v2",
+            "vinai/phobert-base",
+            "keepitreal/vietnamese-sbert",
             "VoVanPhuc/sup-SimCSE-VietNamese-phobert-base",
+            "paraphrase-multilingual-mpnet-base-v2",
+            "distiluse-base-multilingual-cased-v2",
             "sentence-transformers/all-roberta-large-v1",
+            "sentence-transformers/bge-small-vi-v2",
         ],
         description="Embedder: ",
         disabled=False,
@@ -219,6 +243,46 @@ def create_name_form():
         value=state.get("API_drop", "AIzaSyDaHS-8h6GJkyVPhoX4svvYeBTTVLNO-2w"),
     )
 
+
+    level_input = widgets.Dropdown(
+        description="Max Level: ",
+        options=[str(i) for i in range(0, 10)],
+        layout=widgets.Layout(width="50%"),
+        value=state.get("level_input", "1"),
+    )
+    word_limit = widgets.Text(
+        description="Word Limit: ",
+        placeholder="Default: 200",
+        layout=widgets.Layout(width="50%"),
+        value=state.get("word_limit", "200"),
+    )
+    chunk_input = widgets.HBox(
+        [level_input, word_limit],
+        layout=widgets.Layout(
+            width="90%", 
+            justify_content="space-between", 
+            padding="0px 0px 0px 0px",
+        )
+    )
+
+    input_box = widgets.VBox([])
+
+    def update_text_inputs(change):
+        level_number = int(change.new)
+        prev_values = state.get("level_values", [])
+
+        text_inputs = [
+            widgets.Text(
+                description=f"Level {i+1}: ",
+                layout=widgets.Layout(width="44%"),
+                value=prev_values[i] if i < len(prev_values) else ""
+            )
+            for i in range(level_number)
+        ]
+        input_box.children = text_inputs
+
+    level_input.observe(update_text_inputs, names="value")
+    
     # Nút lưu và chạy
     save_button = widgets.Button(description="Save State", button_style="success")
     run_button = widgets.Button(description="Run All Below", button_style="primary")
@@ -241,8 +305,11 @@ def create_name_form():
         )
     )
 
-    display(data, keys, choose, embedding_model, searching_egine, reranking_model, responing_model, API_drop, button_box)
-    
+    display(data, keys, choose, embedding_model, searching_egine, reranking_model, responing_model, API_drop, chunk_input, input_box, button_box)
+
+    level_input.value = "0"
+    level_input.value = state.get("level_input", "0")
+
     return (
     data,               # index 0
     keys,               # index 1
@@ -252,12 +319,7 @@ def create_name_form():
     reranking_model,    # index 5
     responing_model,    # index 6 
     API_drop,           # index 7
-    button_box,         # index 8
-    file_name,          # index 9
-    file_type,          # index 10
-    data_key,           # index 11
-    embe_key,           # index 12
-    switch_model,       # index 13
-    merge_otp,          # index 14
-    path_end            # index 15                   
+    chunk_input,        # input 8
+    input_box,          # input 9                    
+    button_box,         # index 10
 )

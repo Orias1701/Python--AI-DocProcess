@@ -43,6 +43,7 @@ def search_faiss_index(
     mapping_data: str,
     device: str = "cuda",
     k: int = 10,
+    min_score = 5,
     batches: bool = False,
 ) -> List[Dict[str, Any]]:
 
@@ -69,6 +70,8 @@ def search_faiss_index(
         index_to_key = {v: k for k, v in key_to_index.items()}
         for idx, score in zip(indices[0], scores[0]):
             if idx not in index_to_key:
+                continue
+            if score < min_score:
                 continue
             key = index_to_key[idx]
             text_key = key.replace("Merged_embedding", "Merged_text")

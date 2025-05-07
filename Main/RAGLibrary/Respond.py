@@ -23,7 +23,8 @@ Returns:
 def respond_naturally(
     # prompt,
     user_question: str,
-    results: List[Dict[str, Any]],
+    # results: List[Dict[str, Any]],
+    context: str,
     system_prompt: List[Dict[str, Any]],
     responser_model: str = "gemini-2.0-flash-exp",
     score_threshold: float = 0.85,
@@ -37,13 +38,13 @@ def respond_naturally(
         model = genai.GenerativeModel(responser_model)
 
         if (doc):
-            # Sort kết quả
-            filtered_results = [
-                r for r in results
-                if r["rerank_score"] > score_threshold and len(r["text"]) > 50
-            ][:max_results]\
+            # # Sort kết quả
+            # filtered_results = [
+            #     r for r in results
+            #     if r["rerank_score"] > score_threshold and len(r["text"]) > 50
+            # ][:max_results]
             
-            context = "\n".join([r["text"] for r in filtered_results])      
+            # context = "\n".join([r["text"] for r in filtered_results])
             prompt = (
                 f"{system_prompt} \n"
                 f"Tài liệu: {context} \n \n"
@@ -75,7 +76,7 @@ def respond_naturally(
         else:
             raise ValueError("Response không có candidates.")
 
-        return response_text, filtered_results
+        return response_text
     
     except ResourceExhausted as e:
         error_msg = f"Vượt giới hạn API"

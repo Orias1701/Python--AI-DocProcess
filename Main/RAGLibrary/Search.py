@@ -62,6 +62,7 @@ def search_faiss_index(
         with open(mapping_data, 'r', encoding='utf-8') as f:
             data_mapping = json.load(f)
         
+        k *= 2
         # Tìm kiếm k kết quả gần nhất
         scores, indices = index.search(query_embedding.reshape(1, -1), k)
         

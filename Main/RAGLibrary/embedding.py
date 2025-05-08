@@ -2,8 +2,6 @@ import os
 import json
 import torch
 from typing import Any, Dict
-from transformers import AutoTokenizer, AutoModel
-from sentence_transformers import SentenceTransformer
 
 """ PREPROCESS TEXT """
 

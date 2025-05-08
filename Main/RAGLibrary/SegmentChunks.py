@@ -1,3 +1,5 @@
+import json
+
 # COUNT WORDS
 def count_words(text):
     """

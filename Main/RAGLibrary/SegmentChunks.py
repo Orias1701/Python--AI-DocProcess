@@ -48,7 +48,7 @@ def semantic_chunking(text, max_words, nlp):
     return chunks
 
 # MAIN PROCESSING FUNCTION
-def process_json(chunks_base, json_file_path, Contents, word_limit, markers, nlp):
+def process_json(chunks_base, json_file_path, Contents, word_limit, nlp):
     """
     Xử lý dữ liệu JSON, chia các đoạn văn bản dài thành các đoạn nhỏ hơn nếu vượt quá giới hạn từ.
 
@@ -56,7 +56,6 @@ def process_json(chunks_base, json_file_path, Contents, word_limit, markers, nlp
         chunks_base (str): Đường dẫn đến file JSON đầu vào.
         json_file_path (str): Đường dẫn đến file JSON đầu ra.
         word_limit (int): Số từ tối đa cho mỗi đoạn văn bản.
-        markers (callable): Hàm kiểm tra xem đoạn văn có chứa dấu hiệu đặc biệt hay không.
         nlp (callable): Đối tượng xử lý ngôn ngữ tự nhiên (ví dụ: spaCy model).
 
     Returns:
@@ -74,7 +73,7 @@ def process_json(chunks_base, json_file_path, Contents, word_limit, markers, nlp
             for para_idx, paragraph in enumerate(chunk[Contents]):
                 word_count = count_words(paragraph)
                 
-                if word_count > word_limit and not markers(paragraph):
+                if word_count > word_limit:
                     chunked_paragraphs = semantic_chunking(paragraph, max_words=word_limit, nlp=nlp)
                     new_content.extend(chunked_paragraphs)
                     print(f"{idx+1:04} / {len(data):04}: {len(chunked_paragraphs):02} segments.")

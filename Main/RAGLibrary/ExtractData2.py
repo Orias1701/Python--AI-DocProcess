@@ -4,24 +4,15 @@ from docx import Document
 import fitz
 
 def sentence_end(text):
-
-    # Kiểm tra xem chuỗi văn bản có kết thúc bằng dấu câu hợp lệ hoặc cặp ngoặc hợp lệ hay không.
-
     brackets = ["()", "''", '""', "[]", "{}", "«»", "“”", "‘’"]
     valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in brackets)
     valid_end = text.endswith(('.', '!', '?', ':', ';'))
     return valid_end or valid_brackets
 
 def markers(text):
-
-    # Kiểm tra xem chuỗi văn bản có bắt đầu bằng dấu hiệu danh sách (bullet, số thứ tự, v.v.) hay không.
-
     return bool(re.match(r'^([-+*•●◦○] )|([0-9a-zA-Z\-\+\*ivxIVX]+[.)\]:] )|(\(\d+\) )|(\(\w+\) )|([0-9]+\s+-\s+[0-9]+ )', text))
 
 def unclosed(text):
-
-    # Kiểm tra xem chuỗi văn bản có chứa ngoặc chưa được đóng hay không.
-
     stack = []
     brackets = {"(": ")", "[": "]", "{": "}", '"': '"', "'": "'", "«": "»", "“": "”", "‘": "’"}
     for char in text:
@@ -34,17 +25,53 @@ def unclosed(text):
                 return False
     return bool(stack)
 
-def merge_text(para, new_para):
+def get_case_style(text, exceptions):
+    words = [word for word in text.split() if word.lower() not in exceptions and word.strip()]
+    if not words:
+        return None
     
-    # Quyết định xem có nên gộp hai đoạn văn bản thành một hay không dựa trên các tiêu chí ngữ nghĩa.
+    is_upper = all(word.isupper() for word in words if word.isalpha() or any(c.isalpha() for c in word))
+    is_lower = all(word.islower() for word in words if word.isalpha() or any(c.isalpha() for c in word))
+    is_title = all(word[0].isupper() and word[1:].islower() if len(word) > 1 else word[0].isupper() 
+                   for word in words if word.isalpha() or any(c.isalpha() for c in word))
+    
+    if is_upper:
+        return "upper"
+    if is_lower:
+        return "lower"
+    if is_title:
+        return "title"
+    return "mixed"
 
-    should_merge = (not (new_para.isupper() ^ para.isupper()) and not markers(new_para) and (not new_para[0].isupper() or not sentence_end(para))) or unclosed(para)
-    return should_merge
-
+def merge_text(para, new_para):
+    exceptions = {
+        "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
+        "at", "by", "in", "of", "on", "to", "from", "with", "as",
+        "into", "like", "over", "under", "up", "down", "out", "upon", "onto",  
+        "amid", "among", "between", "before", "after", "against"
+    }
+    
+    # Kiểm tra kiểu case của hai đoạn
+    para_case = get_case_style(para, exceptions)
+    new_para_case = get_case_style(new_para, exceptions)
+    
+    # Điều kiện không gộp: kiểu case khác nhau, new_para không bắt đầu bằng chữ hoa, và không có marker
+    different_case = (para_case is not None and new_para_case is not None and 
+                      para_case != new_para_case and 
+                      new_para and new_para[0].isupper())
+    
+    # Điều kiện gộp gốc
+    should_merge = (
+        (not (new_para.isupper() ^ para.isupper()) and 
+         not markers(new_para) and 
+         (not new_para[0].isupper() or not sentence_end(para))) or 
+        unclosed(para)
+    )
+    
+    # Kết hợp điều kiện: không gộp nếu different_case là True
+    return should_merge and not different_case
 def extracted(path):
-
     # Trích xuất văn bản từ file (.docx, .doc, .pdf) và tổ chức thành các đoạn.
-
     file_ext = os.path.splitext(path)[1].lower()
     text_data = []
 

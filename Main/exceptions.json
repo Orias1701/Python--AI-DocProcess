@@ -1,0 +1,35 @@
+{
+  "common_words": [
+    "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
+    "at", "by", "in", "of", "on", "to", "from", "with", "as",
+    "into", "like", "over", "under", "up", "down", "out", "upon", "onto",
+    "amid", "among", "between", "before", "after", "against"
+  ],
+  "proper_names": [
+    {"text": "Việt Nam", "case_style": "title"},
+    {"text": "Hà Nội", "case_style": "title"},
+    {"text": "Hồ Chí Minh", "case_style": "title"},
+    {"text": "Đà Nẵng", "case_style": "title"},
+    {"text": "Huế", "case_style": "title"},
+    {"text": "Cần Thơ", "case_style": "title"},
+    {"text": "Nghệ An", "case_style": "title"},
+    {"text": "Hải Phòng", "case_style": "title"},
+    {"text": "Quảng Nam", "case_style": "title"},
+    {"text": "ASEAN", "case_style": "upper"},
+    {"text": "UNESCO", "case_style": "upper"},
+    {"text": "Nguyễn Văn Cừ", "case_style": "title"},
+    {"text": "Trần Hưng Đạo", "case_style": "title"}
+  ],
+  "abbreviations": [
+    {"text": "VN", "case_style": "upper"},
+    {"text": "TP.HCM", "case_style": "title"},
+    {"text": "ĐH", "case_style": "upper"},
+    {"text": "THPT", "case_style": "upper"},
+    {"text": "UBND", "case_style": "upper"},
+    {"text": "KT-XH", "case_style": "upper"},
+    {"text": "BĐS", "case_style": "upper"},
+    {"text": "QH", "case_style": "upper"},
+    {"text": "NN", "case_style": "upper"},
+    {"text": "XD", "case_style": "upper"}
+  ]
+}

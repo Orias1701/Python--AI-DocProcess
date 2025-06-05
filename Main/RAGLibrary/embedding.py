@@ -99,7 +99,7 @@ def create_embedding(device, model, texts, batch_size=32, batches: bool = False)
 
 """ CREATE EMBEDDDINGS """
 
-def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: torch.device, merge: str = "no_Merge", batches: bool = False) -> Dict[str, Any]:
+def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: torch.device, batches: bool = False) -> Dict[str, Any]:
     flat_data = flatten_json(data, schema=schema)
     embeddings = {}
     

@@ -10,7 +10,6 @@ from typing import Any, Dict, List, Tuple
 # Thiết lập logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-
 def inspect_torch_path(torch_path: str) -> None:
     """
     Kiểm tra nội dung file .pt để xác định cấu trúc và dữ liệu.
@@ -39,11 +38,10 @@ def inspect_torch_path(torch_path: str) -> None:
         logging.error(f"Lỗi khi tải file .pt: {str(e)}")
         raise
 
-
 def extract_embeddings_and_data(data: Any, prefix: str = "") -> Tuple[List[Tuple[str, np.ndarray]], Dict[str, Any]]:
     """
     Trích xuất đệ quy embedding và dữ liệu thông thường từ dữ liệu đầu vào.
-    Tìm embedding dựa trên khóa chứa 'embedding' (như contents.<i>.Merged_embedding).
+    Chỉ xử lý các mục trong 'contents', bỏ qua 'embeddings'.
     
     Args:
         data: Dữ liệu đầu vào (từ điển, danh sách, v.v.)
@@ -55,6 +53,9 @@ def extract_embeddings_and_data(data: Any, prefix: str = "") -> Tuple[List[Tuple
     if isinstance(data, dict):
         for key, value in data.items():
             full_key = f"{prefix}.{key}" if prefix else key
+            # Bỏ qua các mục bắt đầu bằng 'embeddings'
+            if full_key.startswith("embeddings") or key == "embeddings":
+                continue
             if isinstance(value, dict):
                 sub_embeds, sub_data = extract_embeddings_and_data(value, full_key)
                 embeddings_list.extend(sub_embeds)
@@ -88,6 +89,9 @@ def extract_embeddings_and_data(data: Any, prefix: str = "") -> Tuple[List[Tuple
     elif isinstance(data, list):
         for i, item in enumerate(data):
             full_key = f"{prefix}.item{i}" if prefix else f"item{i}"
+            # Bỏ qua các mục bắt đầu bằng 'embeddings'
+            if full_key.startswith("embeddings"):
+                continue
             if isinstance(item, (dict, list)):
                 sub_embeds, sub_data = extract_embeddings_and_data(item, full_key)
                 embeddings_list.extend(sub_embeds)
@@ -114,7 +118,6 @@ def extract_embeddings_and_data(data: Any, prefix: str = "") -> Tuple[List[Tuple
                 data_mapping[full_key] = item
     
     return embeddings_list, data_mapping
-
 
 def create_faiss_index(embeddings: List[Tuple[str, np.ndarray]], nlist: int = 100) -> Tuple[faiss.Index, Dict[str, int]]:
     """
@@ -144,9 +147,7 @@ def create_faiss_index(embeddings: List[Tuple[str, np.ndarray]], nlist: int = 10
     
     return index, key_to_index
 
-
 def convert_pt_to_faiss(torch_path: str, faiss_path: str, mapping_path: str, mapping_data: str, data_key: str, nlist: int = 100, use_pickle: bool = False) -> None:
-
     """
     Chuyển file .pt sang chỉ mục FAISS và lưu ánh xạ khóa cùng dữ liệu thông thường.
     Sử dụng torch_path (torch_path), faiss_path, mapping_path, mapping_data từ DEFINE.

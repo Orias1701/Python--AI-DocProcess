@@ -69,7 +69,6 @@ def create_name_form():
             print(f"Error loading state: {e}")
         return {}
 
-
     # Đường dẫn thư mục dữ liệu
     folder_path = "../Doc"
 
@@ -163,6 +162,7 @@ def create_name_form():
         options=[
             "Merge",
             "no_Merge",
+            "QA",
         ],
         description="Merge: ",
         disabled=False,

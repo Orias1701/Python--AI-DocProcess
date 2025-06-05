@@ -67,7 +67,7 @@ def WidgetValues(widgets_list):
     SEARCH_EGINE = searching_egine
     RERANK_MODEL = reranking_model
     RESPON_MODEL = responing_model
-    MERGE = merge if FILE_TYPE == "Data" else "no_Merge"
+    MERGE = merge
     API_KEY = API_key_val
 
     print(f"Embedder: {EMBEDD_MODEL}")

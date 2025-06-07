@@ -45,7 +45,8 @@ def WidgetValues(widgets_list):
     
     LEVEL_INPUT = level_input.value
     WORD_LIMIT = word_limit.value
-
+    MERGE = merge if file_type_val != "QA" else "QA"
+    
     """DETAIL"""
     dcmt_path = f"../Doc/{data_folder}{path_end_v}"
     base_folder = "../Data"
@@ -53,7 +54,7 @@ def WidgetValues(widgets_list):
     chunks_base = f"{base_path}_Chunks.json"
     json_file_path = f"{base_path}_Database.json"
     schema_ex_path = f"{base_path}_Schema.json"
-    embedding_path = f"{base_path}_Embeds_{merge}"
+    embedding_path = f"{base_path}_Embeds_{MERGE}"
     torch_path = f"{embedding_path}.pt"
     faiss_path = f"{embedding_path}.faiss"
     mapping_path = f"{embedding_path}_mapping.json"
@@ -67,15 +68,15 @@ def WidgetValues(widgets_list):
     SEARCH_EGINE = searching_egine
     RERANK_MODEL = reranking_model
     RESPON_MODEL = responing_model
-    MERGE = merge
     API_KEY = API_key_val
-
+    
     print(f"Embedder: {EMBEDD_MODEL}")
     print(f"Searcher: {SEARCH_EGINE}")
     print(f"Reranker: {RERANK_MODEL}")
     print(f"Responer: {RESPON_MODEL}")
     print(f"Data Key: {DATA_KEY}")
     print(f"Embe Key: {EMBE_KEY}")
+    print(f"File    : {data_folder}")
     print(f"Dcment  : {dcmt_path}")
     print(f"Chunked : {chunks_base}")
     print(f"Database: {json_file_path}")
@@ -92,6 +93,7 @@ def WidgetValues(widgets_list):
     print(f"Level Values: {LEVEL_VALUES}")
 
     return {
+            "data_folder": data_folder,
             "dcmt_path": dcmt_path,
             "base_folder": base_folder,
             "base_path": base_path,

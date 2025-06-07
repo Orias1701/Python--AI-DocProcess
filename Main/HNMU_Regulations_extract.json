@@ -9797,7 +9797,7 @@
     {
       "Line": 516,
       "Text": "điều này còn áp dụng cho trường hợp sinh viên vi phạm quy chế thi đến mức có quyết",
-      "HasMarker": true,
+      "HasMarker": false,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,
@@ -10158,7 +10158,7 @@
     {
       "Line": 535,
       "Text": "khoản 2 và khoản 3 Điều 3 của Quy chế này.",
-      "HasMarker": false,
+      "HasMarker": true,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,
@@ -12400,7 +12400,7 @@
     {
       "Line": 653,
       "Text": "điều kiện như sau:",
-      "HasMarker": true,
+      "HasMarker": false,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,
@@ -15383,7 +15383,7 @@
     {
       "Line": 810,
       "Text": "khoản 5 Điều 2 của Quy chế này;",
-      "HasMarker": false,
+      "HasMarker": true,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,
@@ -15592,7 +15592,7 @@
     {
       "Line": 821,
       "Text": "khoản 5 Điều 2 của Quy chế này;",
-      "HasMarker": false,
+      "HasMarker": true,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,
@@ -16485,7 +16485,7 @@
     {
       "Line": 868,
       "Text": "điều kiện trúng tuyển của chương trình thứ hai trong năm tuyển sinh.",
-      "HasMarker": true,
+      "HasMarker": false,
       "CaseStyle": "mixed",
       "IsBold": false,
       "IsItalic": false,

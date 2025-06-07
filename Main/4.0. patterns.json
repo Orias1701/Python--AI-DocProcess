@@ -21,8 +21,12 @@
       "description": "Khoảng số"
     },
     {
-      "pattern": "^(Chapter|Section|Part|Điều)\\s+[0-9]+|^(Chapter|Section|Part|Điều)\\s+[MDCLXVI]+|^(?:Chapter|Section|Part|Điều)\\s*[A-Z]",
-      "description": "Chương/Mục/Phần/Điều với số, số La Mã hoặc chữ cái"
+      "pattern": "^(?:Chapter|Section|Part|Article|Chương|Phần|Điều|Khoản)\\s+(?:[0-9]+|[MDCLXVI]+|[A-Z])(?:\\.[0-9]+)*[.:]?\\s",
+      "description": "Chương/Phần/Mục/Điều/Khoản với số, số La Mã hoặc chữ cái, có thể có phân cấp (ví dụ: Điều 1.1)"
+    },
+    {
+      "pattern": "^(?:Chapter|Section|Part|Article|Chương|Phần|Điều|Khoản)\\s*[A-Z][.:]?\\s",
+      "description": "Chương/Phần/Mục/Điều/Khoản với chữ cái đơn (ví dụ: Section A)"
     }
   ],
   "brackets": {

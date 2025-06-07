@@ -409,11 +409,3 @@ def extract_and_analyze(path, exceptions_path):
         "general": general,
         "lines": lines_data
     }
-
-# Example usage
-if __name__ == "__main__":
-    try:
-        result = extract_and_analyze("sample.docx")
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-    except (FileNotFoundError, ValueError) as e:
-        print(f"Error: {e}")

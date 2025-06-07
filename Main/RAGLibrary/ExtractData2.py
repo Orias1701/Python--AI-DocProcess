@@ -322,7 +322,7 @@ def get_page_size_docx(doc):
         return page_width, page_height
     return 612, 792  # Mặc định kích thước US Letter (8.5x11 inch ở 72 DPI)
 
-def extract_and_analyze(path, exceptions_path, patterns_path="patterns.json"):
+def extract_and_analyze(path, exceptions_path="exceptions.json", patterns_path="patterns.json"):
     """Trích xuất và phân tích thuộc tính văn bản từ file DOCX hoặc PDF.
 
     Args:

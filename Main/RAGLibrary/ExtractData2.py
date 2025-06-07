@@ -7,40 +7,49 @@ from collections import Counter
 from docx.oxml.ns import qn
 from docx.shared import Pt
 
-# Load proper names and abbreviations from JSON file
 def load_exceptions(file_path="exceptions.json"):
-    """Load common words, proper names, and abbreviations from a JSON file.
-    
+    """Tải các từ thông dụng, tên riêng và viết tắt từ file JSON.
+
     Args:
-        file_path (str): Path to the JSON file containing exceptions.
-    
+        file_path (str): Đường dẫn tới file JSON chứa danh sách ngoại lệ.
+
     Returns:
-        dict: Dictionary with 'common_words' (set of strings), 'proper_names' and 'abbreviations' (sets of (text, case_style) tuples).
-    
+        dict: Từ điển chứa 'common_words' (tập hợp chuỗi), 'proper_names' và 
+              'abbreviations' (tập hợp các tuple (text, case_style)).
+
     Raises:
-        FileNotFoundError: If JSON file does not exist.
-        json.JSONDecodeError: If JSON file is malformed.
+        FileNotFoundError: Nếu file JSON không tồn tại.
+        json.JSONDecodeError: Nếu file JSON bị lỗi định dạng.
     """
-    def determine_case_style(text):
-        """Determine case style of a word (title or upper)."""
-        if text.isupper():
-            return "upper"
-        if text and text[0].isupper() and all(c.islower() or not c.isalpha() for c in text[1:]):
-            return "title"
-        return "title"  # Default to title for proper names/abbreviations
+    # Định nghĩa dữ liệu mặc định nếu file JSON không tồn tại hoặc lỗi
+    default_exceptions = {
+        "common_words": {
+            "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
+            "at", "by", "in", "of", "on", "to", "from", "with", "as",
+            "into", "like", "over", "under", "up", "down", "out", "upon", "onto",
+            "amid", "among", "between", "before", "after", "against"
+        },
+        # Tên riêng: Các địa danh, tổ chức hoặc tên người
+        "proper_names": {
+            ("Việt Nam", "title"), ("Hà Nội", "title"), ("ASEAN", "upper")
+        },
+        # Viết tắt: Các từ viết tắt phổ biến
+        "abbreviations": {
+            ("VN", "upper"), ("TP.HCM", "title")
+        }
+    }
     
     try:
-        if not os.path.exists(file_path):
-            raise FileNotFoundError(f"Exceptions file {file_path} not found")
         with open(file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
+            # Chuyển đổi dữ liệu từ JSON thành cấu trúc mong muốn
             common_words = set(data.get("common_words", []))
             proper_names = [
-                (item["text"], item.get("case_style", determine_case_style(item["text"])))
+                (item["text"], item.get("case_style", "title"))
                 for item in data.get("proper_names", [])
             ]
             abbreviations = [
-                (item["text"], item.get("case_style", determine_case_style(item["text"])))
+                (item["text"], item.get("case_style", "title"))
                 for item in data.get("abbreviations", [])
             ]
             return {
@@ -49,54 +58,194 @@ def load_exceptions(file_path="exceptions.json"):
                 "abbreviations": set(abbreviations)
             }
     except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
-        print(f"Error loading exceptions: {e}. Using default set.")
+        print(f"Lỗi khi tải file ngoại lệ: {e}. Sử dụng tập hợp mặc định.")
+        return default_exceptions
+
+def load_patterns(file_path="patterns.json"):
+    """Tải các mẫu đánh dấu, ngoặc và dấu kết thúc câu từ file JSON.
+
+    Args:
+        file_path (str): Đường dẫn tới file JSON chứa các mẫu.
+
+    Returns:
+        dict: Từ điển chứa các mẫu regex đã biên dịch và cấu hình.
+
+    Raises:
+        FileNotFoundError: Nếu file JSON không tồn tại.
+        json.JSONDecodeError: Nếu file JSON bị lỗi định dạng.
+    """
+    # Định nghĩa các mẫu mặc định
+    default_patterns = {
+        # Các mẫu đánh dấu đầu dòng hoặc mục
+        "markers": [
+            {"pattern": "[-+*•●◦○] ", "description": "Dấu đầu dòng"},
+            {"pattern": "[0-9a-zA-Z\\-+*ivxIVX]+[.)\\]:] ", "description": "Danh sách số hoặc chữ"},
+            {"pattern": "\\(\\d+\\) ", "description": "Số trong ngoặc"},
+            {"pattern": "\\(\\w+\\) ", "description": "Chữ hoặc từ trong ngoặc"},
+            {"pattern": "[0-9]+\\s+-\\s+[0-9]+ ", "description": "Khoảng số"},
+            {"pattern": "^(Chapter|Section|Part|Điều)\\s+[0-9]+|^(Chapter|Section|Part|Điều)\\s+[MDCLXVI]+|^(Chapter|Section|Part|Điều)\\s+[A-Z]", 
+             "description": "Chương/Mục/Phần/Điều với số, số La Mã hoặc chữ cái"}
+        ],
+        # Các mẫu ngoặc
+        "brackets": {
+            "open": "[\\(\\[\\{«“‘]",  # Ngoặc mở
+            "close": "[\\)\\]\\}»”’]",  # Ngoặc đóng
+            "pairs": ["()", "''", "\"\"", "[]", "{}", "«»", "“”", "‘’"]  # Cặp ngoặc hợp lệ
+        },
+        # Các mẫu kết thúc câu
+        "sentence_ends": {
+            "punctuation": "[.!?:;]",  # Dấu chấm câu kết thúc
+            "valid_brackets": ["()", "''", "\"\"", "[]", "{}", "«»", "“”", "‘’"]  # Cặp ngoặc kết thúc hợp lệ
+        }
+    }
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            # Biên dịch các mẫu đánh dấu
+            markers = [
+                {"pattern": re.compile(item["pattern"], re.IGNORECASE), "description": item.get("description", "")}
+                for item in data.get("markers", default_patterns["markers"])
+            ]
+            # Biên dịch các mẫu ngoặc
+            brackets = {
+                "open": re.compile(data["brackets"].get("open", default_patterns["brackets"]["open"])),
+                "close": re.compile(data["brackets"].get("close", default_patterns["brackets"]["close"])),
+                "pairs": data["brackets"].get("pairs", default_patterns["brackets"]["pairs"])
+            }
+            # Biên dịch các mẫu kết thúc câu
+            sentence_ends = {
+                "punctuation": re.compile(data["sentence_ends"].get("punctuation", default_patterns["sentence_ends"]["punctuation"])),
+                "valid_brackets": data["sentence_ends"].get("valid_brackets", default_patterns["sentence_ends"]["valid_brackets"])
+            }
+            return {
+                "markers": markers,
+                "brackets": brackets,
+                "sentence_ends": sentence_ends
+            }
+    except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
+        print(f"Lỗi khi tải file mẫu: {e}. Sử dụng mẫu mặc định.")
+        # Biên dịch các mẫu mặc định
         return {
-            "common_words": {
-                "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
-                "at", "by", "in", "of", "on", "to", "from", "with", "as",
-                "into", "like", "over", "under", "up", "down", "out", "upon", "onto",
-                "amid", "among", "between", "before", "after", "against"
+            "markers": [
+                {"pattern": re.compile(item["pattern"], re.IGNORECASE), "description": item["description"]}
+                for item in default_patterns["markers"]
+            ],
+            "brackets": {
+                "open": re.compile(default_patterns["brackets"]["open"]),
+                "close": re.compile(default_patterns["brackets"]["close"]),
+                "pairs": default_patterns["brackets"]["pairs"]
             },
-            "proper_names": {
-                ("Việt Nam", "title"), ("Hà Nội", "title"), ("ASEAN", "upper")
-            },
-            "abbreviations": {
-                ("VN", "upper"), ("TP.HCM", "title")
+            "sentence_ends": {
+                "punctuation": re.compile(default_patterns["sentence_ends"]["punctuation"]),
+                "valid_brackets": default_patterns["sentence_ends"]["valid_brackets"]
             }
         }
 
-def sentence_end(text):
-    """Check if text ends with a sentence-ending punctuation or valid brackets."""
-    brackets = ["()", "''", '""', "[]", "{}", "«»", "“”", "‘’"]
-    valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in brackets)
-    valid_end = text.endswith(('.', '!', '?', ':', ';'))
-    return valid_end or valid_brackets
+def sentence_end(text, patterns=None):
+    """Kiểm tra xem văn bản có kết thúc bằng dấu chấm câu hoặc cặp ngoặc hợp lệ không.
 
-def markers(text):
-    """Check if text starts with a list marker (bullet, number, etc.)."""
-    return bool(re.match(r'^([-+*•●◦○] )|([0-9a-zA-Z\-\+\*ivxIVX]+[.)\]:] )|(\(\d+\) )|(\(\w+\) )|([0-9]+\s+-\s+[0-9]+ )', text))
+    Args:
+        text (str): Văn bản cần kiểm tra.
+        patterns (dict, optional): Từ điển chứa các mẫu regex.
 
-def bracket_status(text):
-    """Check bracket status in text using regex for efficiency."""
-    if re.search(r'[\(\[\{«“‘].*[\)\]\}»”’]', text):
-        return "none"
-    if re.search(r'[\(\[\{«“‘]', text):
+    Returns:
+        bool: True nếu văn bản kết thúc hợp lệ, False nếu không.
+    """
+    if patterns is None:
+        patterns = load_patterns()
+    valid_end = patterns["sentence_ends"]["punctuation"].search(text[-1])
+    valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in patterns["sentence_ends"]["valid_brackets"])
+    return bool(valid_end or valid_brackets)
+
+def markers(text, patterns=None):
+    """Kiểm tra xem văn bản có bắt đầu bằng đánh dấu danh sách (dấu đầu dòng, số, v.v.) không.
+
+    Args:
+        text (str): Văn bản cần kiểm tra.
+        patterns (dict, optional): Từ điển chứa các mẫu regex.
+
+    Returns:
+        bool: True nếu văn bản bắt đầu bằng đánh dấu, False nếu không.
+    """
+    if patterns is None:
+        patterns = load_patterns()
+    return any(pattern["pattern"].match(text) for pattern in patterns["markers"])
+
+def bracket_status(text, patterns=None):
+    """Kiểm tra trạng thái ngoặc trong văn bản, không tính ngoặc trong đánh dấu.
+
+    Args:
+        text (str): Văn bản cần phân tích.
+        patterns (dict, optional): Từ điển chứa các mẫu regex cho đánh dấu và ngoặc.
+
+    Returns:
+        str: Trạng thái ngoặc ('none', 'open', 'close', hoặc 'both').
+    """
+    if patterns is None:
+        patterns = load_patterns()
+    
+    # Loại bỏ phần đánh dấu nếu có
+    non_marker_text = text
+    for pattern in patterns["markers"]:
+        match = pattern["pattern"].match(text)
+        if match:
+            non_marker_text = text[len(match.group(0)):]
+            break
+    
+    # Đếm ngoặc mở và đóng trong văn bản không chứa đánh dấu
+    open_count = sum(1 for _ in patterns["brackets"]["open"].finditer(non_marker_text))
+    close_count = sum(1 for _ in patterns["brackets"]["close"].finditer(non_marker_text))
+    
+    # Kiểm tra cặp ngoặc hợp lệ (bao gồm cả trường hợp lồng nhau)
+    if open_count == close_count and open_count > 0:
+        stack = []
+        valid = True
+        for char in non_marker_text:
+            if patterns["brackets"]["open"].match(char):
+                stack.append(char)
+            elif patterns["brackets"]["close"].match(char):
+                if not stack:
+                    valid = False
+                    break
+                # Kiểm tra ngoặc đóng có khớp với ngoặc mở gần nhất
+                last_open = stack.pop()
+                pair_valid = any(
+                    last_open == pair[0] and char == pair[1]
+                    for pair in patterns["brackets"]["pairs"]
+                )
+                if not pair_valid:
+                    valid = False
+                    break
+        if valid and not stack:
+            return "none"
+    
+    # Xác định trạng thái dựa trên số lượng và thứ tự
+    if open_count > close_count:
         return "open"
-    if re.search(r'[\)\]\}»”’]', text):
+    elif close_count > open_count:
         return "close"
+    elif open_count == close_count and open_count > 0:
+        # Nếu số lượng bằng nhau nhưng thứ tự không hợp lệ
+        for i, char in enumerate(non_marker_text):
+            if patterns["brackets"]["close"].match(char):
+                if not any(patterns["brackets"]["open"].match(non_marker_text[j]) for j in range(i)):
+                    return "both"
+        return "none"
+    elif open_count > 0 and close_count > 0:
+        return "both"
     return "none"
 
 def get_case_style(text, exceptions):
-    """Determine the case style of text (upper, title, or mixed), excluding common words, proper names, and abbreviations.
-    
+    """Xác định kiểu chữ hoa/thường của văn bản, không tính các từ ngoại lệ.
+
     Args:
-        text (str): The text to analyze.
-        exceptions (dict): Dictionary with 'common_words' (set of strings), 'proper_names' and 'abbreviations' (sets of (text, case_style) tuples).
-    
+        text (str): Văn bản cần phân tích.
+        exceptions (dict): Từ điển chứa các từ ngoại lệ.
+
     Returns:
-        str: Case style ('upper', 'title', or 'mixed').
+        str: Kiểu chữ ('upper', 'title', hoặc 'mixed').
     """
-    # Extract text from exceptions
     exception_texts = exceptions["common_words"] | {item[0].lower() for item in exceptions["proper_names"] | exceptions["abbreviations"]}
     words = [word for word in text.split() if word.lower() not in exception_texts and word.strip()]
     
@@ -118,90 +267,87 @@ def get_case_style(text, exceptions):
     return "mixed"
 
 def get_first_word_width(text, spans=None, font_size=12, is_pdf=False):
-    """Calculate the width of the first word using coordinates (PDF) or font size (DOCX).
-    
+    """Tính chiều rộng của từ đầu tiên dựa trên tọa độ (PDF) hoặc kích thước phông (DOCX).
+
     Args:
-        text (str): The text to analyze.
-        spans (list): List of span dictionaries from PDF text block (for PDF).
-        font_size (float): Font size for DOCX fallback.
-        is_pdf (bool): Whether the document is a PDF.
-    
+        text (str): Văn bản cần phân tích.
+        spans (list, optional): Danh sách các span từ khối văn bản PDF.
+        font_size (float): Kích thước phông chữ cho DOCX.
+        is_pdf (bool): Tài liệu có phải là PDF không.
+
     Returns:
-        float: Width of the first word in points, rounded to 1 decimal place.
+        float: Chiều rộng của từ đầu tiên (điểm), làm tròn đến 1 chữ số thập phân.
     """
     words = text.strip().split()
     if not words:
         return 0
-    first_word = words[0].rstrip(".")  # Remove trailing punctuation for width calculation
+    first_word = words[0].rstrip(".")  # Loại bỏ dấu câu cuối
     
     if is_pdf and spans:
         for span in spans:
             span_text = span["text"].strip()
-            # Normalize span text and first word for Vietnamese characters
             normalized_span = span_text.replace("\xa0", " ").strip()
             normalized_first_word = first_word.replace("\xa0", " ").strip()
             
-            # Check if span starts with the first word
             if normalized_span == normalized_first_word or normalized_span.startswith(normalized_first_word + " "):
                 x0, _, x1, _ = span["bbox"]
                 width = x1 - x0
-                # If span contains more than the first word, estimate width proportionally
                 if normalized_span != normalized_first_word:
                     char_count = len(normalized_span)
                     first_word_len = len(normalized_first_word)
                     width = width * (first_word_len / char_count)
                 return round(width, 1)
-            # Handle case where first word is part of a larger span
             elif normalized_first_word in normalized_span and normalized_span.index(normalized_first_word) == 0:
                 x0, _, x1, _ = span["bbox"]
                 char_count = len(normalized_span)
                 first_word_len = len(normalized_first_word)
                 width = (x1 - x0) * (first_word_len / char_count)
                 return round(width, 1)
-        print(f"Warning: No span found for first word '{first_word}' in PDF. Using fallback.")
-    # Fallback for DOCX or when spans are not found
-    char_width = font_size * 0.4  # Adjusted for Vietnamese fonts
+        print(f"Cảnh báo: Không tìm thấy span cho từ đầu tiên '{first_word}' trong PDF. Sử dụng giá trị mặc định.")
+    char_width = font_size * 0.4  # Điều chỉnh cho phông tiếng Việt
     return round(len(first_word) * char_width, 1)
 
 def get_page_size_docx(doc):
-    """Get page size from a DOCX document.
-    
+    """Lấy kích thước trang từ tài liệu DOCX.
+
     Args:
-        doc: python-docx Document object.
-    
+        doc: Đối tượng Document của python-docx.
+
     Returns:
-        tuple: (page_width, page_height) in points, or (612, 792) if not available.
+        tuple: (page_width, page_height) tính bằng điểm, hoặc (612, 792) nếu không có.
     """
     for section in doc.sections:
         page_width = section.page_width.pt if section.page_width else 612
         page_height = section.page_height.pt if section.page_height else 792
         return page_width, page_height
-    return 612, 792  # Default to US Letter size (8.5x11 inches at 72 DPI)
+    return 612, 792  # Mặc định kích thước US Letter (8.5x11 inch ở 72 DPI)
 
-def extract_and_analyze(path, exceptions_path):
-    """Extract and analyze text properties from a DOCX or PDF file.
-    
+def extract_and_analyze(path, exceptions_path, patterns_path="patterns.json"):
+    """Trích xuất và phân tích thuộc tính văn bản từ file DOCX hoặc PDF.
+
     Args:
-        path (str): Path to the input file (.docx or .pdf).
-        exceptions_path (str): Path to the JSON file with exceptions.
-    
+        path (str): Đường dẫn tới file đầu vào (.docx hoặc .pdf).
+        exceptions_path (str): Đường dẫn tới file JSON chứa ngoại lệ.
+        patterns_path (str): Đường dẫn tới file JSON chứa mẫu.
+
     Returns:
-        dict: Analysis results with general properties and line-by-line data.
-    
+        dict: Kết quả phân tích với thuộc tính chung và dữ liệu từng dòng.
+
     Raises:
-        FileNotFoundError: If input file or exceptions file does not exist.
-        ValueError: If file format is unsupported.
+        FileNotFoundError: Nếu file đầu vào hoặc file ngoại lệ không tồn tại.
+        ValueError: Nếu định dạng file không được hỗ trợ.
     """
     if not os.path.exists(path):
-        raise FileNotFoundError(f"File {path} does not exist")
+        raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
     if file_ext not in [".docx", ".pdf"]:
-        raise ValueError("Unsupported file format. Only .docx and .pdf are supported.")
+        raise ValueError("Định dạng file không được hỗ trợ. Chỉ hỗ trợ .docx và .pdf.")
     
     exceptions = load_exceptions(exceptions_path)
+    patterns = load_patterns(patterns_path)
     lines_data = []
     page_data = []
-    line_widths = []  # Store line widths for calculating ExtraSpace
+    line_widths = []
     
     if file_ext == ".docx":
         doc = Document(path)
@@ -216,30 +362,30 @@ def extract_and_analyze(path, exceptions_path):
                 if not cleaned_text:
                     continue
                 
-                # Get font and style properties
+                # Lấy thuộc tính phông chữ và kiểu
                 font_size = para.runs[0].font.size.pt if para.runs and para.runs[0].font.size else 12
                 bold = any(run.bold for run in para.runs if run.text.strip() and run.bold is not None)
                 italic = any(run.italic for run in para.runs if run.text.strip() and run.italic is not None)
                 underline = any(run.underline for run in para.runs if run.text.strip() and run.underline is not None)
                 
-                # Get paragraph margins and spacing
+                # Lấy lề và khoảng cách đoạn
                 margin_left = para.paragraph_format.left_indent.pt if para.paragraph_format.left_indent else 0
                 margin_right = para.paragraph_format.right_indent.pt if para.paragraph_format.right_indent else 0
                 line_spacing = para.paragraph_format.line_spacing if para.paragraph_format.line_spacing else 1.15
                 space_before = para.paragraph_format.space_before.pt if para.paragraph_format.space_before else 0
                 space_after = para.paragraph_format.space_after.pt if para.paragraph_format.space_after else 0
                 
-                # Simulate y-position
+                # Mô phỏng vị trí y
                 current_top = 0 if prev_bottom is None else prev_bottom + space_before
                 current_bottom = current_top + (font_size or 12)
                 margin_top = current_top if prev_bottom is None else current_top - prev_bottom
                 margin_bottom = space_after
                 
-                # Calculate line width
+                # Tính chiều rộng dòng
                 line_width = round(page_width - margin_left - margin_right, 1)
                 line_widths.append(line_width)
                 
-                # Round numerical values
+                # Làm tròn các giá trị số
                 font_size = round(font_size, 1)
                 line_height = round(line_spacing * font_size if font_size else 1.15 * 12, 1)
                 margin_top = round(margin_top, 1)
@@ -247,7 +393,7 @@ def extract_and_analyze(path, exceptions_path):
                 margin_left = round(margin_left, 1)
                 margin_right = round(margin_right, 1)
                 
-                # Initialize page data
+                # Khởi tạo dữ liệu trang
                 if prev_bottom is None:
                     page_data.append({
                         "top": margin_top,
@@ -265,7 +411,7 @@ def extract_and_analyze(path, exceptions_path):
                 lines_data.append({
                     "Line": len(lines_data) + 1,
                     "Text": cleaned_text,
-                    "HasMarker": markers(cleaned_text),
+                    "HasMarker": markers(cleaned_text, patterns),
                     "CaseStyle": get_case_style(cleaned_text, exceptions),
                     "IsBold": bold,
                     "IsItalic": italic,
@@ -276,14 +422,14 @@ def extract_and_analyze(path, exceptions_path):
                     "MarginBottom": margin_bottom,
                     "MarginLeft": margin_left,
                     "MarginRight": margin_right,
-                    "BracketStatus": bracket_status(cleaned_text),
+                    "BracketStatus": bracket_status(cleaned_text, patterns),
                     "FirstWordWidth": get_first_word_width(cleaned_text, font_size=font_size, is_pdf=False),
                     "LineWidth": line_width
                 })
                 prev_bottom = current_bottom
                 page_data[page_num]["last_bottom"] = current_bottom
         
-        # Adjust margin_bottom for last line of each page
+        # Điều chỉnh lề dưới cho dòng cuối mỗi trang
         if page_data and lines_data:
             page_data[page_num]["bottoms"][-1] = round(page_height - page_data[page_num]["last_bottom"], 1)
 
@@ -303,7 +449,7 @@ def extract_and_analyze(path, exceptions_path):
                     if not cleaned_text:
                         continue
                     
-                    # Extract layout info
+                    # Trích xuất thông tin bố cục
                     x0, y0, x1, y1 = block[:4]
                     margin_left = x0 - page.rect.x0
                     margin_right = page_width - x1
@@ -316,11 +462,11 @@ def extract_and_analyze(path, exceptions_path):
                     page_info["rights"].append(margin_right)
                     page_info["bottoms"].append(margin_bottom)
                     
-                    # Calculate line width
+                    # Tính chiều rộng dòng
                     line_width = round(x1 - x0, 1)
                     line_widths.append(line_width)
                     
-                    # Font and style info
+                    # Thông tin phông chữ và kiểu
                     text_dict = page.get_text("dict")
                     font_size = 12
                     line_spacing = 1.15
@@ -340,7 +486,7 @@ def extract_and_analyze(path, exceptions_path):
                         if spans:
                             break
                     
-                    # Round numerical values
+                    # Làm tròn các giá trị số
                     font_size = round(font_size, 1)
                     line_height = round(line_spacing * font_size, 1)
                     margin_top = round(margin_top, 1)
@@ -350,14 +496,14 @@ def extract_and_analyze(path, exceptions_path):
                     
                     first_word_width = get_first_word_width(cleaned_text, spans=spans, is_pdf=True)
                     if first_word_width > line_width:
-                        print(f"Warning: FirstWordWidth ({first_word_width}) exceeds LineWidth ({line_width}) for text: {cleaned_text}")
-                        first_word_width = min(first_word_width, line_width)
+                        print(f"Cảnh báo: FirstWordWidth ({first_word_width}) vượt quá LineWidth ({line_width}) cho văn bản: {cleaned_text}")
+                        first_word_width = line_width
                     
-                    line_positions.append({"top": y0, "bottom": y1})
+                    line_positions.append({"text": cleaned_text, "top": y0, "bottom": y1})
                     lines_data.append({
                         "Line": len(lines_data) + 1,
                         "Text": cleaned_text,
-                        "HasMarker": markers(cleaned_text),
+                        "HasMarker": markers(cleaned_text, patterns),
                         "CaseStyle": get_case_style(cleaned_text, exceptions),
                         "IsBold": bold,
                         "IsItalic": italic,
@@ -368,21 +514,20 @@ def extract_and_analyze(path, exceptions_path):
                         "MarginBottom": margin_bottom,
                         "MarginLeft": margin_left,
                         "MarginRight": margin_right,
-                        "BracketStatus": bracket_status(cleaned_text),
+                        "BracketStatus": bracket_status(cleaned_text, patterns),
                         "FirstWordWidth": first_word_width,
                         "LineWidth": line_width
                     })
-                    prev_bottom = y1
+                    prev_bottom = y0
                     page_info["last_bottom"] = y1
             page_data.append(page_info)
             
-            # Adjust margin_bottom for last line of page
+            # Điều chỉnh lề dưới cho dòng cuối của trang
             if line_positions:
-                last_line_idx = len(lines_data) - 1 - len([b for b in blocks if b[4].strip()])
-                if last_line_idx >= 0:
-                    lines_data[last_line_idx]["MarginBottom"] = round(page_height - page_info["last_bottom"], 1)
+                last_line_idx = len(lines_data) - 1
+                lines_data[last_line_idx]["MarginBottom"] = round(page_height - page_info["last_bottom"], 0)
     
-    # Calculate general properties
+    # Tính các thuộc tính chung
     top_margins = [p["top"] for p in page_data if p["top"] is not None]
     bottom_margins = [p["bottoms"][-1] for p in page_data if p["bottoms"]]
     left_margins = [m for p in page_data for m in p["lefts"]]
@@ -401,7 +546,7 @@ def extract_and_analyze(path, exceptions_path):
         "common_line_width": round(common_line_width, 1)
     }
     
-    # Calculate ExtraSpace for each line
+    # Tính khoảng dư cho mỗi dòng
     for line in lines_data:
         line["ExtraSpace"] = round(general["common_line_width"] - line["LineWidth"], 1) if general["common_line_width"] > 0 else 0
     

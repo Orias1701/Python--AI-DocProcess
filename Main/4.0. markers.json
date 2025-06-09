@@ -1,0 +1,81 @@
+{
+  "keywords": [
+    "điều",
+    "khoản",
+    "mục",
+    "điểm",
+    "tiểu mục",
+    "chương",
+    "phần",
+    "chapter",
+    "section",
+    "article",
+    "part",
+    "clause",
+    "paragraph",
+    "item",
+    "point"
+  ],
+  "markers": [
+    {
+      "pattern": "^({keywords})\\s+([0-9]+|[a-z]+|[A-Z]+|[IVXLC]+)([.)\\]:,;-])\\s+",
+      "description": "Từ khóa với số, chữ, hoặc số La Mã và dấu kết thúc",
+      "type": "{keyword} {position}{endmark}"
+    },
+    {
+      "pattern": "^({keywords})([0-9]+|[IVXLC]+)(\\s+|$)",
+      "description": "Từ khóa dính số hoặc số La Mã",
+      "type": "{keyword}{position}"
+    },
+    {
+      "pattern": "^({keywords})\\s+([0-9]+\\.([0-9]+\\.)+[0-9]*|[a-z]+\\.([a-z]+\\.)+[a-z]*|[A-Z]+\\.([A-Z]+\\.)+[A-Z]*|[IVXLC]+\\.([IVXLC]+\\.)+[IVXLC]*)([.)\\]:,;-]?)\\s+",
+      "description": "Từ khóa với số, chữ, hoặc số La Mã phân cấp",
+      "type": "{keyword} {position}{endmark}"
+    },
+    {
+      "pattern": "^({keywords})\\s*$",
+      "description": "Từ khóa đứng một mình",
+      "type": "{keyword}"
+    },
+    {
+      "pattern": "^([-+*•●◦○])(\\s?)",
+      "description": "Dấu đầu dòng",
+      "type": "{bullet}"
+    },
+    {
+      "pattern": "^([0-9]+|[a-z]+|[A-Z]+|[IVXLC]+)([.)\\]:,;-])\\s+",
+      "description": "Số, chữ, hoặc số La Mã với dấu kết thúc",
+      "type": "{position}{endmark}"
+    },
+    {
+      "pattern": "^\\(([0-9]+|[a-z]+|[A-Z]+|[IVXLC]+)\\)(\\s?)",
+      "description": "Số, chữ, hoặc số La Mã trong ngoặc tròn",
+      "type": "({position}){endmark}"
+    },
+    {
+      "pattern": "^\"([0-9]+)\"(\\s?)",
+      "description": "Số trong ngoặc kép",
+      "type": "\"{position}\"{endmark}"
+    },
+    {
+      "pattern": "^'([a-z]+)'(\\s?)",
+      "description": "Chữ thường trong ngoặc đơn",
+      "type": "'{position}'{endmark}"
+    },
+    {
+      "pattern": "^\\{([IVXLC]+)\\}(\\s?)",
+      "description": "Số La Mã trong ngoặc nhọn",
+      "type": "{{position}}{endmark}"
+    },
+    {
+      "pattern": "^[0-9]+\\s+-\\s+[0-9]+\\s+",
+      "description": "Khoảng số",
+      "type": "{position}"
+    },
+    {
+      "pattern": "^([0-9]+\\.([0-9]+\\.)+[0-9]*|[a-z]+\\.([a-z]+\\.)+[a-z]*|[A-Z]+\\.([A-Z]+\\.)+[A-Z]*|[IVXLC]+\\.([IVXLC]+\\.)+[IVXLC]*)([.)\\]:,;-]?)\\s+",
+      "description": "Số, chữ, hoặc số La Mã phân cấp",
+      "type": "{position}{endmark}"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 import re
-import os
-import fitz
 import json
 from collections import Counter
+import fitz
 from docx2pdf import convert
 import tempfile
+import os
 
 def load_exceptions(file_path="exceptions.json"):
     try:
@@ -28,17 +28,23 @@ def load_patterns(markers_path="markers.json", status_path="status.json"):
         keywords = markers_data.get("keywords", [])
         if not keywords:
             raise KeyError("Keywords list cannot be empty in markers.json")
-            
-        lower_keywords = '|'.join(re.escape(k) for k in keywords)
+        
+        # Sửa lại all_keywords, bỏ dấu ) thừa
         title_keywords = '|'.join(re.escape(k[0].upper() + k[1:].lower()) for k in keywords)
         upper_keywords = '|'.join(re.escape(k.upper()) for k in keywords)
-        all_keywords = f"({lower_keywords}|{title_keywords}|{upper_keywords})"
-        
+        all_keywords = f"{title_keywords}|{upper_keywords}"
+
         compiled_markers = []
         for item in markers_data.get("markers", []):
             pattern_str = item["pattern"].replace("{keywords}", all_keywords)
+            # print("Pattern thực tế:", pattern_str)  # In ra pattern thực tế
+            try:
+                compiled_pattern = re.compile(pattern_str)
+            except re.error as e:
+                print(f"LỖI pattern: {pattern_str}\nError: {e}")
+                continue  # Bỏ qua pattern lỗi
             compiled_markers.append({
-                "pattern": re.compile(pattern_str),
+                "pattern": compiled_pattern,
                 "description": item.get("description", ""),
                 "type": item.get("type", "")
             })
@@ -53,7 +59,8 @@ def load_patterns(markers_path="markers.json", status_path="status.json"):
             "sentence_ends": {
                 "punctuation": re.compile(status_data["sentence_ends"]["punctuation"]),
                 "valid_brackets": status_data["sentence_ends"]["valid_brackets"]
-            }
+            },
+            "keywords_set": set(k.lower() for k in keywords)
         }
     except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
         raise Exception(f"Error loading patterns: {e}")
@@ -63,108 +70,62 @@ def sentence_end(text, patterns):
     valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in patterns["sentence_ends"]["valid_brackets"])
     return bool(valid_end or valid_brackets)
 
-def markers(text, patterns):
-    for marker in patterns["markers"]:
-        match = marker["pattern"].match(text)
+def extract_marker(text, patterns):
+    """
+    Extracts marker text from the input string using optimized logic.
+    Args:
+        text (str): Input text to analyze.
+        patterns (dict): Dictionary containing compiled regex patterns from markers.json.
+    Returns:
+        dict: Dictionary with 'marker_text' (str).
+    """
+    for pattern_info in patterns["markers"]:
+        match = pattern_info["pattern"].match(text)
         if match:
-            marker_text = match.group(0).rstrip()  # Keep original, remove trailing space
-            marker_type = marker["type"]
-            
-            bullet = ""
-            keyword = ""
-            position = ""
-            endmark = ""
-            
-            # Extract components based on marker type
-            if "{bullet}" in marker_type:
-                bullet = match.group(1)
-                if len(match.groups()) >= 2 and match.group(2):
-                    bullet += match.group(2)  # Add space if present
-            
-            if "{keyword}" in marker_type:
-                keyword = match.group(1)  # Original keyword with case
-                if "{position}" in marker_type and len(match.groups()) > 1 and match.start(2) > len(match.group(1)):
-                    keyword += " "  # Add space if position follows
-            
-            if "{position}" in marker_type:
-                pos_group = 1 if "{keyword}" not in marker_type else 2
-                if len(match.groups()) >= pos_group and match.group(pos_group):
-                    pos = match.group(pos_group)
-                    space = ""
-                    # Check for space
-                    if len(match.groups()) > pos_group:
-                        space = match.group(len(match.groups())) if match.group(len(match.groups())) else ""
-                    elif text.startswith(match.group(0)) and len(text) > len(match.group(0)) and text[len(match.group(0))] == " ":
-                        space = " "
-                    if re.match(r"[0-9]+", pos):
-                        position = "123"
-                    elif re.match(r"[a-z]+", pos):
-                        position = "abc"
-                    elif re.match(r"[A-Z]+", pos):
-                        position = "ABC"
-                    elif re.match(r"[IVXLC]+", pos):
-                        position = "XVI"
-                    elif re.match(r"[0-9]+\\.([0-9]+\\.)+[0-9]*", pos):
-                        position = "1.2.3"
-                    elif re.match(r"[a-z]+\\.([a-z]+\\.)+[a-z]*", pos):
-                        position = "a.b.c"
-                    elif re.match(r"[A-Z]+\\.([A-Z]+\\.)+[A-Z]*", pos):
-                        position = "A.B.C"
-                    elif re.match(r"[IVXLC]+\\.([IVXLC]+\\.)+[IVXLC]*", pos):
-                        position = "I.II.III"
-                    position += space
-            
-            if "{endmark}" in marker_type:
-                endmark_group = 2 if "{keyword}" not in marker_type else 3
-                if len(match.groups()) >= endmark_group:
-                    endmark = match.group(endmark_group) if match.group(endmark_group) else ""
-            
-            # Special cases (e.g., (a), "123")
-            if marker_type.startswith("(") or marker_type.startswith("\"") or marker_type.startswith("'") or marker_type.startswith("{"):
-                if len(match.groups()) >= 1 and match.group(1):
-                    pos = match.group(1)
-                    space = match.group(2) if len(match.groups()) >= 2 and match.group(2) else ""
-                    if re.match(r"[0-9]+", pos):
-                        position = "123"
-                    elif re.match(r"[a-z]+", pos):
-                        position = "abc"
-                    elif re.match(r"[A-Z]+", pos):
-                        position = "ABC"
-                    else:
-                        position = "XVI"
-                    if marker_type.startswith("("):
-                        endmark = ")"
-                        formatted_marker = f"({position}){space}"
-                        marker_text = f"({pos}){space}"
-                    elif marker_type.startswith("\""):
-                        endmark = "\""
-                        formatted_marker = f"\"{position}\"{space}"
-                        marker_text = f"\"{pos}\"{space}"
-                    elif marker_type.startswith("'"):
-                        endmark = "'"
-                        formatted_marker = f"'{position}'{space}"
-                        marker_text = f"'{pos}'{space}"
-                    else:  # {XVI}
-                        endmark = "}"
-                        formatted_marker = f"{{{position}}}{space}"
-                        marker_text = f"{{{pos}}}{space}"
-            else:
-                formatted_marker = f"{bullet}{keyword}{position}{endmark}"
-            
-            if not (bullet or keyword or position):
-                continue  # Try next pattern if no valid components
-            
+            marker_text = re.sub(r'^\s+', '', match.group(0))
+            marker_text = re.sub(r'\s+$', ' ', marker_text) 
             return {
-                "has_marker": True,
-                "marker_text": marker_text,
-                "formatted_marker": formatted_marker
+                "marker_text": marker_text
             }
-    
     return {
-        "has_marker": False,
-        "marker_text": "none",
-        "formatted_marker": "none"
+        "marker_text": None
     }
+
+def format_marker(marker_text, patterns):
+    """
+    Formats the marker text according to specified rules by analyzing content within MarkerText.
+    Args:
+        marker_text (str): The extracted marker text.
+        patterns (dict): Dictionary containing keywords set for checking.
+    Returns:
+        str: Formatted marker text or None if marker_text is None.
+    """
+    if not marker_text:
+        return None
+    
+    formatted = marker_text
+    formatted = re.sub(r'\b[0-9]+\b', '123', formatted)
+    formatted = re.sub(r'\b[IVXLC]+\b', 'XVI', formatted)
+    parts = re.split(r'(\W+)', formatted)
+    formatted_parts = []
+    
+    for part in parts:
+        if re.match(r'\W+', part):
+            formatted_parts.append(part)
+            continue
+        
+        if part.lower() in patterns["keywords_set"]:
+            formatted_parts.append(part)
+        elif re.match(r'^[a-z]$', part):
+            formatted_parts.append('abc')
+        elif re.match(r'^[A-Z]$', part):
+            formatted_parts.append('ABC')
+        else:
+            formatted_parts.append(part)
+    
+    formatted = ''.join(formatted_parts)
+    
+    return formatted
 
 def bracket_status(text, patterns):
     non_marker_text = text
@@ -263,7 +224,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
         exceptions = load_exceptions(exceptions_path)
         patterns = load_patterns(markers_path, status_path)
         lines_data = []
-        page_data = []
         line_widths = []
         all_x0, all_y0, all_x1, all_y1 = [], [], [], []
 
@@ -272,9 +232,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
             page_width = page.rect.width
             page_height = page.rect.height
             blocks = sorted(page.get_text("blocks"), key=lambda b: (b[1], b[0]))
-            prev_bottom = None
-            page_info = {"top": None, "bottoms": [], "lefts": [], "rights": [], "last_bottom": None}
-            line_positions = []
 
             for block in blocks:
                 for line in block[4].split("\n"):
@@ -287,17 +244,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                     all_y0.append(y0)
                     all_x1.append(x1)
                     all_y1.append(y1)
-
-                    margin_left = x0 - page.rect.x0
-                    margin_right = page_width - x1
-                    margin_top = y0 - page.rect.y0 if prev_bottom is None else y0 - prev_bottom
-                    margin_bottom = page_height - y1
-
-                    if prev_bottom is None:
-                        page_info["top"] = y0 - page.rect.y0
-                    page_info["lefts"].append(margin_left)
-                    page_info["rights"].append(margin_right)
-                    page_info["bottoms"].append(margin_bottom)
 
                     line_width = round(x1 - x0, 1)
                     line_widths.append(line_width)
@@ -323,44 +269,30 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
 
                     font_size = round(font_size, 1)
                     line_height = round(line_spacing * font_size, 1)
-                    margin_top = round(margin_top, 1)
-                    margin_bottom = round(margin_bottom, 1)
-                    margin_left = round(margin_left, 1)
-                    margin_right = round(margin_right, 1)
 
                     first_word_width = get_first_word_width(cleaned_text, spans=spans, is_pdf=True)
                     if first_word_width > line_width:
                         print(f"Warning: FirstWordWidth ({first_word_width}) exceeds LineWidth ({line_width}) for text: {cleaned_text}")
                         first_word_width = line_width
 
-                    marker_info = markers(cleaned_text, patterns)
-                    line_positions.append({"text": cleaned_text, "top": y0, "bottom": y1})
+                    marker_info = extract_marker(cleaned_text, patterns)
+                    marker_text = marker_info["marker_text"]
+                    marker_format = format_marker(marker_text, patterns)
                     lines_data.append({
                         "Line": len(lines_data) + 1,
                         "Text": cleaned_text,
-                        "Marker": marker_info["formatted_marker"],
-                        "MarkerText": marker_info["marker_text"],
+                        "MarkerText": marker_text,
+                        "MarkerFormat": marker_format,
                         "CaseStyle": get_case_style(cleaned_text, exceptions),
+                        "BracketStatus": bracket_status(cleaned_text, patterns),
                         "IsBold": bold,
                         "IsItalic": italic,
                         "IsUnderline": underline,
                         "FontSize": font_size,
                         "LineHeight": line_height,
-                        "MarginTop": margin_top,
-                        "MarginBottom": margin_bottom,
-                        "MarginLeft": margin_left,
-                        "MarginRight": margin_right,
-                        "BracketStatus": bracket_status(cleaned_text, patterns),
-                        "FirstWordWidth": first_word_width,
-                        "LineWidth": line_width
+                        "LineWidth": line_width,
+                        "FirstWordWidth": first_word_width
                     })
-                    prev_bottom = y0
-                    page_info["last_bottom"] = y1
-            page_data.append(page_info)
-
-            if line_positions:
-                last_line_idx = len(lines_data) - 1
-                lines_data[last_line_idx]["MarginBottom"] = round(page_height - page_info["last_bottom"], 0)
 
         region_x0 = min(all_x0) if all_x0 else 0
         region_y0 = min(all_y0) if all_y0 else 0
@@ -369,22 +301,12 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
         region_width = round(region_x1 - region_x0, 1) if all_x0 and all_x1 else 0
         region_height = round(region_y1 - region_y0, 1) if all_y0 and all_y1 else 0
 
-        left_margins = [p["lefts"] for p in page_data if p["lefts"]]
-        right_margins = [p["rights"] for p in page_data if p["rights"]]
-        top_margins = [p["top"] for p in page_data if p["top"] is not None]
-        bottom_margins = [p["bottoms"][-1] for p in page_data if p["bottoms"]]
-
-        left_align = round(min([min(m) for m in left_margins]) if left_margins else 0, 1)
-        right_align = round(min([min(m) for m in right_margins]) if right_margins else 0, 1)
-        top_align = round(min(top_margins) if top_margins else 0, 1)
-        bottom_align = round(min(bottom_margins) if bottom_margins else 0, 1)
-
         common_font_size = round(Counter([l["FontSize"] for l in lines_data]).most_common(1)[0][0], 1) if lines_data else 12.0
         common_line_height = round(Counter([l["LineHeight"] for l in lines_data]).most_common(1)[0][0], 1) if lines_data else 13.8
 
         total_lines = len(lines_data)
-        marker_threshold = total_lines * 0.01
-        marker_counts = Counter(l["Marker"] for l in lines_data if l["Marker"] != "none")
+        marker_threshold = total_lines * 0.003
+        marker_counts = Counter(l["MarkerFormat"] for l in lines_data if l["MarkerFormat"] is not None)
         common_markers = [marker for marker, count in marker_counts.items() if count > marker_threshold]
 
         general = {
@@ -392,22 +314,61 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
             "page_width": round(page_width, 1),
             "region_height": region_height,
             "region_width": region_width,
-            "region_start": [round(region_x0, 1), round(region_y0, 1)],
-            "region_end": [round(region_x1, 1), round(region_y1, 1)],
-            "region_align": {
-                "left": left_align,
-                "right": right_align,
-                "top": top_align,
-                "bottom": bottom_align
-            },
             "common_font_size": common_font_size,
             "common_line_height": common_line_height,
-            "common_markers": common_markers,
-            "common_line_width": round(Counter(line_widths).most_common(1)[0][0], 1) if line_widths else 0
+            "common_line_width": round(Counter(line_widths).most_common(1)[0][0], 1) if line_widths else 0,
+            "common_markers": common_markers
         }
 
         for line in lines_data:
             line["ExtraSpace"] = round(general["common_line_width"] - line["LineWidth"], 1) if general["common_line_width"] > 0 else 0
+
+        def is_roman(s):
+            return bool(re.fullmatch(r'[IVXLC]+', s))
+
+        def roman_to_int(s):
+            roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100}
+            result = 0
+            prev = 0
+            for c in reversed(s):
+                val = roman_numerals.get(c, 0)
+                if val < prev:
+                    result -= val
+                else:
+                    result += val
+                    prev = val
+            return result
+
+        # Gom nhóm các phần tử theo MarkerFormat
+        from collections import defaultdict
+        format_groups = defaultdict(list)
+        for idx, line in enumerate(lines_data):
+            fmt = line.get("MarkerFormat")
+            marker = line.get("MarkerText")
+            if fmt and marker:
+                format_groups[fmt].append((idx, marker))
+
+        # Xét từng nhóm format
+        for fmt, group in format_groups.items():
+            # Lấy danh sách các marker là 1 chuỗi La Mã
+            roman_markers = []
+            for idx, marker in group:
+                m = re.search(r'\b([IVXLC]+)\b', marker)
+                if m and is_roman(m.group(1)):
+                    roman_markers.append((idx, m.group(1)))
+                else:
+                    break
+            else:
+                roman_numbers = [roman_to_int(rm[1]) for rm in roman_markers]
+                if sorted(roman_numbers) == list(range(min(roman_numbers), max(roman_numbers)+1)):
+                    continue
+                else:
+                    for idx, _ in roman_markers:
+                        lines_data[idx]["MarkerFormat"] = re.sub(r'\b[IVXLC]+\b', "ABC", lines_data[idx]["MarkerFormat"])
+
+        # Cập nhật lại common_markers sau khi xử lý La Mã
+        marker_counts = Counter(l["MarkerFormat"] for l in lines_data if l["MarkerFormat"] is not None)
+        general["common_markers"] = [marker for marker, count in marker_counts.items() if count > marker_threshold]
 
         return {"general": general, "lines": lines_data}
 

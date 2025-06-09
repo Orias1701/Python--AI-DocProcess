@@ -9,27 +9,27 @@
       "description": "Dấu đầu dòng (ví dụ: -, *, •, v.v.) theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVX]+)([.\\)\\]:,;-])\\s+",
+      "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVXLC]+)([.\\)\\]:,;-])\\s+",
       "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã, với dấu kết thúc, sau đó là khoảng trắng"
     },
     {
-      "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVX]+)([.\\)\\]:,;-]?)$",
+      "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVXLC]+)([.\\)\\]:,;-]?)$",
       "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã, với dấu kết thúc tùy chọn, không có ký tự nào sau marker"
     },
     {
-      "pattern": "^(?:{keywords})([0-9]+|[IVX]+)([.\\)\\]:,;-])\\s+",
+      "pattern": "^(?:{keywords})([0-9]+|[IVXLC]+)([.\\)\\]:,;-])\\s+",
       "description": "Từ khóa dính liền số hoặc số La Mã, theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^(?:{keywords})([0-9]+|[IVX]+)([.\\)\\]:,;-]?)$",
+      "pattern": "^(?:{keywords})([0-9]+|[IVXLC]+)([.\\)\\]:,;-]?)$",
       "description": "Từ khóa dính liền số hoặc số La Mã, không có ký tự nào sau marker"
     },
     {
-      "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-])\\s+",
+      "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVXLC]+(?:\\.[IVXLC]+)*)([.\\)\\]:,;-])\\s+",
       "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp, với dấu kết thúc, sau đó là khoảng trắng"
     },
     {
-      "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-]?)$",
+      "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVXLC]+(?:\\.[IVXLC]+)*)([.\\)\\]:,;-]?)$",
       "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp, với dấu kết thúc tùy chọn, không có ký tự nào sau marker"
     },
     {
@@ -37,11 +37,11 @@
       "description": "Số hoặc chữ cái (1 ký tự) với dấu kết thúc, theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^\\(([0-9]+|[a-z]|[A-Z]|[IVX]+)\\)\\s+",
+      "pattern": "^\\(([0-9]+|[a-z]|[A-Z]|[IVXLC]+)\\)\\s+",
       "description": "Số, chữ cái (1 ký tự), hoặc số La Mã trong ngoặc tròn, theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^\\(([0-9]+|[a-z]|[A-Z]|[IVX]+)\\)$",
+      "pattern": "^\\(([0-9]+|[a-z]|[A-Z]|[IVXLC]+)\\)$",
       "description": "Số, chữ cái (1 ký tự), hoặc số La Mã trong ngoặc tròn, không có ký tự nào sau marker"
     },
     {
@@ -61,11 +61,11 @@
       "description": "Chữ cái thường (1 ký tự) trong ngoặc đơn, không có ký tự nào sau marker"
     },
     {
-      "pattern": "^\\{([IVX]+)\\}\\s+",
+      "pattern": "^\\{([IVXLC]+)\\}\\s+",
       "description": "Số La Mã trong ngoặc nhọn, theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^\\{([IVX]+)\\}$",
+      "pattern": "^\\{([IVXLC]+)\\}$",
       "description": "Số La Mã trong ngoặc nhọn, không có ký tự nào sau marker"
     },
     {
@@ -77,28 +77,12 @@
       "description": "Khoảng số (ví dụ: 1 - 2), không có ký tự nào sau marker"
     },
     {
-      "pattern": "^([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-])\\s+",
+      "pattern": "^([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVXLC]+(?:\\.[IVXLC]+)*)([.\\)\\]:,;-])\\s+",
       "description": "Số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp với dấu kết thúc, theo sau bởi khoảng trắng"
     },
     {
-      "pattern": "^([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-]?)$",
+      "pattern": "^([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVXLC]+(?:\\.[IVXLC]+)*)([.\\)\\]:,;-]?)$",
       "description": "Số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp với dấu kết thúc tùy chọn, không có ký tự nào sau marker"
-    },
-    {
-      "pattern": "^([A-Z]\\+|[IVX]+\\+|[0-9]+\\+)([.\\)\\]:,;-])\\s+",
-      "description": "Chữ cái viết hoa, số La Mã hoặc số kèm dấu +, có thể có dấu kết thúc, theo sau bởi khoảng trắng"
-    },
-    {
-      "pattern": "^([A-Z]\\+|[IVX]+\\+|[0-9]+\\+)([.\\)\\]:,;-])?$",
-      "description": "Chữ cái viết hoa, số La Mã hoặc số kèm dấu +, có thể có dấu kết thúc, không có ký tự nào sau marker"
-    },
-    {
-      "pattern": "^(?:{keywords})\\s+([A-Z]\\+|[IVX]+\\+|[0-9]+\\+)([.\\)\\]:,;-])?\\s+",
-      "description": "Từ khóa theo sau bởi chữ cái, số La Mã hoặc số kèm dấu +, có thể có dấu kết thúc, theo sau bởi khoảng trắng"
-    },
-    {
-      "pattern": "^(?:{keywords})\\s+([A-Z]\\+|[IVX]+\\+|[0-9]+\\+)([.\\)\\]:,;-])?$",
-      "description": "Từ khóa theo sau bởi chữ cái, số La Mã hoặc số kèm dấu +, có thể có dấu kết thúc, không có ký tự nào sau marker"
     }
   ],
   "notMakers": []

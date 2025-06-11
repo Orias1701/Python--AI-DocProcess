@@ -1,3 +1,4 @@
+# Nhập các thư viện cần thiết
 from difflib import SequenceMatcher
 import re
 import json
@@ -6,7 +7,8 @@ import fitz
 from docx2pdf import convert
 import tempfile
 import os
-import math
+
+# Tải dữ liệu ngoại lệ từ file JSON
 def load_exceptions(file_path="exceptions.json"):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -17,8 +19,9 @@ def load_exceptions(file_path="exceptions.json"):
                 "abbreviations": set(item["text"].lower() for item in data.get("abbreviations", []))
             }
     except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
-        raise Exception(f"Error loading exceptions: {e}")
+        raise Exception(f"Lỗi khi tải ngoại lệ: {e}")
 
+# Tải các mẫu từ các file JSON
 def load_patterns(markers_path="markers.json", status_path="status.json"):
     try:
         with open(markers_path, 'r', encoding='utf-8') as f:
@@ -28,7 +31,7 @@ def load_patterns(markers_path="markers.json", status_path="status.json"):
         
         keywords = markers_data.get("keywords", [])
         if not keywords:
-            raise KeyError("Keywords list cannot be empty in markers.json")
+            raise KeyError("Danh sách từ khóa không được rỗng trong markers.json")
         
         title_keywords = '|'.join(re.escape(k[0].upper() + k[1:].lower()) for k in keywords)
         upper_keywords = '|'.join(re.escape(k.upper()) for k in keywords)
@@ -39,8 +42,7 @@ def load_patterns(markers_path="markers.json", status_path="status.json"):
             pattern_str = item["pattern"].replace("{keywords}", all_keywords)
             try:
                 compiled_pattern = re.compile(pattern_str)
-            except re.error as e:
-                print(f"LỖI pattern: {pattern_str}\nError: {e}")
+            except re.error:
                 continue
             compiled_markers.append({
                 "pattern": compiled_pattern,
@@ -62,13 +64,15 @@ def load_patterns(markers_path="markers.json", status_path="status.json"):
             "keywords_set": set(k.lower() for k in keywords)
         }
     except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
-        raise Exception(f"Error loading patterns: {e}")
+        raise Exception(f"Lỗi khi tải mẫu: {e}")
 
+# Kiểm tra xem một chuỗi có kết thúc câu hợp lệ không
 def sentence_end(text, patterns):
     valid_end = patterns["sentence_ends"]["punctuation"].search(text[-1])
     valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in patterns["sentence_ends"]["valid_brackets"])
     return bool(valid_end or valid_brackets)
 
+# Trích xuất đánh dấu từ văn bản
 def extract_marker(text, patterns):
     for pattern_info in patterns["markers"]:
         match = pattern_info["pattern"].match(text)
@@ -82,6 +86,7 @@ def extract_marker(text, patterns):
         "marker_text": None
     }
 
+# Định dạng đánh dấu
 def format_marker(marker_text, patterns):
     if not marker_text:
         return None
@@ -96,7 +101,7 @@ def format_marker(marker_text, patterns):
         if re.match(r'\W+', part):
             formatted_parts.append(part)
             continue
-        
+
         if part.lower() in patterns["keywords_set"]:
             formatted_parts.append(part)
         elif re.match(r'^[a-z]$', part):
@@ -106,11 +111,12 @@ def format_marker(marker_text, patterns):
         else:
             formatted_parts.append(part)
     
-    formatted = ''.join(formatted_parts)
-    
+    formatted = ''.join(formatted_parts) 
     return formatted
 
+# Kiểm tra trạng thái ngoặc trong văn bản
 def bracket_status(text, patterns):
+    """Kiểm tra trạng thái ngoặc (mở, đóng, cả hai, hoặc không có) trong văn bản."""
     non_marker_text = text
     for pattern in patterns["markers"]:
         match = pattern["pattern"].match(text)
@@ -143,7 +149,9 @@ def bracket_status(text, patterns):
         return "both"
     return "none"
 
+# Xác định kiểu chữ (in hoa, in thường, hỗn hợp) của văn bản
 def get_case_style(text, exceptions):
+    """Xác định kiểu chữ của văn bản dựa trên các từ không thuộc danh sách ngoại lệ."""
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
     words = [word for word in text.split() if word.lower() not in exception_texts and word.strip()]
     
@@ -160,7 +168,9 @@ def get_case_style(text, exceptions):
     
     return "upper" if is_upper else "title" if is_title else "mixed"
 
-def get_word_style_and_content(text, spans, exceptions, is_pdf, x1, x2):
+# Lấy thông tin kiểu chữ và nội dung của từ đầu tiên và cuối cùng
+def get_word_style_and_content(text, spans, exceptions, is_pdf, x0, x1):
+    """Trích xuất thông tin kiểu chữ và nội dung của từ đầu và cuối trong một dòng văn bản."""
     words = text.strip().split()
     if not words:
         return {"content": "", "style": "000", "case_style": "mixed", "width": 0}, {"content": "", "style": "000", "case_style": "mixed"}
@@ -202,37 +212,35 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf, x1, x2):
         {"content": last_content, "style": last_style, "case_style": last_case}
     )
 
+# Lấy tọa độ của dòng văn bản
 def get_line_coordinates(text, spans, is_pdf):
-    # if not text.strip() or not spans or not is_pdf:
-    #     return {"x1": 0, "x2": 0, "y1": 0, "y2": 0}
-    
-    x1, x2, y1, y2 = None, None, None, None
+    """Trích xuất tọa độ của dòng văn bản từ các thông tin spans."""
+    x0, x1, y0, y1 = None, None, None, None
     for span in spans:
         span_text = span["text"].strip()
         normalized_span = span_text.replace("\xa0", " ").strip()
         if not normalized_span:
             continue
-        span_x0, span_y0, span_x1, span_y1 = span["bbox"]
-        
-        if x1 is None and len(normalized_span) > 0:
-            x1 = span_x0
-            y1 = span_y0
-                
+        span_x0, span_y0, span_x1, span_y1 = span["bbox"]     
+        if x0 is None and len(normalized_span) > 0:
+            x0 = span_x0
+            y0 = span_y0           
         if len(normalized_span) > 0:
-            x2 = span_x1
-            y2 = span_y1
-        
-        if x1 is not None and x2 is not None:
+            x1 = span_x1
+            y1 = span_y1     
+        if x0 is not None and x1 is not None:
             break
 
     return {
+        "x0": round(x0, 1) if x0 is not None else 0,
         "x1": round(x1, 1) if x1 is not None else 0,
-        "x2": round(x2, 1) if x2 is not None else 0,
-        "y1": round(y1, 1) if y1 is not None else 0,
-        "y2": round(y2, 1) if y2 is not None else 0
+        "y0": round(y0, 1) if y0 is not None else 0,
+        "y1": round(y1, 1) if y1 is not None else 0
     }
 
+# Lấy tọa độ chung dựa trên giá trị phổ biến
 def get_common_coordinate(values, threshold, fallback=None, page_width=None):
+    """Tìm tọa độ phổ biến nhất từ danh sách giá trị với ngưỡng xác định."""
     if not values:
         return 0
     counter = Counter(values)
@@ -252,52 +260,36 @@ def get_common_coordinate(values, threshold, fallback=None, page_width=None):
             return max(x for x in values if x < best_i) if any(x < best_i for x in values) else 0
     return 0
 
+# Tính tương đồng giữa hai chuỗi
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
-def get_bbox_by_chars(page, target_text):
-    chars = []
-    for block in page.get_text("dict")["blocks"]:
-        if "lines" in block:
-            for line in block["lines"]:
-                for span in line["spans"]:
-                    chars.extend(span.get("chars", []))
-    # Ghép toàn bộ text lại và chuẩn hóa
-    full_text = "".join(c["c"] for c in chars)
-    # Chuẩn hóa: thay \n, \r, tab, nhiều space thành 1 space
-    import re
-    norm_full_text = re.sub(r'[\n\r\t]+', ' ', full_text)
-    norm_full_text = re.sub(r' +', ' ', norm_full_text).strip()
-    norm_target = re.sub(r'[\n\r\t]+', ' ', target_text)
-    norm_target = re.sub(r' +', ' ', norm_target).strip()
-    idx = norm_full_text.find(norm_target)
-    if idx != -1:
-        # Tìm vị trí ký tự đầu/cuối thực sự trong mảng chars
-        # Cần ánh xạ lại vì đã chuẩn hóa, nên dùng phương pháp so khớp từng phần
-        raw_idx = None
-        raw_end = None
-        for i in range(len(full_text)):
-            sub = full_text[i:i+len(target_text)]
-            sub_norm = re.sub(r'[\n\r\t]+', ' ', sub)
-            sub_norm = re.sub(r' +', ' ', sub_norm).strip()
-            if sub_norm == norm_target:
-                raw_idx = i
-                raw_end = i + len(target_text) - 1
-                break
-        if raw_idx is not None:
-            char_start = chars[raw_idx]
-            char_end = chars[raw_end]
-            x1, y1 = char_start["bbox"][0], char_start["bbox"][1]
-            x2, y2 = char_end["bbox"][2], char_end["bbox"][3]
-            return x1, y1, x2, y2
-    return 0, 0, 0, 0
+# Kiểm tra số La Mã
+def is_roman(s):
+    return bool(re.fullmatch(r'[IVXLC]+', s))
 
+# Chuyển sang Int
+def roman_to_int(s):
+    roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100}
+    result = 0
+    prev = 0
+    for c in reversed(s):
+        val = roman_numerals.get(c, 0)
+        if val < prev:
+            result -= val
+        else:
+            result += val
+            prev = val
+    return result
+    
+# Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX
 def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
+    """Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX, trả về thông tin dòng và thông tin chung."""
     if not os.path.exists(path):
-        raise FileNotFoundError(f"File {path} does not exist")
+        raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
     if file_ext not in [".docx", ".pdf"]:
-        raise ValueError("Unsupported file format. Only .docx and .pdf are supported.")
+        raise ValueError("Định dạng file không được hỗ trợ. Chỉ hỗ trợ .docx và .pdf.")
 
     pdf_path = path
     temp_file = None
@@ -310,9 +302,9 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
         exceptions = load_exceptions(exceptions_path)
         patterns = load_patterns(markers_path, status_path)
         lines_data = []
-        all_x1, all_y1, all_x2, all_y2 = [], [], [], []
-        first_line_y1_per_page = {}
-        last_line_y2_per_page = {}
+        all_x0, all_y0, all_x1, all_y1 = [], [], [], []
+        first_line_y0_per_page = {}
+        last_line_y1_per_page = {}
 
         doc = fitz.open(pdf_path)
         for page_num, page in enumerate(doc):
@@ -335,7 +327,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                     bold, italic, underline = False, False, False
                     found = False
 
-                    # 1. Ưu tiên khớp tuyệt đối
                     for b in text_dict["blocks"]:
                         if "lines" in b:
                             for l in b["lines"]:
@@ -350,7 +341,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                         if found:
                             break
 
-                    # 2. Nếu không được, thử fuzzy matching
                     if not spans:
                         best_spans = []
                         best_score = 0.0
@@ -362,19 +352,17 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                                     if score > best_score:
                                         best_score = score
                                         best_spans = l["spans"]
-                        if best_score > 0.8:  # Ngưỡng có thể điều chỉnh
+                        if best_score > 0.8:
                             spans = best_spans
                             bold = all(span["flags"] & 16 for span in spans)
                             italic = all(span["flags"] & 2 for span in spans)
                             underline = all(span["flags"] & 8 for span in spans)
                             found = True
 
-                    # 3. Nếu vẫn không được, thử ghép spans liên tiếp trong block
                     if not spans:
                         for b in text_dict["blocks"]:
                             if "lines" in b:
                                 for l in b["lines"]:
-                                    # Duyệt từng vị trí bắt đầu
                                     for i in range(len(l["spans"])):
                                         concat = ""
                                         temp_spans = []
@@ -395,37 +383,24 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                             if found:
                                 break
 
-                    if not spans:
-                        print(f"Không tìm được spans cho dòng: {cleaned_text}")
-                        x1, y1, x2, y2 = get_bbox_by_chars(page, cleaned_text)
-                        # Nếu lấy được bbox, cập nhật vào kết quả
-                        if x1 != 0 or x2 != 0 or y1 != 0 or y2 != 0:
-                            coords = {"x1": x1, "x2": x2, "y1": y1, "y2": y2}
-                        else:
-                            coords = get_line_coordinates(cleaned_text, spans, is_pdf=True)
-                    else:
-                        coords = get_line_coordinates(cleaned_text, spans, is_pdf=True)
-
-                    x1, x2, y1, y2 = coords["x1"], coords["x2"], coords["y1"], coords["y2"]
-
                     font_size = round(spans[0]["size"], 1) if spans else 12
                     style = f"{int(bold)}{int(italic)}{int(underline)}"
                     coords = get_line_coordinates(cleaned_text, spans, is_pdf=True)
-                    x1, x2, y1, y2 = coords["x1"], coords["x2"], coords["y1"], coords["y2"]
+                    x0, x1, y0, y1 = coords["x0"], coords["x1"], coords["y0"], coords["y1"]
                     
+                    all_x0.append(x0)
+                    all_y0.append(y0)
                     all_x1.append(x1)
                     all_y1.append(y1)
-                    all_x2.append(x2)
-                    all_y2.append(y2)
 
                     if line_index_in_page == 0:
-                        first_line_y1_per_page[page_num] = y1
-                    last_line_y2_per_page[page_num] = y2
+                        first_line_y0_per_page[page_num] = y0
+                    last_line_y1_per_page[page_num] = y1
 
                     marker_info = extract_marker(cleaned_text, patterns)
                     marker_text = marker_info["marker_text"]
                     marker_format = format_marker(marker_text, patterns)
-                    first_word, last_word = get_word_style_and_content(cleaned_text, spans, exceptions, is_pdf=True, x1=x1, x2=x2)
+                    first_word, last_word = get_word_style_and_content(cleaned_text, spans, exceptions, is_pdf=True, x0=x0, x1=x1)
 
                     lines_data.append({
                         "Line": len(lines_data) + 1,
@@ -438,57 +413,46 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                         "FirstWord": first_word,
                         "LastWord": last_word,
                         "FontSize": font_size,
-                        "LineHeight": round(y2 - y1, 1),
-                        "LineWidth": round(x2 - x1, 1),
-                        "MarginLeft": 0,  # Placeholder
-                        "ExtraSpace": 0,   # Placeholder
+                        "LineHeight": round(y1 - y0, 1),
+                        "LineWidth": round(x1 - x0, 1),
+                        "MarginLeft": 0,
+                        "ExtraSpace": 0,
+                        "X0": x0,
                         "X1": x1,
-                        "X2": x2,
-                        "Y1": y1,
-                        "Y2": y2
+                        "Y0": y0,
+                        "Y1": y1
                     })
                     line_index_in_page += 1
 
-        # Calculate region coordinates
         total_lines = len(lines_data)
         total_pages = len(doc)
         
-        # Xstart: Min of common X1 (frequency > 5% of texts)
+        x0_counter = Counter(all_x0)
+        xstart = get_common_coordinate([x for x, count in x0_counter.items() if count / total_lines > 0.05], threshold=0.05)
+
+        y0_counter = Counter(first_line_y0_per_page.values())
+        ystart = get_common_coordinate([y for y, count in y0_counter.items() if count / total_pages > 0.15], threshold=0.15)
+
         x1_counter = Counter(all_x1)
-        xstart = get_common_coordinate([x for x, count in x1_counter.items() if count / total_lines > 0.05], threshold=0.05)
-
-        # Ystart: Min of common Y1 (frequency > 15% of pages) of first lines per page
-        y1_counter = Counter(first_line_y1_per_page.values())
-        ystart = get_common_coordinate([y for y, count in y1_counter.items() if count / total_pages > 0.15], threshold=0.15)
-
-        # Xend: Max of common X2 (frequency > 5% of texts) or fallback method
-        x2_counter = Counter(all_x2)
-        xend = get_common_coordinate([x for x, count in x2_counter.items() if count / total_lines > 0.05], threshold=0.05, 
-                                     fallback=True, page_width=doc[0].rect.width if doc else 0)
+        xend = get_common_coordinate([x for x, count in x1_counter.items() if count / total_lines > 0.05], threshold=0.05, fallback=True, page_width=doc[0].rect.width if doc else 0)
         
-        # Yend: Min of Y2 of last lines per page
-        yend = max(last_line_y2_per_page.values()) if last_line_y2_per_page else 0
+        yend = max(last_line_y1_per_page.values()) if last_line_y1_per_page else 0
 
         region_width = round(xend - xstart, 1) if xstart and xend else 0
         region_height = round(yend - ystart, 1) if ystart and yend else 0
 
-        # Update line metrics
         for line in lines_data:
-            if line["X2"] == 0:
-                print(f"Warning: X2 is 0 for text: {line['Text']}")
-            line["MarginLeft"] = round(line["X1"] - xstart, 1) if xstart else 0
-            
-            line["LineWidth"] = round(line["X2"] - line["X1"], 1)
-            if line["LineWidth"] < 0:
-                print(f"Warning: Negative LineWidth ({line['LineWidth']}) for text: {line['Text']}")
+            line["MarginLeft"] = round(line["X0"] - xstart, 1) if xstart else 0
+            line["LineWidth"] = round(line["X1"] - line["X0"], 1)
+            if line["LineWidth"] <= 0:
+                print(f"{line['Line']}: Width = {line['LineWidth']}: {line['Text']}")
                 line["LineWidth"] = 0
             
-            line["ExtraSpace"] = round(xend - line["X2"], 1) if xend else 0
+            line["ExtraSpace"] = round(xend - line["X1"], 1) if xend else 0
             if line["ExtraSpace"] < 0:
                 line["ExtraSpace"] = 0
             
             if line["FirstWord"]["width"] > line["LineWidth"]:
-                print(f"Warning: FirstWordWidth ({line['FirstWord']['width']}) exceeds LineWidth ({line['LineWidth']}) for text: {line['Text']}")
                 line["FirstWord"]["width"] = line["LineWidth"]
 
         common_font_size = round(Counter([l["FontSize"] for l in lines_data]).most_common(1)[0][0], 1) if lines_data else 12.0
@@ -513,22 +477,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
             "common_line_width": round(Counter([l["LineWidth"] for l in lines_data]).most_common(1)[0][0], 1) if lines_data else 0,
             "common_markers": common_markers
         }
-
-        def is_roman(s):
-            return bool(re.fullmatch(r'[IVXLC]+', s))
-
-        def roman_to_int(s):
-            roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100}
-            result = 0
-            prev = 0
-            for c in reversed(s):
-                val = roman_numerals.get(c, 0)
-                if val < prev:
-                    result -= val
-                else:
-                    result += val
-                    prev = val
-            return result
 
         from collections import defaultdict
         format_groups = defaultdict(list)

@@ -418,9 +418,7 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
                         "MarginLeft": 0,
                         "ExtraSpace": 0,
                         "X0": x0,
-                        "X1": x1,
-                        "Y0": y0,
-                        "Y1": y1
+                        "X1": x1
                     })
                     line_index_in_page += 1
 
@@ -468,8 +466,6 @@ def extract_and_analyze(path, exceptions_path="exceptions.json", markers_path="m
             "page_width": round(doc[0].rect.width, 1) if doc else 0,
             "xstart": xstart,
             "ystart": ystart,
-            "xend": xend,
-            "yend": yend,
             "region_height": region_height,
             "region_width": region_width,
             "common_font_size": common_font_size,

@@ -1,4 +1,3 @@
-# Nhập các thư viện cần thiết
 from difflib import SequenceMatcher
 import re
 import json
@@ -114,9 +113,8 @@ def format_marker(marker_text, patterns):
     formatted = ''.join(formatted_parts) 
     return formatted
 
-# Kiểm tra trạng thái ngoặc trong văn bản
+# Kiểm tra trạng thái ngoặc trong văn bản (Hoàn thiện: none - chưa hoàn thiện: Mở, Đóng, Cả hai)
 def bracket_status(text, patterns):
-    """Kiểm tra trạng thái ngoặc (mở, đóng, cả hai, hoặc không có) trong văn bản."""
     non_marker_text = text
     for pattern in patterns["markers"]:
         match = pattern["pattern"].match(text)
@@ -149,7 +147,7 @@ def bracket_status(text, patterns):
         return "both"
     return "none"
 
-# Xác định kiểu chữ (in hoa, in thường, hỗn hợp) của văn bản
+# Xác định Case Style
 def get_case_style(text, exceptions):
     """Xác định kiểu chữ của văn bản dựa trên các từ không thuộc danh sách ngoại lệ."""
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
@@ -169,7 +167,7 @@ def get_case_style(text, exceptions):
     return "upper" if is_upper else "title" if is_title else "mixed"
 
 # Lấy thông tin kiểu chữ và nội dung của từ đầu tiên và cuối cùng
-def get_word_style_and_content(text, spans, exceptions, is_pdf, x0, x1):
+def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
     """Trích xuất thông tin kiểu chữ và nội dung của từ đầu và cuối trong một dòng văn bản."""
     words = text.strip().split()
     if not words:
@@ -213,7 +211,7 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf, x0, x1):
     )
 
 # Lấy tọa độ của dòng văn bản
-def get_line_coordinates(text, spans, is_pdf):
+def get_line_coordinates(spans):
     """Trích xuất tọa độ của dòng văn bản từ các thông tin spans."""
     x0, x1, y0, y1 = None, None, None, None
     for span in spans:
@@ -240,7 +238,19 @@ def get_line_coordinates(text, spans, is_pdf):
 
 # Lấy tọa độ chung dựa trên giá trị phổ biến
 def get_common_coordinate(values, threshold, fallback=None, page_width=None):
-    """Tìm tọa độ phổ biến nhất từ danh sách giá trị với ngưỡng xác định."""
+
+    # Quy trình xử lý:
+    # 1. Nếu danh sách values rỗng, hàm sẽ trả về 0.
+    # 2. Sử dụng Counter để đếm số lần xuất hiện của mỗi giá trị trong danh sách.
+    # 3. Xác định phần tử phổ biến nhất:
+    #     - Nếu phần tử phổ biến nhất này xuất hiện với tỷ lệ (số lượng xuất hiện / tổng số phần tử) lớn hơn threshold, hàm trả về giá trị đó.
+    # 4. Nếu không thoả mãn điều kiện threshold và cả fallback và page_width được cung cấp, thực hiện xử lý bổ sung:
+    #     - Duyệt qua các giá trị i trong khoảng từ page_width * 0.76 đến page_width, với bước nhảy bằng page_width * 0.06.
+    #     - Với mỗi i, đếm số lượng các giá trị trong values nằm trong khoảng (i - page_width * 0.06, i].
+    #     - Xác định vị trí i (best_i) có số lượng giá trị cao nhất.
+    #     - Nếu tồn tại giá trị nào trong values mà nhỏ hơn best_i, trả về giá trị lớn nhất trong các giá trị đó.
+    # 5. Nếu không có trường hợp nào thỏa mãn, hàm trả về 0.
+
     if not values:
         return 0
     counter = Counter(values)
@@ -284,7 +294,38 @@ def roman_to_int(s):
     
 # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX
 def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
-    """Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX, trả về thông tin dòng và thông tin chung."""
+
+    # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX để thu thập thông tin từng dòng và tổng hợp thông tin chung của tài liệu.
+    # Quá trình thực hiện của hàm:
+    # 1. Kiểm tra sự tồn tại của file theo đường dẫn được cung cấp và xác định định dạng file (chỉ hỗ trợ ".docx" và ".pdf").
+    # 2. Nếu file là DOCX, chuyển đổi sang PDF tạm thời để xử lý.
+    # 3. Nạp các cấu hình ngoại lệ và mẫu đánh dấu từ các file JSON (exceptions, markers, status).
+    # 4. Mở file PDF và duyệt qua từng trang:
+    #     - Sắp xếp các khối văn bản theo vị trí.
+    #     - Lấy thông tin dạng dictionary của trang để dễ so sánh và truy xuất các dòng văn bản.
+    #     - Với mỗi dòng trong các khối, thực hiện:
+    #       a. Làm sạch và chuẩn hóa định dạng văn bản.
+    #       b. Xác định các font-style (in đậm, in nghiêng, gạch dưới) dựa trên cờ (flags) của các "span".
+    #       c. Tìm kiếm chính xác hoặc bằng thuật toán so sánh chuỗi (similarity) để lấy thông tin chi tiết của dòng (vị trí, kích thước, danh sách spans).
+    #       d. Trích xuất các thông tin như thông tin đánh dấu (marker), kiểu chữ (case style), trạng thái dấu ngoặc, từ đầu và cuối dòng, kích cỡ font, khoảng cách giữa các tọa độ.
+    # 5. Thu thập các tọa độ quan trọng (tọa độ dòng bắt đầu, kết thúc, lề trái, chiều rộng dòng) của tất cả các dòng trên trang.
+    # 6. Tính toán các số liệu tổng hợp của toàn bộ tài liệu:
+    #     - Xác định tọa độ chung (xstart, ystart, xend, yend) dựa trên tần suất xuất hiện của các giá trị.
+    #     - Tính toán chiều rộng và chiều cao vùng chứa văn bản.
+    #     - Xác định các thông số font và chiều cao dòng phổ biến nhất.
+    #     - Tổng hợp thông tin các đánh dấu chung (dựa trên tần suất xuất hiện).
+    # 7. Đánh nhóm các dòng dựa trên định dạng đánh dấu và thực hiện xử lý riêng nếu các đánh dấu có định dạng số La Mã không tuần tự.
+    # 8. Cập nhật thông tin của từng dòng (lề trái, khoảng cách dư, chiều rộng dòng thực tế, điều chỉnh các thông số nếu cần).
+    # Tham số:
+    #      path (str): Đường dẫn đến file PDF hoặc DOCX cần phân tích.
+    #      exceptions_path (str, optional): Đường dẫn đến file JSON chứa các ngoại lệ, mặc định là "exceptions.json".
+    #      markers_path (str, optional): Đường dẫn đến file JSON chứa các mẫu đánh dấu, mặc định là "markers.json".
+    #      status_path (str, optional): Đường dẫn đến file JSON chứa trạng thái, mặc định là "status.json".
+    # Trả về:
+    #      dict: Một dictionary có cấu trúc gồm:
+    #              - "general": Thông tin tổng hợp của tài liệu như kích thước trang, tọa độ vùng chứa, font và line height phổ biến, các mẫu đánh dấu chung,...
+    #              - "lines": Danh sách các dictionary, mỗi dictionary chứa thông tin chi tiết của từng dòng (văn bản, định dạng, vị trí, kích thước, thông tin marker, kiểu chữ của từ đầu và từ cuối, ...).
+
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
@@ -382,7 +423,7 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
 
                     font_size = round(spans[0]["size"], 1) if spans else 12
                     style = f"{int(bold)}{int(italic)}{int(underline)}"
-                    coords = get_line_coordinates(cleaned_text, spans, is_pdf=True)
+                    coords = get_line_coordinates(spans)
                     x0, x1, y0, y1 = coords["x0"], coords["x1"], coords["y0"], coords["y1"]
                     
                     all_x0.append(x0)
@@ -397,7 +438,7 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                     marker_info = extract_marker(cleaned_text, patterns)
                     marker_text = marker_info["marker_text"]
                     marker_format = format_marker(marker_text, patterns)
-                    first_word, last_word = get_word_style_and_content(cleaned_text, spans, exceptions, is_pdf=True, x0=x0, x1=x1)
+                    first_word, last_word = get_word_style_and_content(cleaned_text, spans, exceptions, is_pdf=True)
 
                     lines_data.append({
                         "Line": len(lines_data) + 1,

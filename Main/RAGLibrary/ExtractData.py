@@ -148,7 +148,7 @@ def bracket_status(text, patterns):
     return "none"
 
 # Xác định Case Style
-def get_case_style(text, exceptions):
+def get_CaseStyle(text, exceptions):
     """Xác định kiểu chữ của văn bản dựa trên các từ không thuộc danh sách ngoại lệ."""
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
     words = [word for word in text.split() if word.lower() not in exception_texts and word.strip()]
@@ -171,13 +171,13 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
     """Trích xuất thông tin kiểu chữ và nội dung của từ đầu và cuối trong một dòng văn bản."""
     words = text.strip().split()
     if not words:
-        return {"content": "", "style": "000", "case_style": "mixed", "width": 0}, {"content": "", "style": "000", "case_style": "mixed"}
+        return {"content": "", "style": "000", "CaseStyle": "mixed", "width": 0}, {"content": "", "style": "000", "CaseStyle": "mixed"}
     
     first_word = words[0].rstrip(".")
     last_word = words[-1].rstrip(".,!?")
     first_style, last_style = "000", "000"
     first_content, last_content = first_word, last_word
-    first_case, last_case = get_case_style(first_word, exceptions), get_case_style(last_word, exceptions)
+    first_case, last_case = get_CaseStyle(first_word, exceptions), get_CaseStyle(last_word, exceptions)
     first_width = 0
     
     if is_pdf and spans:
@@ -206,8 +206,8 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
                 last_content = normalized_span if normalized_span == normalized_last else normalized_last
     
     return (
-        {"content": first_content, "style": first_style, "case_style": first_case, "width": first_width},
-        {"content": last_content, "style": last_style, "case_style": last_case}
+        {"content": first_content, "style": first_style, "CaseStyle": first_case, "width": first_width},
+        {"content": last_content, "style": last_style, "CaseStyle": last_case}
     )
 
 # Lấy tọa độ của dòng văn bản
@@ -445,7 +445,7 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "Text": cleaned_text,
                         "MarkerText": marker_text,
                         "MarkerFormat": marker_format,
-                        "CaseStyle": get_case_style(cleaned_text, exceptions),
+                        "CaseStyle": get_CaseStyle(cleaned_text, exceptions),
                         "BracketStatus": bracket_status(cleaned_text, patterns),
                         "Style": style,
                         "FirstWord": first_word,
@@ -456,7 +456,8 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "MarginLeft": 0,
                         "ExtraSpace": 0,
                         "X0": x0,
-                        "X1": x1
+                        "X1": x1,
+                        "XM": round((x0 + x1)/2, 1)
                     })
                     line_index_in_page += 1
 

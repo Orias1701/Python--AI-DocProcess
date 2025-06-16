@@ -6,19 +6,9 @@
     "amid", "among", "between", "before", "after", "against"
   ],
   "proper_names": [
-    {"text": "Việt Nam", "case_style": "title"},
-    {"text": "Hà Nội", "case_style": "title"},
-    {"text": "Hồ Chí Minh", "case_style": "title"},
-    {"text": "Đà Nẵng", "case_style": "title"},
-    {"text": "Huế", "case_style": "title"},
-    {"text": "Cần Thơ", "case_style": "title"},
-    {"text": "Nghệ An", "case_style": "title"},
-    {"text": "Hải Phòng", "case_style": "title"},
-    {"text": "Quảng Nam", "case_style": "title"},
+    {"text": "HCM", "case_style": "upper"},
     {"text": "ASEAN", "case_style": "upper"},
-    {"text": "UNESCO", "case_style": "upper"},
-    {"text": "Nguyễn Văn Cừ", "case_style": "title"},
-    {"text": "Trần Hưng Đạo", "case_style": "title"}
+    {"text": "UNESCO", "case_style": "upper"}
   ],
   "abbreviations": [
     {"text": "VN", "case_style": "upper"},

@@ -177,7 +177,11 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
     last_word = words[-1].rstrip(".,!?")
     first_style, last_style = "000", "000"
     first_content, last_content = first_word, last_word
-    first_case, last_case = get_CaseStyle(first_word, exceptions), get_CaseStyle(last_word, exceptions)
+    exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
+    
+    # Kiểm tra nếu first_word hoặc last_word nằm trong exception_texts, lấy CaseStyle của text
+    first_case = get_CaseStyle(text, exceptions) if first_word.lower() in exception_texts else get_CaseStyle(first_word, exceptions)
+    last_case = get_CaseStyle(text, exceptions) if last_word.lower() in exception_texts else get_CaseStyle(last_word, exceptions)
     first_width = 0
     
     if is_pdf and spans:
@@ -238,7 +242,6 @@ def get_line_coordinates(spans):
 
 # Lấy tọa độ chung dựa trên giá trị phổ biến
 def get_common_coordinate(values, threshold, fallback=None, page_width=None):
-
     # Quy trình xử lý:
     # 1. Nếu danh sách values rỗng, hàm sẽ trả về 0.
     # 2. Sử dụng Counter để đếm số lần xuất hiện của mỗi giá trị trong danh sách.
@@ -250,7 +253,6 @@ def get_common_coordinate(values, threshold, fallback=None, page_width=None):
     #     - Xác định vị trí i (best_i) có số lượng giá trị cao nhất.
     #     - Nếu tồn tại giá trị nào trong values mà nhỏ hơn best_i, trả về giá trị lớn nhất trong các giá trị đó.
     # 5. Nếu không có trường hợp nào thỏa mãn, hàm trả về 0.
-
     if not values:
         return 0
     counter = Counter(values)
@@ -294,7 +296,6 @@ def roman_to_int(s):
     
 # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX
 def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
-
     # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX để thu thập thông tin từng dòng và tổng hợp thông tin chung của tài liệu.
     # Quá trình thực hiện của hàm:
     # 1. Kiểm tra sự tồn tại của file theo đường dẫn được cung cấp và xác định định dạng file (chỉ hỗ trợ ".docx" và ".pdf").
@@ -325,7 +326,6 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
     #      dict: Một dictionary có cấu trúc gồm:
     #              - "general": Thông tin tổng hợp của tài liệu như kích thước trang, tọa độ vùng chứa, font và line height phổ biến, các mẫu đánh dấu chung,...
     #              - "lines": Danh sách các dictionary, mỗi dictionary chứa thông tin chi tiết của từng dòng (văn bản, định dạng, vị trí, kích thước, thông tin marker, kiểu chữ của từ đầu và từ cuối, ...).
-
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
@@ -456,11 +456,13 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "MarginLeft": 0,
                         "MarginTop": 0,
                         "ExtraSpace": 0,
-                        "X0": x0,
-                        "X1": x1,
-                        "XM": round((x0 + x1)/2, 1),
-                        "Y0": y0,
-                        "Y1": y1
+                        "Coord": {
+                            "X0": x0,
+                            "X1": x1,
+                            "XM": round((x0 + x1)/2, 1),
+                            "Y0": y0,
+                            "Y1": y1
+                        }
                     })
                     line_index_in_page += 1
 
@@ -482,19 +484,19 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         region_height = round(yend - ystart, 1) if ystart and yend else 0
 
         for line in lines_data:
-            line["MarginLeft"] = round(line["X0"] - xstart, 1) if xstart else 0
+            line["MarginLeft"] = round(line["Coord"]["X0"] - xstart, 1) if xstart else 0
             for i, line in enumerate(lines_data):
                 if i == 0:
                     line["MarginTop"] = 0
                 else:
                     prev_line = lines_data[i - 1]
-                    line["MarginTop"] = round(line["Y0"] - prev_line["Y1"], 1) if prev_line["Y1"] else 0
-            line["LineWidth"] = round(line["X1"] - line["X0"], 1)
+                    line["MarginTop"] = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+            line["LineWidth"] = round(line["Coord"]["X1"] - line["Coord"]["X0"], 1)
             if line["LineWidth"] <= 0:
                 print(f"{line['Line']}: Width = {line['LineWidth']}: {line['Text']}")
                 line["LineWidth"] = 0
             
-            line["ExtraSpace"] = round(xend - line["X1"], 1) if xend else 0
+            line["ExtraSpace"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
             if line["ExtraSpace"] < 0:
                 line["ExtraSpace"] = 0
             

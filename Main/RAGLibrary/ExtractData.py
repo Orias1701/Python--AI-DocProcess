@@ -454,10 +454,13 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "LineHeight": round(y1 - y0, 1),
                         "LineWidth": round(x1 - x0, 1),
                         "MarginLeft": 0,
+                        "MarginTop": 0,
                         "ExtraSpace": 0,
                         "X0": x0,
                         "X1": x1,
-                        "XM": round((x0 + x1)/2, 1)
+                        "XM": round((x0 + x1)/2, 1),
+                        "Y0": y0,
+                        "Y1": y1
                     })
                     line_index_in_page += 1
 
@@ -480,6 +483,12 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
 
         for line in lines_data:
             line["MarginLeft"] = round(line["X0"] - xstart, 1) if xstart else 0
+            for i, line in enumerate(lines_data):
+                if i == 0:
+                    line["MarginTop"] = 0
+                else:
+                    prev_line = lines_data[i - 1]
+                    line["MarginTop"] = round(line["Y0"] - prev_line["Y1"], 1) if prev_line["Y1"] else 0
             line["LineWidth"] = round(line["X1"] - line["X0"], 1)
             if line["LineWidth"] <= 0:
                 print(f"{line['Line']}: Width = {line['LineWidth']}: {line['Text']}")

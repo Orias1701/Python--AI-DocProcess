@@ -317,38 +317,6 @@ def roman_to_int(s):
     
 # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX
 def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
-    
-    # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX để thu thập thông tin từng dòng và tổng hợp thông tin chung của tài liệu.
-    # Quá trình thực hiện của hàm:
-    # 1. Kiểm tra sự tồn tại của file theo đường dẫn được cung cấp và xác định định dạng file (chỉ hỗ trợ ".docx" và ".pdf").
-    # 2. Nếu file là DOCX, chuyển đổi sang PDF tạm thời để xử lý.
-    # 3. Nạp các cấu hình ngoại lệ và mẫu đánh dấu từ các file JSON (exceptions, markers, status).
-    # 4. Mở file PDF và duyệt qua từng trang:
-    #     - Sắp xếp các khối văn bản theo vị trí.
-    #     - Lấy thông tin dạng dictionary của trang để dễ so sánh và truy xuất các dòng văn bản.
-    #     - Với mỗi dòng trong các khối, thực hiện:
-    #       a. Làm sạch và chuẩn hóa định dạng văn bản.
-    #       b. Xác định các font-style (in đậm, in nghiêng, gạch dưới) dựa trên cờ (flags) của các "span".
-    #       c. Tìm kiếm chính xác hoặc bằng thuật toán so sánh chuỗi (similarity) để lấy thông tin chi tiết của dòng (vị trí, kích thước, danh sách spans).
-    #       d. Trích xuất các thông tin như thông tin đánh dấu (marker), kiểu chữ (case style), trạng thái dấu ngoặc, từ đầu và cuối dòng, kích cỡ font, khoảng cách giữa các tọa độ.
-    # 5. Thu thập các tọa độ quan trọng (tọa độ dòng bắt đầu, kết thúc, lề trái, chiều rộng dòng) của tất cả các dòng trên trang.
-    # 6. Tính toán các số liệu tổng hợp của toàn bộ tài liệu:
-    #     - Xác định tọa độ chung (xstart, ystart, xend, yend) dựa trên tần suất xuất hiện của các giá trị.
-    #     - Tính toán chiều rộng và chiều cao vùng chứa văn bản.
-    #     - Xác định các thông số font và chiều cao dòng phổ biến nhất.
-    #     - Tổng hợp thông tin các đánh dấu chung (dựa trên tần suất xuất hiện).
-    # 7. Đánh nhóm các dòng dựa trên định dạng đánh dấu và thực hiện xử lý riêng nếu các đánh dấu có định dạng số La Mã không tuần tự.
-    # 8. Cập nhật thông tin của từng dòng (lề trái, khoảng cách dư, chiều rộng dòng thực tế, điều chỉnh các thông số nếu cần).
-    # Tham số:
-    #      path (str): Đường dẫn đến file PDF hoặc DOCX cần phân tích.
-    #      exceptions_path (str, optional): Đường dẫn đến file JSON chứa các ngoại lệ, mặc định là "exceptions.json".
-    #      markers_path (str, optional): Đường dẫn đến file JSON chứa các mẫu đánh dấu, mặc định là "markers.json".
-    #      status_path (str, optional): Đường dẫn đến file JSON chứa trạng thái, mặc định là "status.json".
-    # Trả về:
-    #      dict: Một dictionary có cấu trúc gồm:
-    #              - "general": Thông tin tổng hợp của tài liệu như kích thước trang, tọa độ vùng chứa, font phổ biến, các mẫu đánh dấu chung,...
-    #              - "lines": Danh sách các dictionary, mỗi dictionary chứa thông tin chi tiết của từng dòng (văn bản, định dạng, vị trí, kích thước, thông tin marker, kiểu chữ của từ đầu và từ cuối, ...).
-
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
@@ -478,7 +446,7 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "Left": 0,
                         "Top": 0,
                         "Right": 0,
-                        "Mid": round((x0 + x1)/2, 1),
+                        "Mid": 0,  # Sẽ được cập nhật sau
                         "Coord": {
                             "X0": x0,
                             "X1": x1,
@@ -506,22 +474,32 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         region_width = round(xend - xstart, 1) if xstart and xend else 0
         region_height = round(yend - ystart, 1) if ystart and yend else 0
 
-        for line in lines_data:
+        for i, line in enumerate(lines_data):
+            # Tính Left
             line["Left"] = round(line["Coord"]["X0"] - xstart, 1) if xstart else 0
-            for i, line in enumerate(lines_data):
-                if i == 0:
-                    line["Top"] = 0
-                else:
-                    prev_line = lines_data[i - 1]
-                    line["Top"] = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+            
+            # Tính Top
+            if i == 0:
+                line["Top"] = 0
+            else:
+                prev_line = lines_data[i - 1]
+                top_value = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+                line["Top"] = max(top_value, 0)  # Đảm bảo Top >= 0
+            
+            # Tính Right
+            line["Right"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
+            if line["Right"] < 0:
+                line["Right"] = 0
+            
+            # Tính Mid
+            xm = line["Coord"]["XM"]
+            line["Mid"] = round(xm - (xend + xstart)/2, 1) if xstart and xend else 0
+            
+            # Cập nhật LineWidth
             line["LineWidth"] = round(line["Coord"]["X1"] - line["Coord"]["X0"], 1)
             if line["LineWidth"] <= 0:
                 print(f"{line['Line']}: Width = {line['LineWidth']}: {line['Text']}")
                 line["LineWidth"] = 0
-            
-            line["Right"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
-            if line["Right"] < 0:
-                line["Right"] = 0
             
             if line["FirstWord"]["width"] > line["LineWidth"]:
                 line["FirstWord"]["width"] = line["LineWidth"]
@@ -538,6 +516,8 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
             "page_width": round(doc[0].rect.width, 1) if doc else 0,
             "xstart": xstart,
             "ystart": ystart,
+            "xend": xend,
+            "yend": yend,
             "region_height": region_height,
             "region_width": region_width,
             "common_font_size": common_font_size,
@@ -587,7 +567,7 @@ def determine_alignment(left, right, mid):
     - Left: M < 0
     - Right: M > 0
     """
-    if mid == 0:
+    if mid > -0.5 and mid < 0.5:
         if left <= 0 and right <= 0:
             return "Justified"
         elif left > 0 and right > 0:
@@ -600,7 +580,7 @@ def determine_alignment(left, right, mid):
 
 def process_json(input_path):
     """
-    Đọc file JSON, thêm thuộc tính Align, bỏ LineWidth và Coord (trừ bản ghi chung),
+    Đọc file JSON, thêm thuộc tính Align, bỏ LineWidth, Coord và BracketStatus (trừ bản ghi chung),
     trả về dữ liệu đã chỉnh sửa.
     """
     # Kiểm tra file đầu vào tồn tại
@@ -623,8 +603,9 @@ def process_json(input_path):
             mid = line.get('Mid', 0)
             line['Align'] = determine_alignment(left, right, mid)
 
-            # Xóa LineWidth và Coord
+            # Xóa LineWidth, Coord và BracketStatus
             line.pop('LineWidth', None)
             line.pop('Coord', None)
+            line.pop('BracketStatus', None)
 
     return modified_data

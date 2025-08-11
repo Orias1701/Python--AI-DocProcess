@@ -113,7 +113,7 @@ def format_marker(marker_text, patterns):
     formatted = ''.join(formatted_parts) 
     return formatted
 
-# Kiểm tra trạng thái ngoặc trong văn bản (Hoàn thiện: none - chưa hoàn thiện: Mở, Đóng, Cả hai)
+# Kiểm tra trạng thái ngoặc trong văn bản
 def bracket_status(text, patterns):
     non_marker_text = text
     for pattern in patterns["markers"]:
@@ -149,7 +149,6 @@ def bracket_status(text, patterns):
 
 # Xác định CaseStyle
 def get_CaseStyle(text, exceptions):
-    """Xác định kiểu chữ của văn bản dựa trên các từ không thuộc danh sách ngoại lệ."""
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
     words = [word for word in text.split() if word.lower() not in exception_texts and word.strip()]
     
@@ -168,21 +167,16 @@ def get_CaseStyle(text, exceptions):
 
 # Lấy thông tin kiểu chữ và nội dung của từ đầu tiên và cuối cùng
 def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
-    """Trích xuất thông tin kiểu chữ và nội dung của từ đầu và cuối trong một dòng văn bản."""
-    # Bỏ khoảng trắng đầu dòng
     stripped_text = text.lstrip()
     if not stripped_text:
         return {"content": "", "Style": "000", "CaseStyle": "mixed", "width": 0}, {"content": "", "Style": "000", "CaseStyle": "mixed"}
     
-    # Lấy tất cả ký tự trước khoảng trắng đầu tiên hoặc toàn bộ nếu không có khoảng trắng
     match = re.match(r'(\S+)', stripped_text)
     first_word = match.group(1) if match and re.search(r'\s', stripped_text) else stripped_text
     
-    # Kiểm tra nếu chỉ có một từ trong dòng
     if stripped_text == first_word or not text.strip().split()[1:]:
         last_word = first_word
     else:
-        # Tách các từ để lấy last_word
         words = text.strip().split()
         last_word = words[-1].rstrip(".,!?")
     
@@ -190,13 +184,11 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
     first_content, last_content = first_word, last_word
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
     
-    # Kiểm tra nếu first_word hoặc last_word nằm trong exception_texts, lấy CaseStyle của text
     first_case = get_CaseStyle(text, exceptions) if first_word.lower() in exception_texts else get_CaseStyle(first_word, exceptions)
     last_case = get_CaseStyle(text, exceptions) if last_word.lower() in exception_texts else get_CaseStyle(last_word, exceptions)
     first_width = 0
     
     if is_pdf and spans:
-        # Ghép các span liên tiếp để kiểm tra first_word
         concatenated_text = ""
         span_indices = []
         span_widths = []
@@ -217,24 +209,21 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
             underline = bool(span["flags"] & 8)
             style = f"{int(bold)}{int(italic)}{int(underline)}"
             
-            # Kiểm tra nếu chuỗi ghép khớp với first_word
             if concatenated_text == normalized_first or concatenated_text.startswith(normalized_first):
                 first_style = style
                 first_content = concatenated_text if concatenated_text == normalized_first else normalized_first
-                first_width = sum(span_widths)  # Tổng chiều rộng của các span
+                first_width = sum(span_widths)
                 if concatenated_text != normalized_first:
                     char_count = len(concatenated_text)
                     first_word_len = len(normalized_first)
                     first_width = round(first_width * (first_word_len / char_count), 1) if char_count > 0 else 0
                 break
             elif len(concatenated_text) >= len(normalized_first):
-                # In gỡ lỗi nếu không khớp sau khi ghép đủ độ dài
                 print(f"Debug: No match for first_word='{first_word}' in concatenated_text='{concatenated_text}'")
                 print(f"  normalized_first='{normalized_first}', concatenated_span='{concatenated_text}'")
                 print(f"  exact_match={concatenated_text == normalized_first}, startswith={concatenated_text.startswith(normalized_first)}")
                 break
         
-        # So khớp last_word với span riêng lẻ
         for span in spans:
             span_text = span["text"].strip()
             normalized_span = span_text.replace("\xa0", " ").strip()
@@ -249,7 +238,6 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
                 last_style = style
                 last_content = normalized_span if normalized_span == normalized_last else normalized_last
         
-        # In gỡ lỗi nếu first_width vẫn là 0
         if first_width == 0:
             print(f"Debug: first_width=0 for text='{text}', first_word='{first_word}'")
             print(f"  spans_count={len(spans)}, spans_texts={[span['text'].strip() for span in spans]}")
@@ -258,9 +246,9 @@ def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
         {"content": first_content, "Style": first_style, "CaseStyle": first_case, "width": first_width},
         {"content": last_content, "Style": last_style, "CaseStyle": last_case}
     )
+
 # Lấy tọa độ của dòng văn bản
 def get_line_coordinates(spans):
-    """Trích xuất tọa độ của dòng văn bản từ các thông tin spans."""
     x0, x1, y0, y1 = None, None, None, None
     for span in spans:
         span_text = span["text"].strip()
@@ -286,17 +274,6 @@ def get_line_coordinates(spans):
 
 # Lấy tọa độ chung dựa trên giá trị phổ biến
 def get_common_coordinate(values, threshold, fallback=None, page_width=None):
-    # Quy trình xử lý:
-    # 1. Nếu danh sách values rỗng, hàm sẽ trả về 0.
-    # 2. Sử dụng Counter để đếm số lần xuất hiện của mỗi giá trị trong danh sách.
-    # 3. Xác định phần tử phổ biến nhất:
-    #     - Nếu phần tử phổ biến nhất này xuất hiện với tỷ lệ (số lượng xuất hiện / tổng số phần tử) lớn hơn threshold, hàm trả về giá trị đó.
-    # 4. Nếu không thoả mãn điều kiện threshold và cả fallback và page_width được cung cấp, thực hiện xử lý bổ sung:
-    #     - Duyệt qua các giá trị i trong khoảng từ page_width * 0.76 đến page_width, với bước nhảy bằng page_width * 0.06.
-    #     - Với mỗi i, đếm số lượng các giá trị trong values nằm trong khoảng (i - page_width * 0.06, i].
-    #     - Xác định vị trí i (best_i) có số lượng giá trị cao nhất.
-    #     - Nếu tồn tại giá trị nào trong values mà nhỏ hơn best_i, trả về giá trị lớn nhất trong các giá trị đó.
-    # 5. Nếu không có trường hợp nào thỏa mãn, hàm trả về 0.
     if not values:
         return 0
     counter = Counter(values)
@@ -340,6 +317,7 @@ def roman_to_int(s):
     
 # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX
 def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
+    
     # Trích xuất và phân tích dữ liệu từ file PDF hoặc DOCX để thu thập thông tin từng dòng và tổng hợp thông tin chung của tài liệu.
     # Quá trình thực hiện của hàm:
     # 1. Kiểm tra sự tồn tại của file theo đường dẫn được cung cấp và xác định định dạng file (chỉ hỗ trợ ".docx" và ".pdf").
@@ -370,6 +348,7 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
     #      dict: Một dictionary có cấu trúc gồm:
     #              - "general": Thông tin tổng hợp của tài liệu như kích thước trang, tọa độ vùng chứa, font phổ biến, các mẫu đánh dấu chung,...
     #              - "lines": Danh sách các dictionary, mỗi dictionary chứa thông tin chi tiết của từng dòng (văn bản, định dạng, vị trí, kích thước, thông tin marker, kiểu chữ của từ đầu và từ cuối, ...).
+
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     file_ext = os.path.splitext(path)[1].lower()
@@ -496,9 +475,10 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
                         "LastWord": last_word,
                         "FontSize": font_size,
                         "LineWidth": round(x1 - x0, 1),
-                        "MarginLeft": 0,
-                        "MarginTop": 0,
-                        "ExtraSpace": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Right": 0,
+                        "Mid": round((x0 + x1)/2, 1),
                         "Coord": {
                             "X0": x0,
                             "X1": x1,
@@ -527,21 +507,21 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         region_height = round(yend - ystart, 1) if ystart and yend else 0
 
         for line in lines_data:
-            line["MarginLeft"] = round(line["Coord"]["X0"] - xstart, 1) if xstart else 0
+            line["Left"] = round(line["Coord"]["X0"] - xstart, 1) if xstart else 0
             for i, line in enumerate(lines_data):
                 if i == 0:
-                    line["MarginTop"] = 0
+                    line["Top"] = 0
                 else:
                     prev_line = lines_data[i - 1]
-                    line["MarginTop"] = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+                    line["Top"] = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
             line["LineWidth"] = round(line["Coord"]["X1"] - line["Coord"]["X0"], 1)
             if line["LineWidth"] <= 0:
                 print(f"{line['Line']}: Width = {line['LineWidth']}: {line['Text']}")
                 line["LineWidth"] = 0
             
-            line["ExtraSpace"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
-            if line["ExtraSpace"] < 0:
-                line["ExtraSpace"] = 0
+            line["Right"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
+            if line["Right"] < 0:
+                line["Right"] = 0
             
             if line["FirstWord"]["width"] > line["LineWidth"]:
                 line["FirstWord"]["width"] = line["LineWidth"]
@@ -598,3 +578,53 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         if temp_file:
             doc.close()
             os.remove(temp_file.name)
+
+def determine_alignment(left, right, mid):
+    """
+    Xác định kiểu căn lề dựa trên Left, Right, Mid.
+    - Justified: L <= 0, R <= 0, M = 0
+    - Center: L > 0, R > 0, M = 0
+    - Left: M < 0
+    - Right: M > 0
+    """
+    if mid == 0:
+        if left <= 0 and right <= 0:
+            return "Justified"
+        elif left > 0 and right > 0:
+            return "Center"
+    elif mid < 0:
+        return "Left"
+    elif mid > 0:
+        return "Right"
+    return "Unknown"  # Trường hợp không xác định
+
+def process_json(input_path):
+    """
+    Đọc file JSON, thêm thuộc tính Align, bỏ LineWidth và Coord (trừ bản ghi chung),
+    trả về dữ liệu đã chỉnh sửa.
+    """
+    # Kiểm tra file đầu vào tồn tại
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"File {input_path} không tồn tại")
+
+    # Đọc file JSON
+    with open(input_path, 'r', encoding='utf-8') as json_file:
+        data = json.load(json_file)
+
+    # Sao chép dữ liệu để chỉnh sửa
+    modified_data = data.copy()
+
+    # Xử lý các bản ghi trong 'lines'
+    if 'lines' in modified_data:
+        for line in modified_data['lines']:
+            # Xác định căn lề
+            left = line.get('Left', 0)
+            right = line.get('Right', 0)
+            mid = line.get('Mid', 0)
+            line['Align'] = determine_alignment(left, right, mid)
+
+            # Xóa LineWidth và Coord
+            line.pop('LineWidth', None)
+            line.pop('Coord', None)
+
+    return modified_data

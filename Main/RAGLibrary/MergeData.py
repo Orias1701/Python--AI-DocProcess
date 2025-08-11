@@ -4,6 +4,57 @@ from collections import Counter  # Để tính CaseStyle nếu cần
 # Giả định rằng get_CaseStyle và determine_alignment từ ExtractData.py, bạn có thể import nếu cần
 # Ở đây tôi sẽ tái hiện ngắn gọn nếu cần
 
+def determine_alignment(left, right, mid):
+    """
+    Xác định kiểu căn lề dựa trên Left, Right, Mid.
+    - Justified: L <= 0, R <= 0, M = 0
+    - Center: L > 0, R > 0, M = 0
+    - Left: M < 0
+    - Right: M > 0
+    """
+    if mid > -0.5 and mid < 0.5:
+        if left <= 0 and right <= 0:
+            return "Justified"
+        elif left > 0 and right > 0:
+            return "Center"
+    elif mid < 0:
+        return "Left"
+    elif mid > 0:
+        return "Right"
+    return "Unknown"  # Trường hợp không xác định
+
+def process_json(input_path):
+    """
+    Đọc file JSON, thêm thuộc tính Align, bỏ LineWidth, Coord và BracketStatus (trừ bản ghi chung),
+    trả về dữ liệu đã chỉnh sửa.
+    """
+    # Kiểm tra file đầu vào tồn tại
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"File {input_path} không tồn tại")
+
+    # Đọc file JSON
+    with open(input_path, 'r', encoding='utf-8') as json_file:
+        data = json.load(json_file)
+
+    # Sao chép dữ liệu để chỉnh sửa
+    modified_data = data.copy()
+
+    # Xử lý các bản ghi trong 'lines'
+    if 'lines' in modified_data:
+        for line in modified_data['lines']:
+            # Xác định căn lề
+            left = line.get('Left', 0)
+            right = line.get('Right', 0)
+            mid = line.get('Mid', 0)
+            line['Align'] = determine_alignment(left, right, mid)
+
+            # Xóa LineWidth, Coord và BracketStatus
+            line.pop('LineWidth', None)
+            line.pop('Coord', None)
+            line.pop('BracketStatus', None)
+
+    return modified_data
+
 def is_same_fontsize(fs1, fs2, fs_last1=None, fs_first2=None, fs_last2=None):
     # Same FontSize: Kiểm tra |fs_a - fs_b| < 0.3 với các cặp
     if abs(fs1 - fs2) < 0.3:
@@ -96,26 +147,6 @@ def can_merge(line1, line2, line_height2):
         if margin_left1 < first_word2_width - weight * 1.3:
             return True
     return False
-
-def determine_alignment(left, right, mid):
-    """
-    Xác định kiểu căn lề dựa trên Left, Right, Mid.
-    - Justified: L <= 0, R <= 0, M = 0
-    - Center: L > 0, R > 0, M = 0
-    - Left: M < 0
-    - Right: M > 0
-    """
-    if mid > -0.5 and mid < 0.5:
-        if left <= 0 and right <= 0:
-            return "Justified"
-        elif left > 0 and right > 0:
-            return "Center"
-    elif mid < 0:
-        return "Left"
-    elif mid > 0:
-        return "Right"
-    return "Unknown"  # Trường hợp không xác định
-
 
 def merge_group(group):
     if not group:

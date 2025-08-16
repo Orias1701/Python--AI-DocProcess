@@ -153,23 +153,29 @@ def get_CaseStyle(text, exceptions):
     words = [word for word in text.split() if word.lower() not in exception_texts and word.strip()]
     
     if not words:
-        return "mixed"
+        return 0
     
     has_non_exception = any(word.isalpha() and word.lower() not in exception_texts for word in words)
     if not has_non_exception:
-        return "mixed"
+        return 0
     
     is_upper = all(word.isupper() for word in words if word.isalpha() or any(c.isalpha() for c in word))
     is_title = all(word[0].isupper() and word[1:].islower() if len(word) > 1 else word[0].isupper()
                    for word in words if word.isalpha() or any(c.isalpha() for c in word))
+    # is_lower = all(word.islower() for word in words if word.isalpha() or any(c.isalpha() for c in word))
     
-    return "upper" if is_upper else "title" if is_title else "mixed"
+    if is_upper:
+        return 2
+    elif is_title:
+        return 1
+    else:
+        return 0
 
 # Lấy thông tin kiểu chữ và nội dung của từ đầu tiên và cuối cùng
 def get_word_style_and_content(text, spans, exceptions, is_pdf=True):
     stripped_text = text.lstrip()
     if not stripped_text:
-        return {"content": "", "Style": "000", "CaseStyle": "mixed", "width": 0}, {"content": "", "Style": "000", "CaseStyle": "mixed"}
+        return {"content": "", "Style": "000", "CaseStyle": "0", "width": 0}, {"content": "", "Style": "000", "CaseStyle": "0"}
     
     match = re.match(r'(\S+)', stripped_text)
     first_word = match.group(1) if match and re.search(r'\s', stripped_text) else stripped_text
@@ -477,14 +483,27 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         for i, line in enumerate(lines_data):
             # Tính Left
             line["Left"] = round(line["Coord"]["X0"] - xstart, 1) if xstart else 0
-            
-            # Tính Top
+
+            # Thay đổi từ:
+            # # Tính Top
+            # if i == 0:
+            #     line["Top"] = 0
+            # else:
+            #     prev_line = lines_data[i - 1]
+            #     top_value = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+            #     line["Top"] = max(top_value, 0)
+            # Thành:
+
             if i == 0:
                 line["Top"] = 0
             else:
                 prev_line = lines_data[i - 1]
-                top_value = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
-                line["Top"] = max(top_value, 0)  # Đảm bảo Top >= 0
+                page_height = doc[0].rect.height if doc else 0
+                if line["Coord"]["Y0"] < prev_line["Coord"]["Y0"] - (3/4 * page_height):
+                    line["Top"] = prev_line["Top"]
+                else:
+                    top_value = round(line["Coord"]["Y0"] - prev_line["Coord"]["Y1"], 1) if prev_line["Coord"]["Y1"] else 0
+                    line["Top"] = max(top_value, 0)
             
             # Tính Right
             line["Right"] = round(xend - line["Coord"]["X1"], 1) if xend else 0
@@ -558,3 +577,5 @@ def extract_data(path, exceptions_path="exceptions.json", markers_path="markers.
         if temp_file:
             doc.close()
             os.remove(temp_file.name)
+
+

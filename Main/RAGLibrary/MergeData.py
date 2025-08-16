@@ -1,18 +1,16 @@
 import json
 import os
-from collections import Counter  # Để tính CaseStyle nếu cần
-# Giả định rằng get_CaseStyle và determine_alignment từ ExtractData.py, bạn có thể import nếu cần
-# Ở đây tôi sẽ tái hiện ngắn gọn nếu cần
+from collections import Counter
 
 def determine_alignment(left, right, mid):
     """
-    Xác định kiểu căn lề dựa trên Left, Right, Mid.
+    Determine alignment based on Left, Right, Mid.
     - Justified: L <= 0, R <= 0, M = 0
     - Center: L > 0, R > 0, M = 0
     - Left: M < 0
     - Right: M > 0
     """
-    if mid > -0.5 and mid < 0.5:
+    if -0.5 < mid < 0.5:  # Consider mid ≈ 0
         if left <= 0 and right <= 0:
             return "Justified"
         elif left > 0 and right > 0:
@@ -21,159 +19,173 @@ def determine_alignment(left, right, mid):
         return "Left"
     elif mid > 0:
         return "Right"
-    return "Unknown"  # Trường hợp không xác định
+    return "Unknown"
+
+def get_CaseStyle(text):
+    """
+    Determine CaseStyle of text (simplified implementation).
+    - 2: All uppercase
+    - 1: All titlecase
+    - 0: Otherwise
+    """
+    if not text:
+        return 0
+    if text.isupper():
+        return 2
+    if text.islower():
+        return 0
+    return 0
 
 def process_json(input_path):
     """
-    Đọc file JSON, thêm thuộc tính Align, bỏ LineWidth, Coord và BracketStatus (trừ bản ghi chung),
-    trả về dữ liệu đã chỉnh sửa.
+    Read JSON file, add Align, remove LineWidth, Coord, and BracketStatus (except for general),
+    return modified data.
     """
-    # Kiểm tra file đầu vào tồn tại
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"File {input_path} không tồn tại")
 
-    # Đọc file JSON
     with open(input_path, 'r', encoding='utf-8') as json_file:
         data = json.load(json_file)
 
-    # Sao chép dữ liệu để chỉnh sửa
     modified_data = data.copy()
 
-    # Xử lý các bản ghi trong 'lines'
     if 'lines' in modified_data:
         for line in modified_data['lines']:
-            # Xác định căn lề
             left = line.get('Left', 0)
             right = line.get('Right', 0)
             mid = line.get('Mid', 0)
             line['Align'] = determine_alignment(left, right, mid)
-
-            # Xóa LineWidth, Coord và BracketStatus
             line.pop('LineWidth', None)
             line.pop('Coord', None)
             line.pop('BracketStatus', None)
 
     return modified_data
 
-def is_same_fontsize(fs1, fs2, fs_last1=None, fs_first2=None, fs_last2=None):
-    # Same FontSize: Kiểm tra |fs_a - fs_b| < 0.3 với các cặp
-    if abs(fs1 - fs2) < 0.3:
-        return True
-    if fs_last1 and abs(fs1 - fs_last1) < 0.3:
-        return True
-    if fs_first2 and abs(fs_first2 - fs2) < 0.3:
-        return True
-    if fs_last1 and fs_first2 and abs(fs_last1 - fs_first2) < 0.3:
-        return True
-    return False
+def is_same_fontsize(fs1, fs2, fs_last1=None, fs_first2=None):
+    """
+    Check if font sizes are considered the same (|diff| < 0.3).
+    """
+    comparisons = [
+        abs(fs1 - fs2),
+        abs(fs1 - fs_last1) if fs_last1 is not None else float('inf'),
+        abs(fs_first2 - fs2) if fs_first2 is not None else float('inf'),
+        abs(fs_last1 - fs_first2) if fs_last1 is not None and fs_first2 is not None else float('inf')
+    ]
+    return any(diff < 0.3 for diff in comparisons if diff != float('inf'))
 
-def is_same_casestyle(cs1, cs2, cs_last1=None, cs_first2=None, cs_last2=None):
-    # Same CaseStyle: So sánh các cặp
-    if cs1 == cs2:
-        return True
-    if cs_last1 and cs1 == cs_last1:
-        return True
-    if cs_first2 and cs_first2 == cs2:
-        return True
-    if cs_last1 and cs_first2 and cs_last1 == cs_first2:
-        return True
-    return False
+def is_same_casestyle(cs1, cs2, cs_last1=None, cs_first2=None):
+    """
+    Check if case styles are considered the same.
+    """
+    comparisons = [
+        (cs1, cs2),
+        (cs1, cs_last1) if cs_last1 is not None else (None, None),
+        (cs_first2, cs2) if cs_first2 is not None else (None, None),
+        (cs_last1, cs_first2) if cs_last1 is not None and cs_first2 is not None else (None, None)
+    ]
+    return any(a == b for a, b in comparisons if a is not None and b is not None)
 
-def is_same_style(st1, st2, st_last1=None, st_first2=None, st_last2=None):
-    # Same Style: So sánh các cặp
-    if st1 == st2:
-        return True
-    if st_last1 and st1 == st_last1:
-        return True
-    if st_first2 and st_first2 == st2:
-        return True
-    if st_last1 and st_first2 and st_last1 == st_first2:
-        return True
-    return False
+def is_same_style(st1, st2, st_last1=None, st_first2=None):
+    """
+    Check if styles are considered the same.
+    """
+    comparisons = [
+        (st1, st2),
+        (st1, st_last1) if st_last1 is not None else (None, None),
+        (st_first2, st2) if st_first2 is not None else (None, None),
+        (st_last1, st_first2) if st_last1 is not None and st_first2 is not None else (None, None)
+    ]
+    return any(a == b for a, b in comparisons if a is not None and b is not None)
 
+# Hàm can_merge (sửa việc đọc CaseStyle)
 def can_merge(line1, line2, line_height2):
-    # Điều kiện cơ bản
+    """
+    Check if two lines can be merged based on specified conditions.
+    """
+    # Basic condition: MarkerText[1] must be null
     if line2.get('MarkerText') is not None:
         return False
-    
+
     # Same FontSize
     fs1 = line1.get('FontSize', 0)
     fs2 = line2.get('FontSize', 0)
-    fs_last1 = line1.get('LastWord', {}).get('FontSize', fs1) if 'LastWord' in line1 else fs1
-    fs_first2 = line2.get('FirstWord', {}).get('FontSize', fs2) if 'FirstWord' in line2 else fs2
+    fs_last1 = line1.get('LastWord', {}).get('FontSize', fs1)
+    fs_first2 = line2.get('FirstWord', {}).get('FontSize', fs2)
     if not is_same_fontsize(fs1, fs2, fs_last1, fs_first2):
         return False
-    
+
     # Same CaseStyle or Same Style
-    cs1 = line1.get('CaseStyle', 'mixed')
-    cs2 = line2.get('CaseStyle', 'mixed')
-    cs_last1 = line1.get('LastWord', {}).get('CaseStyle', cs1) if 'LastWord' in line1 else cs1
-    cs_first2 = line2.get('FirstWord', {}).get('CaseStyle', cs2) if 'FirstWord' in line2 else cs2
+    cs1 = line1.get('CaseStyle', 0)
+    cs2 = line2.get('CaseStyle', 0)
+    cs_last1 = line1.get('LastWord', {}).get('CaseStyle', cs1)
+    cs_first2 = line2.get('FirstWord', {}).get('CaseStyle', cs2)
     st1 = line1.get('Style', '000')
     st2 = line2.get('Style', '000')
-    st_last1 = line1.get('LastWord', {}).get('Style', st1) if 'LastWord' in line1 else st1
-    st_first2 = line2.get('FirstWord', {}).get('Style', st2) if 'FirstWord' in line2 else st2
+    st_last1 = line1.get('LastWord', {}).get('Style', st1)
+    st_first2 = line2.get('FirstWord', {}).get('Style', st2)
     if not (is_same_casestyle(cs1, cs2, cs_last1, cs_first2) or is_same_style(st1, st2, st_last1, st_first2)):
         return False
-    
-    # Top[2] < Top[1] + 0.3
+
+    # Top[1] < Top[0] + 0.3
     top1 = line1.get('Top', 0)
     top2 = line2.get('Top', 0)
     if top2 >= top1 + 0.3:
         return False
-    
-    # Top[2] < 2 * LineHeight[2]
-    # Giả định LineHeight ≈ FontSize (có thể thay bằng giá trị chính xác nếu có)
+
+    # Top[1] < 2 * LineHeight[1]
     if top2 >= 2 * line_height2:
         return False
-    
-    # Điều kiện căn lề
+
+    # Alignment conditions
     align1 = line1.get('Align', 'Unknown')
     align2 = line2.get('Align', 'Unknown')
-    if align1 == 'Center' and align2 == 'Center':
-        return True
-    if align1 == 'Justified' and align2 == 'Justified':
-        return True
-    if align1 == 'Right' and align2 == 'Right':
-        return True
-    weight = fs1  # Giả định Weight = FontSize[1]
+    weight = fs1  # Assume Weight = FontSize[0]
     first_word2_width = line2.get('FirstWord', {}).get('width', 0)
-    if align2 == 'Left':
-        extra_space1 = line1.get('Right', 0)
-        if extra_space1 < first_word2_width - weight * 1.3:
-            return True
-    if align2 == 'Right':
+
+    if (align1 == 'Center' and align2 == 'Center') or \
+       (align1 == 'Justified' and align2 == 'Justified') or \
+       (align1 == 'Right' and align2 == 'Right'):
+        return True
+    elif align2 == 'Right':
         margin_left1 = line1.get('Left', 0)
         if margin_left1 < first_word2_width - weight * 1.3:
             return True
+    else:
+        extra_space1 = line1.get('Right', 0)
+        if extra_space1 < first_word2_width - weight * 1.3:
+            return True
     return False
 
+# Hàm merge_group (sửa việc ghi CaseStyle)
 def merge_group(group):
+    """
+    Merge a group of lines into a single line with specified attributes.
+    """
     if not group:
         return None
-    
+
     # Merge Text
-    merged_text = ' '.join([g['Text'] for g in group])
-    
-    # MarkerText và MarkerFormat từ đầu tiên
+    merged_text = ' '.join(g['Text'] for g in group)
+
+    # MarkerText and MarkerFormat from first
     marker_text = group[0].get('MarkerText')
     marker_format = group[0].get('MarkerFormat')
-    
-    # CaseStyle: Tính lại từ merged_text (sử dụng get_CaseStyle nếu có, ở đây giả định)
-    case_style = group[0].get('CaseStyle')  # Nếu không có get_CaseStyle, dùng của đầu
 
-    # Style: Min của từng chữ số
+    # CaseStyle: Recalculate from merged_text
+    case_style = get_CaseStyle(merged_text)
+
+    # Style: Min of each digit
     styles = [g.get('Style', '000') for g in group]
     min_b = min(int(s[0]) for s in styles)
     min_i = min(int(s[1]) for s in styles)
     min_u = min(int(s[2]) for s in styles)
     style = f"{min_b}{min_i}{min_u}"
 
-    # FirstWord từ đầu, LastWord từ cuối
+    # FirstWord from first, LastWord from last
     first_word = group[0].get('FirstWord')
     last_word = group[-1].get('LastWord')
-    
-    # FontSize: Trung bình
+
+    # FontSize: Average
     font_sizes = [g.get('FontSize', 0) for g in group]
     font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
 
@@ -181,21 +193,20 @@ def merge_group(group):
     lefts = [g.get('Left', 0) for g in group]
     left = min(lefts)
 
-    # Top: Từ đầu
+    # Top: From first
     top = group[0].get('Top', 0)
 
     # Right: Min
     rights = [g.get('Right', 0) for g in group]
     right = min(rights)
 
-    # Mid: Trung bình
+    # Mid: Average
     mids = [g.get('Mid', 0) for g in group]
     mid = sum(mids) / len(mids) if mids else 0
 
-    # Tính lại Align
+    # Recalculate Align
     align = determine_alignment(left, right, mid)
 
-    # Line: Tự động, sẽ được gán sau
     return {
         "Text": merged_text,
         "MarkerText": marker_text,
@@ -213,6 +224,9 @@ def merge_group(group):
     }
 
 def merge_lines(modified_path):
+    """
+    Merge lines in the JSON file based on specified conditions.
+    """
     if not os.path.exists(modified_path):
         raise FileNotFoundError(f"File {modified_path} không tồn tại")
 
@@ -227,21 +241,21 @@ def merge_lines(modified_path):
     group = [lines[0]]
 
     for i in range(1, len(lines)):
-        line1 = group[-1]  # Dòng cuối trong group
+        line1 = group[-1]  # Last line in current group
         line2 = lines[i]
-        line_height2 = line2.get('FontSize', 12)  # Giả định LineHeight ≈ FontSize
+        line_height2 = line2.get('FontSize', 12)  # Assume LineHeight ≈ FontSize
 
         if can_merge(line1, line2, line_height2):
             group.append(line2)
         else:
-            # Merge group và thêm vào merged_lines
+            # Merge current group and start new group
             merged = merge_group(group)
             if merged:
                 merged['Line'] = len(merged_lines) + 1
                 merged_lines.append(merged)
             group = [line2]
 
-    # Merge group cuối
+    # Merge final group
     merged = merge_group(group)
     if merged:
         merged['Line'] = len(merged_lines) + 1

@@ -1,17 +1,5 @@
 """
 
-Cách xét căn lề:
-
-If |Mid| <= 3.0:  If Left > 1.0 && Right > 1.0 => Align = "center"
-                  Else => Align = "justify"
-Elif Mid > 3.0 => Align = Right
-Else => Align = Left
-
-"""
-
-
-"""
-
 Xét 3 đoạn văn bản liền kề: Đoạn đang xét là [0], đoạn ngay trước nó là [-1], đoạn ngay sau nó là [1].
 
 Khi nói Style[-1] == Style[0] cần so sánh các thuộc tính:
@@ -33,7 +21,7 @@ isSameFontStyle(): Style[-1]%1000 == Style[0]%1000
 
 isNearerPre(): Top[0] < Top[-1] * 1.3
 isNearerNex(): Top[0] < Top[1] * 1.3
-isNear(): isNearerPre() && isNearerNex() && Top[0] < LineHeight[0] * 2.0
+isNear(): isNearerPre() && isNearerNex() && Top[0] < LineHeight[0] * 4.0
 
 isSameAlign(): Align[-1] == Align[0]
 isEnoughSpace_R(): MarginRight[-1] < FirstWord[0]*1.3
@@ -77,15 +65,13 @@ Giữ nguyên general, chỉ Merge trong lines
       "Text": Text sau khi đã gộp ngăn cách bằng space,
       "MarkerText": của line đầu tiên trong nhóm,
       "MarkerType": của line đầu tiên trong nhóm,
-      "Style": 
-      "FirstWord": Lấy của line đầu tiên trong nhóm,
-      "LastWord": Lấy của line cuối cùng trong nhóm,
+      "Style": 4 chữ số, mỗi chữ số đều lấy min chữ số tương ứng của các line
       "FontSize": Trung bình cộng các line trong nhóm, làm tròn 1 chữ số thập phân,
-      "Left": Min,
-      "Top": của line đầu tiên,
-      "Right": Min,
-      "Mid": AVG,
       "Align": "Lấy phổ biến của các đoạn đã merge hoặc của đoạn cuối cùng đã merge nếu không có đoạn nào",
+      "Words": {
+          "First": của line đầu tiên trong nhóm
+          "Last": của line cuối cùng trong nhóm
+        },
     },
 
 """

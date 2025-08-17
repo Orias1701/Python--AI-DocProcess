@@ -350,14 +350,38 @@ def getTextStatus(pdf_path, exceptions, patterns):
 
 
 # ==== 3. Các hàm set* ====
-def setPageCoords(lines):
-    x0s = [l["Coords"]["X0"] for l in lines]
-    x1s = [l["Coords"]["X1"] for l in lines]
-    y0s = [l["Coords"]["Y0"] for l in lines]
-    y1s = [l["Coords"]["Y1"] for l in lines]
-    xStart, yStart = min(x0s), min(y0s)
-    xEnd, yEnd = max(x1s), max(y1s)
-    return (xStart, yStart, xEnd, yEnd, round((xStart + xEnd)/2, 1), round((yStart + yEnd)/2, 1))
+from collections import Counter
+
+def most_common(values):
+    if not values:
+        return None
+    return Counter(values).most_common(1)[0][0]
+
+def setPageCoords(lines, pageGeneralSize):
+    x0s = [round(l["Coords"]["X0"], 1) for l in lines]
+    x1s = [round(l["Coords"]["X1"], 1) for l in lines]
+    y0s = [round(l["Coords"]["Y0"], 1) for l in lines]
+    y1s = [round(l["Coords"]["Y1"], 1) for l in lines]
+
+    # xStart = mode của X0
+    xStart = most_common(x0s)
+
+    # xEnd = mode của X1 trong khoảng 75% - 100% page width
+    page_width = pageGeneralSize[1]
+    threshold = page_width * 0.75
+    x1_candidates = [x for x in x1s if x >= threshold]
+    if x1_candidates:
+        xEnd = most_common(x1_candidates)
+    else:
+        xEnd = max(x1s)  # fallback
+
+    yStart = min(y0s)
+    yEnd   = max(y1s)
+
+    xMid = round((xStart + xEnd) / 2, 1)
+    yMid = round((yStart + yEnd) / 2, 1)
+
+    return (xStart, yStart, xEnd, yEnd, xMid, yMid)
 
 
 def setPageRegionSize(xStart, yStart, xEnd, yEnd):
@@ -417,10 +441,12 @@ def setAlign(position, regionWidth):
 
 def setTextStatus(baseJson):
     lines = baseJson["lines"]
-    xStart, yStart, xEnd, yEnd, xMid, yMid = setPageCoords(lines)
+    pageGeneralSize = baseJson["general"]["pageGeneralSize"]
+    xStart, yStart, xEnd, yEnd, xMid, yMid = setPageCoords(lines, pageGeneralSize)
     regionWidth, regionHeight = setPageRegionSize(xStart, yStart, xEnd, yEnd)
     commonFontSize = setCommonFontSize(lines)
     commonMarkers = setCommonMarkers(lines)
+
 
     new_general = {
         "pageGeneralSize": baseJson["general"]["pageGeneralSize"],
@@ -484,8 +510,9 @@ def extractData(path, exceptions_path="exceptions.json", markers_path="markers.j
         baseJson["lines"] = normalizeRomanMarkers(baseJson["lines"])
 
         modifiedJson = setTextStatus(baseJson)
-        finalJson = delStatus(modifiedJson, ["Position", "Coords"])
-        return finalJson
+        return modifiedJson
+        # finalJson = delStatus(modifiedJson, ["Coords"])
+        # return finalJson
     finally:
         if temp_file:
             os.remove(temp_file.name)

@@ -22,7 +22,7 @@ def mergeLinesToParagraphs(baseJson):
             current_para.append(line)
         else:
             prev_line = current_para[-1]
-            if canMerge(prev_line, line, lines, i):
+            if canMerge(prev_line, line):
                 current_para.append(line)
             else:
                 paragraphs.append(buildParagraph(current_para, len(paragraphs)+1))
@@ -37,7 +37,7 @@ def mergeLinesToParagraphs(baseJson):
 # ===============================
 # CÁC HÀM ĐIỀU KIỆN MERGE
 # ===============================
-def canMerge(prev, curr, all_lines, idx):
+def canMerge(prev, curr):
     """
     Kiểm tra line curr có thể merge vào prev không
     """
@@ -48,7 +48,7 @@ def canMerge(prev, curr, all_lines, idx):
     if not isSameFontSize(prev, curr):
         return False
 
-    if not isSameCaseAndStyle(prev, curr):
+    if not isSameStyle(prev, curr):
         return False
 
     if not isNear(prev, curr):
@@ -74,16 +74,24 @@ def isSameFontSize(prev, curr):
     return abs(prev["FontSize"] - curr["FontSize"]) <= 0.7
 
 
-def isSameCaseAndStyle(prev, curr):
-    return (isSameCaseStyle(prev, curr) and isSameFontStyle(prev, curr))
+def isSameStyle(prev, curr):
+    return isSameLineStyle(prev, curr) or isSameFirstStyle(prev, curr) or isSameLastStyle(prev, curr) or isSameWordStyle(prev, curr)
 
 
-def isSameCaseStyle(prev, curr):
-    return prev["Style"] // 1000 == curr["Style"] // 1000
+def isSameLineStyle(prev, curr):
+    return prev["Style"] == curr["Style"]
 
 
-def isSameFontStyle(prev, curr):
-    return prev["Style"] % 1000 == curr["Style"] % 1000
+def isSameFirstStyle(prev, curr):
+    return prev["Style"] == curr["Words"]["First"]["Style"]
+
+
+def isSameLastStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] == curr["Style"]
+
+
+def isSameWordStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] == curr["Words"]["First"]["Style"]
 
 
 def isNear(prev, curr):
@@ -92,11 +100,13 @@ def isNear(prev, curr):
     if "LineHeight" not in curr:
         return False
     
-    top_curr = curr["Position"]["Top"]
-    top_prev = prev["Position"]["Top"]
-    
-    return (top_curr < top_prev * 1.3) and (top_curr < curr["LineHeight"] * 4.0)
+    hig_curr = curr["LineHeight"]
 
+    top_prev = prev["Position"]["Top"]
+    top_curr = curr["Position"]["Top"]
+    bot_curr = curr["Position"]["Bot"]
+    
+    return (top_curr < top_prev * 1.75) and (top_curr < bot_curr * 1.75) and (top_curr < hig_curr*4)
 
 
 def isSameAlign(prev, curr):

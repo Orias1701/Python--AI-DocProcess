@@ -1,44 +1,44 @@
 """
 
-Xét 3 đoạn văn bản liền kề: Đoạn đang xét là [0], đoạn ngay trước nó là [-1], đoạn ngay sau nó là [1].
+Xét 3 đoạn văn bản liền kề: Đoạn đang xét là [1], đoạn ngay trước nó là [0].
 
-Khi nói Style[-1] == Style[0] cần so sánh các thuộc tính:
+Khi nói Style[0] == Style[1] cần so sánh các thuộc tính:
 {
-        Text[-1] Style = Text[0] Style
-    or  Text[-1] Style = Text[0] Words.Last.Style
-    or  Text[-1] Words.First.Style = Text[0] Style
-    or  Text[-1] Words.First.Style = Text[0] Words.Last.Style
+        Text[0] Style = Text[1] Style
+    or  Text[0] Style = Text[1] Words.Last.Style
+    or  Text[0] Words.First.Style = Text[1] Style
+    or  Text[0] Words.First.Style = Text[1] Words.Last.Style
 }
 
 Các Function dùng cho gộp lines thành Para:
 
-isNewPara(): MarkerText[0] != null
-isSameFontSize(): FontSize[-1] == Fontsize[0] +- 0.7
+isNewPara(): MarkerText[1] != null
+isSameFontSize(): FontSize[0] == Fontsize[1] +- 0.7
 
-isSameStyle(): Style[-1] == Style[0]
-isSameCaseStyle(): Style[-1]/1000 == Style[0]/1000
-isSameFontStyle(): Style[-1]%1000 == Style[0]%1000
+isSameStyle(): Style[0] == Style[1]
+isSameCaseStyle(): Style[0]/1000 == Style[1]/1000
+isSameFontStyle(): Style[0]%1000 == Style[1]%1000
 
-isNearerPre(): Top[0] < Top[-1] * 1.3
-isNearerNex(): Top[0] < Top[1] * 1.3
-isNear(): isNearerPre() && isNearerNex() && Top[0] < LineHeight[0] * 4.0
+isNearerPre(): Top[1] < Top[0] * 1.3
+isNearerNex(): Top[1] < Bot[1] * 1.3
+isNear(): isNearerPre() && isNearerNex() && Top[1] < LineHeight[1] * 4.0
 
-isSameAlign(): Align[-1] == Align[0]
-isEnoughSpace_R(): MarginRight[-1] < FirstWord[0]*1.3
-isEnoughSpace_L(): MarginLeft[-1] < FirstWord[0]*1.3
+isSameAlign(): Align[0] == Align[1]
+isEnoughSpace_R(): MarginRight[0] < FirstWord[1]*1.3
+isEnoughSpace_L(): MarginLeft[0] < FirstWord[1]*1.3
 isEnoughSpace(): isEnoughSpace_R() && notEnoughSpace_L()
-isSentenceEnd(): LastWord[-1] == "." || "!" || "?" || ";" || ":"
+isSentenceEnd(): LastWord[0] == "." || "!" || "?" || ";" || ":"
 
-isBadAlign(): Align[-1] != "right" && Align[0] == "right"
-isNoSameAlign0(): Align[-1] == "justify"
-isNoSameAlignC(): Align[-1] == "center"
-isNoSameAlignR(): Align[-1] == "right"
-isNoSameAlignL(): Align[-1] == "left" && Align[0] == "justify"
+isBadAlign(): Align[0] != "right" && Align[1] == "right"
+isNoSameAlign0(): Align[0] == "justify"
+isNoSameAlignC(): Align[0] == "center"
+isNoSameAlignR(): Align[0] == "right"
+isNoSameAlignL(): Align[0] == "left" && Align[1] == "justify"
 
-canMergeWithAlign(): isNoSameAlign0() || isNoSameAlignC() || (isNoSameAlignR() && Align[0] != "center") 
+canMergeWithAlign(): isNoSameAlign0() || isNoSameAlignC() || (isNoSameAlignR() && Align[1] != "center") 
 canMergeWithLeft(): isNoSameAlignL()
 
-Điều kiện Merge 2 đoạn [-1] và [0]: 
+Điều kiện Merge 2 đoạn [0] và [1]: 
 canMerge():
   if    isNewPara() || !isSameCaseAndStyle() || !isSameFontSize() || !isNear() return false
   elif  isSameAlign() return True

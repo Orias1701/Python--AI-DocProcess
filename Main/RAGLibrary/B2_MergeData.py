@@ -51,7 +51,7 @@ def canMerge(prev, curr, all_lines, idx):
     if not isSameCaseAndStyle(prev, curr):
         return False
 
-    if not isNear(prev, curr, all_lines, idx):
+    if not isNear(prev, curr):
         return False
 
     if isSameAlign(prev, curr):
@@ -86,18 +86,17 @@ def isSameFontStyle(prev, curr):
     return prev["Style"] % 1000 == curr["Style"] % 1000
 
 
-def isNear(prev, curr, all_lines, idx):
-    # Top: khoảng cách với line trước và sau
-    top_prev = abs(curr["Position"]["Top"]) if "Position" in curr else 0
-    top_prev_line = abs(prev["Position"]["Top"]) if "Position" in prev else 0
+def isNear(prev, curr):
+    if "Position" not in prev or "Position" not in curr:
+        return False
+    if "LineHeight" not in curr:
+        return False
+    
+    top_curr = curr["Position"]["Top"]
+    top_prev = prev["Position"]["Top"]
+    
+    return (top_curr < top_prev * 1.3) and (top_curr < curr["LineHeight"] * 4.0)
 
-    prevprev = all_lines[idx-2] if idx >= 2 else None
-    next_line = all_lines[idx+1] if idx+1 < len(all_lines) else None
-
-    cond_pre = top_prev < (top_prev_line * 1.3) if prevprev else True
-    cond_next = top_prev < (next_line["Position"]["Top"] * 1.3) if next_line else True
-
-    return cond_pre and cond_next and top_prev < curr["LineHeight"] * 4.0
 
 
 def isSameAlign(prev, curr):

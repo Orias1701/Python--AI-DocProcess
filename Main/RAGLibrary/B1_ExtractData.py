@@ -464,7 +464,7 @@ def setTextStatus(baseJson):
                         lines[i+1] if i < len(lines)-1 else None,
                         xStart, xEnd, xMid)
         pos_dict = {"Left": pos[0], "Right": pos[1], "Mid": pos[2], "Top": pos[3], "Bot": pos[4]}
-
+        
         line_dict = {
             **line,
             "LineWidth": lineWidth,
@@ -484,6 +484,40 @@ def delStatus(jsonDict, deleteList):
         for attr in deleteList:
             if attr in line:
                 del line[attr]
+    return jsonDict
+
+
+def resetPosition(jsonDict):
+    lines = jsonDict.get("lines", [])
+    for i, line in enumerate(lines):
+        pos = line.get("Position", {})
+
+        if "Top" in pos and pos["Top"] < 0:
+            top_candidates = []
+            if i > 0:
+                prev_top = lines[i - 1].get("Position", {}).get("Top")
+                if prev_top is not None:
+                    top_candidates.append(prev_top)
+            if i < len(lines) - 1:
+                next_top = lines[i + 1].get("Position", {}).get("Top")
+                if next_top is not None:
+                    top_candidates.append(next_top)
+            if top_candidates:
+                pos["Top"] = min(top_candidates)
+
+        if "Bot" in pos and pos["Bot"] < 0:
+            bot_candidates = []
+            if i > 0:
+                prev_bot = lines[i - 1].get("Position", {}).get("Bot")
+                if prev_bot is not None:
+                    bot_candidates.append(prev_bot)
+            if i < len(lines) - 1:
+                next_bot = lines[i + 1].get("Position", {}).get("Bot")
+                if next_bot is not None:
+                    bot_candidates.append(next_bot)
+            if bot_candidates:
+                pos["Bot"] = min(bot_candidates)
+        line["Position"] = pos
     return jsonDict
 
 
@@ -510,9 +544,10 @@ def extractData(path, exceptions_path="exceptions.json", markers_path="markers.j
         baseJson["lines"] = normalizeRomanMarkers(baseJson["lines"])
 
         modifiedJson = setTextStatus(baseJson)
-        return modifiedJson
-        # finalJson = delStatus(modifiedJson, ["Coords"])
-        # return finalJson
+        cleanJson = resetPosition(modifiedJson)
+        finalJson = delStatus(cleanJson, ["Coords"])
+        # return cleanJson
+        return finalJson
     finally:
         if temp_file:
             os.remove(temp_file.name)

@@ -8445,7 +8445,7 @@
   },
   {
    "Paragraph": 367,
-   "Text": "chuyên môn được tổ chức dạy học ngoài phạm vi Trường. Thời gian thực hành, thực tế chuyên môn không quá 03 ngày/tín chỉ, thời gian học tập có thể nhiều hơn trong",
+   "Text": "chuyên môn được tổ chức dạy học ngoài phạm vi Trường. Thời gian thực hành, thực tế chuyên môn không quá 03 ngày/tín chỉ, thời gian học tập có thể nhiều hơn trong trường hợp sinh viên học tập tại một địa điểm cố định trong suốt quá trình thực hành, thực tế chuyên môn. Mỗi học kì có tối đa 01 đợt thực tế, thực hành. Địa điểm thực tế,",
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
@@ -8459,29 +8459,6 @@
      "Width": 36.9
     },
     "Last": {
-     "Text": "trong",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 30.0
-    }
-   }
-  },
-  {
-   "Paragraph": 368,
-   "Text": "trường hợp sinh viên học tập tại một địa điểm cố định trong suốt quá trình thực hành, thực tế chuyên môn. Mỗi học kì có tối đa 01 đợt thực tế, thực hành. Địa điểm thực tế,",
-   "MarkerText": null,
-   "MarkerType": null,
-   "Style": 1000,
-   "FontSize": 14.0,
-   "Align": "Justify",
-   "Words": {
-    "First": {
-     "Text": "trường",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 34.3
-    },
-    "Last": {
      "Text": "tế",
      "Style": 1000,
      "FontSize": 14.0,
@@ -8490,7 +8467,7 @@
    }
   },
   {
-   "Paragraph": 369,
+   "Paragraph": 368,
    "Text": "thực hành phải được thể hiện cụ thể trong kế hoạch đào tạo của từng khóa.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8513,7 +8490,7 @@
    }
   },
   {
-   "Paragraph": 370,
+   "Paragraph": 369,
    "Text": "3. Mỗi đợt thực tập tập trung được tổ chức trong khoảng thời gian từ 04 đến 08",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -8536,7 +8513,7 @@
    }
   },
   {
-   "Paragraph": 371,
+   "Paragraph": 370,
    "Text": "tuần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8559,7 +8536,7 @@
    }
   },
   {
-   "Paragraph": 372,
+   "Paragraph": 371,
    "Text": "4. Các khoa đào tạo chịu trách nhiệm xây dựng nội dung học tập, hướng dẫn tổ",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -8582,7 +8559,7 @@
    }
   },
   {
-   "Paragraph": 373,
+   "Paragraph": 372,
    "Text": "chức thực hiện, trong đó thể hiện rõ yêu cầu cần đạt đối với người học, sau khi kết thúc mỗi nội dung thực tập, thực hành, thực tế chuyên môn. Đồng thời xây dựng mạng lưới các cơ sở thực hành, thực tập; kế hoạch thực hành, thực tập của các ngành",
    "MarkerText": null,
    "MarkerType": null,
@@ -8605,7 +8582,7 @@
    }
   },
   {
-   "Paragraph": 374,
+   "Paragraph": 373,
    "Text": "đào tạo do Khoa quản lí, trình Hiệu trưởng phê duyệt hàng năm.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8628,7 +8605,7 @@
    }
   },
   {
-   "Paragraph": 375,
+   "Paragraph": 374,
    "Text": "5. Trường hợp đặc biệt do Hiệu trưởng quyết định.",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -8651,7 +8628,7 @@
    }
   },
   {
-   "Paragraph": 376,
+   "Paragraph": 375,
    "Text": "Chương III",
    "MarkerText": "Chương III",
    "MarkerType": "Chương XVI",
@@ -8674,7 +8651,7 @@
    }
   },
   {
-   "Paragraph": 377,
+   "Paragraph": 376,
    "Text": "ĐÁNH GIÁ KẾT QUẢ HỌC TẬP VÀ CẤP BẰNG TỐT NGHIỆP",
    "MarkerText": null,
    "MarkerType": null,
@@ -8697,7 +8674,7 @@
    }
   },
   {
-   "Paragraph": 378,
+   "Paragraph": 377,
    "Text": "Điều 17. Đánh giá và tính điểm học phần",
    "MarkerText": "Điều 17. ",
    "MarkerType": "Điều 123. ",
@@ -8720,7 +8697,7 @@
    }
   },
   {
-   "Paragraph": 379,
+   "Paragraph": 378,
    "Text": "1. Đối với mỗi học phần, sinh viên được đánh giá qua tối thiểu 01 điểm thành",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -8743,7 +8720,7 @@
    }
   },
   {
-   "Paragraph": 380,
+   "Paragraph": 379,
    "Text": "phần/tín. Các điểm thành phần được đánh giá theo thang điểm 10.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8766,7 +8743,7 @@
    }
   },
   {
-   "Paragraph": 381,
+   "Paragraph": 380,
    "Text": "a) Phương pháp đánh giá, hình thức đánh giá, số lượng điểm thành phần và",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -8789,7 +8766,7 @@
    }
   },
   {
-   "Paragraph": 382,
+   "Paragraph": 381,
    "Text": "trọng số của mỗi điểm thành phần được quy định trong đề cương chi tiết của mỗi học",
    "MarkerText": null,
    "MarkerType": null,
@@ -8812,7 +8789,7 @@
    }
   },
   {
-   "Paragraph": 383,
+   "Paragraph": 382,
    "Text": "phần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8835,7 +8812,7 @@
    }
   },
   {
-   "Paragraph": 384,
+   "Paragraph": 383,
    "Text": "b) Đồ án, khóa luận được đánh giá qua tối thiểu 02 điểm thành phần, trong đó",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -8858,7 +8835,7 @@
    }
   },
   {
-   "Paragraph": 385,
+   "Paragraph": 384,
    "Text": "điểm do Hội đồng đánh giá có trọng số bằng 70% điểm học phần. Cán bộ hướng dẫn đánh giá điểm thành phần có trọng số bằng 30% điểm học phần, trong quá trình",
    "MarkerText": null,
    "MarkerType": null,
@@ -8881,7 +8858,7 @@
    }
   },
   {
-   "Paragraph": 386,
+   "Paragraph": 385,
    "Text": "hướng dẫn sinh viên làm đồ án, khóa luận.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8904,7 +8881,7 @@
    }
   },
   {
-   "Paragraph": 387,
+   "Paragraph": 386,
    "Text": "c) Đối với các học phần thực tập, thực hành được tổ chức tại các cơ sở thực",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -8927,7 +8904,7 @@
    }
   },
   {
-   "Paragraph": 388,
+   "Paragraph": 387,
    "Text": "hành, thực tập, sinh viên được đánh giá thường xuyên trong quá trình học tập, tối thiểu 01 điểm thành phần/tín chỉ. Giảng viên của trường chỉ tham gia đánh giá tối đa",
    "MarkerText": null,
    "MarkerType": null,
@@ -8950,7 +8927,7 @@
    }
   },
   {
-   "Paragraph": 389,
+   "Paragraph": 388,
    "Text": "01 điểm thành phần và có trọng số không quá 30% điểm học phần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -8973,7 +8950,7 @@
    }
   },
   {
-   "Paragraph": 390,
+   "Paragraph": 389,
    "Text": "d) Đối với những học phần có kiểm tra đánh giá bằng hình thức thi kết thúc học",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -8996,7 +8973,7 @@
    }
   },
   {
-   "Paragraph": 391,
+   "Paragraph": 390,
    "Text": "phần, điểm thi kết thúc học phần có trọng số không quá 30% điểm học phần. Sinh viên có điểm thi kết thúc học phần ở mức không đạt (< 4,0) được thi lại theo quy định",
    "MarkerText": null,
    "MarkerType": null,
@@ -9019,7 +8996,7 @@
    }
   },
   {
-   "Paragraph": 392,
+   "Paragraph": 391,
    "Text": "tại khoản 3 Điều 18 của quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -9042,7 +9019,7 @@
    }
   },
   {
-   "Paragraph": 393,
+   "Paragraph": 392,
    "Text": "đ) Trường hợp cần phải tổ chức thi, kiểm tra, đánh giá bằng hình thức trực",
    "MarkerText": null,
    "MarkerType": null,
@@ -9065,7 +9042,7 @@
    }
   },
   {
-   "Paragraph": 394,
+   "Paragraph": 393,
    "Text": "tuyến, phải đảm bảo được tính trung thực, công bằng và khách quan như đánh giá",
    "MarkerText": null,
    "MarkerType": null,
@@ -9088,7 +9065,7 @@
    }
   },
   {
-   "Paragraph": 395,
+   "Paragraph": 394,
    "Text": "trực tiếp, đồng thời đóng góp không quá 30% trọng số điểm học phần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -9111,7 +9088,7 @@
    }
   },
   {
-   "Paragraph": 396,
+   "Paragraph": 395,
    "Text": "2. Đối với việc tổ chức bảo vệ và đánh giá đồ án, khóa luận chỉ được tổ chức",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -9134,7 +9111,7 @@
    }
   },
   {
-   "Paragraph": 397,
+   "Paragraph": 396,
    "Text": "đánh giá bằng hình thức trực tuyến khi đáp ứng thêm các điều kiện sau đây:",
    "MarkerText": null,
    "MarkerType": null,
@@ -9157,7 +9134,7 @@
    }
   },
   {
-   "Paragraph": 398,
+   "Paragraph": 397,
    "Text": "a) Có sự tham gia đầy đủ của tất cả các thành viên Hội đồng;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -9180,7 +9157,7 @@
    }
   },
   {
-   "Paragraph": 399,
+   "Paragraph": 398,
    "Text": "b) Hình thức bảo vệ và đánh giá trực tuyến được sự đồng thuận của các thành",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -9203,7 +9180,7 @@
    }
   },
   {
-   "Paragraph": 400,
+   "Paragraph": 399,
    "Text": "viên hội đồng và người học;",
    "MarkerText": null,
    "MarkerType": null,
@@ -9226,7 +9203,7 @@
    }
   },
   {
-   "Paragraph": 401,
+   "Paragraph": 400,
    "Text": "c) Diễn biến của buổi bảo vệ trực tuyến được ghi hình, ghi âm đầy đủ và lưu trữ.",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -9249,7 +9226,7 @@
    }
   },
   {
-   "Paragraph": 402,
+   "Paragraph": 401,
    "Text": "3. Điểm học phần được tính từ tổng các điểm thành phần nhân với trọng số",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -9272,7 +9249,7 @@
    }
   },
   {
-   "Paragraph": 403,
+   "Paragraph": 402,
    "Text": "tương ứng, làm tròn tới một chữ số thập phân và xếp loại điểm chữ như dưới đây, trừ",
    "MarkerText": null,
    "MarkerType": null,
@@ -9295,7 +9272,7 @@
    }
   },
   {
-   "Paragraph": 404,
+   "Paragraph": 403,
    "Text": "các trường hợp được quy định tại điểm d khoản này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -9318,7 +9295,7 @@
    }
   },
   {
-   "Paragraph": 405,
+   "Paragraph": 404,
    "Text": "a) Loại đạt có phân mức, áp dụng cho các học phần được tính vào điểm trung",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -9341,7 +9318,7 @@
    }
   },
   {
-   "Paragraph": 406,
+   "Paragraph": 405,
    "Text": "bình học tập, bao gồm:",
    "MarkerText": null,
    "MarkerType": null,
@@ -9364,7 +9341,7 @@
    }
   },
   {
-   "Paragraph": 407,
+   "Paragraph": 406,
    "Text": "A+: từ 9,5 đến 10,0;",
    "MarkerText": "A+: ",
    "MarkerType": "ABC+: ",
@@ -9387,7 +9364,7 @@
    }
   },
   {
-   "Paragraph": 408,
+   "Paragraph": 407,
    "Text": "A: từ 8,5 đến 9,4;",
    "MarkerText": "A: ",
    "MarkerType": "ABC: ",
@@ -9410,7 +9387,7 @@
    }
   },
   {
-   "Paragraph": 409,
+   "Paragraph": 408,
    "Text": "B+: từ 8,0 đến 8,4;",
    "MarkerText": "B+: ",
    "MarkerType": "ABC+: ",
@@ -9433,7 +9410,7 @@
    }
   },
   {
-   "Paragraph": 410,
+   "Paragraph": 409,
    "Text": "B: từ 7,0 đến 7,9;",
    "MarkerText": "B: ",
    "MarkerType": "ABC: ",
@@ -9456,7 +9433,7 @@
    }
   },
   {
-   "Paragraph": 411,
+   "Paragraph": 410,
    "Text": "C+: từ 6,5 đến 6,9;",
    "MarkerText": "C+: ",
    "MarkerType": "XVI+: ",
@@ -9479,7 +9456,7 @@
    }
   },
   {
-   "Paragraph": 412,
+   "Paragraph": 411,
    "Text": "C: từ 5,5 đến 6,4;",
    "MarkerText": "C: ",
    "MarkerType": "ABC: ",
@@ -9502,7 +9479,7 @@
    }
   },
   {
-   "Paragraph": 413,
+   "Paragraph": 412,
    "Text": "D+: từ 5,0 – 5,4;",
    "MarkerText": "D+: ",
    "MarkerType": "ABC+: ",
@@ -9525,7 +9502,7 @@
    }
   },
   {
-   "Paragraph": 414,
+   "Paragraph": 413,
    "Text": "D: từ 4,0 - 4,9.",
    "MarkerText": "D: ",
    "MarkerType": "ABC: ",
@@ -9548,7 +9525,7 @@
    }
   },
   {
-   "Paragraph": 415,
+   "Paragraph": 414,
    "Text": "b) Loại đạt không phân mức, áp dụng cho các học phần chỉ yêu cầu đạt, không",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -9571,7 +9548,7 @@
    }
   },
   {
-   "Paragraph": 416,
+   "Paragraph": 415,
    "Text": "tính vào điểm trung bình học tập:",
    "MarkerText": null,
    "MarkerType": null,
@@ -9594,7 +9571,7 @@
    }
   },
   {
-   "Paragraph": 417,
+   "Paragraph": 416,
    "Text": "P: từ 5,0 trở lên.",
    "MarkerText": "P: ",
    "MarkerType": "ABC: ",
@@ -9617,7 +9594,7 @@
    }
   },
   {
-   "Paragraph": 418,
+   "Paragraph": 417,
    "Text": "c) Loại không đạt: F",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -9640,7 +9617,7 @@
    }
   },
   {
-   "Paragraph": 419,
+   "Paragraph": 418,
    "Text": "- Loại có phân mức: dưới 4,0;",
    "MarkerText": "- ",
    "MarkerType": "- ",
@@ -9663,7 +9640,7 @@
    }
   },
   {
-   "Paragraph": 420,
+   "Paragraph": 419,
    "Text": "- Loại không phân mức: dưới 5,0.",
    "MarkerText": "- ",
    "MarkerType": "- ",
@@ -9686,7 +9663,7 @@
    }
   },
   {
-   "Paragraph": 421,
+   "Paragraph": 420,
    "Text": "d) Một số trường hợp đặc biệt sử dụng các điểm chữ xếp loại, không được tính",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -9709,7 +9686,7 @@
    }
   },
   {
-   "Paragraph": 422,
+   "Paragraph": 421,
    "Text": "vào điểm trung bình học tập:",
    "MarkerText": null,
    "MarkerType": null,
@@ -9732,7 +9709,7 @@
    }
   },
   {
-   "Paragraph": 423,
+   "Paragraph": 422,
    "Text": "I: Điểm chưa hoàn thiện do được phép hoãn thi, kiểm tra;",
    "MarkerText": "I: ",
    "MarkerType": "ABC: ",
@@ -9755,7 +9732,7 @@
    }
   },
   {
-   "Paragraph": 424,
+   "Paragraph": 423,
    "Text": "X: Điểm chưa hoàn thiện do chưa đủ dữ liệu;",
    "MarkerText": "X: ",
    "MarkerType": "ABC: ",
@@ -9778,7 +9755,7 @@
    }
   },
   {
-   "Paragraph": 425,
+   "Paragraph": 424,
    "Text": "R: Điểm học phần được miễn học và công nhận tín chỉ.",
    "MarkerText": "R: ",
    "MarkerType": "ABC: ",
@@ -9801,7 +9778,7 @@
    }
   },
   {
-   "Paragraph": 426,
+   "Paragraph": 425,
    "Text": "4. Việc xếp loại các mức điểm A+, A, B+, B, C+, C, D+, D, F được áp dụng cho",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -9824,7 +9801,7 @@
    }
   },
   {
-   "Paragraph": 427,
+   "Paragraph": 426,
    "Text": "các trường hợp sau đây:",
    "MarkerText": null,
    "MarkerType": null,
@@ -9847,7 +9824,7 @@
    }
   },
   {
-   "Paragraph": 428,
+   "Paragraph": 427,
    "Text": "a) Đối với những học phần mà sinh viên đã có đủ điểm đánh giá thành phần, kể",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -9870,7 +9847,7 @@
    }
   },
   {
-   "Paragraph": 429,
+   "Paragraph": 428,
    "Text": "cả trường hợp bỏ học, bỏ kiểm tra hoặc bỏ thi không có lí do phải nhận điểm 0;",
    "MarkerText": null,
    "MarkerType": null,
@@ -9893,7 +9870,7 @@
    }
   },
   {
-   "Paragraph": 430,
+   "Paragraph": 429,
    "Text": "b) Chuyển đổi từ mức điểm I qua, sau khi đã có các kết quả đánh giá điểm thành",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -9916,7 +9893,7 @@
    }
   },
   {
-   "Paragraph": 431,
+   "Paragraph": 430,
    "Text": "phần mà trước đó sinh viên được Trường cho phép hoãn thi, kiểm tra;",
    "MarkerText": null,
    "MarkerType": null,
@@ -9939,7 +9916,7 @@
    }
   },
   {
-   "Paragraph": 432,
+   "Paragraph": 431,
    "Text": "c) Chuyển đổi từ mức điểm X qua.",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -9962,7 +9939,7 @@
    }
   },
   {
-   "Paragraph": 433,
+   "Paragraph": 432,
    "Text": "5. Việc xếp loại ở mức điểm F ngoài những trường hợp như đã nêu ở khoản 4",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -9985,7 +9962,7 @@
    }
   },
   {
-   "Paragraph": 434,
+   "Paragraph": 433,
    "Text": "điều này còn áp dụng cho trường hợp sinh viên vi phạm quy chế thi đến mức có quyết",
    "MarkerText": null,
    "MarkerType": null,
@@ -10008,7 +9985,7 @@
    }
   },
   {
-   "Paragraph": 435,
+   "Paragraph": 434,
    "Text": "định phải nhận mức điểm F.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10031,7 +10008,7 @@
    }
   },
   {
-   "Paragraph": 436,
+   "Paragraph": 435,
    "Text": "6. Việc xếp loại theo mức điểm I được áp dụng cho các trường hợp sau đây:",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -10054,7 +10031,7 @@
    }
   },
   {
-   "Paragraph": 437,
+   "Paragraph": 436,
    "Text": "a) Trong thời gian học hoặc trong thời gian thi kết thúc học phần, sinh viên bị",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -10077,7 +10054,7 @@
    }
   },
   {
-   "Paragraph": 438,
+   "Paragraph": 437,
    "Text": "ốm hoặc tai nạn không thể dự kiểm tra hoặc thi, nhưng phải có hồ sơ khám bệnh của",
    "MarkerText": null,
    "MarkerType": null,
@@ -10100,7 +10077,7 @@
    }
   },
   {
-   "Paragraph": 439,
+   "Paragraph": 438,
    "Text": "bệnh viện hoặc trung tâm y tế tuyến quận, huyện trở lên;",
    "MarkerText": null,
    "MarkerType": null,
@@ -10123,7 +10100,7 @@
    }
   },
   {
-   "Paragraph": 440,
+   "Paragraph": 439,
    "Text": "b) Vì lí do bất khả kháng khác, sinh viên phải có minh chứng kèm theo và có",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -10146,7 +10123,7 @@
    }
   },
   {
-   "Paragraph": 441,
+   "Paragraph": 440,
    "Text": "xác nhận của trưởng khoa.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10169,7 +10146,7 @@
    }
   },
   {
-   "Paragraph": 442,
+   "Paragraph": 441,
    "Text": "c) Trước khi bắt đầu học kì mới kế tiếp, sinh viên có học phần bị đánh giá mức",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -10192,7 +10169,7 @@
    }
   },
   {
-   "Paragraph": 443,
+   "Paragraph": 442,
    "Text": "điểm I phải hoàn thành các điểm thành phần còn nợ để được chuyển điểm. Hết thời hạn theo quy định, nếu sinh viên chưa trả nợ và chưa được chuyển điểm nhưng không",
    "MarkerText": null,
    "MarkerType": null,
@@ -10215,7 +10192,7 @@
    }
   },
   {
-   "Paragraph": 444,
+   "Paragraph": 443,
    "Text": "rơi vào trường hợp bị buộc thôi học thì phải học lại học phần đó.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10238,7 +10215,7 @@
    }
   },
   {
-   "Paragraph": 445,
+   "Paragraph": 444,
    "Text": "7. Việc xếp loại theo mức điểm X được áp dụng đối với những học phần mà",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -10261,7 +10238,7 @@
    }
   },
   {
-   "Paragraph": 446,
+   "Paragraph": 445,
    "Text": "Trường chưa nhận được báo cáo kết quả học tập của sinh viên từ khoa chuyển đến.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10284,7 +10261,7 @@
    }
   },
   {
-   "Paragraph": 447,
+   "Paragraph": 446,
    "Text": "8. Kí hiệu R được áp dụng cho những học phần được công nhận kết quả, khi",
    "MarkerText": "8. ",
    "MarkerType": "123. ",
@@ -10307,7 +10284,7 @@
    }
   },
   {
-   "Paragraph": 448,
+   "Paragraph": 447,
    "Text": "sinh viên chuyển từ trường khác đến, chuyển đổi giữa các chương trình, học liên",
    "MarkerText": null,
    "MarkerType": null,
@@ -10330,7 +10307,7 @@
    }
   },
   {
-   "Paragraph": 449,
+   "Paragraph": 448,
    "Text": "thông hoặc học thêm ngành thứ hai.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10353,7 +10330,7 @@
    }
   },
   {
-   "Paragraph": 450,
+   "Paragraph": 449,
    "Text": "Điều 18. Học lại, học cải thiện điểm, học bổ sung",
    "MarkerText": "Điều 18. ",
    "MarkerType": "Điều 123. ",
@@ -10376,7 +10353,7 @@
    }
   },
   {
-   "Paragraph": 451,
+   "Paragraph": 450,
    "Text": "1. Sinh viên có điểm học phần không đạt phải đăng kí học lại theo quy định tại",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -10399,7 +10376,7 @@
    }
   },
   {
-   "Paragraph": 452,
+   "Paragraph": 451,
    "Text": "khoản 2 và khoản 3 Điều 3 của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10422,7 +10399,7 @@
    }
   },
   {
-   "Paragraph": 453,
+   "Paragraph": 452,
    "Text": "2. Sinh viên có điểm học phần đạt được đăng kí học lại để cải thiện điểm. Sinh",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -10445,7 +10422,7 @@
    }
   },
   {
-   "Paragraph": 454,
+   "Paragraph": 453,
    "Text": "viên có thể đăng kí học để cải thiện điểm nhiều lần đối với một học phần, điểm chính thức là điểm cao nhất trong các lần học. Sinh viên không được đăng kí học cải thiện",
    "MarkerText": null,
    "MarkerType": null,
@@ -10468,7 +10445,7 @@
    }
   },
   {
-   "Paragraph": 455,
+   "Paragraph": 454,
    "Text": "điểm những học phần phải học lại do không đạt.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10491,7 +10468,7 @@
    }
   },
   {
-   "Paragraph": 456,
+   "Paragraph": 455,
    "Text": "3. Sau khi có điểm chính thức của học phần, nếu chưa đạt, sinh viên có thể đăng",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -10514,7 +10491,7 @@
    }
   },
   {
-   "Paragraph": 457,
+   "Paragraph": 456,
    "Text": "kí thi lại điểm thi kết thúc học phần để cải thiện điểm học phần từ không đạt thành đạt; trong trường hợp này, điểm học phần sau khi thi lại chỉ được giới hạn cao nhất ở mức điểm C. Sinh viên không được học cải thiện những học phần này. Sau khi thi lại, nếu điểm học phần vẫn không đạt thì giữ nguyên điểm cũ và sinh viên phải học lại",
    "MarkerText": null,
    "MarkerType": null,
@@ -10537,7 +10514,7 @@
    }
   },
   {
-   "Paragraph": 458,
+   "Paragraph": 457,
    "Text": "học phần đó theo quy định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10560,7 +10537,7 @@
    }
   },
   {
-   "Paragraph": 459,
+   "Paragraph": 458,
    "Text": "4. Sinh viên có nhu cầu có thể đăng kí học bổ sung cho đủ khối lượng học tập",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -10583,7 +10560,7 @@
    }
   },
   {
-   "Paragraph": 460,
+   "Paragraph": 459,
    "Text": "tối thiểu được quy định tại khoản 1 Điều 8 của Quy chế này, hoặc cho đủ khối lượng",
    "MarkerText": null,
    "MarkerType": null,
@@ -10606,7 +10583,7 @@
    }
   },
   {
-   "Paragraph": 461,
+   "Paragraph": 460,
    "Text": "học tập để được xét thăng hạng năm đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10629,7 +10606,7 @@
    }
   },
   {
-   "Paragraph": 462,
+   "Paragraph": 461,
    "Text": "Điều 19. Tổ chức thi, kiểm tra, đánh giá",
    "MarkerText": "Điều 19. ",
    "MarkerType": "Điều 123. ",
@@ -10652,7 +10629,7 @@
    }
   },
   {
-   "Paragraph": 463,
+   "Paragraph": 462,
    "Text": "1. Hình thức thi, kiểm tra, đánh giá có thể là viết (trắc nghiệm hoặc tự luận), vấn",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -10675,7 +10652,7 @@
    }
   },
   {
-   "Paragraph": 464,
+   "Paragraph": 463,
    "Text": "đáp, thực hành, làm dự án, viết tiểu luận, làm bài tập lớn hoặc các hình thức khác và phải được thể hiện trong đề cương chi tiết học phần. Trường hợp có sự thay đổi hình thức thi so với đề cương chi tiết học phần đã được ban hành, Trưởng khoa phải báo",
    "MarkerText": null,
    "MarkerType": null,
@@ -10698,7 +10675,7 @@
    }
   },
   {
-   "Paragraph": 465,
+   "Paragraph": 464,
    "Text": "cáo với Hiệu trưởng bằng văn bản chậm nhất 02 tuần trước khi thực hiện.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10721,7 +10698,7 @@
    }
   },
   {
-   "Paragraph": 466,
+   "Paragraph": 465,
    "Text": "2. Trước khi bắt đầu dạy học học phần, giảng viên phải công khai tới sinh viên:",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -10744,7 +10721,7 @@
    }
   },
   {
-   "Paragraph": 467,
+   "Paragraph": 466,
    "Text": "đề cương chi tiết học phần, đề cương ôn tập, hình thức kiểm tra, đánh giá.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10767,7 +10744,7 @@
    }
   },
   {
-   "Paragraph": 468,
+   "Paragraph": 467,
    "Text": "3. Đối với những học phần có tổ chức thi kết thúc học phần, lịch thi phải đảm",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -10790,7 +10767,7 @@
    }
   },
   {
-   "Paragraph": 469,
+   "Paragraph": 468,
    "Text": "bảo thời gian ôn thi tối thiểu 01 buổi/tín chỉ. Đối với những học phần không được đánh giá bằng bài thi kết thúc học phần, giảng viên tổ chức kiểm tra, đánh giá ở những thời điểm phù hợp và phải thông báo công khai với sinh viên khi bắt đầu dạy",
    "MarkerText": null,
    "MarkerType": null,
@@ -10813,7 +10790,7 @@
    }
   },
   {
-   "Paragraph": 470,
+   "Paragraph": 469,
    "Text": "học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10836,7 +10813,7 @@
    }
   },
   {
-   "Paragraph": 471,
+   "Paragraph": 470,
    "Text": "4. Thời gian làm bài thi tự luận/trắc nghiệm của mỗi môn thi được thực hiện",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -10859,7 +10836,7 @@
    }
   },
   {
-   "Paragraph": 472,
+   "Paragraph": 471,
    "Text": "theo Quy chế quy định về tổ chức thi của Trường. Thời gian làm bài thi thực hành, thí",
    "MarkerText": null,
    "MarkerType": null,
@@ -10882,7 +10859,7 @@
    }
   },
   {
-   "Paragraph": 473,
+   "Paragraph": 472,
    "Text": "nghiệm do giảng viên quy định và phải thể hiện rõ trong lịch thi (nếu có).",
    "MarkerText": null,
    "MarkerType": null,
@@ -10905,7 +10882,7 @@
    }
   },
   {
-   "Paragraph": 474,
+   "Paragraph": 473,
    "Text": "5. Đề thi kết thúc học phần phải phù hợp với nội dung học phần đã quy định",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -10928,7 +10905,7 @@
    }
   },
   {
-   "Paragraph": 475,
+   "Paragraph": 474,
    "Text": "trong chương trình. Việc ra đề thi hoặc lấy từ ngân hàng đề thi được thực hiện theo",
    "MarkerText": null,
    "MarkerType": null,
@@ -10951,7 +10928,7 @@
    }
   },
   {
-   "Paragraph": 476,
+   "Paragraph": 475,
    "Text": "quy định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -10974,7 +10951,7 @@
    }
   },
   {
-   "Paragraph": 477,
+   "Paragraph": 476,
    "Text": "6. Trưởng khoa/trưởng đơn vị tổ chức thi chịu trách nhiệm phân công cán bộ coi",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -10997,7 +10974,7 @@
    }
   },
   {
-   "Paragraph": 478,
+   "Paragraph": 477,
    "Text": "thi, đảm bảo có 2 giám thị/phòng thi.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11020,7 +10997,7 @@
    }
   },
   {
-   "Paragraph": 479,
+   "Paragraph": 478,
    "Text": "7. Bài chấm thi viết tự luận phải được dọc phách trước khi chấm, việc chấm thi",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -11043,7 +11020,7 @@
    }
   },
   {
-   "Paragraph": 480,
+   "Paragraph": 479,
    "Text": "phải do hai giảng viên chấm theo hai vòng độc lập.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11066,7 +11043,7 @@
    }
   },
   {
-   "Paragraph": 481,
+   "Paragraph": 480,
    "Text": "8. Trưởng khoa/trưởng đơn vị tổ chức chấm thi chịu trách nhiệm phân công",
    "MarkerText": "8. ",
    "MarkerType": "123. ",
@@ -11089,7 +11066,7 @@
    }
   },
   {
-   "Paragraph": 482,
+   "Paragraph": 481,
    "Text": "giảng viên chấm thi; quy định khu vực chấm thi, thời gian chấm thi. Tuyệt đối không",
    "MarkerText": null,
    "MarkerType": null,
@@ -11112,7 +11089,7 @@
    }
   },
   {
-   "Paragraph": 483,
+   "Paragraph": 482,
    "Text": "được mang bài thi của sinh viên ra khỏi khu vực chấm thi đã được quy định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11135,7 +11112,7 @@
    }
   },
   {
-   "Paragraph": 484,
+   "Paragraph": 483,
    "Text": "9. Phải có ít nhất 02 cán bộ thực hiện nhập điểm thi kết thúc học phần vào phần",
    "MarkerText": "9. ",
    "MarkerType": "123. ",
@@ -11158,7 +11135,7 @@
    }
   },
   {
-   "Paragraph": 485,
+   "Paragraph": 484,
    "Text": "mềm và phải hoàn thành chậm nhất 01 tuần sau khi kết thúc buổi thi. Việc sửa điểm thi đã nhập vào phần mềm phải được thực hiện tại phòng QLĐT&CTHSSV. Biên bản sửa điểm phải có xác nhận của trưởng khoa, của cán bộ chấm thi và phải được lưu tại",
    "MarkerText": null,
    "MarkerType": null,
@@ -11181,7 +11158,7 @@
    }
   },
   {
-   "Paragraph": 486,
+   "Paragraph": 485,
    "Text": "phòng QLĐT&CTHSSV theo quy định tại khoản 10 Điều này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11204,7 +11181,7 @@
    }
   },
   {
-   "Paragraph": 487,
+   "Paragraph": 486,
    "Text": "10. Bài thi kết thúc học phần, kể cả các bài báo cáo thí nghiệm, thực hành; bài",
    "MarkerText": "10. ",
    "MarkerType": "123. ",
@@ -11227,7 +11204,7 @@
    }
   },
   {
-   "Paragraph": 488,
+   "Paragraph": 487,
    "Text": "tập lớn, tiểu luận của sinh viên phải được lưu tại khoa/đơn vị tổ chức thi ít nhất đến",
    "MarkerText": null,
    "MarkerType": null,
@@ -11250,7 +11227,7 @@
    }
   },
   {
-   "Paragraph": 489,
+   "Paragraph": 488,
    "Text": "hết khóa học (4 năm) của sinh viên.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11273,7 +11250,7 @@
    }
   },
   {
-   "Paragraph": 490,
+   "Paragraph": 489,
    "Text": "11. Hình thức tổ chức thi vấn đáp phải do hai giảng viên thực hiện. Điểm thi vấn",
    "MarkerText": "11. ",
    "MarkerType": "123. ",
@@ -11296,7 +11273,7 @@
    }
   },
   {
-   "Paragraph": 491,
+   "Paragraph": 490,
    "Text": "đáp được công bố công khai sau mỗi buổi thi. Trong trường hợp hai giảng viên chấm thi không thống nhất được điểm, giảng viên chấm thi trình trưởng bộ môn hoặc",
    "MarkerText": null,
    "MarkerType": null,
@@ -11319,7 +11296,7 @@
    }
   },
   {
-   "Paragraph": 492,
+   "Paragraph": 491,
    "Text": "trưởng khoa quyết định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11342,7 +11319,7 @@
    }
   },
   {
-   "Paragraph": 493,
+   "Paragraph": 492,
    "Text": "12. Bản ghi điểm chấm thi kết thúc học phần phải có đầy đủ chữ kí theo quy",
    "MarkerText": "12. ",
    "MarkerType": "123. ",
@@ -11365,7 +11342,7 @@
    }
   },
   {
-   "Paragraph": 494,
+   "Paragraph": 493,
    "Text": "định và phải được lưu trữ cùng với bài thi của sinh viên.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11388,7 +11365,7 @@
    }
   },
   {
-   "Paragraph": 495,
+   "Paragraph": 494,
    "Text": "13. Sinh viên vắng mặt trong buổi thi, đánh giá không có lý do chính đáng phải",
    "MarkerText": "13. ",
    "MarkerType": "123. ",
@@ -11411,7 +11388,7 @@
    }
   },
   {
-   "Paragraph": 496,
+   "Paragraph": 495,
    "Text": "nhận điểm 0. Riêng với trường hợp sinh viên vắng mặt có lý do chính đáng được quy định tại điểm a, điểm b khoản 6 Điều 17 của quy chế này được dự thi, đánh giá ở một",
    "MarkerText": null,
    "MarkerType": null,
@@ -11434,7 +11411,7 @@
    }
   },
   {
-   "Paragraph": 497,
+   "Paragraph": 496,
    "Text": "đợt khác và được tính điểm lần đầu.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11457,7 +11434,7 @@
    }
   },
   {
-   "Paragraph": 498,
+   "Paragraph": 497,
    "Text": "14. Sinh viên có nhu cầu phúc khảo điểm thi kết thúc học phần nộp đơn về",
    "MarkerText": "14. ",
    "MarkerType": "123. ",
@@ -11480,7 +11457,7 @@
    }
   },
   {
-   "Paragraph": 499,
+   "Paragraph": 498,
    "Text": "phòng QLCLGD chậm nhất 02 tuần sau khi thi. Phòng QLCLGD tổ chức chấm thi phúc khảo theo quy định, thông báo kết quả phúc khảo tới sinh viên chậm nhất 01 tuần, kể từ ngày hết hạn nhận đơn phúc khảo. Phòng QLĐT&CTHSSV cập nhật điểm",
    "MarkerText": null,
    "MarkerType": null,
@@ -11503,7 +11480,7 @@
    }
   },
   {
-   "Paragraph": 500,
+   "Paragraph": 499,
    "Text": "lên hệ thống theo quy định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11526,7 +11503,7 @@
    }
   },
   {
-   "Paragraph": 501,
+   "Paragraph": 500,
    "Text": "Điều 20. Đánh giá kết quả học tập theo học kỳ, năm học",
    "MarkerText": "Điều 20. ",
    "MarkerType": "Điều 123. ",
@@ -11549,7 +11526,7 @@
    }
   },
   {
-   "Paragraph": 502,
+   "Paragraph": 501,
    "Text": "1. Kết quả học tập của sinh viên được đánh giá sau từng học kì, dựa trên kết quả",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -11572,7 +11549,7 @@
    }
   },
   {
-   "Paragraph": 503,
+   "Paragraph": 502,
    "Text": "các học phần nằm trong yêu cầu của chương trình đào tạo mà người học đã học và có",
    "MarkerText": null,
    "MarkerType": null,
@@ -11595,7 +11572,7 @@
    }
   },
   {
-   "Paragraph": 504,
+   "Paragraph": 503,
    "Text": "điểm theo các tiêu chí sau đây:",
    "MarkerText": null,
    "MarkerType": null,
@@ -11618,7 +11595,7 @@
    }
   },
   {
-   "Paragraph": 505,
+   "Paragraph": 504,
    "Text": "a) Tổng số tín chỉ của những học phần mà sinh viên không đạt trong một học kỳ,",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -11641,7 +11618,7 @@
    }
   },
   {
-   "Paragraph": 506,
+   "Paragraph": 505,
    "Text": "trong một năm học, hoặc nợ đọng từ đầu khoá học;",
    "MarkerText": null,
    "MarkerType": null,
@@ -11664,7 +11641,7 @@
    }
   },
   {
-   "Paragraph": 507,
+   "Paragraph": 506,
    "Text": "b) Tổng số tín chỉ của những học phần mà sinh viên đã đạt từ đầu khóa học (số",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -11687,7 +11664,7 @@
    }
   },
   {
-   "Paragraph": 508,
+   "Paragraph": 507,
    "Text": "tín chỉ tích lũy), tính cả các học phần được miễn học, được công nhận tín chỉ;",
    "MarkerText": null,
    "MarkerType": null,
@@ -11710,7 +11687,7 @@
    }
   },
   {
-   "Paragraph": 509,
+   "Paragraph": 508,
    "Text": "c) Điểm trung bình của những học phần mà sinh viên đã học trong một học kỳ",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -11733,7 +11710,7 @@
    }
   },
   {
-   "Paragraph": 510,
+   "Paragraph": 509,
    "Text": "(điểm trung bình học kỳ), trong một năm học (điểm trung bình năm học) hoặc tính từ đầu khóa học (điểm trung bình tích lũy), tính theo điểm chính thức của học phần và",
    "MarkerText": null,
    "MarkerType": null,
@@ -11756,7 +11733,7 @@
    }
   },
   {
-   "Paragraph": 511,
+   "Paragraph": 510,
    "Text": "trọng số là số tín chỉ của học phần đó.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11779,7 +11756,7 @@
    }
   },
   {
-   "Paragraph": 512,
+   "Paragraph": 511,
    "Text": "2. Để tính điểm trung bình, điểm chữ của học phần được quy đổi về điểm số như",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -11802,8 +11779,8 @@
    }
   },
   {
-   "Paragraph": 513,
-   "Text": "dưới đây: A+ quy đổi thành 4,0; A quy đổi thành 3,7; B+ quy đổi thành 3,5;",
+   "Paragraph": 512,
+   "Text": "dưới đây: A+ quy đổi thành 4,0; A quy đổi thành 3,7; B+ quy đổi thành 3,5; B quy đổi thành 3,0; C+ quy đổi thành 2,5; C quy đổi thành 2,0; D+ quy đổi thành 1,5; D quy đổi thành 1,0; F quy đổi thành 0,0.",
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
@@ -11817,29 +11794,6 @@
      "Width": 25.3
     },
     "Last": {
-     "Text": "3,5;",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 24.2
-    }
-   }
-  },
-  {
-   "Paragraph": 514,
-   "Text": "B quy đổi thành 3,0; C+ quy đổi thành 2,5; C quy đổi thành 2,0; D+ quy đổi thành 1,5; D quy đổi thành 1,0; F quy đổi thành 0,0.",
-   "MarkerText": null,
-   "MarkerType": null,
-   "Style": 1000,
-   "FontSize": 14.0,
-   "Align": "Left",
-   "Words": {
-    "First": {
-     "Text": "B",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 5.9
-    },
-    "Last": {
      "Text": "0,0",
      "Style": 1000,
      "FontSize": 14.0,
@@ -11848,7 +11802,7 @@
    }
   },
   {
-   "Paragraph": 515,
+   "Paragraph": 513,
    "Text": "3. Những điểm chữ không được quy định tại khoản 2 Điều này không được tính",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -11871,7 +11825,7 @@
    }
   },
   {
-   "Paragraph": 516,
+   "Paragraph": 514,
    "Text": "vào các điểm trung bình học kỳ, năm học hoặc tích lũy. Những học phần không nằm trong yêu cầu của chương trình đào tạo không được tính vào các tiêu chí đánh giá kết",
    "MarkerText": null,
    "MarkerType": null,
@@ -11894,7 +11848,7 @@
    }
   },
   {
-   "Paragraph": 517,
+   "Paragraph": 515,
    "Text": "quả học tập của sinh viên.",
    "MarkerText": null,
    "MarkerType": null,
@@ -11917,7 +11871,7 @@
    }
   },
   {
-   "Paragraph": 518,
+   "Paragraph": 516,
    "Text": "4. Sinh viên được xếp loại học lực theo điểm trung bình học kỳ, điểm trung bình",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -11940,7 +11894,7 @@
    }
   },
   {
-   "Paragraph": 519,
+   "Paragraph": 517,
    "Text": "năm học hoặc điểm trung bình tích lũy như sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -11963,7 +11917,7 @@
    }
   },
   {
-   "Paragraph": 520,
+   "Paragraph": 518,
    "Text": "a) Theo thang điểm 4: Từ 3,6 đến 4,0: Xuất sắc; Từ 3,2 đến dưới 3,6: Giỏi; Từ 2,5 đến dưới 3,2: Khá; Từ 2,0 đến dưới 2,5: Trung bình; Từ 1,0 đến dưới 2,0: Yếu;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -11986,7 +11940,7 @@
    }
   },
   {
-   "Paragraph": 521,
+   "Paragraph": 519,
    "Text": "Dưới 1,0: Kém.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12009,7 +11963,7 @@
    }
   },
   {
-   "Paragraph": 522,
+   "Paragraph": 520,
    "Text": "b) Theo thang điểm 10: Từ 9,0 đến 10,0: Xuất sắc; Từ 8,0 đến dưới 9,0: Giỏi; Từ 7,0 đến dưới 8,0: Khá; Từ 5,0 đến dưới 7,0: Trung bình; Từ 4,0 đến dưới 5,0: Yếu;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -12032,7 +11986,7 @@
    }
   },
   {
-   "Paragraph": 523,
+   "Paragraph": 521,
    "Text": "Dưới 4,0: Kém.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12055,7 +12009,7 @@
    }
   },
   {
-   "Paragraph": 524,
+   "Paragraph": 522,
    "Text": "5. Sinh viên được xếp trình độ năm học căn cứ số tín chỉ tích lũy được từ đầu",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -12078,7 +12032,7 @@
    }
   },
   {
-   "Paragraph": 525,
+   "Paragraph": 523,
    "Text": "khóa học (gọi tắt là N) và số tín chỉ trung bình một năm học theo kế hoạch học tập",
    "MarkerText": null,
    "MarkerType": null,
@@ -12101,7 +12055,7 @@
    }
   },
   {
-   "Paragraph": 526,
+   "Paragraph": 524,
    "Text": "chuẩn (gọi tắt là M), cụ thể như sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -12124,7 +12078,7 @@
    }
   },
   {
-   "Paragraph": 527,
+   "Paragraph": 525,
    "Text": "a) Trình độ năm thứ nhất: N < M;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -12147,7 +12101,7 @@
    }
   },
   {
-   "Paragraph": 528,
+   "Paragraph": 526,
    "Text": "b) Trình độ năm thứ hai: M ≤ N < 2M;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -12170,7 +12124,7 @@
    }
   },
   {
-   "Paragraph": 529,
+   "Paragraph": 527,
    "Text": "c) Trình độ năm thứ ba: 2M ≤ N < 3M;",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -12193,7 +12147,7 @@
    }
   },
   {
-   "Paragraph": 530,
+   "Paragraph": 528,
    "Text": "d) Trình độ năm thứ tư: 3M ≤ N < 4M; đ) Trình độ năm thứ năm: 4M ≤ N < 5M.",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -12216,7 +12170,7 @@
    }
   },
   {
-   "Paragraph": 531,
+   "Paragraph": 529,
    "Text": "6. Các khoa tổ chức xét tiến độ cho sinh viên và gửi kết quả xét tiến độ về phòng",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -12239,7 +12193,7 @@
    }
   },
   {
-   "Paragraph": 532,
+   "Paragraph": 530,
    "Text": "QLĐT&CTHSSV chậm 04 tuần, sau khi kết thúc kì thi kết thúc học phần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12262,7 +12216,7 @@
    }
   },
   {
-   "Paragraph": 533,
+   "Paragraph": 531,
    "Text": "Điều 21. Xử lí kết quả học tập",
    "MarkerText": "Điều 21. ",
    "MarkerType": "Điều 123. ",
@@ -12285,7 +12239,7 @@
    }
   },
   {
-   "Paragraph": 534,
+   "Paragraph": 532,
    "Text": "1. Cuối mỗi học kỳ chính, sinh viên được cảnh báo học tập nếu có 02 trong 03",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -12308,7 +12262,7 @@
    }
   },
   {
-   "Paragraph": 535,
+   "Paragraph": 533,
    "Text": "điều kiện như sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -12331,7 +12285,7 @@
    }
   },
   {
-   "Paragraph": 536,
+   "Paragraph": 534,
    "Text": "a) Tổng số tín chỉ không đạt trong học kỳ vượt quá 50% khối lượng đã đăng kí",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -12354,7 +12308,7 @@
    }
   },
   {
-   "Paragraph": 537,
+   "Paragraph": 535,
    "Text": "học trong học kỳ, hoặc tổng số tín chỉ nợ đọng từ đầu khóa học vượt quá 24;",
    "MarkerText": null,
    "MarkerType": null,
@@ -12377,7 +12331,7 @@
    }
   },
   {
-   "Paragraph": 538,
+   "Paragraph": 536,
    "Text": "b) Điểm trung bình học kỳ đạt dưới 0,8 đối với học kỳ đầu của khóa học, dưới",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -12400,7 +12354,7 @@
    }
   },
   {
-   "Paragraph": 539,
+   "Paragraph": 537,
    "Text": "1,0 đối với các học kỳ tiếp theo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -12423,7 +12377,7 @@
    }
   },
   {
-   "Paragraph": 540,
+   "Paragraph": 538,
    "Text": "c) Điểm trung bình tích lũy đạt dưới 1,2 đối với sinh viên trình độ năm thứ nhất,",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -12446,7 +12400,7 @@
    }
   },
   {
-   "Paragraph": 541,
+   "Paragraph": 539,
    "Text": "dưới 1,4 đối với sinh viên trình độ năm thứ hai, dưới 1,6 đối với sinh viên trình độ",
    "MarkerText": null,
    "MarkerType": null,
@@ -12469,7 +12423,7 @@
    }
   },
   {
-   "Paragraph": 542,
+   "Paragraph": 540,
    "Text": "năm thứ ba hoặc dưới 1,8 đối với sinh viên các năm tiếp theo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12492,7 +12446,7 @@
    }
   },
   {
-   "Paragraph": 543,
+   "Paragraph": 541,
    "Text": "2. Sinh viên bị buộc thôi học khi có một trong các trường hợp sau:",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -12515,7 +12469,7 @@
    }
   },
   {
-   "Paragraph": 544,
+   "Paragraph": 542,
    "Text": "a) Được cảnh báo học tập 2 lần liên tiếp.",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -12538,7 +12492,7 @@
    }
   },
   {
-   "Paragraph": 545,
+   "Paragraph": 543,
    "Text": "b) Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -12561,7 +12515,7 @@
    }
   },
   {
-   "Paragraph": 546,
+   "Paragraph": 544,
    "Text": "Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12584,7 +12538,7 @@
    }
   },
   {
-   "Paragraph": 547,
+   "Paragraph": 545,
    "Text": "c) Vi phạm quy chế công tác học sinh sinh viên và chịu mức kỉ luật buộc thôi",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -12607,7 +12561,7 @@
    }
   },
   {
-   "Paragraph": 548,
+   "Paragraph": 546,
    "Text": "học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12630,7 +12584,7 @@
    }
   },
   {
-   "Paragraph": 549,
+   "Paragraph": 547,
    "Text": "3. Quy trình, thủ tục cảnh báo học tập, buộc thôi học: việc thông báo hình thức",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -12653,8 +12607,8 @@
    }
   },
   {
-   "Paragraph": 550,
-   "Text": "áp dụng tới sinh viên: chậm nhất 01 tuần sau khi có kết quả xét tiến độ, trưởng khoa chịu trách nhiệm thông báo tới sinh viên được cảnh báo học tập lần thứ nhất; Trường thông báo bằng văn bản tới sinh viên được cảnh báo kết quả học tập lần thứ 2 liên",
+   "Paragraph": 548,
+   "Text": "áp dụng tới sinh viên: chậm nhất 01 tuần sau khi có kết quả xét tiến độ, trưởng khoa chịu trách nhiệm thông báo tới sinh viên được cảnh báo học tập lần thứ nhất; Trường thông báo bằng văn bản tới sinh viên được cảnh báo kết quả học tập lần thứ 2 liên tiếp, đồng thời gửi Quyết định buộc thôi học tới sinh viên và chính quyền địa phương",
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
@@ -12668,29 +12622,6 @@
      "Width": 11.5
     },
     "Last": {
-     "Text": "liên",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 24.0
-    }
-   }
-  },
-  {
-   "Paragraph": 551,
-   "Text": "tiếp, đồng thời gửi Quyết định buộc thôi học tới sinh viên và chính quyền địa phương",
-   "MarkerText": null,
-   "MarkerType": null,
-   "Style": 1000,
-   "FontSize": 14.0,
-   "Align": "Justify",
-   "Words": {
-    "First": {
-     "Text": "tiếp,",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 28.9
-    },
-    "Last": {
      "Text": "phương",
      "Style": 1000,
      "FontSize": 14.0,
@@ -12699,7 +12630,7 @@
    }
   },
   {
-   "Paragraph": 552,
+   "Paragraph": 549,
    "Text": "nơi sinh viên đăng kí hộ khẩu thường trú.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12722,7 +12653,7 @@
    }
   },
   {
-   "Paragraph": 553,
+   "Paragraph": 550,
    "Text": "4. Trường hợp sinh viên bị buộc thôi học, nếu có nhu cầu, sinh viên được",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -12745,7 +12676,7 @@
    }
   },
   {
-   "Paragraph": 554,
+   "Paragraph": 551,
    "Text": "Trường cung cấp bảng điểm các học phần đã đạt để có thể được miễn học và thừa nhận kết quả khi tham gia học tập ở một cơ sở giáo dục đào tạo khác; ngành đào tạo",
    "MarkerText": null,
    "MarkerType": null,
@@ -12768,7 +12699,7 @@
    }
   },
   {
-   "Paragraph": 555,
+   "Paragraph": 552,
    "Text": "khác của Trường.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12791,7 +12722,7 @@
    }
   },
   {
-   "Paragraph": 556,
+   "Paragraph": 553,
    "Text": "Điều 22. Công nhận kết quả học tập và chuyển đổi tín chỉ",
    "MarkerText": "Điều 22. ",
    "MarkerType": "Điều 123. ",
@@ -12814,7 +12745,7 @@
    }
   },
   {
-   "Paragraph": 557,
+   "Paragraph": 554,
    "Text": "1. Kết quả học tập của người học đã tích lũy từ một trình độ đào tạo khác, một",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -12837,7 +12768,7 @@
    }
   },
   {
-   "Paragraph": 558,
+   "Paragraph": 555,
    "Text": "ngành đào tạo hoặc một chương trình đào tạo khác, một khóa học khác hoặc từ một cơ sở đào tạo khác được Trường xem xét công nhận, chuyển đổi sang tín chỉ của những",
    "MarkerText": null,
    "MarkerType": null,
@@ -12860,7 +12791,7 @@
    }
   },
   {
-   "Paragraph": 559,
+   "Paragraph": 556,
    "Text": "học phần trong chương trình đào tạo theo học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -12883,7 +12814,7 @@
    }
   },
   {
-   "Paragraph": 560,
+   "Paragraph": 557,
    "Text": "2. Hội đồng chuyên môn của Trường xem xét công nhận, chuyển đổi tín chỉ trên",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -12906,7 +12837,7 @@
    }
   },
   {
-   "Paragraph": 561,
+   "Paragraph": 558,
    "Text": "cơ sở đối sánh chuẩn đầu ra, nội dung và khối lượng học tập, cách thức đánh giá học",
    "MarkerText": null,
    "MarkerType": null,
@@ -12929,7 +12860,7 @@
    }
   },
   {
-   "Paragraph": 562,
+   "Paragraph": 559,
    "Text": "phần và các điều kiện bảo đảm chất lượng thực hiện chương trình theo các cấp độ:",
    "MarkerText": null,
    "MarkerType": null,
@@ -12952,7 +12883,7 @@
    }
   },
   {
-   "Paragraph": 563,
+   "Paragraph": 560,
    "Text": "a) Công nhận, chuyển đổi theo từng học phần;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -12975,7 +12906,7 @@
    }
   },
   {
-   "Paragraph": 564,
+   "Paragraph": 561,
    "Text": "b) Công nhận, chuyển đổi theo từng nhóm học phần;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -12998,7 +12929,7 @@
    }
   },
   {
-   "Paragraph": 565,
+   "Paragraph": 562,
    "Text": "c) Công nhận, chuyển đổi theo cả chương trình đào tạo.",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -13021,7 +12952,7 @@
    }
   },
   {
-   "Paragraph": 566,
+   "Paragraph": 563,
    "Text": "3. Trường công khai quy định việc công nhận kết quả học tập và chuyển đổi tín",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -13044,7 +12975,7 @@
    }
   },
   {
-   "Paragraph": 567,
+   "Paragraph": 564,
    "Text": "chỉ. Khối lượng tối đa được công nhận, chuyển đổi không vượt quá 50% khối lượng học tập đã được thiết kế của chương trình đào tạo; riêng đối với ngành đào tạo giáo",
    "MarkerText": null,
    "MarkerType": null,
@@ -13067,7 +12998,7 @@
    }
   },
   {
-   "Paragraph": 568,
+   "Paragraph": 565,
    "Text": "viên thực hiện theo hướng dẫn của Bộ Giáo dục và Đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13090,7 +13021,7 @@
    }
   },
   {
-   "Paragraph": 569,
+   "Paragraph": 566,
    "Text": "4. Sinh viên các ngành không chuyên ngoại ngữ có một trong các chứng chỉ",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -13113,7 +13044,7 @@
    }
   },
   {
-   "Paragraph": 570,
+   "Paragraph": 567,
    "Text": "tiếng Anh/ Ngoại ngữ quốc tế còn thời hạn (tính đến thời điểm nộp đơn đề nghị miễn học, miễn thi) từ bậc 3 đối với tiếng Anh, bậc 2 đối với các Ngoại ngữ khác hoặc tương đương trở lên được miễn học, miễn thi và đạt điểm 10 ở học phần tiếng Anh/",
    "MarkerText": null,
    "MarkerType": null,
@@ -13136,7 +13067,7 @@
    }
   },
   {
-   "Paragraph": 571,
+   "Paragraph": 568,
    "Text": "Ngoại ngữ.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13159,7 +13090,7 @@
    }
   },
   {
-   "Paragraph": 572,
+   "Paragraph": 569,
    "Text": "5. Sinh viên các ngành không chuyên ngoại ngữ có một trong các chứng chỉ",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -13182,8 +13113,8 @@
    }
   },
   {
-   "Paragraph": 573,
-   "Text": "tiếng Anh/ Ngoại ngữ do các đơn vị đào tạo trong nước được Bộ Giáo dục và Đào tạo công nhận cấp còn thời hạn (tính đến thời điểm nộp đơn đề nghị miễn học, miễn thi) từ bậc 4 đối với tiếng Anh, bậc 3 đối với các Ngoại ngữ khác hoặc tương đương trở",
+   "Paragraph": 570,
+   "Text": "tiếng Anh/ Ngoại ngữ do các đơn vị đào tạo trong nước được Bộ Giáo dục và Đào tạo công nhận cấp còn thời hạn (tính đến thời điểm nộp đơn đề nghị miễn học, miễn thi) từ bậc 4 đối với tiếng Anh, bậc 3 đối với các Ngoại ngữ khác hoặc tương đương trở lên hoặc có bằng tốt nghiệp đại học chuyên ngành tiếng Anh/ Ngoại ngữ được miễn",
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
@@ -13197,29 +13128,6 @@
      "Width": 29.9
     },
     "Last": {
-     "Text": "trở",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 18.0
-    }
-   }
-  },
-  {
-   "Paragraph": 574,
-   "Text": "lên hoặc có bằng tốt nghiệp đại học chuyên ngành tiếng Anh/ Ngoại ngữ được miễn",
-   "MarkerText": null,
-   "MarkerType": null,
-   "Style": 1000,
-   "FontSize": 14.0,
-   "Align": "Justify",
-   "Words": {
-    "First": {
-     "Text": "lên",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 18.4
-    },
-    "Last": {
      "Text": "miễn",
      "Style": 1000,
      "FontSize": 14.0,
@@ -13228,7 +13136,7 @@
    }
   },
   {
-   "Paragraph": 575,
+   "Paragraph": 571,
    "Text": "học, miễn thi và đạt điểm 10 ở học phần tiếng Anh/ Ngoại ngữ.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13251,7 +13159,7 @@
    }
   },
   {
-   "Paragraph": 576,
+   "Paragraph": 572,
    "Text": "6. Sinh viên các ngành không chuyên ngoại ngữ có một trong các chứng chỉ",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -13274,7 +13182,7 @@
    }
   },
   {
-   "Paragraph": 577,
+   "Paragraph": 573,
    "Text": "tiếng Anh/ Ngoại ngữ do các đơn vị đào tạo trong nước được Bộ Giáo dục và Đào tạo công nhận cấp còn thời hạn (tính đến thời điểm nộp đơn đề nghị miễn học, miễn thi) từ bậc 3 đối với tiếng Anh, bậc 2 đối với các Ngoại ngữ khác hoặc tương đương hoặc có bằng tốt nghiệp cao đẳng chuyên ngành tiếng Anh/ Ngoại ngữ trở lên được miễn",
    "MarkerText": null,
    "MarkerType": null,
@@ -13297,7 +13205,7 @@
    }
   },
   {
-   "Paragraph": 578,
+   "Paragraph": 574,
    "Text": "học, miễn thi và đạt điểm 9,0 ở học phần tiếng Anh/ Ngoại ngữ.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13320,7 +13228,7 @@
    }
   },
   {
-   "Paragraph": 579,
+   "Paragraph": 575,
    "Text": "7. Sinh viên các ngành chuyên ngoại ngữ có chứng chỉ ngoại ngữ quốc tế từ bậc",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -13343,7 +13251,7 @@
    }
   },
   {
-   "Paragraph": 580,
+   "Paragraph": 576,
    "Text": "3 trở lên được xem xét để miễn học, miễn thi và thừa nhận kết quả của một số học phần ngoại ngữ chuyên ngành tương ứng. Tùy theo năng lực ngoại ngữ của sinh viên, Trưởng khoa đề xuất số lượng học phần được miễn và thừa nhận kết quả, không quá",
    "MarkerText": null,
    "MarkerType": null,
@@ -13366,7 +13274,7 @@
    }
   },
   {
-   "Paragraph": 581,
+   "Paragraph": 577,
    "Text": "các định mức sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -13389,7 +13297,7 @@
    }
   },
   {
-   "Paragraph": 582,
+   "Paragraph": 578,
    "Text": "a) Bậc 3 được miễn học tối đa 05 tín chỉ, thừa nhận 8,0 điểm cho mỗi học phần;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -13412,7 +13320,7 @@
    }
   },
   {
-   "Paragraph": 583,
+   "Paragraph": 579,
    "Text": "b) Bậc 4 được miễn học tối đa 10 tín chỉ, thừa nhận 8,5 điểm cho mỗi học phần;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -13435,7 +13343,7 @@
    }
   },
   {
-   "Paragraph": 584,
+   "Paragraph": 580,
    "Text": "c) Bậc 5 được miễn học tối đa 15 tín chỉ, thừa nhận 9,5 điểm cho mỗi học phần;",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -13458,7 +13366,7 @@
    }
   },
   {
-   "Paragraph": 585,
+   "Paragraph": 581,
    "Text": "d) Bậc 6 được miễn học tối đa 20 tín chỉ, thừa nhận 10,0 điểm cho mỗi học",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -13481,7 +13389,7 @@
    }
   },
   {
-   "Paragraph": 586,
+   "Paragraph": 582,
    "Text": "phần.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13504,7 +13412,7 @@
    }
   },
   {
-   "Paragraph": 587,
+   "Paragraph": 583,
    "Text": "8. Sinh viên đã từng học và tốt nghiệp trình độ trung học phổ thông trở lên ở",
    "MarkerText": "8. ",
    "MarkerType": "123. ",
@@ -13527,7 +13435,7 @@
    }
   },
   {
-   "Paragraph": 588,
+   "Paragraph": 584,
    "Text": "nước ngoài; sinh viên tốt nghiệp trình độ cao đẳng các ngành đào tạo chuyên ngoại ngữ ở các cơ sở giáo dục đại học khác, khi theo học các ngành đào tạo chuyên ngoại ngữ tại trường được xem xét để miễn học, miễn thi và thừa nhận kết quả học tập đối",
    "MarkerText": null,
    "MarkerType": null,
@@ -13550,7 +13458,7 @@
    }
   },
   {
-   "Paragraph": 589,
+   "Paragraph": 585,
    "Text": "với một số học phần ngoại ngữ tương ứng.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13573,7 +13481,7 @@
    }
   },
   {
-   "Paragraph": 590,
+   "Paragraph": 586,
    "Text": "9. Sinh viên không thuộc chuyên ngành công nghệ thông tin có chứng chỉ ứng",
    "MarkerText": "9. ",
    "MarkerType": "123. ",
@@ -13596,7 +13504,7 @@
    }
   },
   {
-   "Paragraph": 591,
+   "Paragraph": 587,
    "Text": "dụng công nghệ thông tin nâng cao trong nước; chứng chỉ liên quan đến công nghệ thông tin; chứng chỉ quốc tế do các tổ chức đánh giá có uy tín cấp như: Microsoft,",
    "MarkerText": null,
    "MarkerType": null,
@@ -13619,7 +13527,7 @@
    }
   },
   {
-   "Paragraph": 592,
+   "Paragraph": 588,
    "Text": "CISCO, NIIT, APTECH như: IC3, ICDL, MOS, IT passport,… được miễn học và thừa",
    "MarkerText": null,
    "MarkerType": null,
@@ -13642,7 +13550,7 @@
    }
   },
   {
-   "Paragraph": 593,
+   "Paragraph": 589,
    "Text": "nhận 10,0 điểm cho học phần tin học chung toàn trường và được công nhận đạt chuẩn",
    "MarkerText": null,
    "MarkerType": null,
@@ -13665,7 +13573,7 @@
    }
   },
   {
-   "Paragraph": 594,
+   "Paragraph": 590,
    "Text": "đầu ra về tin học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13688,7 +13596,7 @@
    }
   },
   {
-   "Paragraph": 595,
+   "Paragraph": 591,
    "Text": "10. Sinh viên tốt nghiệp trình độ cao đẳng các ngành chuyên công nghệ thông",
    "MarkerText": "10. ",
    "MarkerType": "123. ",
@@ -13711,7 +13619,7 @@
    }
   },
   {
-   "Paragraph": 596,
+   "Paragraph": 592,
    "Text": "tin ở các cơ sở giáo dục đại học khác, khi theo học ngành đào tạo thuộc lĩnh vực công nghệ thông tin tại trường được xem xét để miễn học, miễn thi và thừa nhận kết quả",
    "MarkerText": null,
    "MarkerType": null,
@@ -13734,7 +13642,7 @@
    }
   },
   {
-   "Paragraph": 597,
+   "Paragraph": 593,
    "Text": "học tập đối với một số học phần chuyên ngành phù hợp.",
    "MarkerText": null,
    "MarkerType": null,
@@ -13757,7 +13665,7 @@
    }
   },
   {
-   "Paragraph": 598,
+   "Paragraph": 594,
    "Text": "Điều 23. Công nhận tốt nghiệp và cấp bằng tốt nghiệp",
    "MarkerText": "Điều 23. ",
    "MarkerType": "Điều 123. ",
@@ -13780,7 +13688,7 @@
    }
   },
   {
-   "Paragraph": 599,
+   "Paragraph": 595,
    "Text": "1. Sinh viên được xét và công nhận tốt nghiệp khi có đủ các điều kiện sau:",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -13803,7 +13711,7 @@
    }
   },
   {
-   "Paragraph": 600,
+   "Paragraph": 596,
    "Text": "a) Tích lũy đủ học phần, số tín chỉ và hoàn thành các nội dung bắt buộc khác",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -13826,7 +13734,7 @@
    }
   },
   {
-   "Paragraph": 601,
+   "Paragraph": 597,
    "Text": "theo yêu cầu của chương trình đào tạo, đạt chuẩn đầu ra của chương trình đào tạo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -13849,7 +13757,7 @@
    }
   },
   {
-   "Paragraph": 602,
+   "Paragraph": 598,
    "Text": "b) Điểm trung bình tích lũy của toàn khóa học đạt từ trung bình trở lên;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -13872,7 +13780,7 @@
    }
   },
   {
-   "Paragraph": 603,
+   "Paragraph": 599,
    "Text": "c) Tại thời điểm xét tốt nghiệp không bị truy cứu trách nhiệm hình sự hoặc",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -13895,7 +13803,7 @@
    }
   },
   {
-   "Paragraph": 604,
+   "Paragraph": 600,
    "Text": "không đang trong thời gian bị kỷ luật ở mức đình chỉ học tập;",
    "MarkerText": null,
    "MarkerType": null,
@@ -13918,7 +13826,7 @@
    }
   },
   {
-   "Paragraph": 605,
+   "Paragraph": 601,
    "Text": "d) Có chứng chỉ giáo dục quốc phòng – an ninh đối với các ngành đào tạo không",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -13941,7 +13849,7 @@
    }
   },
   {
-   "Paragraph": 606,
+   "Paragraph": 602,
    "Text": "chuyên về quân sự và chứng chỉ giáo dục thể chất đối với các ngành không chuyên về",
    "MarkerText": null,
    "MarkerType": null,
@@ -13964,7 +13872,7 @@
    }
   },
   {
-   "Paragraph": 607,
+   "Paragraph": 603,
    "Text": "thể dục - thể thao;",
    "MarkerText": null,
    "MarkerType": null,
@@ -13987,7 +13895,7 @@
    }
   },
   {
-   "Paragraph": 608,
+   "Paragraph": 604,
    "Text": "e) Có đơn đề nghị được xét tốt nghiệp do các Khoa tổng hợp và nộp cho phòng",
    "MarkerText": "e) ",
    "MarkerType": "abc) ",
@@ -14010,7 +13918,7 @@
    }
   },
   {
-   "Paragraph": 609,
+   "Paragraph": 605,
    "Text": "QLĐT&CTHSSV trong trường hợp sinh viên đủ điều kiện tốt nghiệp sớm hoặc muộn",
    "MarkerText": null,
    "MarkerType": null,
@@ -14033,7 +13941,7 @@
    }
   },
   {
-   "Paragraph": 610,
+   "Paragraph": 606,
    "Text": "hơn so với thời gian thiết kế của khoá học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14056,7 +13964,7 @@
    }
   },
   {
-   "Paragraph": 611,
+   "Paragraph": 607,
    "Text": "2. Những sinh viên đủ điều kiện tốt nghiệp đã hoàn thành nghĩa vụ tài chính với",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -14079,7 +13987,7 @@
    }
   },
   {
-   "Paragraph": 612,
+   "Paragraph": 608,
    "Text": "Trường được Hiệu trưởng cấp bằng tốt nghiệp trong thời hạn 01 tháng từ thời điểm",
    "MarkerText": null,
    "MarkerType": null,
@@ -14102,7 +14010,7 @@
    }
   },
   {
-   "Paragraph": 613,
+   "Paragraph": 609,
    "Text": "xét tốt nghiệp.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14125,7 +14033,7 @@
    }
   },
   {
-   "Paragraph": 614,
+   "Paragraph": 610,
    "Text": "3. Hạng tốt nghiệp được xác định căn cứ vào điểm trung bình tích lũy toàn khoá",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -14148,7 +14056,7 @@
    }
   },
   {
-   "Paragraph": 615,
+   "Paragraph": 611,
    "Text": "được quy định tại khoản 4 Điều 20 của Quy chế này, trong đó, hạng tốt nghiệp của sinh viên có điểm trung bình tích lũy loại xuất sắc và giỏi sẽ bị giảm đi một mức nếu",
    "MarkerText": null,
    "MarkerType": null,
@@ -14171,7 +14079,7 @@
    }
   },
   {
-   "Paragraph": 616,
+   "Paragraph": 612,
    "Text": "thuộc một trong các trường hợp sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -14194,7 +14102,7 @@
    }
   },
   {
-   "Paragraph": 617,
+   "Paragraph": 613,
    "Text": "a) Khối lượng của các học phần phải học lại vượt quá 5% so với tổng số tín chỉ",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -14217,7 +14125,7 @@
    }
   },
   {
-   "Paragraph": 618,
+   "Paragraph": 614,
    "Text": "quy định cho toàn chương trình;",
    "MarkerText": null,
    "MarkerType": null,
@@ -14240,7 +14148,7 @@
    }
   },
   {
-   "Paragraph": 619,
+   "Paragraph": 615,
    "Text": "b) Sinh viên đã bị kỷ luật từ mức cảnh cáo trở lên trong thời gian học.",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -14263,7 +14171,7 @@
    }
   },
   {
-   "Paragraph": 620,
+   "Paragraph": 616,
    "Text": "4. Sinh viên đã hết thời gian học tập tối đa theo quy định nhưng chưa đủ điều",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -14286,8 +14194,8 @@
    }
   },
   {
-   "Paragraph": 621,
-   "Text": "kiện tốt nghiệp do chưa hoàn thành những học phần Giáo dục quốc phòng-an ninh, Giáo dục thể chất hoặc chưa đạt chuẩn đầu ra về ngoại ngữ, công nghệ thông tin hoặc",
+   "Paragraph": 617,
+   "Text": "kiện tốt nghiệp do chưa hoàn thành những học phần Giáo dục quốc phòng-an ninh, Giáo dục thể chất hoặc chưa đạt chuẩn đầu ra về ngoại ngữ, công nghệ thông tin hoặc những học phần có điểm đánh giá không phân mức (được quy định trong chuẩn đầu ra và chương trình đào tạo) trong thời hạn 03 năm tính từ khi thôi học được hoàn",
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
@@ -14301,29 +14209,6 @@
      "Width": 25.1
     },
     "Last": {
-     "Text": "hoặc",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 23.4
-    }
-   }
-  },
-  {
-   "Paragraph": 622,
-   "Text": "những học phần có điểm đánh giá không phân mức (được quy định trong chuẩn đầu ra và chương trình đào tạo) trong thời hạn 03 năm tính từ khi thôi học được hoàn",
-   "MarkerText": null,
-   "MarkerType": null,
-   "Style": 1000,
-   "FontSize": 14.0,
-   "Align": "Justify",
-   "Words": {
-    "First": {
-     "Text": "những",
-     "Style": 1000,
-     "FontSize": 14.0,
-     "Width": 31.5
-    },
-    "Last": {
      "Text": "hoàn",
      "Style": 1000,
      "FontSize": 14.0,
@@ -14332,7 +14217,7 @@
    }
   },
   {
-   "Paragraph": 623,
+   "Paragraph": 618,
    "Text": "thiện các điều kiện còn thiếu và đề nghị xét công nhận tốt nghiệp.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14355,7 +14240,7 @@
    }
   },
   {
-   "Paragraph": 624,
+   "Paragraph": 619,
    "Text": "5. Sinh viên không tốt nghiệp được cấp chứng nhận về các học phần đã tích luỹ",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -14378,7 +14263,7 @@
    }
   },
   {
-   "Paragraph": 625,
+   "Paragraph": 620,
    "Text": "trong chương trình đào tạo của Trường.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14401,7 +14286,7 @@
    }
   },
   {
-   "Paragraph": 626,
+   "Paragraph": 621,
    "Text": "6. Trường tổ chức xét tốt nghiệp ít nhất 03 lần/năm học, dự kiến vào các thời",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -14424,7 +14309,7 @@
    }
   },
   {
-   "Paragraph": 627,
+   "Paragraph": 622,
    "Text": "điểm kết thúc học kì 1; 2; 3 của năm học. Ngoài các thời điểm nêu trên, căn cứ nhu cầu của sinh viên do các khoa tổng hợp gửi về, Trường sẽ tổ chức xét tốt nghiệp bổ",
    "MarkerText": null,
    "MarkerType": null,
@@ -14447,7 +14332,7 @@
    }
   },
   {
-   "Paragraph": 628,
+   "Paragraph": 623,
    "Text": "sung vào thời điểm thích hợp do Hiệu trưởng quyết định.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14470,7 +14355,7 @@
    }
   },
   {
-   "Paragraph": 629,
+   "Paragraph": 624,
    "Text": "7. Sinh viên hết thời gian học chính quy được chuyển qua học hình thức vừa làm",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -14493,7 +14378,7 @@
    }
   },
   {
-   "Paragraph": 630,
+   "Paragraph": 625,
    "Text": "vừa học (nếu có) của Trường nếu còn trong thời gian học tập theo quy định tại khoản",
    "MarkerText": null,
    "MarkerType": null,
@@ -14516,7 +14401,7 @@
    }
   },
   {
-   "Paragraph": 631,
+   "Paragraph": 626,
    "Text": "5 Điều 2 của quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14539,7 +14424,7 @@
    }
   },
   {
-   "Paragraph": 632,
+   "Paragraph": 627,
    "Text": "Chương IV",
    "MarkerText": "Chương IV",
    "MarkerType": "Chương XVI",
@@ -14562,7 +14447,7 @@
    }
   },
   {
-   "Paragraph": 633,
+   "Paragraph": 628,
    "Text": "NHỮNG QUY ĐỊNH KHÁC ĐỐI VỚI SINH VIÊN",
    "MarkerText": null,
    "MarkerType": null,
@@ -14585,7 +14470,7 @@
    }
   },
   {
-   "Paragraph": 634,
+   "Paragraph": 629,
    "Text": "Điều 24. Nghỉ học tạm thời, thôi học",
    "MarkerText": "Điều 24. ",
    "MarkerType": "Điều 123. ",
@@ -14608,7 +14493,7 @@
    }
   },
   {
-   "Paragraph": 635,
+   "Paragraph": 630,
    "Text": "1. Sinh viên được nghỉ học tạm thời và bảo lưu kết quả đã học trong các trường",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -14631,7 +14516,7 @@
    }
   },
   {
-   "Paragraph": 636,
+   "Paragraph": 631,
    "Text": "hợp sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -14654,7 +14539,7 @@
    }
   },
   {
-   "Paragraph": 637,
+   "Paragraph": 632,
    "Text": "a) Được điều động vào lực lượng vũ trang;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -14677,7 +14562,7 @@
    }
   },
   {
-   "Paragraph": 638,
+   "Paragraph": 633,
    "Text": "b) Được cơ quan có thẩm quyền điều động, đại diện quốc gia tham dự các kỳ",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -14700,7 +14585,7 @@
    }
   },
   {
-   "Paragraph": 639,
+   "Paragraph": 634,
    "Text": "thi, giải đấu quốc tế;",
    "MarkerText": null,
    "MarkerType": null,
@@ -14723,7 +14608,7 @@
    }
   },
   {
-   "Paragraph": 640,
+   "Paragraph": 635,
    "Text": "c) Bị ốm, thai sản hoặc tai nạn phải điều trị thời gian dài có chứng nhận của cơ",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -14746,7 +14631,7 @@
    }
   },
   {
-   "Paragraph": 641,
+   "Paragraph": 636,
    "Text": "sở khám bệnh, chữa bệnh từ tuyến cấp quận, huyện trở lên;",
    "MarkerText": null,
    "MarkerType": null,
@@ -14769,7 +14654,7 @@
    }
   },
   {
-   "Paragraph": 642,
+   "Paragraph": 637,
    "Text": "d) Vì lý do cá nhân khác nhưng đã phải học tối thiểu 01 học kỳ ở Trường và",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -14792,7 +14677,7 @@
    }
   },
   {
-   "Paragraph": 643,
+   "Paragraph": 638,
    "Text": "không thuộc các trường hợp bị xem xét buộc thôi học hoặc xem xét kỷ luật.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14815,7 +14700,7 @@
    }
   },
   {
-   "Paragraph": 644,
+   "Paragraph": 639,
    "Text": "2. Thời gian nghỉ học tạm thời vì nhu cầu cá nhân phải được tính vào thời gian",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -14838,7 +14723,7 @@
    }
   },
   {
-   "Paragraph": 645,
+   "Paragraph": 640,
    "Text": "học chính thức quy định tại khoản 5 Điều 2 của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14861,7 +14746,7 @@
    }
   },
   {
-   "Paragraph": 646,
+   "Paragraph": 641,
    "Text": "3. Sinh viên được thôi học vì lý do cá nhân muốn quay trở lại học tập phải dự",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -14884,7 +14769,7 @@
    }
   },
   {
-   "Paragraph": 647,
+   "Paragraph": 642,
    "Text": "tuyển đầu vào như những thí sinh khác.",
    "MarkerText": null,
    "MarkerType": null,
@@ -14907,7 +14792,7 @@
    }
   },
   {
-   "Paragraph": 648,
+   "Paragraph": 643,
    "Text": "Điều 25. Trình tự, thủ tục xét nghỉ học tạm thời, cho thôi học và tiếp nhận",
    "MarkerText": "Điều 25. ",
    "MarkerType": "Điều 123. ",
@@ -14930,7 +14815,7 @@
    }
   },
   {
-   "Paragraph": 649,
+   "Paragraph": 644,
    "Text": "sinh viên trở lại học tập",
    "MarkerText": null,
    "MarkerType": null,
@@ -14953,7 +14838,7 @@
    }
   },
   {
-   "Paragraph": 650,
+   "Paragraph": 645,
    "Text": "1. Sinh viên có nhu cầu nghỉ học tạm thời và bảo lưu kết quả học tập đảm bảo",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -14976,7 +14861,7 @@
    }
   },
   {
-   "Paragraph": 651,
+   "Paragraph": 646,
    "Text": "các quy định của khoản 1 Điều 24 của Quy chế này, nộp đơn đề nghị có xác nhận của cố vấn học tập cho khoa đào tạo. Trưởng khoa xác nhận và nộp cho phòng",
    "MarkerText": null,
    "MarkerType": null,
@@ -14999,7 +14884,7 @@
    }
   },
   {
-   "Paragraph": 652,
+   "Paragraph": 647,
    "Text": "QLĐT&CTHSSV chậm nhất 03 tuần trước khi bắt đầu học kì mới.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15022,7 +14907,7 @@
    }
   },
   {
-   "Paragraph": 653,
+   "Paragraph": 648,
    "Text": "2. Phòng QLĐT&CTHSSV rà soát các điều kiện và trình Hiệu trưởng ban hành",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -15045,7 +14930,7 @@
    }
   },
   {
-   "Paragraph": 654,
+   "Paragraph": 649,
    "Text": "Quyết định cho phép sinh viên nghỉ học tạm thời và bảo lưu kết quả học tập.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15068,7 +14953,7 @@
    }
   },
   {
-   "Paragraph": 655,
+   "Paragraph": 650,
    "Text": "3. Hết thời gian nghỉ học tạm thời, sinh viên có nhu cầu quay trở lại học tập",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -15091,7 +14976,7 @@
    }
   },
   {
-   "Paragraph": 656,
+   "Paragraph": 651,
    "Text": "phải nộp đơn có xác nhận của cố vấn học tập cho khoa đào tạo. Trưởng khoa xác nhận và nộp cho phòng QLĐT&CTHSSV chậm nhất 03 tuần trước khi học kì mới bắt",
    "MarkerText": null,
    "MarkerType": null,
@@ -15114,7 +14999,7 @@
    }
   },
   {
-   "Paragraph": 657,
+   "Paragraph": 652,
    "Text": "đầu.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15137,7 +15022,7 @@
    }
   },
   {
-   "Paragraph": 658,
+   "Paragraph": 653,
    "Text": "4. Sinh viên bị kỉ luật đình chỉ học tập, được xem xét quay trở lại học tập, sau",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -15160,7 +15045,7 @@
    }
   },
   {
-   "Paragraph": 659,
+   "Paragraph": 654,
    "Text": "khi hết thời gian thi hành kỉ luật và có xác nhận của địa phương.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15183,7 +15068,7 @@
    }
   },
   {
-   "Paragraph": 660,
+   "Paragraph": 655,
    "Text": "5. Sinh viên được tiếp nhận học tập trở lại được bố trí vào lớp hành chính với",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -15206,7 +15091,7 @@
    }
   },
   {
-   "Paragraph": 661,
+   "Paragraph": 656,
    "Text": "khóa học sau, phù hợp với trình độ năm học của sinh viên ở thời điểm được nghỉ học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15229,7 +15114,7 @@
    }
   },
   {
-   "Paragraph": 662,
+   "Paragraph": 657,
    "Text": "Điều 26. Chuyển ngành, chuyển chương trình đào tạo, chuyển trường,",
    "MarkerText": "Điều 26. ",
    "MarkerType": "Điều 123. ",
@@ -15252,7 +15137,7 @@
    }
   },
   {
-   "Paragraph": 663,
+   "Paragraph": 658,
    "Text": "chuyển hình thức học",
    "MarkerText": null,
    "MarkerType": null,
@@ -15275,7 +15160,7 @@
    }
   },
   {
-   "Paragraph": 664,
+   "Paragraph": 659,
    "Text": "1. Sinh viên được xem xét chuyển sang học một chương trình, một ngành đào",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -15298,7 +15183,7 @@
    }
   },
   {
-   "Paragraph": 665,
+   "Paragraph": 660,
    "Text": "tạo khác, khi có đủ các điều kiện sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -15321,7 +15206,7 @@
    }
   },
   {
-   "Paragraph": 666,
+   "Paragraph": 661,
    "Text": "a) Không đang là sinh viên trình độ năm thứ nhất hoặc năm cuối khóa, không",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -15344,7 +15229,7 @@
    }
   },
   {
-   "Paragraph": 667,
+   "Paragraph": 662,
    "Text": "thuộc diện bị xem xét buộc thôi học và còn đủ thời gian học tập theo quy định tại",
    "MarkerText": null,
    "MarkerType": null,
@@ -15367,7 +15252,7 @@
    }
   },
   {
-   "Paragraph": 668,
+   "Paragraph": 663,
    "Text": "khoản 5 Điều 2 của Quy chế này;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15390,7 +15275,7 @@
    }
   },
   {
-   "Paragraph": 669,
+   "Paragraph": 664,
    "Text": "b) Sinh viên đạt điều kiện trúng tuyển của chương trình, ngành đào tạo, trong",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -15413,7 +15298,7 @@
    }
   },
   {
-   "Paragraph": 670,
+   "Paragraph": 665,
    "Text": "cùng khóa tuyển sinh;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15436,7 +15321,7 @@
    }
   },
   {
-   "Paragraph": 671,
+   "Paragraph": 666,
    "Text": "c) Trường, phân hiệu (hoặc trụ sở chính) có đủ các điều kiện bảo đảm chất",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -15459,7 +15344,7 @@
    }
   },
   {
-   "Paragraph": 672,
+   "Paragraph": 667,
    "Text": "lượng, chưa vượt quá năng lực đào tạo đối với chương trình, ngành đào tạo đó theo",
    "MarkerText": null,
    "MarkerType": null,
@@ -15482,7 +15367,7 @@
    }
   },
   {
-   "Paragraph": 673,
+   "Paragraph": 668,
    "Text": "quy định hiện hành của Bộ Giáo dục và Đào tạo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15505,7 +15390,7 @@
    }
   },
   {
-   "Paragraph": 674,
+   "Paragraph": 669,
    "Text": "d) Được sự đồng ý của trưởng khoa, người phụ trách phân hiệu (nơi chuyển đi",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -15528,7 +15413,7 @@
    }
   },
   {
-   "Paragraph": 675,
+   "Paragraph": 670,
    "Text": "và chuyến đến) và của Hiệu trưởng.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15551,7 +15436,7 @@
    }
   },
   {
-   "Paragraph": 676,
+   "Paragraph": 671,
    "Text": "2. Sinh viên được xem xét chuyển trường khi có đủ các điều kiện sau:",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -15574,7 +15459,7 @@
    }
   },
   {
-   "Paragraph": 677,
+   "Paragraph": 672,
    "Text": "a) Không đang là sinh viên trình độ năm thứ nhất hoặc năm cuối khóa, không",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -15597,7 +15482,7 @@
    }
   },
   {
-   "Paragraph": 678,
+   "Paragraph": 673,
    "Text": "thuộc diện bị xem xét buộc thôi học và còn đủ thời gian học tập theo quy định tại",
    "MarkerText": null,
    "MarkerType": null,
@@ -15620,7 +15505,7 @@
    }
   },
   {
-   "Paragraph": 679,
+   "Paragraph": 674,
    "Text": "khoản 5 Điều 2 của Quy chế này;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15643,7 +15528,7 @@
    }
   },
   {
-   "Paragraph": 680,
+   "Paragraph": 675,
    "Text": "b) Sinh viên đạt điều kiện trúng tuyển của chương trình, ngành đào tạo cùng",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -15666,7 +15551,7 @@
    }
   },
   {
-   "Paragraph": 681,
+   "Paragraph": 676,
    "Text": "khóa tuyển sinh tại nơi chuyển đến;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15689,7 +15574,7 @@
    }
   },
   {
-   "Paragraph": 682,
+   "Paragraph": 677,
    "Text": "c) Nơi chuyển đến có đủ các điều kiện bảo đảm chất lượng, chưa vượt quá",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -15712,7 +15597,7 @@
    }
   },
   {
-   "Paragraph": 683,
+   "Paragraph": 678,
    "Text": "năng lực đào tạo đối với chương trình, ngành đào tạo đó theo quy định hiện hành của",
    "MarkerText": null,
    "MarkerType": null,
@@ -15735,7 +15620,7 @@
    }
   },
   {
-   "Paragraph": 684,
+   "Paragraph": 679,
    "Text": "Bộ Giáo dục và Đào tạo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -15758,7 +15643,7 @@
    }
   },
   {
-   "Paragraph": 685,
+   "Paragraph": 680,
    "Text": "d) Được sự đồng ý của Hiệu trưởng trường xin chuyển đi và trường xin chuyển",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -15781,7 +15666,7 @@
    }
   },
   {
-   "Paragraph": 686,
+   "Paragraph": 681,
    "Text": "đến.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15804,7 +15689,7 @@
    }
   },
   {
-   "Paragraph": 687,
+   "Paragraph": 682,
    "Text": "3. Sinh viên được xem xét chuyển từ hình thức chính quy sang hình thức vừa",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -15827,7 +15712,7 @@
    }
   },
   {
-   "Paragraph": 688,
+   "Paragraph": 683,
    "Text": "làm vừa học của Trường nếu còn đủ thời gian học tập theo quy định đối với hình thức",
    "MarkerText": null,
    "MarkerType": null,
@@ -15850,7 +15735,7 @@
    }
   },
   {
-   "Paragraph": 689,
+   "Paragraph": 684,
    "Text": "chuyển đến.",
    "MarkerText": null,
    "MarkerType": null,
@@ -15873,7 +15758,7 @@
    }
   },
   {
-   "Paragraph": 690,
+   "Paragraph": 685,
    "Text": "4. Thẩm quyền, điều kiện, thủ tục chuyển chương trình, ngành đào tạo, chuyển",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -15896,7 +15781,7 @@
    }
   },
   {
-   "Paragraph": 691,
+   "Paragraph": 686,
    "Text": "nơi học, chuyển trường hoặc chuyển hình thức học; việc công nhận kết quả học tập",
    "MarkerText": null,
    "MarkerType": null,
@@ -15919,7 +15804,7 @@
    }
   },
   {
-   "Paragraph": 692,
+   "Paragraph": 687,
    "Text": "hoặc chuyển đổi tín chỉ đã tích lũy đối cho sinh viên thuộc các trường hợp này:",
    "MarkerText": null,
    "MarkerType": null,
@@ -15942,7 +15827,7 @@
    }
   },
   {
-   "Paragraph": 693,
+   "Paragraph": 688,
    "Text": "a) Chậm nhất 02 tuần sau khi kết thúc mỗi học kì, sinh viên có đủ điều kiện và",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -15965,7 +15850,7 @@
    }
   },
   {
-   "Paragraph": 694,
+   "Paragraph": 689,
    "Text": "có nhu cầu chuyển chương trình, chuyển ngành đào tạo, chuyển nơi học, chuyển trường hoặc chuyển hình thức học làm đơn có xác nhận của CVHT và nộp cho khoa",
    "MarkerText": null,
    "MarkerType": null,
@@ -15988,7 +15873,7 @@
    }
   },
   {
-   "Paragraph": 695,
+   "Paragraph": 690,
    "Text": "quản lí sinh viên;",
    "MarkerText": null,
    "MarkerType": null,
@@ -16011,7 +15896,7 @@
    }
   },
   {
-   "Paragraph": 696,
+   "Paragraph": 691,
    "Text": "b) Căn cứ các điều kiện theo quy định, Trưởng khoa rà soát, xác nhận nếu đồng",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -16034,7 +15919,7 @@
    }
   },
   {
-   "Paragraph": 697,
+   "Paragraph": 692,
    "Text": "ý với đề nghị của sinh viên và nộp về phòng QLĐT&CTHSSV chậm nhất 01 tuần kể",
    "MarkerText": null,
    "MarkerType": null,
@@ -16057,7 +15942,7 @@
    }
   },
   {
-   "Paragraph": 698,
+   "Paragraph": 693,
    "Text": "từ ngày nhận được đơn hợp lệ;",
    "MarkerText": null,
    "MarkerType": null,
@@ -16080,7 +15965,7 @@
    }
   },
   {
-   "Paragraph": 699,
+   "Paragraph": 694,
    "Text": "c) Căn cứ điều kiện trúng tuyển, học lực của sinh viên, chỉ tiêu tuyển sinh của",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -16103,7 +15988,7 @@
    }
   },
   {
-   "Paragraph": 700,
+   "Paragraph": 695,
    "Text": "Trường, chương trình đào tạo phòng QLĐT&CTHSSV trình Hiệu trưởng phê duyệt.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16126,7 +16011,7 @@
    }
   },
   {
-   "Paragraph": 701,
+   "Paragraph": 696,
    "Text": "Điều 27. Trao đổi sinh viên và hợp tác trong đào tạo",
    "MarkerText": "Điều 27. ",
    "MarkerType": "Điều 123. ",
@@ -16149,7 +16034,7 @@
    }
   },
   {
-   "Paragraph": 702,
+   "Paragraph": 697,
    "Text": "1. Sinh viên của trường Đại học Thủ đô Hà Nội được học một số học phần tại",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -16172,7 +16057,7 @@
    }
   },
   {
-   "Paragraph": 703,
+   "Paragraph": 698,
    "Text": "trường khác và ngược lại (sau đây gọi là trao đổi sinh viên) theo quy định về việc công nhận lẫn nhau về quy trình đào tạo, nội dung đào tạo và giá trị của tín chỉ của",
    "MarkerText": null,
    "MarkerType": null,
@@ -16195,7 +16080,7 @@
    }
   },
   {
-   "Paragraph": 704,
+   "Paragraph": 699,
    "Text": "các học phần có trong chương trình đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16218,7 +16103,7 @@
    }
   },
   {
-   "Paragraph": 705,
+   "Paragraph": 700,
    "Text": "2. Trên cơ sở đánh giá và công nhận lẫn nhau, sinh viên của trường Đại học",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -16241,7 +16126,7 @@
    }
   },
   {
-   "Paragraph": 706,
+   "Paragraph": 701,
    "Text": "Thủ đô Hà Nội có thể đăng kí thực hiện học một số học phần tại các trường khác, nếu được Hiệu trưởng của hai trường đồng ý với số lượng tín chỉ mà sinh viên tích lũy tại trường khác (nếu có) không vượt quá 25% tổng khối lượng của chương trình đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16264,7 +16149,7 @@
    }
   },
   {
-   "Paragraph": 707,
+   "Paragraph": 702,
    "Text": "3. Trong hợp tác đào tạo giữa trường Đại học Thủ đô Hà Nội với cơ sở giáo",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -16287,7 +16172,7 @@
    }
   },
   {
-   "Paragraph": 708,
+   "Paragraph": 703,
    "Text": "dục đào tạo khác, việc đánh giá và công nhận lẫn nhau số lượng tín chỉ mà sinh viên tích lũy tại cơ sở phối hợp đào tạo khác không vượt quá 25% tổng khối lượng của",
    "MarkerText": null,
    "MarkerType": null,
@@ -16310,7 +16195,7 @@
    }
   },
   {
-   "Paragraph": 709,
+   "Paragraph": 704,
    "Text": "chương trình đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16333,7 +16218,7 @@
    }
   },
   {
-   "Paragraph": 710,
+   "Paragraph": 705,
    "Text": "Điều 28. Học cùng lúc hai chương trình",
    "MarkerText": "Điều 28. ",
    "MarkerType": "Điều 123. ",
@@ -16356,7 +16241,7 @@
    }
   },
   {
-   "Paragraph": 711,
+   "Paragraph": 706,
    "Text": "1. Sinh viên có thể đăng kí học thêm các học phần của một chương trình khác,",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -16379,7 +16264,7 @@
    }
   },
   {
-   "Paragraph": 712,
+   "Paragraph": 707,
    "Text": "ngành khác khi điều kiện của Trường cho phép, nhưng chỉ được hưởng các quyền lợi chính thức và được xem xét công nhận tốt nghiệp chương trình thứ hai khi đã đăng kí",
    "MarkerText": null,
    "MarkerType": null,
@@ -16402,7 +16287,7 @@
    }
   },
   {
-   "Paragraph": 713,
+   "Paragraph": 708,
    "Text": "thành công học chương trình thứ hai theo quy định tại khoản 2 Điều này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16425,7 +16310,7 @@
    }
   },
   {
-   "Paragraph": 714,
+   "Paragraph": 709,
    "Text": "2. Sinh viên được đăng kí học chương trình thứ hai sớm nhất khi đã được xếp",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -16448,7 +16333,7 @@
    }
   },
   {
-   "Paragraph": 715,
+   "Paragraph": 710,
    "Text": "trình độ năm thứ hai của chương trình thứ nhất. Tại thời điểm đăng kí, sinh viên phải",
    "MarkerText": null,
    "MarkerType": null,
@@ -16471,7 +16356,7 @@
    }
   },
   {
-   "Paragraph": 716,
+   "Paragraph": 711,
    "Text": "đáp ứng 01 trong 02 điều kiện sau:",
    "MarkerText": null,
    "MarkerType": null,
@@ -16494,7 +16379,7 @@
    }
   },
   {
-   "Paragraph": 717,
+   "Paragraph": 712,
    "Text": "a) Học lực tính theo điểm trung bình tích lũy xếp loại khá trở lên và đáp ứng",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -16517,7 +16402,7 @@
    }
   },
   {
-   "Paragraph": 718,
+   "Paragraph": 713,
    "Text": "ngưỡng bảo đảm chất lượng của chương trình thứ hai trong năm tuyển sinh.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16540,7 +16425,7 @@
    }
   },
   {
-   "Paragraph": 719,
+   "Paragraph": 714,
    "Text": "b) Học lực tính theo điểm trung bình tích lũy xếp loại trung bình và đáp ứng",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -16563,7 +16448,7 @@
    }
   },
   {
-   "Paragraph": 720,
+   "Paragraph": 715,
    "Text": "điều kiện trúng tuyển của chương trình thứ hai trong năm tuyển sinh.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16586,7 +16471,7 @@
    }
   },
   {
-   "Paragraph": 721,
+   "Paragraph": 716,
    "Text": "3. Trong quá trình sinh viên học cùng lúc hai chương trình, nếu điểm trung",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -16609,7 +16494,7 @@
    }
   },
   {
-   "Paragraph": 722,
+   "Paragraph": 717,
    "Text": "bình tích luỹ của chương trình thứ nhất đạt dưới điểm trung bình hoặc thuộc diện cảnh báo kết quả học tập thì phải dừng học chương trình thứ hai ở học kỳ tiếp theo và",
    "MarkerText": null,
    "MarkerType": null,
@@ -16632,7 +16517,7 @@
    }
   },
   {
-   "Paragraph": 723,
+   "Paragraph": 718,
    "Text": "sinh viên sẽ bị loại khỏi danh sách đã đăng kí học chương trình thứ hai.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16655,7 +16540,7 @@
    }
   },
   {
-   "Paragraph": 724,
+   "Paragraph": 719,
    "Text": "4. Thời gian tối đa được phép học đối với sinh viên học cùng lúc hai chương",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -16678,7 +16563,7 @@
    }
   },
   {
-   "Paragraph": 725,
+   "Paragraph": 720,
    "Text": "trình là thời gian tối đa quy định cho chương trình thứ nhất, quy định tại khoản 5 Điều 2 của Quy chế này. Khi học chương trình thứ hai, sinh viên được công nhận kết quả của những học phần có nội dung và khối lượng kiến thức tương đương có trong",
    "MarkerText": null,
    "MarkerType": null,
@@ -16701,7 +16586,7 @@
    }
   },
   {
-   "Paragraph": 726,
+   "Paragraph": 721,
    "Text": "chương trình thứ nhất.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16724,7 +16609,7 @@
    }
   },
   {
-   "Paragraph": 727,
+   "Paragraph": 722,
    "Text": "5. Sinh viên chỉ được xét tốt nghiệp chương trình thứ hai, nếu có đủ điều kiện",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -16747,7 +16632,7 @@
    }
   },
   {
-   "Paragraph": 728,
+   "Paragraph": 723,
    "Text": "tốt nghiệp ở chương trình thứ nhất và đã đăng kí học chương trình thứ hai ít nhất 02",
    "MarkerText": null,
    "MarkerType": null,
@@ -16770,7 +16655,7 @@
    }
   },
   {
-   "Paragraph": 729,
+   "Paragraph": 724,
    "Text": "năm tính đến thời điểm xét tốt nghiệp chương trình thứ hai.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16793,7 +16678,7 @@
    }
   },
   {
-   "Paragraph": 730,
+   "Paragraph": 725,
    "Text": "6. Hàng năm căn cứ tình hình tuyển sinh của các ngành đào tạo, Trường thông",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -16816,7 +16701,7 @@
    }
   },
   {
-   "Paragraph": 731,
+   "Paragraph": 726,
    "Text": "báo về chỉ tiêu tuyển sinh của các ngành đào tạo và điều kiện tham gia đăng kí xét",
    "MarkerText": null,
    "MarkerType": null,
@@ -16839,7 +16724,7 @@
    }
   },
   {
-   "Paragraph": 732,
+   "Paragraph": 727,
    "Text": "tuyển, tiêu chí xét tuyển, thời gian xét tuyển và công bố kết quả xét tuyển.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16862,7 +16747,7 @@
    }
   },
   {
-   "Paragraph": 733,
+   "Paragraph": 728,
    "Text": "7. Sinh viên học chương trình thứ 2 sẽ được bố trí học cùng các lớp học phần",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -16885,7 +16770,7 @@
    }
   },
   {
-   "Paragraph": 734,
+   "Paragraph": 729,
    "Text": "của những sinh viên học theo chương trình thứ nhất. Tùy từng trường hợp cụ thể,",
    "MarkerText": null,
    "MarkerType": null,
@@ -16908,7 +16793,7 @@
    }
   },
   {
-   "Paragraph": 735,
+   "Paragraph": 730,
    "Text": "Trường sẽ tổ chức lớp học riêng nếu sinh viên có nhu cầu.",
    "MarkerText": null,
    "MarkerType": null,
@@ -16931,7 +16816,7 @@
    }
   },
   {
-   "Paragraph": 736,
+   "Paragraph": 731,
    "Text": "Điều 29. Học liên thông đối với người có văn bằng khác",
    "MarkerText": "Điều 29. ",
    "MarkerType": "Điều 123. ",
@@ -16954,7 +16839,7 @@
    }
   },
   {
-   "Paragraph": 737,
+   "Paragraph": 732,
    "Text": "1. Người đã tốt nghiệp các trình độ đào tạo của giáo dục nghề nghiệp được dự",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -16977,7 +16862,7 @@
    }
   },
   {
-   "Paragraph": 738,
+   "Paragraph": 733,
    "Text": "tuyển và học liên thông lên trình độ đại học theo quy định hiện hành của Chính phủ,",
    "MarkerText": null,
    "MarkerType": null,
@@ -17000,7 +16885,7 @@
    }
   },
   {
-   "Paragraph": 739,
+   "Paragraph": 734,
    "Text": "Thủ tướng Chính phủ và quy chế của Trường.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17023,7 +16908,7 @@
    }
   },
   {
-   "Paragraph": 740,
+   "Paragraph": 735,
    "Text": "2. Người đã tốt nghiệp đại học được dự tuyển và học liên thông để nhận thêm",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -17046,7 +16931,7 @@
    }
   },
   {
-   "Paragraph": 741,
+   "Paragraph": 736,
    "Text": "một bằng tốt nghiệp đại học của một ngành đào tạo khác.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17069,7 +16954,7 @@
    }
   },
   {
-   "Paragraph": 742,
+   "Paragraph": 737,
    "Text": "3. Người học liên thông thực hiện chương trình đào tạo và đăng kí học tập theo",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -17092,7 +16977,7 @@
    }
   },
   {
-   "Paragraph": 743,
+   "Paragraph": 738,
    "Text": "kế hoạch chung như các sinh viên khác cùng hình thức đào tạo. Trên cơ sở công nhận và chuyển đổi tín chỉ, sinh viên được miễn trừ các học phần tương ứng với những",
    "MarkerText": null,
    "MarkerType": null,
@@ -17115,7 +17000,7 @@
    }
   },
   {
-   "Paragraph": 744,
+   "Paragraph": 739,
    "Text": "khối lượng học tập đã tích lũy theo quy định tại Điều 22 của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17138,7 +17023,7 @@
    }
   },
   {
-   "Paragraph": 745,
+   "Paragraph": 740,
    "Text": "Điều 30. Xử lý vi phạm đối với sinh viên",
    "MarkerText": "Điều 30. ",
    "MarkerType": "Điều 123. ",
@@ -17161,7 +17046,7 @@
    }
   },
   {
-   "Paragraph": 746,
+   "Paragraph": 741,
    "Text": "1. Sinh viên có gian lận trong thi, kiểm tra, đánh giá kết quả học tập sẽ bị xử lý",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -17184,7 +17069,7 @@
    }
   },
   {
-   "Paragraph": 747,
+   "Paragraph": 742,
    "Text": "kỷ luật đối với từng học phần đã vi phạm theo các quy định của Quy chế thi tốt nghiệp Trung học phổ thông hiện hành do Bộ Giáo dục và Đào tạo ban hành, trừ",
    "MarkerText": null,
    "MarkerType": null,
@@ -17207,7 +17092,7 @@
    }
   },
   {
-   "Paragraph": 748,
+   "Paragraph": 743,
    "Text": "trường hợp quy định tại khoản 2 Điều này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17230,7 +17115,7 @@
    }
   },
   {
-   "Paragraph": 749,
+   "Paragraph": 744,
    "Text": "2. Sinh viên thi hộ hoặc nhờ người thi hộ đều bị kỷ luật ở mức đình chỉ học tập",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -17253,7 +17138,7 @@
    }
   },
   {
-   "Paragraph": 750,
+   "Paragraph": 745,
    "Text": "01 năm đối với trường hợp vi phạm lần thứ nhất và buộc thôi học đối với trường hợp",
    "MarkerText": null,
    "MarkerType": null,
@@ -17276,7 +17161,7 @@
    }
   },
   {
-   "Paragraph": 751,
+   "Paragraph": 746,
    "Text": "vi phạm lần thứ hai.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17299,7 +17184,7 @@
    }
   },
   {
-   "Paragraph": 752,
+   "Paragraph": 747,
    "Text": "3. Người học sử dụng hồ sơ, văn bằng, chứng chỉ giả làm điều kiện trúng tuyển",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -17322,7 +17207,7 @@
    }
   },
   {
-   "Paragraph": 753,
+   "Paragraph": 748,
    "Text": "hoặc điều kiện tốt nghiệp sẽ bị buộc thôi học; văn bằng tốt nghiệp nếu đã được cấp sẽ",
    "MarkerText": null,
    "MarkerType": null,
@@ -17345,7 +17230,7 @@
    }
   },
   {
-   "Paragraph": 754,
+   "Paragraph": 749,
    "Text": "bị thu hồi, huỷ bỏ.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17368,7 +17253,7 @@
    }
   },
   {
-   "Paragraph": 755,
+   "Paragraph": 750,
    "Text": "Chương V",
    "MarkerText": "Chương V",
    "MarkerType": "Chương XVI",
@@ -17391,7 +17276,7 @@
    }
   },
   {
-   "Paragraph": 756,
+   "Paragraph": 751,
    "Text": "TỔ CHỨC THỰC HIỆN",
    "MarkerText": null,
    "MarkerType": null,
@@ -17414,7 +17299,7 @@
    }
   },
   {
-   "Paragraph": 757,
+   "Paragraph": 752,
    "Text": "Điều 31. Tổ chức thực hiện quy chế của Trường",
    "MarkerText": "Điều 31. ",
    "MarkerType": "Điều 123. ",
@@ -17437,7 +17322,7 @@
    }
   },
   {
-   "Paragraph": 758,
+   "Paragraph": 753,
    "Text": "1. Phòng Quản lí đào tạo và Công tác học sinh sinh viên",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -17460,7 +17345,7 @@
    }
   },
   {
-   "Paragraph": 759,
+   "Paragraph": 754,
    "Text": "a) Xây dựng quy định quản lí hoạt động đào tạo, trình Hiệu trưởng ban hành,",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -17483,7 +17368,7 @@
    }
   },
   {
-   "Paragraph": 760,
+   "Paragraph": 755,
    "Text": "trên cơ sở tư vấn của hội đồng khoa học và đào tạo và các quy định quản lý nội bộ; cụ thể hóa và có thể yêu cầu cụ thể hơn nhưng không trái với các quy định của Quy chế",
    "MarkerText": null,
    "MarkerType": null,
@@ -17506,7 +17391,7 @@
    }
   },
   {
-   "Paragraph": 761,
+   "Paragraph": 756,
    "Text": "này;",
    "MarkerText": null,
    "MarkerType": null,
@@ -17529,7 +17414,7 @@
    }
   },
   {
-   "Paragraph": 762,
+   "Paragraph": 757,
    "Text": "b) Phối hợp với Trung tâm Phát triển nghề nghiệp xây dựng các quy định tổ",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -17552,7 +17437,7 @@
    }
   },
   {
-   "Paragraph": 763,
+   "Paragraph": 758,
    "Text": "chức đào tạo hệ vừa làm vừa học, liên kết đào tạo, đào tạo liên thông (nếu có) bảo đảm đầy đủ các yêu cầu theo Quy chế này; trong đó phải ghi rõ tên ngành, hình thức đào tạo, đối tượng, chỉ tiêu và phương thức tuyển sinh, địa điểm đào tạo, cơ sở phối",
    "MarkerText": null,
    "MarkerType": null,
@@ -17575,7 +17460,7 @@
    }
   },
   {
-   "Paragraph": 764,
+   "Paragraph": 759,
    "Text": "hợp đào tạo và các thông tin khác có liên quan;",
    "MarkerText": null,
    "MarkerType": null,
@@ -17598,7 +17483,7 @@
    }
   },
   {
-   "Paragraph": 765,
+   "Paragraph": 760,
    "Text": "c) Tổ chức phát triển chương trình đào tạo; xây dựng lịch trình năm học, kế",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -17621,7 +17506,7 @@
    }
   },
   {
-   "Paragraph": 766,
+   "Paragraph": 761,
    "Text": "hoạch đào tạo; xây dựng kế hoạch và hướng dẫn các khoa tổ chức công tác thực hành,",
    "MarkerText": null,
    "MarkerType": null,
@@ -17644,7 +17529,7 @@
    }
   },
   {
-   "Paragraph": 767,
+   "Paragraph": 762,
    "Text": "thực tập phù hợp với các quy định của Quy chế này;",
    "MarkerText": null,
    "MarkerType": null,
@@ -17667,7 +17552,7 @@
    }
   },
   {
-   "Paragraph": 768,
+   "Paragraph": 763,
    "Text": "d) Phối hợp với các khoa xây dựng hình thức thi, kiểm tra, đánh giá của các",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -17690,7 +17575,7 @@
    }
   },
   {
-   "Paragraph": 769,
+   "Paragraph": 764,
    "Text": "học phần có trong chương trình đào tạo của các ngành đào tạo, trình Hiệu trưởng phê",
    "MarkerText": null,
    "MarkerType": null,
@@ -17713,7 +17598,7 @@
    }
   },
   {
-   "Paragraph": 770,
+   "Paragraph": 765,
    "Text": "duyệt theo quy định của Quy chế này;",
    "MarkerText": null,
    "MarkerType": null,
@@ -17736,7 +17621,7 @@
    }
   },
   {
-   "Paragraph": 771,
+   "Paragraph": 766,
    "Text": "đ) Phối hợp với Trung tâm Khảo thí và Ngoại ngữ-Tin học xây dựng và trình",
    "MarkerText": null,
    "MarkerType": null,
@@ -17759,7 +17644,7 @@
    }
   },
   {
-   "Paragraph": 772,
+   "Paragraph": 767,
    "Text": "Hiệu trưởng ban hành quy chế về thi, kiểm tra, đánh giá theo quy định của Quy chế",
    "MarkerText": null,
    "MarkerType": null,
@@ -17782,7 +17667,7 @@
    }
   },
   {
-   "Paragraph": 773,
+   "Paragraph": 768,
    "Text": "này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17805,7 +17690,7 @@
    }
   },
   {
-   "Paragraph": 774,
+   "Paragraph": 769,
    "Text": "2. Phòng Nhân sự và Kế hoạch-Tài chính",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -17828,7 +17713,7 @@
    }
   },
   {
-   "Paragraph": 775,
+   "Paragraph": 770,
    "Text": "Xây dựng và trình Hiệu trưởng ban hành quy định về chế độ làm việc đối với",
    "MarkerText": null,
    "MarkerType": null,
@@ -17851,7 +17736,7 @@
    }
   },
   {
-   "Paragraph": 776,
+   "Paragraph": 771,
    "Text": "giảng viên; quy định về tài chính phù hợp với mô hình tổ chức đào tạo, quy mô đào",
    "MarkerText": null,
    "MarkerType": null,
@@ -17874,7 +17759,7 @@
    }
   },
   {
-   "Paragraph": 777,
+   "Paragraph": 772,
    "Text": "tạo, các hình thức đào tạo được quy định tại Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17897,7 +17782,7 @@
    }
   },
   {
-   "Paragraph": 778,
+   "Paragraph": 773,
    "Text": "3. Phòng Quản lí khoa học công nghệ và hợp tác phát triển",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -17920,7 +17805,7 @@
    }
   },
   {
-   "Paragraph": 779,
+   "Paragraph": 774,
    "Text": "a) Xây dựng và trình Hiệu trưởng ban hành quy định về hợp tác đào tạo, triển",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -17943,7 +17828,7 @@
    }
   },
   {
-   "Paragraph": 780,
+   "Paragraph": 775,
    "Text": "khai thực hiện các hoạt động hợp tác đào tạo với các cơ sở giáo dục khác; các địa",
    "MarkerText": null,
    "MarkerType": null,
@@ -17966,7 +17851,7 @@
    }
   },
   {
-   "Paragraph": 781,
+   "Paragraph": 776,
    "Text": "phương theo các quy định của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -17989,7 +17874,7 @@
    }
   },
   {
-   "Paragraph": 782,
+   "Paragraph": 777,
    "Text": "b) Phối hợp với các đơn vị có liên quan tổ chức lựa chọn, phê duyệt danh sách",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -18012,7 +17897,7 @@
    }
   },
   {
-   "Paragraph": 783,
+   "Paragraph": 778,
    "Text": "giáo trình được sử dụng trong quá trình dạy học; tổ chức biên soạn giáo trình theo",
    "MarkerText": null,
    "MarkerType": null,
@@ -18035,7 +17920,7 @@
    }
   },
   {
-   "Paragraph": 784,
+   "Paragraph": 779,
    "Text": "quy định của Bộ GD&ĐT;",
    "MarkerText": null,
    "MarkerType": null,
@@ -18058,7 +17943,7 @@
    }
   },
   {
-   "Paragraph": 785,
+   "Paragraph": 780,
    "Text": "4. Phòng Quản lí chất lượng giáo dục",
    "MarkerText": "4. ",
    "MarkerType": "123. ",
@@ -18081,7 +17966,7 @@
    }
   },
   {
-   "Paragraph": 786,
+   "Paragraph": 781,
    "Text": "a) Tổ chức kiểm tra, thanh tra nội bộ việc thực hiện kế hoạch, chương trình,",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -18104,7 +17989,7 @@
    }
   },
   {
-   "Paragraph": 787,
+   "Paragraph": 782,
    "Text": "quy chế của Trường và các nhiệm vụ khác liên quan đến đào tạo; là đầu mối thực hiện sự kiểm tra, thanh tra, giám sát của Bộ Giáo dục và Đào tạo và các cơ quan có",
    "MarkerText": null,
    "MarkerType": null,
@@ -18127,7 +18012,7 @@
    }
   },
   {
-   "Paragraph": 788,
+   "Paragraph": 783,
    "Text": "thẩm quyền theo các quy định hiện hành.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18150,7 +18035,7 @@
    }
   },
   {
-   "Paragraph": 789,
+   "Paragraph": 784,
    "Text": "b) Thực hiện giải trình theo quy định tại khoản 4 Điều 13 Nghị định số",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -18173,7 +18058,7 @@
    }
   },
   {
-   "Paragraph": 790,
+   "Paragraph": 785,
    "Text": "99/2019/NĐ-CP ngày 30 tháng 12 năm 2019 của Chính phủ quy định chi tiết và hướng dẫn thi hành một số điều của Luật sửa đổi bổ sung một số điều của Luật Giáo",
    "MarkerText": null,
    "MarkerType": null,
@@ -18196,7 +18081,7 @@
    }
   },
   {
-   "Paragraph": 791,
+   "Paragraph": 786,
    "Text": "dục đại học và các quy định khác của pháp luật có liên quan.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18219,7 +18104,7 @@
    }
   },
   {
-   "Paragraph": 792,
+   "Paragraph": 787,
    "Text": "5. Văn phòng trường và Trung tâm Khoa học và công nghệ",
    "MarkerText": "5. ",
    "MarkerType": "123. ",
@@ -18242,7 +18127,7 @@
    }
   },
   {
-   "Paragraph": 793,
+   "Paragraph": 788,
    "Text": "Đảm bảo các điều kiện về cơ sở vật chất đáp ứng việc tổ chức dạy học theo",
    "MarkerText": null,
    "MarkerType": null,
@@ -18265,7 +18150,7 @@
    }
   },
   {
-   "Paragraph": 794,
+   "Paragraph": 789,
    "Text": "quy định của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18288,7 +18173,7 @@
    }
   },
   {
-   "Paragraph": 795,
+   "Paragraph": 790,
    "Text": "6. Trung tâm Khoa học và Công nghệ",
    "MarkerText": "6. ",
    "MarkerType": "123. ",
@@ -18311,7 +18196,7 @@
    }
   },
   {
-   "Paragraph": 796,
+   "Paragraph": 791,
    "Text": "Đảm bảo điều kiện về thiết bị, phương tiện dạy học và kiểm tra đánh giá kết",
    "MarkerText": null,
    "MarkerType": null,
@@ -18334,7 +18219,7 @@
    }
   },
   {
-   "Paragraph": 797,
+   "Paragraph": 792,
    "Text": "quả học tập của sinh viên.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18357,7 +18242,7 @@
    }
   },
   {
-   "Paragraph": 798,
+   "Paragraph": 793,
    "Text": "7. Các khoa đào tạo",
    "MarkerText": "7. ",
    "MarkerType": "123. ",
@@ -18380,7 +18265,7 @@
    }
   },
   {
-   "Paragraph": 799,
+   "Paragraph": 794,
    "Text": "a) Phối hợp với các đơn vị chức năng tổ chức phổ biến, hướng dẫn cho sinh",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -18403,7 +18288,7 @@
    }
   },
   {
-   "Paragraph": 800,
+   "Paragraph": 795,
    "Text": "viên quy chế đào tạo của Trường và các quy định liên quan đến quá trình học tập, các",
    "MarkerText": null,
    "MarkerType": null,
@@ -18426,7 +18311,7 @@
    }
   },
   {
-   "Paragraph": 801,
+   "Paragraph": 796,
    "Text": "quy định về nghĩa vụ và quyền lợi của sinh viên ngay đầu khóa học.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18449,7 +18334,7 @@
    }
   },
   {
-   "Paragraph": 802,
+   "Paragraph": 797,
    "Text": "b) Thực hiện đầy đủ các quy định đối với các khoa đào tạo trong Quy chế này",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -18472,7 +18357,7 @@
    }
   },
   {
-   "Paragraph": 803,
+   "Paragraph": 798,
    "Text": "và các quy định về đào tạo khác; đảm bảo tiến độ, chất lượng và hiệu quả của các",
    "MarkerText": null,
    "MarkerType": null,
@@ -18495,7 +18380,7 @@
    }
   },
   {
-   "Paragraph": 804,
+   "Paragraph": 799,
    "Text": "ngành đào tạo được giao phụ trách;",
    "MarkerText": null,
    "MarkerType": null,
@@ -18518,7 +18403,7 @@
    }
   },
   {
-   "Paragraph": 805,
+   "Paragraph": 800,
    "Text": "c) Kịp thời phối hợp với Phòng QLĐT&CTHSSV để giải quyết hoặc báo cáo",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -18541,7 +18426,7 @@
    }
   },
   {
-   "Paragraph": 806,
+   "Paragraph": 801,
    "Text": "Hiệu trưởng những vấn đề phát sinh trong quá trình tổ chức đào tạo.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18564,7 +18449,7 @@
    }
   },
   {
-   "Paragraph": 807,
+   "Paragraph": 802,
    "Text": "Điều 32. Chế độ báo cáo, lưu trữ, công khai thông tin",
    "MarkerText": "Điều 32. ",
    "MarkerType": "Điều 123. ",
@@ -18587,7 +18472,7 @@
    }
   },
   {
-   "Paragraph": 808,
+   "Paragraph": 803,
    "Text": "1. Trước ngày 15 tháng 12 hằng năm:",
    "MarkerText": "1. ",
    "MarkerType": "123. ",
@@ -18610,7 +18495,7 @@
    }
   },
   {
-   "Paragraph": 809,
+   "Paragraph": 804,
    "Text": "a) Phòng QLĐT&CTHSSV tổng hợp số liệu sinh viên tuyển mới, tốt nghiệp,",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -18633,7 +18518,7 @@
    }
   },
   {
-   "Paragraph": 810,
+   "Paragraph": 805,
    "Text": "thôi học và đang học trong năm, dự kiến tốt nghiệp trong năm sau, tốt nghiệp đã có việc làm trong thời gian 12 tháng; phân loại theo đối tượng đầu vào, ngành đào tạo,",
    "MarkerText": null,
    "MarkerType": null,
@@ -18656,7 +18541,7 @@
    }
   },
   {
-   "Paragraph": 811,
+   "Paragraph": 806,
    "Text": "khóa đào tạo và hình thức đào tạo, báo cáo với Hiệu trưởng;",
    "MarkerText": null,
    "MarkerType": null,
@@ -18679,7 +18564,7 @@
    }
   },
   {
-   "Paragraph": 812,
+   "Paragraph": 807,
    "Text": "b) Phòng QLĐT&CTHSSV trình Hiệu trưởng báo cáo Ủy ban nhân dân cấp",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -18702,7 +18587,7 @@
    }
   },
   {
-   "Paragraph": 813,
+   "Paragraph": 808,
    "Text": "tỉnh nơi liên kết đào tạo về tình hình tuyển sinh và đào tạo tại địa phương.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18725,7 +18610,7 @@
    }
   },
   {
-   "Paragraph": 814,
+   "Paragraph": 809,
    "Text": "2. Các đơn vị chức năng có trách nhiệm lưu trữ, bảo quản an toàn các tài liệu",
    "MarkerText": "2. ",
    "MarkerType": "123. ",
@@ -18748,7 +18633,7 @@
    }
   },
   {
-   "Paragraph": 815,
+   "Paragraph": 810,
    "Text": "liên quan tới công tác đào tạo theo các quy định do Bộ Giáo dục và Đào tạo ban",
    "MarkerText": null,
    "MarkerType": null,
@@ -18771,7 +18656,7 @@
    }
   },
   {
-   "Paragraph": 816,
+   "Paragraph": 811,
    "Text": "hành:",
    "MarkerText": null,
    "MarkerType": null,
@@ -18794,7 +18679,7 @@
    }
   },
   {
-   "Paragraph": 817,
+   "Paragraph": 812,
    "Text": "a) Quyết định trúng tuyển, bảng điểm gốc, quyết định công nhận tốt nghiệp, sổ",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -18817,7 +18702,7 @@
    }
   },
   {
-   "Paragraph": 818,
+   "Paragraph": 813,
    "Text": "gốc cấp phát bằng tốt nghiệp cho sinh viên là tài liệu lưu trữ được bảo quản vĩnh viễn",
    "MarkerText": null,
    "MarkerType": null,
@@ -18840,7 +18725,7 @@
    }
   },
   {
-   "Paragraph": 819,
+   "Paragraph": 814,
    "Text": "tại Trường;",
    "MarkerText": null,
    "MarkerType": null,
@@ -18863,7 +18748,7 @@
    }
   },
   {
-   "Paragraph": 820,
+   "Paragraph": 815,
    "Text": "b) Tài liệu khác liên quan đến tuyển sinh, đào tạo được lưu trữ, bảo quản trong",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -18886,7 +18771,7 @@
    }
   },
   {
-   "Paragraph": 821,
+   "Paragraph": 816,
    "Text": "suốt quá trình đào tạo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -18909,7 +18794,7 @@
    }
   },
   {
-   "Paragraph": 822,
+   "Paragraph": 817,
    "Text": "c) Việc tiêu hủy tài liệu liên quan tuyển sinh, đào tạo hết thời gian lưu trữ được",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -18932,7 +18817,7 @@
    }
   },
   {
-   "Paragraph": 823,
+   "Paragraph": 818,
    "Text": "thực hiện theo quy định hiện hành của nhà nước.",
    "MarkerText": null,
    "MarkerType": null,
@@ -18955,7 +18840,7 @@
    }
   },
   {
-   "Paragraph": 824,
+   "Paragraph": 819,
    "Text": "3. Các đơn vị chức năng trình Hiệu trưởng công bố công khai trên trang thông",
    "MarkerText": "3. ",
    "MarkerType": "123. ",
@@ -18978,7 +18863,7 @@
    }
   },
   {
-   "Paragraph": 825,
+   "Paragraph": 820,
    "Text": "tin điện tử Trường chậm nhất 45 ngày trước khi tổ chức đào tạo:",
    "MarkerText": null,
    "MarkerType": null,
@@ -19001,7 +18886,7 @@
    }
   },
   {
-   "Paragraph": 826,
+   "Paragraph": 821,
    "Text": "a) Quy chế của Trường và các quy định quản lý đào tạo có liên quan;",
    "MarkerText": "a) ",
    "MarkerType": "abc) ",
@@ -19024,7 +18909,7 @@
    }
   },
   {
-   "Paragraph": 827,
+   "Paragraph": 822,
    "Text": "b) Quyết định mở ngành đào tạo;",
    "MarkerText": "b) ",
    "MarkerType": "abc) ",
@@ -19047,7 +18932,7 @@
    }
   },
   {
-   "Paragraph": 828,
+   "Paragraph": 823,
    "Text": "c) Các điều kiện bảo đảm chất lượng theo quy định hiện hành của Bộ Giáo dục",
    "MarkerText": "c) ",
    "MarkerType": "abc) ",
@@ -19070,7 +18955,7 @@
    }
   },
   {
-   "Paragraph": 829,
+   "Paragraph": 824,
    "Text": "và Đào tạo;",
    "MarkerText": null,
    "MarkerType": null,
@@ -19093,7 +18978,7 @@
    }
   },
   {
-   "Paragraph": 830,
+   "Paragraph": 825,
    "Text": "d) Các minh chứng về việc các chương trình đào tạo đáp ứng chuẩn chương",
    "MarkerText": "d) ",
    "MarkerType": "abc) ",
@@ -19116,7 +19001,7 @@
    }
   },
   {
-   "Paragraph": 831,
+   "Paragraph": 826,
    "Text": "trình đào tạo do Bộ Giáo dục và Đào tạo ban hành; đ) Thông báo tuyển sinh theo quy chế tuyển sinh hiện hành;",
    "MarkerText": null,
    "MarkerType": null,
@@ -19139,7 +19024,7 @@
    }
   },
   {
-   "Paragraph": 832,
+   "Paragraph": 827,
    "Text": "e) Các minh chứng về việc đáp ứng các yêu cầu tối thiểu đối với liên kết đào",
    "MarkerText": "e) ",
    "MarkerType": "abc) ",
@@ -19162,7 +19047,7 @@
    }
   },
   {
-   "Paragraph": 833,
+   "Paragraph": 828,
    "Text": "tạo vừa làm vừa học theo quy định tại khoản 2 và khoản 3 Điều 5 của Quy chế này.",
    "MarkerText": null,
    "MarkerType": null,
@@ -19185,7 +19070,7 @@
    }
   },
   {
-   "Paragraph": 834,
+   "Paragraph": 829,
    "Text": "Điều 33. Hiệu lực thi hành",
    "MarkerText": "Điều 33. ",
    "MarkerType": "Điều 123. ",
@@ -19208,7 +19093,7 @@
    }
   },
   {
-   "Paragraph": 835,
+   "Paragraph": 830,
    "Text": "Quy chế này được áp dụng đối với khóa tuyển sinh sau ngày 03/5/2021.",
    "MarkerText": null,
    "MarkerType": null,
@@ -19231,7 +19116,7 @@
    }
   },
   {
-   "Paragraph": 836,
+   "Paragraph": 831,
    "Text": "HIỆU TRƯỞNG",
    "MarkerText": null,
    "MarkerType": null,
@@ -19254,7 +19139,7 @@
    }
   },
   {
-   "Paragraph": 837,
+   "Paragraph": 832,
    "Text": "Nguyễn Vũ Bích Hiền",
    "MarkerText": null,
    "MarkerType": null,

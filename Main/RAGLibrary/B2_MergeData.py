@@ -15,55 +15,71 @@ def mergeLinesToParagraphs(baseJson):
     lines = baseJson["lines"]
 
     paragraphs = []
-    current_para = []
+    buffer = []
 
-    for i, line in enumerate(lines):
-        if not current_para:
-            current_para.append(line)
+    for i, curr in enumerate(lines):
+        if not buffer:
+            buffer.append(curr)
+            continue
+
+        prev = lines[i-1]
+
+        if canMerge(prev, curr, i-1, i):
+            buffer.append(curr)
+
         else:
-            prev_line = current_para[-1]
-            if canMerge(prev_line, line):
-                current_para.append(line)
-            else:
-                paragraphs.append(buildParagraph(current_para, len(paragraphs)+1))
-                current_para = [line]
+            paragraphs.append(buildParagraph(buffer, len(paragraphs)+1))
+            buffer = [curr]
 
-    if current_para:
-        paragraphs.append(buildParagraph(current_para, len(paragraphs)+1))
+    if buffer:
+        paragraphs.append(buildParagraph(buffer, len(paragraphs)+1))
 
     return {"general": general, "paragraphs": paragraphs}
+
 
 
 # ===============================
 # CÁC HÀM ĐIỀU KIỆN MERGE
 # ===============================
-def canMerge(prev, curr):
+def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     """
     Kiểm tra line curr có thể merge vào prev không
+    Ghi log lý do True/False
     """
+    pair = f"[{idx_prev}->{idx_curr}]" if idx_prev is not None else ""
+
     # Trường hợp mở đoạn mới
     if isNewPara(curr):
+        print(f"{pair} Merge=False | Reason: isNewPara")
         return False
 
     if not isSameFontSize(prev, curr):
+        print(f"{pair} Merge=False | Reason: FontSize mismatch")
         return False
 
     if not isSameStyle(prev, curr):
+        print(f"{pair} Merge=False | Reason: Style mismatch")
         return False
 
     if not isNear(prev, curr):
+        print(f"{pair} Merge=False | Reason: Not near")
         return False
 
     if isSameAlign(prev, curr):
+        print(f"{pair} Merge=True | Reason: SameAlign")
         return True
 
     if isBadAlign(prev, curr):
+        print(f"{pair} Merge=False | Reason: BadAlign")
         return False
 
-    if canMergeWithAlign(prev, curr) or canMergeWithLeft(prev, curr):
+    if canMergeWithAlign(prev) or canMergeWithLeft(prev, curr):
+        print(f"{pair} Merge=True | Reason: Align exception")
         return True
 
+    print(f"{pair} Merge=False | Reason: Fallback")
     return False
+
 
 
 def isNewPara(line):
@@ -106,7 +122,7 @@ def isNear(prev, curr):
     top_curr = curr["Position"]["Top"]
     bot_curr = curr["Position"]["Bot"]
     
-    return (top_curr < top_prev * 1.75) and (top_curr < bot_curr * 1.75) and (top_curr < hig_curr*4)
+    return (top_curr < top_prev * 2) and (top_curr < bot_curr * 2) and (top_curr < hig_curr * 5)
 
 
 def isSameAlign(prev, curr):
@@ -133,8 +149,8 @@ def isNoSameAlignL(prev, curr):
     return prev.get("Align") == "left" and curr.get("Align") == "justify"
 
 
-def canMergeWithAlign(prev, curr):
-    return isNoSameAlign0(prev) or isNoSameAlignC(prev) or (isNoSameAlignR(prev) and curr.get("Align") != "center")
+def canMergeWithAlign(prev):
+    return isNoSameAlign0(prev) or isNoSameAlignC(prev) or isNoSameAlignR(prev)
 
 
 def canMergeWithLeft(prev, curr):

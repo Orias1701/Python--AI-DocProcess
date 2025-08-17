@@ -41,6 +41,7 @@ def mergeLinesToParagraphs(baseJson):
 # ===============================
 # CÁC HÀM ĐIỀU KIỆN MERGE
 # ===============================
+
 def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     """
     Kiểm tra line curr có thể merge vào prev không
@@ -81,7 +82,6 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     return False
 
 
-
 def isNewPara(line):
     return line.get("MarkerText") not in (None, "", " ")
 
@@ -117,7 +117,6 @@ def isNear(prev, curr):
         return False
     
     hig_curr = curr["LineHeight"]
-
     top_prev = prev["Position"]["Top"]
     top_curr = curr["Position"]["Top"]
     bot_curr = curr["Position"]["Bot"]
@@ -134,19 +133,19 @@ def isBadAlign(prev, curr):
 
 
 def isNoSameAlign0(prev):
-    return prev.get("Align") == "justify"
+    return prev.get("Align") == "Justify"
 
 
 def isNoSameAlignC(prev):
-    return prev.get("Align") == "center"
+    return prev.get("Align") == "Center"
 
 
 def isNoSameAlignR(prev):
-    return prev.get("Align") == "right"
+    return prev.get("Align") == "Right"
 
 
 def isNoSameAlignL(prev, curr):
-    return prev.get("Align") == "left" and curr.get("Align") == "justify"
+    return prev.get("Align") == "Left" and curr.get("Align") == "Justify"
 
 
 def canMergeWithAlign(prev):
@@ -160,6 +159,7 @@ def canMergeWithLeft(prev, curr):
 # ===============================
 # HÀM BUILD PARAGRAPH
 # ===============================
+
 def buildParagraph(lines, para_id):
     """
     Tạo dict Paragraph từ list lines đã merge
@@ -171,8 +171,8 @@ def buildParagraph(lines, para_id):
     # Style: lấy min theo từng chữ số
     style = mergeStyle([ln["Style"] for ln in lines])
 
-    first_word = lines[0]["Words"]["First"]
-    last_word = lines[-1]["Words"]["Last"]
+    # first_word = lines[0]["Words"]["First"]
+    # last_word = lines[-1]["Words"]["Last"]
 
     font_size = round(sum([ln["FontSize"] for ln in lines]) / len(lines), 1)
     align = mostCommon([ln["Align"] for ln in lines]) or lines[-1]["Align"]
@@ -185,16 +185,17 @@ def buildParagraph(lines, para_id):
         "Style": style,
         "FontSize": font_size,
         "Align": align,
-        "Words": {
-            "First": first_word,
-            "Last": last_word
-        }
+        # "Words": {
+        #     "First": first_word,
+        #     "Last": last_word
+        # }
     }
 
 
 # ===============================
 # HELPERS
 # ===============================
+
 def mergeStyle(styles):
     """
     styles: list số 4 chữ số (CaseStyle*1000 + FontStyle)

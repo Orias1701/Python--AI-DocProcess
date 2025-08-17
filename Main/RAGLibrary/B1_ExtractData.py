@@ -232,17 +232,6 @@ def getCoords(line):
     return (x0, x1, xm, y0, y1)
 
 
-# def getWord(line, position="first"):
-#     words = line.get("text", "").split()
-#     if not words:
-#         return ("", 0, 0.0, 0.0)
-#     word = words[0] if position == "first" else words[-1]
-#     style = getStyle(line, {"common_words": set(), "proper_names": [], "abbreviations": set()})
-#     font_size = getFontSize(line)
-#     width = len(word) * (font_size * 0.5)  # ước lượng
-#     return (word, style, font_size, round(width, 1))
-
-
 def getWord(line, position="first"):
     """
     Lấy Text, Style, FontSize, Width của từ đầu hoặc cuối trong line
@@ -256,63 +245,65 @@ def getWord(line, position="first"):
     # chọn từ
     word = words[0] if position == "first" else words[-1].rstrip(".,!?")
     font_size = getFontSize(line)
-    width = 0.0
+    
+    # width = 0.0
 
-    # === Width ===
+    # if position == "first":
+    #     concatenated_text = ""
+    #     span_widths = []
+    #     for span in spans:
+    #         span_text = span["text"].replace("\xa0", " ").strip()
+    #         if not span_text:
+    #             continue
+    #         concatenated_text += span_text
+    #         span_x0, _, span_x1, _ = span["bbox"]
+    #         span_widths.append(round(span_x1 - span_x0, 1))
 
-    if position == "first":
-        concatenated_text = ""
-        span_widths = []
-        for span in spans:
-            span_text = span["text"].replace("\xa0", " ").strip()
-            if not span_text:
-                continue
-            concatenated_text += span_text
-            span_x0, _, span_x1, _ = span["bbox"]
-            span_widths.append(round(span_x1 - span_x0, 1))
+    #         if concatenated_text == word or concatenated_text.startswith(word):
+    #             width = sum(span_widths)
+    #             if concatenated_text != word:
+    #                 char_count = len(concatenated_text)
+    #                 word_len = len(word)
+    #                 width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
+    #             break
 
-            if concatenated_text == word or concatenated_text.startswith(word):
-                width = sum(span_widths)
-                if concatenated_text != word:
-                    char_count = len(concatenated_text)
-                    word_len = len(word)
-                    width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
-                break
+    # else:
+    #     concatenated_text = ""
+    #     span_widths = []
+    #     for span in reversed(spans):
+    #         span_text = span["text"].replace("\xa0", " ").strip()
+    #         if not span_text:
+    #             continue
+    #         concatenated_text = span_text + concatenated_text
+    #         span_x0, _, span_x1, _ = span["bbox"]
+    #         span_widths.insert(0, round(span_x1 - span_x0, 1))
 
-    else:  # position == "last"
-        concatenated_text = ""
-        span_widths = []
-        for span in reversed(spans):
-            span_text = span["text"].replace("\xa0", " ").strip()
-            if not span_text:
-                continue
-            concatenated_text = span_text + concatenated_text
-            span_x0, _, span_x1, _ = span["bbox"]
-            span_widths.insert(0, round(span_x1 - span_x0, 1))
+    #         if concatenated_text == word or concatenated_text.endswith(word):
+    #             width = sum(span_widths)
+    #             if concatenated_text != word:
+    #                 char_count = len(concatenated_text)
+    #                 word_len = len(word)
+    #                 width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
+    #             break
 
-            if concatenated_text == word or concatenated_text.endswith(word):
-                width = sum(span_widths)
-                if concatenated_text != word:
-                    char_count = len(concatenated_text)
-                    word_len = len(word)
-                    width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
-                break
-
-    # === Other ===
 
     style = getStyle(line, {"common_words": set(), "proper_names": [], "abbreviations": set()})
-    return (word, style, font_size, width)
-    # End
+    # return (word, style, font_size, width)
+    return (word, style, font_size)
+
 
 def getFirstWord(line):
-    t, s, f, w = getWord(line, "first")
-    return {"Text": t, "Style": s, "FontSize": f, "Width": w}
+    # t, s, f, w = getWord(line, "first")
+    # return {"Text": t, "Style": s, "FontSize": f, "Width": w}
+    t, s, f = getWord(line, "first")
+    return {"Text": t, "Style": s, "FontSize": f}
 
 
 def getLastWord(line):
-    t, s, f, w = getWord(line, "last")
-    return {"Text": t, "Style": s, "FontSize": f, "Width": w}
-
+    # t, s, f, w = getWord(line, "last")
+    # return {"Text": t, "Style": s, "FontSize": f, "Width": w}
+    t, s, f = getWord(line, "last")
+    return {"Text": t, "Style": s, "FontSize": f}
 
 
 def getTextStatus(pdf_path, exceptions, patterns):

@@ -90,17 +90,17 @@
    "Text": "Số:           /QĐ-ĐHTĐHN",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 12.0,
    "Words": {
     "First": {
      "Text": "Số:",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 12.0
     },
     "Last": {
      "Text": "/QĐ-ĐHTĐHN",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 12.0
     }
    },
@@ -780,17 +780,17 @@
    "Text": "Nơi nhận:",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 2110,
+   "Style": 1110,
    "FontSize": 12.0,
    "Words": {
     "First": {
      "Text": "Nơi",
-     "Style": 2110,
+     "Style": 1110,
      "FontSize": 12.0
     },
     "Last": {
      "Text": "nhận:",
-     "Style": 2110,
+     "Style": 1110,
      "FontSize": 12.0
     }
    },
@@ -840,17 +840,17 @@
    "Text": "- Ban Giám hiệu;",
    "MarkerText": "- ",
    "MarkerType": "- ",
-   "Style": 2000,
+   "Style": 1000,
    "FontSize": 12.0,
    "Words": {
     "First": {
      "Text": "-",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 12.0
     },
     "Last": {
      "Text": "hiệu;",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 12.0
     }
    },
@@ -870,17 +870,17 @@
    "Text": "- Như Điều 3;",
    "MarkerText": "- ",
    "MarkerType": "- ",
-   "Style": 2000,
+   "Style": 1000,
    "FontSize": 12.0,
    "Words": {
     "First": {
      "Text": "-",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 12.0
     },
     "Last": {
      "Text": "3;",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 12.0
     }
    },
@@ -900,17 +900,17 @@
    "Text": "- Lưu: VT, QLĐT&CTHSSV (05 bản).",
    "MarkerText": "- ",
    "MarkerType": "- ",
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 12.0,
    "Words": {
     "First": {
      "Text": "-",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 12.0
     },
     "Last": {
      "Text": "bản)",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 12.0
     }
    },
@@ -1860,17 +1860,17 @@
    "Text": "ngành:",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "ngành:",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "ngành:",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -3930,17 +3930,17 @@
    "Text": "lí.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "lí.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "lí",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -4410,17 +4410,17 @@
    "Text": "hành;",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "hành;",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "hành;",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -7320,17 +7320,17 @@
    "Text": "Trường.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 2000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Trường.",
-     "Style": 3000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Trường",
-     "Style": 3000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -7380,17 +7380,17 @@
    "Text": "công.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "công.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "công",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -7890,17 +7890,17 @@
    "Text": "kì.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "kì.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "kì",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -8040,17 +8040,17 @@
    "Text": "đó.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "đó.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "đó",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -11010,17 +11010,17 @@
    "Text": "luật.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "luật.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "luật",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -13440,17 +13440,17 @@
    "Text": "tuần.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "tuần.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "tuần",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -13860,17 +13860,17 @@
    "Text": "phần.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "phần.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "phần",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -16830,17 +16830,17 @@
    "Text": "học.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "học.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "học",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -18990,17 +18990,17 @@
    "Text": "Dưới 1,0: Kém.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 2000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Dưới",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Kém",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -19200,17 +19200,17 @@
    "Text": "Dưới 4,0: Kém.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 2000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Dưới",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Kém",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -19980,17 +19980,17 @@
    "Text": "học.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "học.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "học",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -20880,17 +20880,17 @@
    "Text": "Ngoại ngữ.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 2000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Ngoại",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "ngữ",
-     "Style": 2000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -21540,17 +21540,17 @@
    "Text": "phần.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "phần.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "phần",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -23970,17 +23970,17 @@
    "Text": "đầu.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "đầu.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "đầu",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -24840,17 +24840,17 @@
    "Text": "đến.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "đến.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "đến",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -27450,17 +27450,17 @@
    "Text": "này;",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "này;",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "này;",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -27870,17 +27870,17 @@
    "Text": "này.",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "này.",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "này",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -29250,17 +29250,17 @@
    "Text": "hành:",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 3000,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "hành:",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "hành:",
-     "Style": 3000,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },

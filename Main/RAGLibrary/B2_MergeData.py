@@ -47,7 +47,7 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     Kiểm tra line curr có thể merge vào prev không
     Ghi log lý do True/False
     """
-    pair = f"[{idx_prev}->{idx_curr}]" if idx_prev is not None else ""
+    pair = f"[{idx_prev+1}->{idx_curr+1}]" if idx_prev is not None else ""
 
     # Trường hợp mở đoạn mới
     if isNewPara(curr):

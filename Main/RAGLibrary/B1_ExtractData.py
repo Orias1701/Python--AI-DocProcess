@@ -158,7 +158,7 @@ def normalizeRomanMarkers(lines):
             if m and is_roman(m.group(1)):
                 roman_markers.append((idx, m.group(1)))
             else:
-                break  # nếu gặp marker không phải La Mã -> bỏ qua cả nhóm
+                break
 
         # chỉ xử lý khi có marker La Mã
         if roman_markers:
@@ -188,29 +188,45 @@ def getMarker(text, patterns):
     return marker_text, marker_type
 
 
+
 def getStyle(line, exceptions):
-    """CaseStyle + FontStyle"""
+    """CaseStyle + FontStyle, bỏ qua dấu câu"""
     text = line.get("text", "")
     spans = line.get("spans", [])
+
     # CaseStyle
     words = text.split()
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
-    filtered = [w for w in words if w.lower() not in exception_texts]
-    if all(w.isupper() for w in filtered if w.isalpha()):
-        case_style = 3000
-    elif all(w.istitle() for w in filtered if w.isalpha()):
-        case_style = 2000
+    
+    filtered = []
+    for w in words:
+        # Loại bỏ dấu câu, chỉ giữ chữ cái
+        clean_w = re.sub(r'[^a-zA-ZÀ-ỹà-ỹ0-9]', '', w)
+        if clean_w and clean_w.lower() not in exception_texts:
+            filtered.append(clean_w)
+
+    if filtered:
+        if all(w.isupper() for w in filtered):
+            case_style = 3000
+        elif all(w.istitle() for w in filtered):
+            case_style = 2000
+        else:
+            case_style = 1000
     else:
-        case_style = 1000
+        case_style = 1000  # mặc định
+
     # FontStyle
     font_style = 0
     for s in spans:
-        bold = bool(s["flags"] & 16)
-        italic = bool(s["flags"] & 2)
-        underline = bool(s["flags"] & 8)
+        flags = s.get("flags", 0)
+        bold = bool(flags & 16)
+        italic = bool(flags & 2)
+        underline = bool(flags & 8)
         font_style = (100 if bold else 0) + (10 if italic else 0) + (1 if underline else 0)
-        break
+        break  # chỉ dùng span đầu tiên
+
     return case_style + font_style
+
 
 
 def getFontSize(line):

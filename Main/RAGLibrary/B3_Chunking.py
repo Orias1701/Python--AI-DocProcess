@@ -1,6 +1,5 @@
 import re
 import os
-from docx import Document
 import fitz
 
 def sentence_end(text):
@@ -71,27 +70,10 @@ def merge_text(para, new_para):
     # Kết hợp điều kiện: không gộp nếu different_case là True
     return should_merge and not different_case
 def extracted(path):
-    # Trích xuất văn bản từ file (.docx, .doc, .pdf) và tổ chức thành các đoạn.
     file_ext = os.path.splitext(path)[1].lower()
     text_data = []
 
-    if file_ext == ".docx":
-        doc = Document(path)
-        paragraph = ""
-        for para in doc.paragraphs:
-            for line in para.text.split("\n"):
-                cleaned_text = ' '.join(line.strip().split())
-                if cleaned_text:
-                    if paragraph and merge_text(paragraph, cleaned_text):
-                        paragraph += " " + cleaned_text
-                    else:
-                        if paragraph:
-                            text_data.append({"text": paragraph})
-                        paragraph = cleaned_text
-        if paragraph:
-            text_data.append({"text": paragraph})
-
-    elif file_ext == ".pdf":
+    if file_ext == ".pdf":
         doc = fitz.open(path)
         paragraph = ""
         for page in doc:

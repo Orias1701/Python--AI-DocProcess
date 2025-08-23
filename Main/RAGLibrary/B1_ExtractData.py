@@ -10,7 +10,6 @@ import json
 import tempfile
 from collections import Counter
 import fitz
-from docx2pdf import convert
 
 
 # ==== 1. Utils ====
@@ -532,13 +531,8 @@ def resetPosition(jsonDict):
 def extractData(path, exceptions_path="exceptions.json", markers_path="markers.json", status_path="status.json"):
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
-    file_ext = os.path.splitext(path)[1].lower()
     pdf_path = path
     temp_file = None
-    if file_ext == ".docx":
-        temp_file = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
-        convert(path, temp_file.name)
-        pdf_path = temp_file.name
 
     try:
         exceptions = load_exceptions(exceptions_path)

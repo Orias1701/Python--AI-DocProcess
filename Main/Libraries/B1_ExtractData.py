@@ -1,18 +1,15 @@
-"""
-Module ExtractData (refactored)
-- Tách riêng các nhóm hàm: Utils, get*, set*, delStatus, extractData
-- Đầu ra JSON rõ ràng, dễ bảo trì, dễ mở rộng
-"""
-
 import re
 import os
 import json
 import tempfile
-from collections import Counter
 import fitz
+from collections import Counter, defaultdict
+from difflib import SequenceMatcher
 
 
-# ==== 1. Utils ====
+# ===============================
+# 1. Utils
+# ===============================
 def load_exceptions(file_path="../tests/ex.exceptions.json"):
     """Nạp danh sách ngoại lệ từ JSON"""
     try:
@@ -61,7 +58,6 @@ def load_patterns(markers_path="../tests/ex.markers.json", status_path="../tests
 
 def similar(a, b):
     """So sánh độ tương đồng hai chuỗi"""
-    from difflib import SequenceMatcher
     return SequenceMatcher(None, a, b).ratio()
 
 
@@ -87,62 +83,47 @@ def extract_marker(text, patterns):
         match = pattern_info["pattern"].match(text)
         if match:
             marker_text = re.sub(r'^\s+', '', match.group(0))
-            marker_text = re.sub(r'\s+$', ' ', marker_text) 
-            return {
-                "marker_text": marker_text
-            }
-    return {
-        "marker_text": None
-    }
+            marker_text = re.sub(r'\s+$', ' ', marker_text)
+            return {"marker_text": marker_text}
+    return {"marker_text": None}
 
 
 def format_marker(marker_text, patterns):
     """
-    Chuẩn hoá MarkerText theo đúng logic cũ:
-    1. Số Ả Rập  => '123'
-    2. Số La Mã  => 'XVI'
-    3. Token 1 ký tự: a..z => 'abc', A..Z => 'ABC'
-    4. Token nằm trong keywords_set thì giữ nguyên
-    5. Các token khác giữ nguyên
+    Chuẩn hoá MarkerText theo đúng logic cũ
     """
     if not marker_text:
         return None
-    
-    formatted = marker_text
-    # 1. Chuẩn hoá số Ả Rập
-    formatted = re.sub(r'\b[0-9]+\b', '123', formatted)
-    # 2. Chuẩn hoá số La Mã
-    formatted = re.sub(r'\b[IVXLC]+\b', 'XVI', formatted)
 
-    # 3. Xử lý từng token
+    formatted = marker_text
+    formatted = re.sub(r'\b[0-9]+\b', '123', formatted)        # số Ả Rập
+    formatted = re.sub(r'\b[IVXLC]+\b', 'XVI', formatted)      # số La Mã
+
     parts = re.split(r'(\W+)', formatted)
     formatted_parts = []
-    
     for part in parts:
         if re.match(r'(\W+)', part):
             formatted_parts.append(part)
             continue
-
         if part.lower() in patterns["keywords_set"]:
             formatted_parts.append(part)
         elif re.match(r'^[a-z]$', part):
             formatted_parts.append('abc')
+        elif re.match(r'^[a-zđêôơư]$', part):
+            formatted_parts.append('abc')
         elif re.match(r'^[A-Z]$', part):
+            formatted_parts.append('ABC')
+        elif re.match(r'^[A-ZĐÊÔƠƯ]$', part):
             formatted_parts.append('ABC')
         else:
             formatted_parts.append(part)
-    
     return ''.join(formatted_parts)
 
 
 def normalizeRomanMarkers(lines):
     """
-    Chuẩn hoá MarkerType cho các nhóm có số La Mã.
-    - Nếu chuỗi số La Mã liên tiếp (I, II, III, ...) -> giữ nguyên
-    - Nếu không liên tiếp -> chuẩn hoá MarkerType thành dạng 'ABC'
+    Chuẩn hoá MarkerType cho các nhóm có số La Mã
     """
-    from collections import defaultdict
-
     format_groups = defaultdict(list)
     for idx, line in enumerate(lines):
         fmt = line.get("MarkerType")
@@ -159,19 +140,18 @@ def normalizeRomanMarkers(lines):
             else:
                 break
 
-        # chỉ xử lý khi có marker La Mã
         if roman_markers:
             roman_numbers = [roman_to_int(rm[1]) for rm in roman_markers]
             expected = list(range(min(roman_numbers), max(roman_numbers) + 1))
             if sorted(roman_numbers) != expected:
-                # không liên tiếp -> chuẩn hoá lại MarkerType
                 for idx, _ in roman_markers:
                     lines[idx]["MarkerType"] = re.sub(r'\b[IVXLC]+\b', "ABC", lines[idx]["MarkerType"])
     return lines
 
 
-
-# ==== 2. Các hàm get* ====
+# ===============================
+# 2. Các hàm get*
+# ===============================
 def getPageGeneralSize(page):
     return [round(page.rect.height, 1), round(page.rect.width, 1)]
 
@@ -189,17 +169,16 @@ def getMarker(text, patterns):
 
 
 def getStyle(line, exceptions):
-    """CaseStyle + FontStyle, bỏ qua dấu câu"""
+    """CaseStyle (toàn line) + FontStyle (min theo từng thuộc tính trên mọi span)"""
     text = line.get("text", "")
     spans = line.get("spans", [])
 
-    # CaseStyle
+    # ===== CaseStyle (giữ logic cũ, tính trên toàn line sau khi lọc ngoại lệ) =====
     words = text.split()
     exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
-    
+
     filtered = []
     for w in words:
-        # Loại bỏ dấu câu, chỉ giữ chữ cái
         clean_w = re.sub(r'[^a-zA-ZÀ-ỹà-ỹ0-9]', '', w)
         if clean_w and clean_w.lower() not in exception_texts:
             filtered.append(clean_w)
@@ -214,24 +193,30 @@ def getStyle(line, exceptions):
     else:
         case_style = 1000  # mặc định
 
-    # FontStyle
-    font_style = 0
-    for s in spans:
-        flags = s.get("flags", 0)
-        bold = bool(flags & 16)
-        italic = bool(flags & 2)
-        underline = bool(flags & 8)
-        font_style = (100 if bold else 0) + (10 if italic else 0) + (1 if underline else 0)
-        break  # chỉ dùng span đầu tiên
+    # ===== FontStyle (min theo từng thuộc tính trên các spans) =====
+    if spans:
+        bold_all = True
+        italic_all = True
+        underline_all = True
+        for s in spans:
+            flags = s.get("flags", 0)
+            b = bool(flags & 16)
+            i = bool(flags & 2)
+            u = bool(flags & 8)
+            bold_all = bold_all and b
+            italic_all = italic_all and i
+            underline_all = underline_all and u
+        font_style = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
+    else:
+        font_style = 0
 
     return case_style + font_style
-
 
 
 def getFontSize(line):
     spans = line.get("spans", [])
     if spans:
-        return round(spans[0]["size"], 1)
+        return round(sum(s.get("size", 12.0) for s in spans) / len(spans), 1)
     return 12.0
 
 
@@ -249,80 +234,70 @@ def getCoords(line):
 
 def getWord(line, position="first"):
     """
-    Lấy Text, Style, FontSize, Width của từ đầu hoặc cuối trong line
-    - Width tính theo bbox (giống file cũ)
+    Lấy (Text, Style, FontSize) của từ đầu/cuối dựa trên chính span chứa từ đó
+    - Hoàn toàn độc lập với Style/FontSize của line
     """
     spans = line.get("spans", [])
-    words = line.get("text", "").split()
-    if not words or not spans:
-        return ("", 0, 0.0, 0.0)
+    full_text = line.get("text", "")
+    if not spans or not full_text.strip():
+        return ("", 0, 0.0)
 
-    # chọn từ
-    word = words[0] if position == "first" else words[-1].rstrip(".,!?")
-    font_size = getFontSize(line)
-    
-    # width = 0.0
+    def build_style_for_word(word_text, span):
+        # CaseStyle cho CHÍNH từ đó
+        clean = re.sub(r'[^A-Za-zÀ-ỹà-ỹ0-9]', '', word_text)
+        if clean and clean.isupper():
+            cs = 3000
+        elif clean and clean.istitle():
+            cs = 2000
+        else:
+            cs = 1000
 
-    # if position == "first":
-    #     concatenated_text = ""
-    #     span_widths = []
-    #     for span in spans:
-    #         span_text = span["text"].replace("\xa0", " ").strip()
-    #         if not span_text:
-    #             continue
-    #         concatenated_text += span_text
-    #         span_x0, _, span_x1, _ = span["bbox"]
-    #         span_widths.append(round(span_x1 - span_x0, 1))
+        # FontStyle từ span của từ đó
+        flags = span.get("flags", 0)
+        bold = bool(flags & 16)
+        italic = bool(flags & 2)
+        underline = bool(flags & 8)
+        fs = (100 if bold else 0) + (10 if italic else 0) + (1 if underline else 0)
 
-    #         if concatenated_text == word or concatenated_text.startswith(word):
-    #             width = sum(span_widths)
-    #             if concatenated_text != word:
-    #                 char_count = len(concatenated_text)
-    #                 word_len = len(word)
-    #                 width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
-    #             break
+        return cs + fs
 
-    # else:
-    #     concatenated_text = ""
-    #     span_widths = []
-    #     for span in reversed(spans):
-    #         span_text = span["text"].replace("\xa0", " ").strip()
-    #         if not span_text:
-    #             continue
-    #         concatenated_text = span_text + concatenated_text
-    #         span_x0, _, span_x1, _ = span["bbox"]
-    #         span_widths.insert(0, round(span_x1 - span_x0, 1))
+    if position == "first":
+        for s in spans:
+            words_in_span = s.get("text", "").split()
+            if words_in_span:
+                raw = words_in_span[0]
+                word = raw.rstrip(".,!?;:…")
+                size = round(s.get("size", 12.0), 1)
+                style = build_style_for_word(word, s)
+                return (word, style, size)
+    else:
+        for s in reversed(spans):
+            words_in_span = s.get("text", "").split()
+            if words_in_span:
+                raw = words_in_span[-1]
+                word = raw.rstrip(".,!?;:…")
+                size = round(s.get("size", 12.0), 1)
+                style = build_style_for_word(word, s)
+                return (word, style, size)
 
-    #         if concatenated_text == word or concatenated_text.endswith(word):
-    #             width = sum(span_widths)
-    #             if concatenated_text != word:
-    #                 char_count = len(concatenated_text)
-    #                 word_len = len(word)
-    #                 width = round(width * (word_len / char_count), 1) if char_count > 0 else 0
-    #             break
-
-
-    style = getStyle(line, {"common_words": set(), "proper_names": [], "abbreviations": set()})
-    # return (word, style, font_size, width)
-    return (word, style, font_size)
+    return ("", 0, 0.0)
 
 
 def getFirstWord(line):
-    # t, s, f, w = getWord(line, "first")
-    # return {"Text": t, "Style": s, "FontSize": f, "Width": w}
     t, s, f = getWord(line, "first")
     return {"Text": t, "Style": s, "FontSize": f}
 
 
 def getLastWord(line):
-    # t, s, f, w = getWord(line, "last")
-    # return {"Text": t, "Style": s, "FontSize": f, "Width": w}
+    t, s, f = getWord(line, "last")
+    return {"Text": t, "Style": s, "FontSize": f}
+
+def getLastWord(line):
     t, s, f = getWord(line, "last")
     return {"Text": t, "Style": s, "FontSize": f}
 
 
 def getTextStatus(pdf_path, exceptions, patterns):
-    """Trích xuất thông tin gốc từ PDF"""
     doc = fitz.open(pdf_path)
     general = {"pageGeneralSize": getPageGeneralSize(doc[0])}
     lines = []
@@ -355,13 +330,14 @@ def getTextStatus(pdf_path, exceptions, patterns):
     return {"general": general, "lines": lines}
 
 
-# ==== 3. Các hàm set* ====
-from collections import Counter
-
+# ===============================
+# 3. Các hàm set*
+# ===============================
 def most_common(values):
     if not values:
         return None
     return Counter(values).most_common(1)[0][0]
+
 
 def setPageCoords(lines, pageGeneralSize):
     x0s = [round(l["Coords"]["X0"], 1) for l in lines]
@@ -369,21 +345,14 @@ def setPageCoords(lines, pageGeneralSize):
     y0s = [round(l["Coords"]["Y0"], 1) for l in lines]
     y1s = [round(l["Coords"]["Y1"], 1) for l in lines]
 
-    # xStart = mode của X0
     xStart = most_common(x0s)
-
-    # xEnd = mode của X1 trong khoảng 75% - 100% page width
     page_width = pageGeneralSize[1]
     threshold = page_width * 0.75
     x1_candidates = [x for x in x1s if x >= threshold]
-    if x1_candidates:
-        xEnd = most_common(x1_candidates)
-    else:
-        xEnd = max(x1s)  # fallback
+    xEnd = most_common(x1_candidates) if x1_candidates else max(x1s)
 
     yStart = min(y0s)
-    yEnd   = max(y1s)
-
+    yEnd = max(y1s)
     xMid = round((xStart + xEnd) / 2, 1)
     yMid = round((yStart + yEnd) / 2, 1)
 
@@ -404,6 +373,16 @@ def setCommonFontSize(lines):
     fs, _ = setCommonStatus(lines, "FontSize", 1)[0]
     return round(fs, 1)
 
+def setCommonFontSizes(lines):
+    """
+    Trả về tất cả FontSize và số lượng của chúng, sắp xếp theo tần suất giảm dần.
+    """
+    values = [l["FontSize"] for l in lines if l.get("FontSize") is not None]
+    counter = Counter(values)
+    results = []
+    for fs, count in counter.most_common():  # trả về tất cả
+        results.append({"FontSize": round(fs, 1), "Count": count})
+    return results
 
 def setCommonMarkers(lines):
     total = len(lines)
@@ -450,9 +429,9 @@ def setTextStatus(baseJson):
     pageGeneralSize = baseJson["general"]["pageGeneralSize"]
     xStart, yStart, xEnd, yEnd, xMid, yMid = setPageCoords(lines, pageGeneralSize)
     regionWidth, regionHeight = setPageRegionSize(xStart, yStart, xEnd, yEnd)
+    commonFontSizes = setCommonFontSizes(lines)
     commonFontSize = setCommonFontSize(lines)
     commonMarkers = setCommonMarkers(lines)
-
 
     new_general = {
         "pageGeneralSize": baseJson["general"]["pageGeneralSize"],
@@ -460,17 +439,18 @@ def setTextStatus(baseJson):
         "pageRegionWidth": regionWidth,
         "pageRegionHeight": regionHeight,
         "commonFontSize": commonFontSize,
+        "commonFontSizes": commonFontSizes,
         "commonMarkers": commonMarkers
     }
 
     new_lines = []
     for i, line in enumerate(lines):
         lineWidth, lineHeight = setLineSize(line)
-        pos = setPosition(line, lines[i-1] if i > 0 else None,
-                        lines[i+1] if i < len(lines)-1 else None,
-                        xStart, xEnd, xMid)
+        pos = setPosition(line, lines[i - 1] if i > 0 else None,
+                          lines[i + 1] if i < len(lines) - 1 else None,
+                          xStart, xEnd, xMid)
         pos_dict = {"Left": pos[0], "Right": pos[1], "Mid": pos[2], "Top": pos[3], "Bot": pos[4]}
-        
+
         line_dict = {
             **line,
             "LineWidth": lineWidth,
@@ -478,13 +458,14 @@ def setTextStatus(baseJson):
             "Position": pos_dict,
             "Align": setAlign(pos_dict, regionWidth)
         }
-
         new_lines.append(line_dict)
 
     return {"general": new_general, "lines": new_lines}
 
 
-# ==== 4. Hàm delStatus ====
+# ===============================
+# 4. Các hàm del/reset
+# ===============================
 def delStatus(jsonDict, deleteList):
     for line in jsonDict["lines"]:
         for attr in deleteList:
@@ -527,8 +508,13 @@ def resetPosition(jsonDict):
     return jsonDict
 
 
-# ==== 5. Hàm chính extractData ====
-def extractData(path, exceptions_path="../tests/ex.exceptions.json", markers_path="../tests/ex.markers.json", status_path="../tests/ex.status.json"):
+# ===============================
+# 5. Hàm chính extractData
+# ===============================
+def extractData(path,
+                exceptions_path="../tests/ex.exceptions.json",
+                markers_path="../tests/ex.markers.json",
+                status_path="../tests/ex.status.json"):
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     pdf_path = path
@@ -540,14 +526,11 @@ def extractData(path, exceptions_path="../tests/ex.exceptions.json", markers_pat
 
         baseJson = getTextStatus(pdf_path, exceptions, patterns)
         baseJson = getTextStatus(pdf_path, exceptions, patterns)
-        
-        # xử lý chuẩn hoá marker la mã
-        baseJson["lines"] = normalizeRomanMarkers(baseJson["lines"])
 
+        baseJson["lines"] = normalizeRomanMarkers(baseJson["lines"])
         modifiedJson = setTextStatus(baseJson)
         cleanJson = resetPosition(modifiedJson)
         finalJson = delStatus(cleanJson, ["Coords"])
-        # return cleanJson
         return finalJson
     finally:
         if temp_file:

@@ -16,8 +16,8 @@
   "pageRegionHeight": 749.1,
   "commonFontSize": 14.0,
   "commonMarkers": [
-   "123. ",
    "abc) ",
+   "123. ",
    "Điều 123. ",
    "- ",
    "ABC: ",
@@ -91,17 +91,17 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.0,
+   "FontSize": 12.5,
    "Words": {
     "First": {
-     "Text": "Số:",
-     "Style": 1000,
-     "FontSize": 12.0
+     "Text": "Số",
+     "Style": 2000,
+     "FontSize": 13.0
     },
     "Last": {
      "Text": "/QĐ-ĐHTĐHN",
-     "Style": 1000,
-     "FontSize": 12.0
+     "Style": 3000,
+     "FontSize": 13.0
     }
    },
    "LineWidth": 140.9,
@@ -155,7 +155,7 @@
    "Words": {
     "First": {
      "Text": "Độc",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 13.0
     },
     "Last": {
@@ -180,12 +180,12 @@
    "Text": "Hà Nội, ngày      tháng 8 năm 2021",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 1010,
+   "Style": 1000,
    "FontSize": 13.0,
    "Words": {
     "First": {
      "Text": "Hà",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 13.0
     },
     "Last": {
@@ -245,7 +245,7 @@
    "Words": {
     "First": {
      "Text": "V/v",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -280,7 +280,7 @@
     },
     "Last": {
      "Text": "Nội",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     }
    },
@@ -335,7 +335,7 @@
    "Words": {
     "First": {
      "Text": "Căn",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
@@ -369,8 +369,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Nội;",
-     "Style": 1010,
+     "Text": "Nội",
+     "Style": 2010,
      "FontSize": 14.0
     }
    },
@@ -395,12 +395,12 @@
    "Words": {
     "First": {
      "Text": "Căn",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Bộ",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     }
    },
@@ -425,11 +425,11 @@
    "Words": {
     "First": {
      "Text": "Giáo",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "học;",
+     "Text": "học",
      "Style": 1010,
      "FontSize": 14.0
     }
@@ -455,7 +455,7 @@
    "Words": {
     "First": {
      "Text": "Căn",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
@@ -485,7 +485,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
@@ -519,8 +519,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Nội;",
-     "Style": 1010,
+     "Text": "Nội",
+     "Style": 2010,
      "FontSize": 14.0
     }
    },
@@ -545,12 +545,12 @@
    "Words": {
     "First": {
      "Text": "Xét",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "HSSV",
-     "Style": 1010,
+     "Style": 3010,
      "FontSize": 14.0
     }
    },
@@ -579,7 +579,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "ĐỊNH:",
+     "Text": "ĐỊNH",
      "Style": 3100,
      "FontSize": 14.0
     }
@@ -600,17 +600,17 @@
    "Text": "Điều 1. Ban hành kèm theo Quyết định này “Quy định hoạt động đào tạo hệ",
    "MarkerText": "Điều 1. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "hệ",
-     "Style": 1100,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -640,7 +640,7 @@
     },
     "Last": {
      "Text": "Nội”",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -660,17 +660,17 @@
    "Text": "Điều 2. Quy định này được áp dụng đối với các hoạt động đào tạo hệ chính quy",
    "MarkerText": "Điều 2. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "quy",
-     "Style": 1100,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -720,17 +720,17 @@
    "Text": "Điều 3. Các ông (bà) Trưởng đơn vị trực thuộc Trường có trách nhiệm triển khai",
    "MarkerText": "Điều 3. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "khai",
-     "Style": 1100,
+     "Style": 1000,
      "FontSize": 14.0
     }
    },
@@ -785,11 +785,11 @@
    "Words": {
     "First": {
      "Text": "Nơi",
-     "Style": 1110,
+     "Style": 2110,
      "FontSize": 12.0
     },
     "Last": {
-     "Text": "nhận:",
+     "Text": "nhận",
      "Style": 1110,
      "FontSize": 12.0
     }
@@ -819,8 +819,8 @@
      "FontSize": 12.0
     },
     "Last": {
-     "Text": "Trường;",
-     "Style": 1000,
+     "Text": "Trường",
+     "Style": 2000,
      "FontSize": 12.0
     }
    },
@@ -849,7 +849,7 @@
      "FontSize": 12.0
     },
     "Last": {
-     "Text": "hiệu;",
+     "Text": "hiệu",
      "Style": 1000,
      "FontSize": 12.0
     }
@@ -879,7 +879,7 @@
      "FontSize": 12.0
     },
     "Last": {
-     "Text": "3;",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 12.0
     }
@@ -1110,12 +1110,12 @@
    "Text": "Độc lập - Tự do - Hạnh phúc",
    "MarkerText": null,
    "MarkerType": null,
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Độc",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -1205,7 +1205,7 @@
    "Words": {
     "First": {
      "Text": "(Ban",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     },
     "Last": {
@@ -1240,7 +1240,7 @@
     },
     "Last": {
      "Text": "Nội)",
-     "Style": 1010,
+     "Style": 2010,
      "FontSize": 14.0
     }
    },
@@ -1270,7 +1270,7 @@
     },
     "Last": {
      "Text": "I",
-     "Style": 2100,
+     "Style": 3100,
      "FontSize": 14.0
     }
    },
@@ -1325,7 +1325,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -1354,7 +1354,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1389,7 +1389,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tập;",
+     "Text": "tập",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -1474,7 +1474,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1565,7 +1565,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -1624,7 +1624,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1660,7 +1660,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -1680,12 +1680,12 @@
    "Text": "Điều 2. Chương trình đào tạo và thời gian học tập",
    "MarkerText": "Điều 2. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -1714,7 +1714,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1780,7 +1780,7 @@
     },
     "Last": {
      "Text": "Giáo",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -1834,7 +1834,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "phụ,",
+     "Text": "phụ",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1864,12 +1864,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "ngành:",
+     "Text": "ngành",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "ngành:",
+     "Text": "ngành",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -1954,7 +1954,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đó,",
+     "Text": "đó",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -1985,7 +1985,7 @@
    "Words": {
     "First": {
      "Text": "Quốc",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -2134,7 +2134,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học,",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -2199,7 +2199,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "án;",
+     "Text": "án",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -2254,7 +2254,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -2404,7 +2404,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -2524,7 +2524,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -2649,7 +2649,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -2764,7 +2764,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -2825,7 +2825,7 @@
    "Words": {
     "First": {
      "Text": "Đối",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -2915,7 +2915,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -2945,7 +2945,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -2979,7 +2979,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -3004,7 +3004,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3069,8 +3069,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Trường;",
-     "Style": 1000,
+     "Text": "Trường",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -3094,7 +3094,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3159,7 +3159,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "dạy;",
+     "Text": "dạy",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -3184,7 +3184,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3245,7 +3245,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -3274,7 +3274,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3369,7 +3369,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "trường;",
+     "Text": "trường",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -3429,7 +3429,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "7;",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -3514,7 +3514,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3639,7 +3639,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -3694,7 +3694,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3874,7 +3874,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3934,7 +3934,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "lí.",
+     "Text": "lí",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -3965,7 +3965,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -3994,7 +3994,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -4234,12 +4234,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4299,7 +4299,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "định;",
+     "Text": "định",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4414,12 +4414,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "hành;",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "hành;",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4479,7 +4479,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4564,12 +4564,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4629,7 +4629,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4689,7 +4689,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lượng;",
+     "Text": "lượng",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4804,12 +4804,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -4959,7 +4959,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "quan;",
+     "Text": "quan",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -5139,7 +5139,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên;",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -5229,7 +5229,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "bên;",
+     "Text": "bên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -5375,12 +5375,12 @@
    "Words": {
     "First": {
      "Text": "Chương",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "II",
-     "Style": 1100,
+     "Style": 3100,
      "FontSize": 14.0
     }
    },
@@ -5435,7 +5435,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -5464,7 +5464,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -5554,7 +5554,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -5704,7 +5704,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -5854,7 +5854,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6034,7 +6034,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6065,7 +6065,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -6094,7 +6094,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6130,7 +6130,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -6154,7 +6154,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6184,7 +6184,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "gồm:",
+     "Text": "gồm",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6275,7 +6275,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -6304,7 +6304,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6424,7 +6424,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6544,7 +6544,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6605,7 +6605,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -6664,7 +6664,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6694,7 +6694,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "kì,",
+     "Text": "kì",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6754,7 +6754,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6874,7 +6874,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -6905,7 +6905,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -6969,7 +6969,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -6999,7 +6999,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "định;",
+     "Text": "định",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -7205,7 +7205,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -7265,7 +7265,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -7324,7 +7324,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "Trường.",
+     "Text": "Trường",
      "Style": 2000,
      "FontSize": 14.0
     },
@@ -7384,7 +7384,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "công.",
+     "Text": "công",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7498,8 +7498,8 @@
   {
    "Line": 250,
    "Text": "đ) Trường hợp đặc biệt do Hiệu trưởng quyết định.",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -7534,7 +7534,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7594,7 +7594,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7654,7 +7654,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "trên,",
+     "Text": "trên",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7690,7 +7690,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -7745,7 +7745,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -7774,12 +7774,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "kí:",
+     "Text": "kí",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -7804,7 +7804,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "a.",
+     "Text": "a",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7840,7 +7840,7 @@
     },
     "Last": {
      "Text": "Điều",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -7894,7 +7894,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "kì.",
+     "Text": "kì",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -7924,7 +7924,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "b.",
+     "Text": "b",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -8044,7 +8044,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đó.",
+     "Text": "đó",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -8074,12 +8074,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "kí:",
+     "Text": "kí",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8285,7 +8285,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -8314,12 +8314,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "dạy:",
+     "Text": "dạy",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8409,7 +8409,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên;",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8465,7 +8465,7 @@
    "Words": {
     "First": {
      "Text": "Trong",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -8499,7 +8499,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "dạy;",
+     "Text": "dạy",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8619,7 +8619,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên;",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8675,11 +8675,11 @@
    "Words": {
     "First": {
      "Text": "Ngoại",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lên;",
+     "Text": "lên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8764,7 +8764,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "hợp;",
+     "Text": "hợp",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -8794,12 +8794,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "sư;",
+     "Text": "sư",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "ứng;",
+     "Text": "ứng",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8859,7 +8859,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tập;",
+     "Text": "tập",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -8889,7 +8889,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -9004,12 +9004,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tuyến:",
+     "Text": "tuyến",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -9154,8 +9154,8 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "QLĐT&CTHSSV,",
-     "Style": 1000,
+     "Text": "QLĐT&CTHSSV",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -9189,7 +9189,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "học;",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -9274,7 +9274,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tai,",
+     "Text": "tai",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -9309,7 +9309,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -9425,7 +9425,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -9489,7 +9489,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "hiện;",
+     "Text": "hiện",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -9598,8 +9598,8 @@
   {
    "Line": 320,
    "Text": "đ) Không tổ chức dạy học trực tuyến đối với các học phần thực hành/nghiệp vụ",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -9785,7 +9785,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -9814,7 +9814,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -9934,7 +9934,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -9994,7 +9994,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10025,7 +10025,7 @@
    "Words": {
     "First": {
      "Text": "Hiệu",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -10054,7 +10054,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10084,7 +10084,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10115,7 +10115,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -10145,7 +10145,7 @@
    "Words": {
     "First": {
      "Text": "Ngoài",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -10179,7 +10179,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -10204,7 +10204,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10270,7 +10270,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -10294,7 +10294,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10414,7 +10414,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10504,7 +10504,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10534,7 +10534,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10624,13 +10624,13 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Đảng",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -10684,7 +10684,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10780,7 +10780,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -10804,13 +10804,13 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "8.",
+     "Text": "8",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Nhà",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -10864,7 +10864,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "9.",
+     "Text": "9",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -10894,12 +10894,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "10.",
+     "Text": "10",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "gồm:",
+     "Text": "gồm",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -11014,7 +11014,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "luật.",
+     "Text": "luật",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -11050,7 +11050,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -11075,7 +11075,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -11104,12 +11104,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên:",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -11169,8 +11169,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Trường;",
-     "Style": 1000,
+     "Text": "Trường",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -11344,7 +11344,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "giáo,",
+     "Text": "giáo",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -11368,8 +11368,8 @@
   {
    "Line": 379,
    "Text": "đ) Được đảm bảo điều kiện trong học tập, tham gia hoạt động khoa học và công",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -11404,7 +11404,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "nghệ,",
+     "Text": "nghệ",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -11620,7 +11620,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -11650,7 +11650,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -11704,12 +11704,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "làm:",
+     "Text": "làm",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -11910,12 +11910,12 @@
    "Text": "Điều 15. Làm đồ án, khoá luận hoặc học thêm một số học phần chuyên môn",
    "MarkerText": "Điều 15. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -11944,7 +11944,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -11979,7 +11979,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12184,12 +12184,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "luận:",
+     "Text": "luận",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12219,7 +12219,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "luận:",
+     "Text": "luận",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12275,11 +12275,11 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "luận;",
+     "Text": "luận",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12339,7 +12339,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lên;",
+     "Text": "lên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12369,7 +12369,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "duyệt;",
+     "Text": "duyệt",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12429,7 +12429,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "duyệt;",
+     "Text": "duyệt",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12639,7 +12639,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "luận;",
+     "Text": "luận",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12669,7 +12669,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "luận:",
+     "Text": "luận",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12699,7 +12699,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "nghiệp;",
+     "Text": "nghiệp",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -12760,7 +12760,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -12994,7 +12994,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13140,12 +13140,12 @@
    "Text": "Điều 16. Thực tập, thực hành, thực tế chuyên môn",
    "MarkerText": "Điều 16. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -13174,7 +13174,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13234,7 +13234,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13414,7 +13414,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13444,7 +13444,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tuần.",
+     "Text": "tuần",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13474,7 +13474,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13624,7 +13624,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13655,12 +13655,12 @@
    "Words": {
     "First": {
      "Text": "Chương",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "III",
-     "Style": 1100,
+     "Style": 3100,
      "FontSize": 14.0
     }
    },
@@ -13715,7 +13715,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -13744,7 +13744,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13774,7 +13774,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "phần/tín.",
+     "Text": "phần/tín",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -13864,7 +13864,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "phần.",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14044,7 +14044,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "hành,",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14164,13 +14164,13 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "phần,",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Sinh",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -14248,8 +14248,8 @@
   {
    "Line": 475,
    "Text": "đ) Trường hợp cần phải tổ chức thi, kiểm tra, đánh giá bằng hình thức trực",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -14284,7 +14284,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tuyến,",
+     "Text": "tuyến",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14344,7 +14344,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14379,7 +14379,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đây:",
+     "Text": "đây",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14409,7 +14409,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đồng;",
+     "Text": "đồng",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14469,7 +14469,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "học;",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14524,7 +14524,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14649,7 +14649,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "gồm:",
+     "Text": "gồm",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14671,15 +14671,15 @@
    "MarkerText": "A+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "A+:",
-     "Style": 1000,
+     "Text": "A",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "10,0;",
+     "Text": "10,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14704,12 +14704,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "A:",
-     "Style": 1000,
+     "Text": "A",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "9,4;",
+     "Text": "9,4",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14731,15 +14731,15 @@
    "MarkerText": "B+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "B+:",
-     "Style": 1000,
+     "Text": "B",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "8,4;",
+     "Text": "8,4",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14764,12 +14764,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "B:",
-     "Style": 1000,
+     "Text": "B",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "7,9;",
+     "Text": "7,9",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14791,15 +14791,15 @@
    "MarkerText": "C+: ",
    "MarkerType": "XVI+: ",
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "C+:",
-     "Style": 1000,
+     "Text": "C",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "6,9;",
+     "Text": "6,9",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14824,12 +14824,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "C:",
-     "Style": 1000,
+     "Text": "C",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "6,4;",
+     "Text": "6,4",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14851,15 +14851,15 @@
    "MarkerText": "D+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "D+:",
-     "Style": 1000,
+     "Text": "D",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "5,4;",
+     "Text": "5,4",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14884,8 +14884,8 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "D:",
-     "Style": 1000,
+     "Text": "D",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -14914,7 +14914,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "b)",
+     "Text": "b",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -14949,7 +14949,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tập:",
+     "Text": "tập",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -14974,8 +14974,8 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "P:",
-     "Style": 1000,
+     "Text": "P",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -15010,7 +15010,7 @@
     },
     "Last": {
      "Text": "F",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -15039,7 +15039,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "4,0;",
+     "Text": "4,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15129,7 +15129,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tập:",
+     "Text": "tập",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15154,12 +15154,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "I:",
-     "Style": 1000,
+     "Text": "I",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tra;",
+     "Text": "tra",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15184,12 +15184,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "X:",
-     "Style": 1000,
+     "Text": "X",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "liệu;",
+     "Text": "liệu",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15214,8 +15214,8 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "R:",
-     "Style": 1000,
+     "Text": "R",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -15244,7 +15244,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -15279,7 +15279,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đây:",
+     "Text": "đây",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15339,7 +15339,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "0;",
+     "Text": "0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15399,7 +15399,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tra;",
+     "Text": "tra",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15454,7 +15454,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -15520,7 +15520,7 @@
     },
     "Last": {
      "Text": "F",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -15544,12 +15544,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đây:",
+     "Text": "đây",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15639,7 +15639,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lên;",
+     "Text": "lên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -15844,7 +15844,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -15875,7 +15875,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -15904,7 +15904,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "8.",
+     "Text": "8",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -15995,7 +15995,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -16024,7 +16024,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16084,13 +16084,13 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Sinh",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -16204,7 +16204,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16264,7 +16264,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đạt;",
+     "Text": "đạt",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16384,7 +16384,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16475,7 +16475,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -16504,7 +16504,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16534,7 +16534,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đáp,",
+     "Text": "đáp",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16654,12 +16654,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên:",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -16714,7 +16714,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16834,7 +16834,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học.",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16864,7 +16864,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -16954,7 +16954,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17044,7 +17044,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17074,7 +17074,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "thi,",
+     "Text": "thi",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17104,7 +17104,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17164,7 +17164,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "8.",
+     "Text": "8",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17254,7 +17254,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "9.",
+     "Text": "9",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17404,7 +17404,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "10.",
+     "Text": "10",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17494,7 +17494,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "11.",
+     "Text": "11",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17614,7 +17614,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "12.",
+     "Text": "12",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17674,7 +17674,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "13.",
+     "Text": "13",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17794,7 +17794,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "14.",
+     "Text": "14",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17884,7 +17884,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tuần,",
+     "Text": "tuần",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -17945,7 +17945,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -17974,7 +17974,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -18039,7 +18039,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đây:",
+     "Text": "đây",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18099,7 +18099,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "học;",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18159,7 +18159,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "chỉ;",
+     "Text": "chỉ",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18304,7 +18304,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -18339,7 +18339,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đây:",
+     "Text": "đây",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18361,15 +18361,15 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "A+",
-     "Style": 1000,
+     "Text": "A",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "4,0;",
+     "Text": "4,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18395,11 +18395,11 @@
    "Words": {
     "First": {
      "Text": "A",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "3,7;",
+     "Text": "3,7",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18421,15 +18421,15 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "B+",
-     "Style": 1000,
+     "Text": "B",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "3,5;",
+     "Text": "3,5",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18455,11 +18455,11 @@
    "Words": {
     "First": {
      "Text": "B",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "3,0;",
+     "Text": "3,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18481,15 +18481,15 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "C+",
-     "Style": 1000,
+     "Text": "C",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "2,5;",
+     "Text": "2,5",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18515,11 +18515,11 @@
    "Words": {
     "First": {
      "Text": "C",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "2,0;",
+     "Text": "2,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18541,15 +18541,15 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 12.4,
    "Words": {
     "First": {
-     "Text": "D+",
-     "Style": 1000,
+     "Text": "D",
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "1,5;",
+     "Text": "1,5",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18575,11 +18575,11 @@
    "Words": {
     "First": {
      "Text": "D",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "1,0;",
+     "Text": "1,0",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18605,7 +18605,7 @@
    "Words": {
     "First": {
      "Text": "F",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -18634,7 +18634,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -18754,7 +18754,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -18789,7 +18789,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18819,7 +18819,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "4:",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18845,11 +18845,11 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sắc;",
+     "Text": "sắc",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18875,12 +18875,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Giỏi;",
-     "Style": 1000,
+     "Text": "Giỏi",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -18905,12 +18905,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Khá;",
-     "Style": 1000,
+     "Text": "Khá",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -18935,11 +18935,11 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "bình;",
+     "Text": "bình",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -18965,12 +18965,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Yếu;",
-     "Style": 1000,
+     "Text": "Yếu",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -18995,12 +18995,12 @@
    "Words": {
     "First": {
      "Text": "Dưới",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Kém",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -19029,7 +19029,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "10:",
+     "Text": "10",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19055,11 +19055,11 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sắc;",
+     "Text": "sắc",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19085,12 +19085,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Giỏi;",
-     "Style": 1000,
+     "Text": "Giỏi",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -19115,12 +19115,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Khá;",
-     "Style": 1000,
+     "Text": "Khá",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -19145,11 +19145,11 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "bình;",
+     "Text": "bình",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19175,12 +19175,12 @@
    "Words": {
     "First": {
      "Text": "Từ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Yếu;",
-     "Style": 1000,
+     "Text": "Yếu",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -19205,12 +19205,12 @@
    "Words": {
     "First": {
      "Text": "Dưới",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Kém",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -19234,7 +19234,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -19299,7 +19299,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19329,8 +19329,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "M;",
-     "Style": 1000,
+     "Text": "M",
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -19359,8 +19359,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "2M;",
-     "Style": 1000,
+     "Text": "2M",
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -19389,8 +19389,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "3M;",
-     "Style": 1000,
+     "Text": "3M",
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -19419,8 +19419,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "4M;",
-     "Style": 1000,
+     "Text": "4M",
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -19438,8 +19438,8 @@
   {
    "Line": 648,
    "Text": "đ) Trình độ năm thứ năm: 4M ≤ N < 5M.",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -19450,7 +19450,7 @@
     },
     "Last": {
      "Text": "5M",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -19474,7 +19474,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -19505,7 +19505,7 @@
    "Words": {
     "First": {
      "Text": "QLĐT&CTHSSV",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -19530,12 +19530,12 @@
    "Text": "Điều 21. Xử lí kết quả học tập",
    "MarkerText": "Điều 21. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -19564,7 +19564,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -19599,7 +19599,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19659,7 +19659,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "24;",
+     "Text": "24",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19719,7 +19719,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "theo;",
+     "Text": "theo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19834,12 +19834,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -19925,7 +19925,7 @@
    "Words": {
     "First": {
      "Text": "Quy",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -19984,7 +19984,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học.",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20014,7 +20014,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20080,7 +20080,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -20134,7 +20134,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tiếp,",
+     "Text": "tiếp",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20194,7 +20194,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20225,7 +20225,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -20290,7 +20290,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -20315,7 +20315,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -20344,7 +20344,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20464,7 +20464,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20529,7 +20529,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "độ:",
+     "Text": "độ",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -20559,7 +20559,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "phần;",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -20589,7 +20589,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "phần;",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -20644,7 +20644,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20674,7 +20674,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "chỉ.",
+     "Text": "chỉ",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20764,7 +20764,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20824,7 +20824,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học,",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -20860,7 +20860,7 @@
     },
     "Last": {
      "Text": "Anh/",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -20885,7 +20885,7 @@
    "Words": {
     "First": {
      "Text": "Ngoại",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -20914,7 +20914,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21064,7 +21064,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học,",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21094,7 +21094,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21244,7 +21244,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "học,",
+     "Text": "học",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21274,7 +21274,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21365,7 +21365,7 @@
    "Words": {
     "First": {
      "Text": "Trưởng",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -21399,7 +21399,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -21429,7 +21429,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "phần;",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -21459,7 +21459,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "phần;",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -21489,7 +21489,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "phần;",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -21544,7 +21544,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "phần.",
+     "Text": "phần",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21574,7 +21574,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "8.",
+     "Text": "8",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21724,7 +21724,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "9.",
+     "Text": "9",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -21781,7 +21781,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 14.0,
+   "FontSize": 13.5,
    "Words": {
     "First": {
      "Text": "thông",
@@ -21790,8 +21790,8 @@
     },
     "Last": {
      "Text": "Microsoft",
-     "Style": 1000,
-     "FontSize": 14.0
+     "Style": 2000,
+     "FontSize": 13.0
     }
    },
    "LineWidth": 485.2,
@@ -21811,17 +21811,17 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 13.0,
+   "FontSize": 13.5,
    "Words": {
     "First": {
-     "Text": "CISCO,",
-     "Style": 1000,
+     "Text": "CISCO",
+     "Style": 3000,
      "FontSize": 13.0
     },
     "Last": {
      "Text": "thừa",
      "Style": 1000,
-     "FontSize": 13.0
+     "FontSize": 14.0
     }
    },
    "LineWidth": 485.4,
@@ -21904,7 +21904,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "10.",
+     "Text": "10",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -22025,7 +22025,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -22054,12 +22054,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22119,7 +22119,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22149,7 +22149,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lên;",
+     "Text": "lên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22209,7 +22209,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tập;",
+     "Text": "tập",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22299,7 +22299,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "thao;",
+     "Text": "thao",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22355,7 +22355,7 @@
    "Words": {
     "First": {
      "Text": "QLĐT&CTHSSV",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -22414,7 +22414,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -22445,7 +22445,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -22504,7 +22504,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -22599,7 +22599,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22659,7 +22659,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "trình;",
+     "Text": "trình",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -22714,7 +22714,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -22775,7 +22775,7 @@
    "Words": {
     "First": {
      "Text": "Giáo",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -22894,7 +22894,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -22930,7 +22930,7 @@
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -22954,7 +22954,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23074,7 +23074,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23165,12 +23165,12 @@
    "Words": {
     "First": {
      "Text": "Chương",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "IV",
-     "Style": 1100,
+     "Style": 3100,
      "FontSize": 14.0
     }
    },
@@ -23225,7 +23225,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -23254,7 +23254,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23289,7 +23289,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -23319,7 +23319,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "trang;",
+     "Text": "trang",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -23374,12 +23374,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "thi,",
+     "Text": "thi",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tế;",
+     "Text": "tế",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -23439,7 +23439,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lên;",
+     "Text": "lên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -23524,7 +23524,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23584,7 +23584,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23645,7 +23645,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -23704,7 +23704,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23795,7 +23795,7 @@
    "Words": {
     "First": {
      "Text": "QLĐT&CTHSSV",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -23824,7 +23824,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23855,7 +23855,7 @@
    "Words": {
     "First": {
      "Text": "Quyết",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -23884,7 +23884,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -23974,7 +23974,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đầu.",
+     "Text": "đầu",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24004,7 +24004,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24064,7 +24064,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24125,7 +24125,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -24184,7 +24184,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24219,7 +24219,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24309,7 +24309,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24369,7 +24369,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sinh;",
+     "Text": "sinh",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24424,7 +24424,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "lượng,",
+     "Text": "lượng",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24459,7 +24459,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24544,12 +24544,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24639,7 +24639,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24699,7 +24699,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "đến;",
+     "Text": "đến",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24785,11 +24785,11 @@
    "Words": {
     "First": {
      "Text": "Bộ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -24844,7 +24844,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "đến.",
+     "Text": "đến",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24874,7 +24874,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -24964,7 +24964,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25029,7 +25029,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này:",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -25149,7 +25149,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "viên;",
+     "Text": "viên",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -25239,7 +25239,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "lệ;",
+     "Text": "lệ",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -25294,8 +25294,8 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "Trường,",
-     "Style": 1000,
+     "Text": "Trường",
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -25325,7 +25325,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -25354,7 +25354,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25474,7 +25474,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25505,7 +25505,7 @@
    "Words": {
     "First": {
      "Text": "Thủ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -25594,7 +25594,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25715,7 +25715,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -25744,7 +25744,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25864,7 +25864,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -25929,7 +25929,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "sau:",
+     "Text": "sau",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -26074,7 +26074,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26194,7 +26194,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26255,7 +26255,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -26344,7 +26344,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26434,7 +26434,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26494,7 +26494,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tuyển,",
+     "Text": "tuyển",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26524,7 +26524,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26585,7 +26585,7 @@
    "Words": {
     "First": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -26615,7 +26615,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -26644,7 +26644,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26705,12 +26705,12 @@
    "Words": {
     "First": {
      "Text": "Thủ",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -26734,7 +26734,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26794,7 +26794,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -26910,12 +26910,12 @@
    "Text": "Điều 30. Xử lý vi phạm đối với sinh viên",
    "MarkerText": "Điều 30. ",
    "MarkerType": "Điều 123. ",
-   "Style": 1100,
+   "Style": 1000,
    "FontSize": 14.0,
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -26944,7 +26944,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27064,7 +27064,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27154,7 +27154,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27250,7 +27250,7 @@
     },
     "Last": {
      "Text": "V",
-     "Style": 2100,
+     "Style": 3100,
      "FontSize": 14.0
     }
    },
@@ -27305,12 +27305,12 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
      "Text": "Trường",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     }
    },
@@ -27334,7 +27334,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27454,12 +27454,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -27609,7 +27609,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "quan;",
+     "Text": "quan",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -27699,7 +27699,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -27789,7 +27789,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "này;",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -27808,8 +27808,8 @@
   {
    "Line": 927,
    "Text": "đ) Phối hợp với Trung tâm Khảo thí và Ngoại ngữ-Tin học xây dựng và trình",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -27845,7 +27845,7 @@
    "Words": {
     "First": {
      "Text": "Hiệu",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -27874,7 +27874,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "này.",
+     "Text": "này",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27904,7 +27904,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -27935,7 +27935,7 @@
    "Words": {
     "First": {
      "Text": "Xây",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -27994,7 +27994,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "tạo,",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28024,7 +28024,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28209,8 +28209,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "GD&ĐT;",
-     "Style": 1000,
+     "Text": "GD&ĐT",
+     "Style": 3000,
      "FontSize": 14.0
     }
    },
@@ -28234,7 +28234,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "4.",
+     "Text": "4",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28415,7 +28415,7 @@
    "Words": {
     "First": {
      "Text": "99/2019/NĐ-CP",
-     "Style": 1000,
+     "Style": 3000,
      "FontSize": 14.0
     },
     "Last": {
@@ -28450,7 +28450,7 @@
     },
     "Last": {
      "Text": "Giáo",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -28504,7 +28504,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "5.",
+     "Text": "5",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28535,7 +28535,7 @@
    "Words": {
     "First": {
      "Text": "Đảm",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -28594,7 +28594,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "6.",
+     "Text": "6",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28625,7 +28625,7 @@
    "Words": {
     "First": {
      "Text": "Đảm",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -28684,7 +28684,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "7.",
+     "Text": "7",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -28869,7 +28869,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "trách;",
+     "Text": "trách",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -28925,7 +28925,7 @@
    "Words": {
     "First": {
      "Text": "Hiệu",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {
@@ -28955,7 +28955,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -28984,12 +28984,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "1.",
+     "Text": "1",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "năm:",
+     "Text": "năm",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29109,7 +29109,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "trưởng;",
+     "Text": "trưởng",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29194,7 +29194,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "2.",
+     "Text": "2",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -29254,12 +29254,12 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "hành:",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "hành:",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29349,8 +29349,8 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "Trường;",
-     "Style": 1000,
+     "Text": "Trường",
+     "Style": 2000,
      "FontSize": 14.0
     }
    },
@@ -29409,7 +29409,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29494,7 +29494,7 @@
    "FontSize": 14.0,
    "Words": {
     "First": {
-     "Text": "3.",
+     "Text": "3",
      "Style": 1000,
      "FontSize": 14.0
     },
@@ -29529,7 +29529,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo:",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29559,7 +29559,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "quan;",
+     "Text": "quan",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29589,7 +29589,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29649,7 +29649,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "tạo;",
+     "Text": "tạo",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29709,7 +29709,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "hành;",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29728,8 +29728,8 @@
   {
    "Line": 991,
    "Text": "đ) Thông báo tuyển sinh theo quy chế tuyển sinh hiện hành;",
-   "MarkerText": null,
-   "MarkerType": null,
+   "MarkerText": "đ) ",
+   "MarkerType": "abc) ",
    "Style": 1000,
    "FontSize": 14.0,
    "Words": {
@@ -29739,7 +29739,7 @@
      "FontSize": 14.0
     },
     "Last": {
-     "Text": "hành;",
+     "Text": "hành",
      "Style": 1000,
      "FontSize": 14.0
     }
@@ -29825,7 +29825,7 @@
    "Words": {
     "First": {
      "Text": "Điều",
-     "Style": 1100,
+     "Style": 2100,
      "FontSize": 14.0
     },
     "Last": {
@@ -29855,7 +29855,7 @@
    "Words": {
     "First": {
      "Text": "Quy",
-     "Style": 1000,
+     "Style": 2000,
      "FontSize": 14.0
     },
     "Last": {

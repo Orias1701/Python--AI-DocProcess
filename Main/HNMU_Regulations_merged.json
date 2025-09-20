@@ -21,7 +21,7 @@
     "Count": 975
    },
    {
-    "FontSize": 12.4,
+    "FontSize": 12.5,
     "Count": 8
    },
    {
@@ -30,15 +30,11 @@
    },
    {
     "FontSize": 13.0,
-    "Count": 4
+    "Count": 5
    },
    {
     "FontSize": 13.5,
     "Count": 2
-   },
-   {
-    "FontSize": 12.5,
-    "Count": 1
    }
   ],
   "commonMarkers": [
@@ -75,7 +71,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.5,
+   "FontSize": 13.0,
    "Align": "Left"
   },
   {
@@ -1929,7 +1925,7 @@
    "MarkerText": "A+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -1947,7 +1943,7 @@
    "MarkerText": "B+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -1965,7 +1961,7 @@
    "MarkerText": "C+: ",
    "MarkerType": "XVI+: ",
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -1983,7 +1979,7 @@
    "MarkerText": "D+: ",
    "MarkerType": "ABC+: ",
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -2415,7 +2411,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -2433,7 +2429,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -2451,7 +2447,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {
@@ -2469,7 +2465,7 @@
    "MarkerText": null,
    "MarkerType": null,
    "Style": 1000,
-   "FontSize": 12.4,
+   "FontSize": 12.5,
    "Align": "Left"
   },
   {

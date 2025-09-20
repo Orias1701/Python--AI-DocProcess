@@ -248,11 +248,17 @@ def getWord(line, position="first"):
     """
     Lấy (Text, Style, FontSize) của từ đầu/cuối dựa trên chính span chứa từ đó
     - Hoàn toàn độc lập với Style/FontSize của line
+    - Bỏ qua spans rỗng / chỉ chứa khoảng trắng
     """
     spans = line.get("spans", [])
     full_text = line.get("text", "")
     if not spans or not full_text.strip():
         return ("", 0, 0.0)
+
+    # chỉ giữ spans có chữ thật
+    valid_spans = [s for s in spans if s.get("text", "").strip()]
+    if not valid_spans:
+        valid_spans = spans  # fallback
 
     def build_style_for_word(word_text, span):
         # CaseStyle cho CHÍNH từ đó
@@ -274,7 +280,7 @@ def getWord(line, position="first"):
         return cs + fs
 
     if position == "first":
-        for s in spans:
+        for s in valid_spans:
             words_in_span = s.get("text", "").split()
             if words_in_span:
                 raw = words_in_span[0]
@@ -283,7 +289,7 @@ def getWord(line, position="first"):
                 style = build_style_for_word(word, s)
                 return (word, style, size)
     else:
-        for s in reversed(spans):
+        for s in reversed(valid_spans):
             words_in_span = s.get("text", "").split()
             if words_in_span:
                 raw = words_in_span[-1]

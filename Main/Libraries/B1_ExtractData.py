@@ -13,7 +13,7 @@ import fitz
 
 
 # ==== 1. Utils ====
-def load_exceptions(file_path="ex.exceptions.json"):
+def load_exceptions(file_path="../tests/ex.exceptions.json"):
     """Nạp danh sách ngoại lệ từ JSON"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -27,7 +27,7 @@ def load_exceptions(file_path="ex.exceptions.json"):
         raise Exception(f"Lỗi khi tải ngoại lệ: {e}")
 
 
-def load_patterns(markers_path="ex.markers.json", status_path="ex.status.json"):
+def load_patterns(markers_path="../tests/ex.markers.json", status_path="../tests/ex.status.json"):
     """Nạp danh sách marker, status pattern từ JSON"""
     try:
         with open(markers_path, 'r', encoding='utf-8') as f:
@@ -528,7 +528,7 @@ def resetPosition(jsonDict):
 
 
 # ==== 5. Hàm chính extractData ====
-def extractData(path, exceptions_path="ex.exceptions.json", markers_path="ex.markers.json", status_path="ex.status.json"):
+def extractData(path, exceptions_path="../tests/ex.exceptions.json", markers_path="../tests/ex.markers.json", status_path="../tests/ex.status.json"):
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     pdf_path = path

@@ -213,11 +213,23 @@ def getStyle(line, exceptions):
     return case_style + font_style
 
 
+def round_half(x):
+    """Làm tròn số về bội số gần nhất của 0.5"""
+    return round(x * 2) / 2.0
+
 def getFontSize(line):
     spans = line.get("spans", [])
     if spans:
-        return round(sum(s.get("size", 12.0) for s in spans) / len(spans), 1)
+        valid_spans = [s for s in spans if s.get("text", "").strip()]
+        if valid_spans:
+            sizes = [s.get("size", 12.0) for s in valid_spans]
+        else:
+            sizes = [s.get("size", 12.0) for s in spans]  # fallback
+
+        avg = sum(sizes) / len(sizes)
+        return round(avg * 2) / 2  # làm tròn 0.5
     return 12.0
+
 
 
 def getCoords(line):

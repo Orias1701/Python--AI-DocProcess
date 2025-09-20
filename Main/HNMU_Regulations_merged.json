@@ -15,6 +15,32 @@
   "pageRegionWidth": 485.4,
   "pageRegionHeight": 749.1,
   "commonFontSize": 14.0,
+  "commonFontSizes": [
+   {
+    "FontSize": 14.0,
+    "Count": 975
+   },
+   {
+    "FontSize": 12.4,
+    "Count": 8
+   },
+   {
+    "FontSize": 12.0,
+    "Count": 7
+   },
+   {
+    "FontSize": 13.0,
+    "Count": 4
+   },
+   {
+    "FontSize": 13.5,
+    "Count": 2
+   },
+   {
+    "FontSize": 12.5,
+    "Count": 1
+   }
+  ],
   "commonMarkers": [
    "abc) ",
    "123. ",

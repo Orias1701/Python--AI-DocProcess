@@ -5,9 +5,7 @@ lib/
 Docs/
 Data/
 Tests
-.Config.json
-.CudaCheck.ipynb
-.widgets.pkl
-A*
+Config*
+A*.py
 
 pseudo*

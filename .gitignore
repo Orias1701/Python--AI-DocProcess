@@ -1,11 +1,12 @@
 .vscode
 __pycache__
 
-lib/
 Docs/
 Data/
 Tests
+lib/
 Config*
+Prompt*
 A*.py
 
 pseudo*

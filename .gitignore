@@ -1,0 +1,8 @@
+.vscode
+Docs/
+Data/
+.Config.json
+.CudaCheck.ipynb
+.widgets.pkl
+A*
+ex*

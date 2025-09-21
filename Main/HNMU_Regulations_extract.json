@@ -14691,7 +14691,7 @@
    "Line": 489,
    "Text": "A+: từ 9,5 đến 10,0;",
    "MarkerText": "A+: ",
-   "MarkerType": "ABC+: ",
+   "MarkerType": "ABC: ",
    "Style": 1000,
    "FontSize": 12.5,
    "Words": {
@@ -14751,7 +14751,7 @@
    "Line": 491,
    "Text": "B+: từ 8,0 đến 8,4;",
    "MarkerText": "B+: ",
-   "MarkerType": "ABC+: ",
+   "MarkerType": "ABC: ",
    "Style": 1000,
    "FontSize": 12.5,
    "Words": {
@@ -14811,7 +14811,7 @@
    "Line": 493,
    "Text": "C+: từ 6,5 đến 6,9;",
    "MarkerText": "C+: ",
-   "MarkerType": "XVI+: ",
+   "MarkerType": "ABC: ",
    "Style": 1000,
    "FontSize": 12.5,
    "Words": {
@@ -14871,7 +14871,7 @@
    "Line": 495,
    "Text": "D+: từ 5,0 – 5,4;",
    "MarkerText": "D+: ",
-   "MarkerType": "ABC+: ",
+   "MarkerType": "ABC: ",
    "Style": 1000,
    "FontSize": 12.5,
    "Words": {

@@ -1,0 +1,782 @@
+[
+  {
+    "Index": 1,
+    "MarkerText": "Điều 1.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 4,
+    "MarkerText": "Chương I",
+    "MarkerType": "Chương XVI"
+  },
+  {
+    "Index": 5,
+    "MarkerText": "Điều 1.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 6,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 9,
+    "MarkerText": "Điều 2.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 10,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 11,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 15,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 18,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 20,
+    "MarkerText": "5.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 21,
+    "MarkerText": "Điều 3.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 22,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 25,
+    "MarkerText": "Điều 4.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 26,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 27,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 30,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 31,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 33,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 34,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 37,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 38,
+    "MarkerText": "Điều 5.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 39,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 41,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 45,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 46,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 49,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 50,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 54,
+    "MarkerText": "Chương II",
+    "MarkerType": "Chương XVI"
+  },
+  {
+    "Index": 55,
+    "MarkerText": "Điều 6.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 56,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 61,
+    "MarkerText": "Điều 7.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 62,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 64,
+    "MarkerText": "Điều 8.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 65,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 68,
+    "MarkerText": "Điều 9.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 69,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 72,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 77,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 79,
+    "MarkerText": "Điều 10.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 80,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 81,
+    "MarkerText": "a.",
+    "MarkerType": "abc."
+  },
+  {
+    "Index": 83,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 84,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 86,
+    "MarkerText": "Điều 11.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 87,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 88,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 95,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 96,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 102,
+    "MarkerText": "Điều 12.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 103,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 107,
+    "MarkerText": "Điều 13.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 108,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 118,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 122,
+    "MarkerText": "Điều 14.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 123,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 124,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 134,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 135,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 139,
+    "MarkerText": "Điều 15.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 140,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 141,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 143,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 144,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 147,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 148,
+    "MarkerText": "Điều 16.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 149,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 154,
+    "MarkerText": "Chương III",
+    "MarkerType": "Chương XVI"
+  },
+  {
+    "Index": 155,
+    "MarkerText": "Điều 17.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 156,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 157,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 162,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 163,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 166,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 167,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 168,
+    "MarkerText": "A+:",
+    "MarkerType": "ABC:"
+  },
+  {
+    "Index": 176,
+    "MarkerText": "b)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 177,
+    "MarkerText": "P:",
+    "MarkerType": "ABC:"
+  },
+  {
+    "Index": 178,
+    "MarkerText": "c)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 180,
+    "MarkerText": "I:",
+    "MarkerType": "ABC:"
+  },
+  {
+    "Index": 183,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 184,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 187,
+    "MarkerText": "5.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 189,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 192,
+    "MarkerText": "7.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 194,
+    "MarkerText": "Điều 18.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 195,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 199,
+    "MarkerText": "Điều 19.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 200,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 214,
+    "MarkerText": "Điều 20.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 215,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 216,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 219,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 222,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 224,
+    "MarkerText": "5.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 225,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 230,
+    "MarkerText": "6.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 231,
+    "MarkerText": "Điều 21.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 232,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 233,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 236,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 237,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 240,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 242,
+    "MarkerText": "Điều 22.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 243,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 245,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 248,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 253,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 257,
+    "MarkerText": "8.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 260,
+    "MarkerText": "Điều 23.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 261,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 262,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 267,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 269,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 271,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 275,
+    "MarkerText": "Chương IV",
+    "MarkerType": "Chương XVI"
+  },
+  {
+    "Index": 276,
+    "MarkerText": "Điều 24.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 277,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 278,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 282,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 284,
+    "MarkerText": "Điều 25.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 285,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 290,
+    "MarkerText": "Điều 26.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 291,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 292,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 296,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 297,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 301,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 303,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 306,
+    "MarkerText": "Điều 27.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 307,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 310,
+    "MarkerText": "Điều 28.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 311,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 313,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 315,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 320,
+    "MarkerText": "Điều 29.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 321,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 324,
+    "MarkerText": "Điều 30.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 325,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 328,
+    "MarkerText": "Chương V",
+    "MarkerType": "Chương XVI"
+  },
+  {
+    "Index": 329,
+    "MarkerText": "Điều 31.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 330,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 331,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 336,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 338,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 340,
+    "MarkerText": "4.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 341,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 343,
+    "MarkerText": "5.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 346,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 349,
+    "MarkerText": "Điều 32.",
+    "MarkerType": "Điều 123."
+  },
+  {
+    "Index": 350,
+    "MarkerText": "1.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 351,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 353,
+    "MarkerText": "2.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 354,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 357,
+    "MarkerText": "3.",
+    "MarkerType": "123."
+  },
+  {
+    "Index": 358,
+    "MarkerText": "a)",
+    "MarkerType": "abc)"
+  },
+  {
+    "Index": 364,
+    "MarkerText": "Điều 33.",
+    "MarkerType": "Điều 123."
+  }
+]

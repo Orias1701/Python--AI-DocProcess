@@ -163,7 +163,11 @@ def getText(line):
 def getMarker(text, patterns):
     info = extract_marker(text, patterns)
     marker_text = info.get("marker_text")
-    marker_type = format_marker(marker_text, patterns) if marker_text else None
+    marker_type = None
+    if marker_text:
+        marker_text_cleaned = re.sub(r'([A-Za-z0-9ĐÊÔƠƯđêôơư])\+(?=\W|$)', r'\1', marker_text)
+        marker_type = format_marker(marker_text_cleaned, patterns)
+
     return marker_text, marker_type
 
 

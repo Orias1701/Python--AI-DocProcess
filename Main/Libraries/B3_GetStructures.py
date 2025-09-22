@@ -5,13 +5,13 @@ from typing import List, Dict, Any, Optional
 
 
 class StructureAnalyzer:
-    def __init__(self, data_folder: str, verbose: bool = False):
-        self.data_folder = data_folder
+    def __init__(self, merged_path: str, verbose: bool = False):
+        self.merged_path = merged_path
         self.verbose = verbose
 
     # ---------------- B1 ---------------- #
     def extract_markers(self) -> List[Any]:
-        merged_path = self.data_folder + "_dataMerged.json"
+        merged_path = self.merged_path
         bullet_pattern = re.compile(r"^\s*[-•●♦▪‣–—]+\s*$")
 
         with open(merged_path, "r", encoding="utf-8") as f:
@@ -119,10 +119,3 @@ class StructureAnalyzer:
         if self.verbose:
             print(f"[B4] Selected {len(result)} top structures at depth {max_depth}")
         return result
-
-    # ---------------- Save ---------------- #
-    def save_json(self, data: List[Dict[str, Any]], path: str):
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        if self.verbose:
-            print(f"[Save] Saved to {path}")

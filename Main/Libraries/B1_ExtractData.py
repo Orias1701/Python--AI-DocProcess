@@ -8,7 +8,7 @@ from difflib import SequenceMatcher
 
 
 # ===============================
-# 1. Utils
+# 1. Utils (giữ nguyên/như cũ)
 # ===============================
 def load_exceptions(file_path):
     """Nạp danh sách ngoại lệ từ JSON"""
@@ -57,7 +57,6 @@ def load_patterns(markers_path, status_path):
 
 
 def similar(a, b):
-    """So sánh độ tương đồng hai chuỗi"""
     return SequenceMatcher(None, a, b).ratio()
 
 
@@ -90,7 +89,7 @@ def extract_marker(text, patterns):
 
 def format_marker(marker_text, patterns):
     """
-    Chuẩn hoá MarkerText theo đúng logic cũ
+    Chuẩn hoá MarkerText
     """
     if not marker_text:
         return None
@@ -107,13 +106,9 @@ def format_marker(marker_text, patterns):
             continue
         if part.lower() in patterns["keywords_set"]:
             formatted_parts.append(part)
-        elif re.match(r'^[a-z]$', part):
+        elif re.match(r'^[a-z]$', part) or re.match(r'^[a-zđêôơư]$', part):
             formatted_parts.append('abc')
-        elif re.match(r'^[a-zđêôơư]$', part):
-            formatted_parts.append('abc')
-        elif re.match(r'^[A-Z]$', part):
-            formatted_parts.append('ABC')
-        elif re.match(r'^[A-ZĐÊÔƠƯ]$', part):
+        elif re.match(r'^[A-Z]$', part) or re.match(r'^[A-ZĐÊÔƠƯ]$', part):
             formatted_parts.append('ABC')
         else:
             formatted_parts.append(part)
@@ -150,41 +145,221 @@ def normalizeRomanMarkers(lines):
 
 
 # ===============================
-# 2. Các hàm get*
+# 2. Word-level functions (mới)
+# ===============================
+def _extract_words(line):
+    """Trả về list [(word, span)] theo thứ tự trong line; giữ nguyên dấu câu."""
+    spans = line.get("spans", [])
+    full_text = line.get("text", "")
+    if not spans or not full_text.strip():
+        return []
+
+    # chỉ giữ spans có chữ thật
+    valid_spans = [s for s in spans if s.get("text", "").strip()]
+    if not valid_spans:
+        valid_spans = spans
+
+    words = []
+    for s in valid_spans:
+        for raw in s.get("text", "").split():
+            words.append((raw, s))  # giữ nguyên raw (kể cả dấu câu)
+    return words
+
+
+def _case_style(word_text: str) -> int:
+    """CaseStyle cho từ: 3000 (UPPER), 2000 (Title), 1000 (khác)"""
+    clean = re.sub(r'[^A-Za-zÀ-ỹà-ỹ0-9]', '', word_text)
+    if clean and clean.isupper():
+        return 3000
+    if clean and clean.istitle():
+        return 2000
+    return 1000
+
+
+def _font_flags(span):
+    """Trả về tuple booleans (bold, italic, underline) từ span.flags"""
+    flags = span.get("flags", 0)
+    b = bool(flags & 16)
+    i = bool(flags & 2)
+    u = bool(flags & 8)
+    return b, i, u
+
+
+def _build_style(word_text, span):
+    """Style gộp = CaseStyle + FontStyle (100,10,1)"""
+    cs = _case_style(word_text)
+    b, i, u = _font_flags(span)
+    fs = (100 if b else 0) + (10 if i else 0) + (1 if u else 0)
+    return cs + fs
+
+
+def getWordText(line, index: int):
+    """Lấy Text của từ tại vị trí index (hỗ trợ index âm)."""
+    words = _extract_words(line)
+    if -len(words) <= index < len(words):
+        return words[index][0]
+    return ""
+
+
+def getWordStyle(line, index: int):
+    """Lấy Style của từ tại vị trí index."""
+    words = _extract_words(line)
+    if -len(words) <= index < len(words):
+        word, span = words[index]
+        return _build_style(word, span)
+    return 0
+
+
+def getWordFontSize(line, index: int):
+    """Lấy FontSize của từ tại vị trí index."""
+    words = _extract_words(line)
+    if -len(words) <= index < len(words):
+        _, span = words[index]
+        return round(span.get("size", 12.0), 1)
+    return 0.0
+
+
+def getWordCoord(line, index: int):
+    """Lấy tọa độ (x0, x1, xm, y0, y1) của từ tại vị trí index (dựa bbox của span chứa từ)."""
+    words = _extract_words(line)
+    if -len(words) <= index < len(words):
+        _, span = words[index]
+        x0, y0, x1, y1 = span["bbox"]
+        x0, y0, x1, y1 = round(x0, 1), round(y0, 1), round(x1, 1), round(y1, 1)
+        xm = round((x0 + x1) / 2, 1)
+        return (x0, x1, xm, y0, y1)
+    return (0, 0, 0, 0, 0)
+
+
+# ===============================
+# 3. Line-level functions (mới)
 # ===============================
 def getPageGeneralSize(page):
+    """[height, width] của trang"""
     return [round(page.rect.height, 1), round(page.rect.width, 1)]
 
 
-def getText(line):
+def getLineText(line):
+    """Text đầy đủ của line"""
     return line.get("text", "")
 
 
+def getLineStyle(line):
+    """
+    Style của line = min theo **từng thuộc tính** trên tất cả các từ:
+      - CaseStyle_line = min(CaseStyle_word_i)
+      - Bold_line      = AND(bold_i)  -> 100 nếu tất cả bold, ngược lại 0
+      - Italic_line    = AND(italic_i)-> 10 nếu tất cả italic
+      - Underline_line = AND(underline_i) -> 1 nếu tất cả underline
+    """
+    words = _extract_words(line)
+    if not words:
+        return 0
+
+    # CaseStyle tối thiểu trong các từ
+    cs_values = [_case_style(w) for w, _ in words]
+    cs_line = min(cs_values) if cs_values else 1000
+
+    # Font flags: AND trên toàn line
+    bold_all = True
+    italic_all = True
+    underline_all = True
+    for _, span in words:
+        b, i, u = _font_flags(span)
+        bold_all &= b
+        italic_all &= i
+        underline_all &= u
+
+    fs_line = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
+    return cs_line + fs_line
+
+
+def getLineFontSize(line):
+    """FontSize của line = mean FontSize các từ (làm tròn 0.5)."""
+    words = _extract_words(line)
+    if not words:
+        return 12.0
+    sizes = [span.get("size", 12.0) for _, span in words]
+    avg = sum(sizes) / len(sizes)
+    return round(avg * 2) / 2  # làm tròn 0.5
+
+
+def getLineCoord(line):
+    """
+    Coord của line:
+      - x0 = x0 của từ đầu tiên
+      - x1 = x1 của từ cuối cùng
+      - y0 = min(y0) các từ
+      - y1 = max(y1) các từ
+      - xm = (x0 + x1) / 2
+    """
+    words = _extract_words(line)
+    if not words:
+        return (0, 0, 0, 0, 0)
+
+    coords = []
+    for _, span in words:
+        x0, y0, x1, y1 = span["bbox"]
+        coords.append((round(x0, 1), round(y0, 1), round(x1, 1), round(y1, 1)))
+
+    x0 = coords[0][0]
+    x1 = coords[-1][2]
+    y0 = min(c[1] for c in coords)
+    y1 = max(c[3] for c in coords)
+    xm = round((x0 + x1) / 2, 1)
+    return (x0, x1, xm, y0, y1)
+
+
+# ===============================
+# 4. Compatibility wrappers (tương thích ngược)
+# ===============================
+def getText(line):
+    """Alias cũ: Text của line"""
+    return getLineText(line)
+
+
+def getCoords(line):
+    """Alias cũ: Coord của line, giữ tuple (x0, x1, xm, y0, y1)"""
+    return getLineCoord(line)
+
+
+def getFirstWord(line):
+    """Giữ API cũ: trả {Text, Style, FontSize} của từ đầu"""
+    return {
+        "Text": getWordText(line, 0),
+        "Style": getWordStyle(line, 0),
+        "FontSize": getWordFontSize(line, 0),
+    }
+
+
+def getLastWord(line):
+    """Giữ API cũ: trả {Text, Style, FontSize} của từ cuối"""
+    return {
+        "Text": getWordText(line, -1),
+        "Style": getWordStyle(line, -1),
+        "FontSize": getWordFontSize(line, -1),
+    }
+
+
+# ===============================
+# 5. Marker / Style (line-level) giữ nguyên tinh thần cũ
+# ===============================
 def getMarker(text, patterns):
     info = extract_marker(text, patterns)
     marker_text = info.get("marker_text")
     marker_type = None
     if marker_text:
+        # Giữ sửa lỗi xử lý dấu '+'
         marker_text_cleaned = re.sub(r'([A-Za-z0-9ĐÊÔƠƯđêôơư])\+(?=\W|$)', r'\1', marker_text)
         marker_type = format_marker(marker_text_cleaned, patterns)
-
     return marker_text, marker_type
 
 
-def getCoords(line):
-    spans = line.get("spans", [])
-    if not spans:
-        return (0, 0, 0, 0, 0)
-    x0 = round(spans[0]["bbox"][0], 1)
-    y0 = round(spans[0]["bbox"][1], 1)
-    x1 = round(spans[-1]["bbox"][2], 1)
-    y1 = round(spans[-1]["bbox"][3], 1)
-    xm = round((x0 + x1) / 2, 1)
-    return (x0, x1, xm, y0, y1)
-
-
 def getStyle(line, exceptions):
-    """CaseStyle (toàn line) + FontStyle (min theo từng thuộc tính trên mọi span)"""
+    """
+    CaseStyle (toàn line, sau khi lọc ngoại lệ) + FontStyle (AND trên spans) — LOGIC CŨ
+    Giữ nguyên cho những nơi còn gọi hàm cũ này.
+    """
     text = line.get("text", "")
     spans = line.get("spans", [])
 
@@ -208,19 +383,16 @@ def getStyle(line, exceptions):
     else:
         case_style = 1000  # mặc định
 
-    # ===== FontStyle (min theo từng thuộc tính trên các spans) =====
+    # ===== FontStyle (min/AND theo spans) =====
     if spans:
         bold_all = True
         italic_all = True
         underline_all = True
         for s in spans:
-            flags = s.get("flags", 0)
-            b = bool(flags & 16)
-            i = bool(flags & 2)
-            u = bool(flags & 8)
-            bold_all = bold_all and b
-            italic_all = italic_all and i
-            underline_all = underline_all and u
+            b, i, u = _font_flags(s)
+            bold_all &= b
+            italic_all &= i
+            underline_all &= u
         font_style = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
     else:
         font_style = 0
@@ -228,11 +400,10 @@ def getStyle(line, exceptions):
     return case_style + font_style
 
 
-def round_half(x):
-    """Làm tròn số về bội số gần nhất của 0.5"""
-    return round(x * 2) / 2.0
-
 def getFontSize(line):
+    """
+    Mean FontSize trên spans (logic cũ) — vẫn giữ cho compatibility nếu còn chỗ gọi.
+    """
     spans = line.get("spans", [])
     if spans:
         valid_spans = [s for s in spans if s.get("text", "").strip()]
@@ -240,79 +411,14 @@ def getFontSize(line):
             sizes = [s.get("size", 12.0) for s in valid_spans]
         else:
             sizes = [s.get("size", 12.0) for s in spans]  # fallback
-
         avg = sum(sizes) / len(sizes)
-        return round(avg * 2) / 2  # làm tròn 0.5
+        return round(avg * 2) / 2
     return 12.0
 
 
-def getWord(line, position="first"):
-    """
-    Lấy (Text, Style, FontSize) của từ đầu/cuối dựa trên chính span chứa từ đó
-    - Hoàn toàn độc lập với Style/FontSize của line
-    - Bỏ qua spans rỗng / chỉ chứa khoảng trắng
-    """
-    spans = line.get("spans", [])
-    full_text = line.get("text", "")
-    if not spans or not full_text.strip():
-        return ("", 0, 0.0)
-
-    # chỉ giữ spans có chữ thật
-    valid_spans = [s for s in spans if s.get("text", "").strip()]
-    if not valid_spans:
-        valid_spans = spans  # fallback
-
-    def build_style_for_word(word_text, span):
-        # CaseStyle cho CHÍNH từ đó
-        clean = re.sub(r'[^A-Za-zÀ-ỹà-ỹ0-9]', '', word_text)
-        if clean and clean.isupper():
-            cs = 3000
-        elif clean and clean.istitle():
-            cs = 2000
-        else:
-            cs = 1000
-
-        # FontStyle từ span của từ đó
-        flags = span.get("flags", 0)
-        bold = bool(flags & 16)
-        italic = bool(flags & 2)
-        underline = bool(flags & 8)
-        fs = (100 if bold else 0) + (10 if italic else 0) + (1 if underline else 0)
-
-        return cs + fs
-
-    if position == "first":
-        for s in valid_spans:
-            words_in_span = s.get("text", "").split()
-            if words_in_span:
-                raw = words_in_span[0]
-                word = raw.rstrip(".,!?;:…")
-                size = round(s.get("size", 12.0), 1)
-                style = build_style_for_word(word, s)
-                return (word, style, size)
-    else:
-        for s in reversed(valid_spans):
-            words_in_span = s.get("text", "").split()
-            if words_in_span:
-                raw = words_in_span[-1]
-                word = raw.rstrip(".,!?;:…")
-                size = round(s.get("size", 12.0), 1)
-                style = build_style_for_word(word, s)
-                return (word, style, size)
-
-    return ("", 0, 0.0)
-
-
-def getFirstWord(line):
-    t, s, f = getWord(line, "first")
-    return {"Text": t, "Style": s, "FontSize": f}
-
-
-def getLastWord(line):
-    t, s, f = getWord(line, "last")
-    return {"Text": t, "Style": s, "FontSize": f}
-
-
+# ===============================
+# 6. Tổng hợp toàn văn bản (giữ API cũ + dùng hàm mới bên trong)
+# ===============================
 def getTextStatus(pdf_path, exceptions, patterns):
     doc = fitz.open(pdf_path)
     general = {"pageGeneralSize": getPageGeneralSize(doc[0])}
@@ -325,10 +431,22 @@ def getTextStatus(pdf_path, exceptions, patterns):
                     text = "".join(span["text"] for span in l["spans"]).strip()
                     if not text:
                         continue
+
+                    # Marker
                     marker_text, marker_type = getMarker(text, patterns)
-                    style = getStyle({"text": text, "spans": l["spans"]}, exceptions)
-                    fontsize = getFontSize({"spans": l["spans"]})
-                    x0, x1, xm, y0, y1 = getCoords({"spans": l["spans"]})
+
+                    # Style/FontSize/Coord (line-level theo API mới)
+                    line_obj = {"text": text, "spans": l["spans"]}
+                    style = getLineStyle(line_obj)
+                    fontsize = getLineFontSize(line_obj)
+                    x0, x1, xm, y0, y1 = getLineCoord(line_obj)
+
+                    # Words (giữ API cũ: First/Last)
+                    words_obj = {
+                        "First": getFirstWord(line_obj),
+                        "Last":  getLastWord(line_obj)
+                    }
+
                     line_dict = {
                         "Line": len(lines) + 1,
                         "Text": text,
@@ -336,10 +454,7 @@ def getTextStatus(pdf_path, exceptions, patterns):
                         "MarkerType": marker_type,
                         "Style": style,
                         "FontSize": fontsize,
-                        "Words": {
-                            "First": getFirstWord({"text": text, "spans": l["spans"]}),
-                            "Last": getLastWord({"text": text, "spans": l["spans"]})
-                        },
+                        "Words": words_obj,
                         "Coords": {"X0": x0, "X1": x1, "XM": xm, "Y0": y0, "Y1": y1}
                     }
                     lines.append(line_dict)

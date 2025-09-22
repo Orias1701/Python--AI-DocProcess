@@ -49,7 +49,6 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     """
     pair = f"[{idx_prev+1}->{idx_curr+1}]" if idx_prev is not None else ""
 
-    # Trường hợp mở đoạn mới
     if isNewPara(curr):
         print(f"{pair} Merge=False | Reason: isNewPara")
         return False
@@ -61,10 +60,6 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     if not isSameStyle(prev, curr):
         print(f"{pair} Merge=False | Reason: Style mismatch")
         return False
-
-    # if not isSameFStyle(prev, curr):
-    #     print(f"{pair} Merge=False | Reason: FStyle mismatch")
-    #     return False
     
     if not isNear(prev, curr):
         print(f"{pair} Merge=False | Reason: Not near")
@@ -86,54 +81,67 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
     return False
 
 
+# Check MarkerText
 def isNewPara(line):
     return line.get("MarkerText") not in (None, "", " ")
 
-
+# Check FontSize
 def isSameFontSize(prev, curr):
     return abs(prev["FontSize"] - curr["FontSize"]) <= 0.7
 
 
+# Check Style
 def isSameStyle(prev, curr):
     return isSameLineStyle(prev, curr) or isSameFirstStyle(prev, curr) or isSameLastStyle(prev, curr) or isSameWordStyle(prev, curr)
-
-
-def isSameLineStyle(prev, curr):
-    return prev["Style"] == curr["Style"]
-
-
-def isSameFirstStyle(prev, curr):
-    return prev["Style"] == curr["Words"]["First"]["Style"]
-
-
-def isSameLastStyle(prev, curr):
-    return prev["Words"]["Last"]["Style"] == curr["Style"]
-
-
-def isSameWordStyle(prev, curr):
-    return prev["Words"]["Last"]["Style"] == curr["Words"]["First"]["Style"]
-
 
 def isSameFStyle(prev, curr):
     return isSameLineFStyle(prev, curr) or isSameFirstFStyle(prev, curr) or isSameLastFStyle(prev, curr) or isSameWordFStyle(prev, curr)
 
+def isSameCase(prev, curr):
+    return isSameLineCase(prev, curr) or isSameFirstCase(prev, curr) or isSameLastCase(prev, curr) or isSameWordCase(prev, curr)
+
+# Line - Line
+def isSameLineStyle(prev, curr):
+    return prev["Style"] == curr["Style"]
 
 def isSameLineFStyle(prev, curr):
     return prev["Style"] %1000 == curr["Style"] %1000
 
+def isSameLineCase(prev, curr):
+    return prev["Style"] /1000 == curr["Style"] /1000
+
+# First - Line
+def isSameFirstStyle(prev, curr):
+    return prev["Style"] == curr["Words"]["First"]["Style"]
 
 def isSameFirstFStyle(prev, curr):
     return prev["Style"] %1000 == curr["Words"]["First"]["Style"] %1000
 
+def isSameFirstCase(prev, curr):
+    return prev["Style"] /1000 == curr["Words"]["First"]["Style"] /1000
+
+# Last - Line
+def isSameLastStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] == curr["Style"]
 
 def isSameLastFStyle(prev, curr):
     return prev["Words"]["Last"]["Style"] %1000 == curr["Style"] %1000
 
+def isSameLastCase(prev, curr):
+    return prev["Words"]["Last"]["Style"] /1000 == curr["Style"] /1000
+
+# Last - First
+def isSameWordStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] == curr["Words"]["First"]["Style"]
 
 def isSameWordFStyle(prev, curr):
     return prev["Words"]["Last"]["Style"] %1000 == curr["Words"]["First"]["Style"] %1000
 
+def isSameWordCase(prev, curr):
+    return prev["Words"]["Last"]["Style"] /1000 == curr["Words"]["First"]["Style"] /1000
 
+
+# Linespace
 def isNear(prev, curr):
     if "Position" not in prev or "Position" not in curr:
         return False
@@ -151,30 +159,23 @@ def isNear(prev, curr):
 def isSameAlign(prev, curr):
     return prev.get("Align") == curr.get("Align")
 
-
 def isBadAlign(prev, curr):
     return (prev.get("Align") != "right" and curr.get("Align") == "right")
-
 
 def isNoSameAlign0(prev):
     return prev.get("Align") == "Justify"
 
-
 def isNoSameAlignC(prev):
     return prev.get("Align") == "Center"
-
 
 def isNoSameAlignR(prev):
     return prev.get("Align") == "Right"
 
-
 def isNoSameAlignL(prev, curr):
     return prev.get("Align") == "Left" and curr.get("Align") == "Justify"
 
-
 def canMergeWithAlign(prev):
     return isNoSameAlign0(prev) or isNoSameAlignC(prev) or isNoSameAlignR(prev)
-
 
 def canMergeWithLeft(prev, curr):
     return isNoSameAlignL(prev, curr)

@@ -8,7 +8,7 @@ from difflib import SequenceMatcher
 
 
 # ===============================
-# 1. Utils (giữ nguyên/như cũ)
+# 1. Utils
 # ===============================
 def load_exceptions(file_path):
     """Nạp danh sách ngoại lệ từ JSON"""
@@ -462,7 +462,7 @@ def getTextStatus(pdf_path, exceptions, patterns):
 
 
 # ===============================
-# 3. Các hàm set*
+# 7. Các hàm set*
 # ===============================
 def most_common(values):
     if not values:
@@ -595,7 +595,7 @@ def setTextStatus(baseJson):
 
 
 # ===============================
-# 4. Các hàm del/reset
+# 8. Các hàm del/reset
 # ===============================
 def delStatus(jsonDict, deleteList):
     for line in jsonDict["lines"]:
@@ -640,7 +640,7 @@ def resetPosition(jsonDict):
 
 
 # ===============================
-# 5. Hàm chính extractData
+# 9. Hàm chính extractData
 # ===============================
 def extractData(path, exceptions_path, markers_path, status_path):
     if not os.path.exists(path):

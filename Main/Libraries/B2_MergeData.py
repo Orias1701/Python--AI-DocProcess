@@ -1,5 +1,5 @@
 # MergeData.py
-
+from statistics import mean, multimode
 from collections import Counter
 
 
@@ -28,11 +28,15 @@ def mergeLinesToParagraphs(baseJson):
             buffer.append(curr)
 
         else:
-            paragraphs.append(buildParagraph(buffer, len(paragraphs)+1))
+            paragraphs.append(buildParagraph(buffer, len(paragraphs)+1, general))
             buffer = [curr]
 
     if buffer:
-        paragraphs.append(buildParagraph(buffer, len(paragraphs)+1))
+        paragraphs.append(buildParagraph(buffer, len(paragraphs)+1, general))
+
+    merged = {"general": general, "paragraphs": paragraphs}
+    # >>> TÍNH LẠI 'common' TRONG GENERAL DỰA TRÊN PARAGRAPHS
+    merged = recomputeCommonsInGeneralAfterMerge(merged)
 
     return {"general": general, "paragraphs": paragraphs}
 
@@ -57,7 +61,7 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
         print(f"{pair} Merge=False | Reason: FontSize mismatch")
         return False
 
-    if not isSameStyle(prev, curr):
+    if not isSameFStyle(prev, curr):
         print(f"{pair} Merge=False | Reason: Style mismatch")
         return False
     
@@ -185,7 +189,7 @@ def canMergeWithLeft(prev, curr):
 # HÀM BUILD PARAGRAPH
 # ===============================
 
-def buildParagraph(lines, para_id):
+def buildParagraph(lines, para_id, general=None):
     """
     Tạo dict Paragraph từ list lines đã merge
     """
@@ -199,7 +203,22 @@ def buildParagraph(lines, para_id):
     # first_word = lines[0]["Words"]["First"]
     # last_word = lines[-1]["Words"]["Last"]
 
-    font_size = round(sum([ln["FontSize"] for ln in lines]) / len(lines), 1)
+    fs_values = [ln["FontSize"] for ln in lines if ln.get("FontSize") is not None]
+
+    if fs_values:
+        modes = multimode(fs_values)  # trả về list tất cả các mode
+        if len(modes) == 1:
+            font_size = modes[0]
+        else:
+            # có nhiều mode → chọn gần với commonFontSize trong general
+            if general and general.get("commonFontSize") is not None:
+                target = general["commonFontSize"]
+                font_size = min(modes, key=lambda x: abs(x - target))
+            else:
+                font_size = mean(fs_values)
+        font_size = round(font_size, 1)
+    else:
+        font_size = 12.0
     align = mostCommon([ln["Align"] for ln in lines]) or lines[-1]["Align"]
 
     return {
@@ -237,3 +256,41 @@ def mostCommon(values):
     count = Counter(values)
     most = count.most_common(1)
     return most[0][0] if most else None
+
+
+# ===============================
+# RESOLVE COMMONS
+# ===============================
+
+def recomputeCommonsInGeneralAfterMerge(mergedJson):
+    """
+    Cập nhật lại các 'common' trong mergedJson['general'] dựa trên danh sách paragraphs.
+    Các field cập nhật:
+      - commonFontSize
+      - commonFontSizes: [{FontSize, Count}, ...] (giảm dần theo Count)
+      - commonMarkers: top marker thỏa ngưỡng >= 0.5% tổng số paragraph, tối đa 10 mục
+    """
+    paragraphs = mergedJson.get("paragraphs", [])
+    total = len(paragraphs)
+
+    # --- Font sizes ---
+    fs_values = [p["FontSize"] for p in paragraphs if p.get("FontSize") is not None]
+    fs_counter = Counter(fs_values)
+
+    commonFontSizes = [{"FontSize": round(fs, 1), "Count": cnt}
+                       for fs, cnt in fs_counter.most_common()]
+    commonFontSize = commonFontSizes[0]["FontSize"] if commonFontSizes else None
+
+    # --- Markers ---
+    mk_values = [p["MarkerType"] for p in paragraphs if p.get("MarkerType")]
+    mk_counter = Counter(mk_values)
+    threshold = max(1, int(total * 0.005))
+    commonMarkers = [m for m, c in mk_counter.most_common(10) if c >= threshold]
+
+    # --- Ghi đè vào general ---
+    mergedJson["general"].update({
+        "commonFontSize": commonFontSize,
+        "commonFontSizes": commonFontSizes,
+        "commonMarkers": commonMarkers
+    })
+    return mergedJson

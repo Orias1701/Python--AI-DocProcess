@@ -10,7 +10,7 @@ class StructureAnalyzer:
         self.verbose = verbose
 
     # ---------------- B1 ---------------- #
-    def extract_markers(self) -> List[Any]:
+    def extract_markers(self) -> List[str]:
         merged_path = self.merged_path
         bullet_pattern = re.compile(r"^\s*[-•●♦▪‣–—]+\s*$")
 
@@ -25,30 +25,32 @@ class StructureAnalyzer:
             mt = p.get("MarkerText")
             mtype = p.get("MarkerType")
 
+            # Bỏ bullet
             if bullet_pattern.match(mt or "") or bullet_pattern.match(mtype or ""):
                 continue
-            if mtype in common_markers:
-                raw_markers.append(mtype)
-            elif mtype is None and None in common_markers:
-                raw_markers.append(None)
 
-        # loại trùng kề nhau
-        cleaned = []
+            # Giữ nếu thuộc common hoặc là None
+            if mtype in common_markers or mtype is None:
+                raw_markers.append(mtype)
+
+        # Loại bỏ trùng kề nhau và chuẩn hóa None -> "none"
+        cleaned: List[str] = []
         prev = object()
         for m in raw_markers:
-            if m != prev:
-                cleaned.append(m)
-                prev = m
+            val = str(m) if m is not None else "none"
+            if val != prev:
+                cleaned.append(val)
+                prev = val
 
         if self.verbose:
-            print(f"[B1] Extracted {len(cleaned)} markers")
+            print(f"[B1] Extracted {len(cleaned)} markers (including 'none' for nulls)")
         return cleaned
 
     # ---------------- B2 ---------------- #
-    def build_structures(self, markers: List[Any]) -> List[Dict[str, Any]]:
+    def build_structures(self, markers: List[str]) -> List[Dict[str, Any]]:
         unique_markers = list(dict.fromkeys(markers))
         counter1 = Counter(markers)
-        results = [{"Depth": 1, "Structure": [str(m)], "Count": counter1[m]} for m in unique_markers]
+        results = [{"Depth": 1, "Structure": [m], "Count": counter1[m]} for m in unique_markers]
 
         max_depth = len(unique_markers)
         prev_structures = set((m,) for m in unique_markers)
@@ -59,9 +61,14 @@ class StructureAnalyzer:
                 seq_raw = tuple(markers[j:j+i])
                 prefix = seq_raw[:-1]
 
+                # Điều kiện 1: phải có cha
                 if prefix not in prev_structures:
                     continue
+                # Điều kiện 2: không trùng MarkerType trong cùng cấu trúc
                 if len(seq_raw) != len(set(seq_raw)):
+                    continue
+                # Điều kiện 3: chỉ chấp nhận nếu "none" không có, hoặc nằm ở cuối
+                if "none" in seq_raw and seq_raw[-1] != "none":
                     continue
 
                 counter[seq_raw] += 1
@@ -74,7 +81,7 @@ class StructureAnalyzer:
             filtered = {s: f for s, f in counter.items() if not (f == min_count and f != max_count)}
             sorted_structs = sorted(filtered.items(), key=lambda x: x[1], reverse=True)
 
-            depth_lines = [{"Depth": i, "Structure": [str(x) for x in s], "Count": f} for s, f in sorted_structs]
+            depth_lines = [{"Depth": i, "Structure": list(s), "Count": f} for s, f in sorted_structs]
             results.extend(depth_lines)
 
             prev_structures = set(s for s, _ in sorted_structs)

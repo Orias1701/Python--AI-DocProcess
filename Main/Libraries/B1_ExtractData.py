@@ -10,7 +10,7 @@ from difflib import SequenceMatcher
 # ===============================
 # 1. Utils
 # ===============================
-def load_exceptions(file_path="../tests/ex.exceptions.json"):
+def load_exceptions(file_path):
     """Nạp danh sách ngoại lệ từ JSON"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -24,7 +24,7 @@ def load_exceptions(file_path="../tests/ex.exceptions.json"):
         raise Exception(f"Lỗi khi tải ngoại lệ: {e}")
 
 
-def load_patterns(markers_path="../tests/ex.markers.json", status_path="../tests/ex.status.json"):
+def load_patterns(markers_path, status_path):
     """Nạp danh sách marker, status pattern từ JSON"""
     try:
         with open(markers_path, 'r', encoding='utf-8') as f:
@@ -171,6 +171,17 @@ def getMarker(text, patterns):
     return marker_text, marker_type
 
 
+def getCoords(line):
+    spans = line.get("spans", [])
+    if not spans:
+        return (0, 0, 0, 0, 0)
+    x0 = round(spans[0]["bbox"][0], 1)
+    y0 = round(spans[0]["bbox"][1], 1)
+    x1 = round(spans[-1]["bbox"][2], 1)
+    y1 = round(spans[-1]["bbox"][3], 1)
+    xm = round((x0 + x1) / 2, 1)
+    return (x0, x1, xm, y0, y1)
+
 
 def getStyle(line, exceptions):
     """CaseStyle (toàn line) + FontStyle (min theo từng thuộc tính trên mọi span)"""
@@ -235,19 +246,6 @@ def getFontSize(line):
     return 12.0
 
 
-
-def getCoords(line):
-    spans = line.get("spans", [])
-    if not spans:
-        return (0, 0, 0, 0, 0)
-    x0 = round(spans[0]["bbox"][0], 1)
-    y0 = round(spans[0]["bbox"][1], 1)
-    x1 = round(spans[-1]["bbox"][2], 1)
-    y1 = round(spans[-1]["bbox"][3], 1)
-    xm = round((x0 + x1) / 2, 1)
-    return (x0, x1, xm, y0, y1)
-
-
 def getWord(line, position="first"):
     """
     Lấy (Text, Style, FontSize) của từ đầu/cuối dựa trên chính span chứa từ đó
@@ -309,10 +307,6 @@ def getFirstWord(line):
     t, s, f = getWord(line, "first")
     return {"Text": t, "Style": s, "FontSize": f}
 
-
-def getLastWord(line):
-    t, s, f = getWord(line, "last")
-    return {"Text": t, "Style": s, "FontSize": f}
 
 def getLastWord(line):
     t, s, f = getWord(line, "last")
@@ -533,10 +527,7 @@ def resetPosition(jsonDict):
 # ===============================
 # 5. Hàm chính extractData
 # ===============================
-def extractData(path,
-                exceptions_path="../tests/ex.exceptions.json",
-                markers_path="../tests/ex.markers.json",
-                status_path="../tests/ex.status.json"):
+def extractData(path, exceptions_path, markers_path, status_path):
     if not os.path.exists(path):
         raise FileNotFoundError(f"File {path} không tồn tại")
     pdf_path = path
@@ -546,7 +537,6 @@ def extractData(path,
         exceptions = load_exceptions(exceptions_path)
         patterns = load_patterns(markers_path, status_path)
 
-        baseJson = getTextStatus(pdf_path, exceptions, patterns)
         baseJson = getTextStatus(pdf_path, exceptions, patterns)
 
         baseJson["lines"] = normalizeRomanMarkers(baseJson["lines"])

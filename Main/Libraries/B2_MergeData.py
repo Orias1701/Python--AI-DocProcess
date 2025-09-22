@@ -62,6 +62,10 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
         print(f"{pair} Merge=False | Reason: Style mismatch")
         return False
 
+    # if not isSameFStyle(prev, curr):
+    #     print(f"{pair} Merge=False | Reason: FStyle mismatch")
+    #     return False
+    
     if not isNear(prev, curr):
         print(f"{pair} Merge=False | Reason: Not near")
         return False
@@ -108,6 +112,26 @@ def isSameLastStyle(prev, curr):
 
 def isSameWordStyle(prev, curr):
     return prev["Words"]["Last"]["Style"] == curr["Words"]["First"]["Style"]
+
+
+def isSameFStyle(prev, curr):
+    return isSameLineFStyle(prev, curr) or isSameFirstFStyle(prev, curr) or isSameLastFStyle(prev, curr) or isSameWordFStyle(prev, curr)
+
+
+def isSameLineFStyle(prev, curr):
+    return prev["Style"] %1000 == curr["Style"] %1000
+
+
+def isSameFirstFStyle(prev, curr):
+    return prev["Style"] %1000 == curr["Words"]["First"]["Style"] %1000
+
+
+def isSameLastFStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] %1000 == curr["Style"] %1000
+
+
+def isSameWordFStyle(prev, curr):
+    return prev["Words"]["Last"]["Style"] %1000 == curr["Words"]["First"]["Style"] %1000
 
 
 def isNear(prev, curr):

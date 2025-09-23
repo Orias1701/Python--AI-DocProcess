@@ -5,7 +5,7 @@ import tempfile
 import fitz
 from collections import Counter, defaultdict
 from difflib import SequenceMatcher
-
+from . import A3_TextProcess as TP
 
 # ===============================
 # 1. Utils
@@ -244,34 +244,48 @@ def getLineText(line):
     return line.get("text", "")
 
 
-def getLineStyle(line):
+def getLineStyle(line, exceptions=None):
     """
-    Style của line = min theo **từng thuộc tính** trên tất cả các từ:
-      - CaseStyle_line = min(CaseStyle_word_i)
-      - Bold_line      = AND(bold_i)  -> 100 nếu tất cả bold, ngược lại 0
-      - Italic_line    = AND(italic_i)-> 10 nếu tất cả italic
-      - Underline_line = AND(underline_i) -> 1 nếu tất cả underline
+    Style của line = CaseStyle (min trên từ hợp lệ) + FontStyle (AND spans).
     """
-    words = _extract_words(line)
-    if not words:
-        return 0
+    words = line.get("words", [])  # ở đây words = list[(word, span)]
+    spans = line.get("spans", [])
 
-    # CaseStyle tối thiểu trong các từ
-    cs_values = [_case_style(w) for w, _ in words]
+    # Gom exceptions
+    exception_texts = set()
+    if exceptions:
+        exception_texts = (
+            set(exceptions.get("common_words", [])) |
+            set(exceptions.get("proper_names", [])) |
+            set(exceptions.get("abbreviations", []))
+        )
+
+    # ===== CaseStyle =====
+    cs_values = []
+    for w, _ in words:  # chỉ lấy phần 'UBND'
+        clean_w = TP.normalize_word(w)
+        if not clean_w:
+            continue
+        if clean_w in exception_texts or TP.is_abbreviation(clean_w):
+            continue
+        cs_values.append(_case_style(clean_w))
+
     cs_line = min(cs_values) if cs_values else 1000
 
-    # Font flags: AND trên toàn line
-    bold_all = True
-    italic_all = True
-    underline_all = True
-    for _, span in words:
-        b, i, u = _font_flags(span)
-        bold_all &= b
-        italic_all &= i
-        underline_all &= u
+    # ===== FontStyle =====
+    if spans:
+        bold_all = italic_all = underline_all = True
+        for s in spans:
+            b, i, u = _font_flags(s)
+            bold_all &= b
+            italic_all &= i
+            underline_all &= u
+        fs_line = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
+    else:
+        fs_line = 0
 
-    fs_line = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
     return cs_line + fs_line
+
 
 
 def getLineFontSize(line):
@@ -353,51 +367,6 @@ def getMarker(text, patterns):
         marker_text_cleaned = re.sub(r'([A-Za-z0-9ĐÊÔƠƯđêôơư])\+(?=\W|$)', r'\1', marker_text)
         marker_type = format_marker(marker_text_cleaned, patterns)
     return marker_text, marker_type
-
-
-def getStyle(line, exceptions):
-    """
-    CaseStyle (toàn line, sau khi lọc ngoại lệ) + FontStyle (AND trên spans) — LOGIC CŨ
-    Giữ nguyên cho những nơi còn gọi hàm cũ này.
-    """
-    text = line.get("text", "")
-    spans = line.get("spans", [])
-
-    # ===== CaseStyle (giữ logic cũ, tính trên toàn line sau khi lọc ngoại lệ) =====
-    words = text.split()
-    exception_texts = exceptions["common_words"] | set(exceptions["proper_names"]) | exceptions["abbreviations"]
-
-    filtered = []
-    for w in words:
-        clean_w = re.sub(r'[^a-zA-ZÀ-ỹà-ỹ0-9]', '', w)
-        if clean_w and clean_w.lower() not in exception_texts:
-            filtered.append(clean_w)
-
-    if filtered:
-        if all(w.isupper() for w in filtered):
-            case_style = 3000
-        elif all(w.istitle() for w in filtered):
-            case_style = 2000
-        else:
-            case_style = 1000
-    else:
-        case_style = 1000  # mặc định
-
-    # ===== FontStyle (min/AND theo spans) =====
-    if spans:
-        bold_all = True
-        italic_all = True
-        underline_all = True
-        for s in spans:
-            b, i, u = _font_flags(s)
-            bold_all &= b
-            italic_all &= i
-            underline_all &= u
-        font_style = (100 if bold_all else 0) + (10 if italic_all else 0) + (1 if underline_all else 0)
-    else:
-        font_style = 0
-
-    return case_style + font_style
 
 
 def getFontSize(line):
@@ -638,6 +607,25 @@ def resetPosition(jsonDict):
         line["Position"] = pos
     return jsonDict
 
+def strip_extra_spaces(s: str) -> str:
+    if not isinstance(s, str):
+        return s
+    return re.sub(r'\s+', ' ', s).strip()
+
+def normalizeTexts(jsonDict):
+    for line in jsonDict.get("lines", []):
+        # xử lý Text và MarkerText
+        if "Text" in line:
+            line["Text"] = strip_extra_spaces(line["Text"])
+        if "MarkerText" in line and line["MarkerText"]:
+            line["MarkerText"] = strip_extra_spaces(line["MarkerText"])
+
+        # xử lý word-level
+        words = line.get("Words", {})
+        for key in ["First", "Last"]:
+            if key in words and "Text" in words[key]:
+                words[key]["Text"] = strip_extra_spaces(words[key]["Text"])
+    return jsonDict
 
 # ===============================
 # 9. Hàm chính extractData
@@ -658,6 +646,13 @@ def extractData(path, exceptions_path, markers_path, status_path):
         modifiedJson = setTextStatus(baseJson)
         cleanJson = resetPosition(modifiedJson)
         finalJson = delStatus(cleanJson, ["Coords"])
+        finalJson = normalizeTexts(finalJson)
+        # Thu thập tên riêng động
+        proper_names_auto = TP.collect_proper_names(finalJson["lines"], min_count=10)
+
+        # Gộp vào exceptions
+        exceptions["proper_names"] = set(exceptions.get("proper_names", [])) | proper_names_auto
+            
         return finalJson
     finally:
         if temp_file:

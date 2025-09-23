@@ -61,7 +61,7 @@ def canMerge(prev, curr, idx_prev=None, idx_curr=None):
         print(f"{pair} Merge=False | Reason: FontSize mismatch")
         return False
 
-    if not isSameFStyle(prev, curr):
+    if not isSameStyle(prev, curr):
         print(f"{pair} Merge=False | Reason: Style mismatch")
         return False
     

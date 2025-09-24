@@ -2,7 +2,7 @@ import re
 import os
 import json
 import fitz
-from collections import Counter
+from collections import Counter, defaultdict
 from . import A3_TextProcess as TP
 from . import A4_PdfProcess as PP
 
@@ -76,8 +76,8 @@ def format_marker(marker_text, patterns):
         return None
 
     formatted = marker_text
-    formatted = re.sub(r'\b[0-9]+\b', '123', formatted)        # số Ả Rập
-    formatted = re.sub(r'\b[IVXLC]+\b', 'XVI', formatted)      # số La Mã
+    formatted = re.sub(r'\b[0-9]+\b', '123', formatted)
+    formatted = re.sub(r'\b[IVXLC]+\b', 'XVI', formatted)
 
     parts = re.split(r'(\W+)', formatted)
     formatted_parts = []
@@ -95,6 +95,41 @@ def format_marker(marker_text, patterns):
             formatted_parts.append(part)
     return ''.join(formatted_parts)
 
+# ===== Hàm chuẩn hoá số La Mã =====
+def normalizeRomans(lines, mode="marker", replace_with="ABC"):
+    format_groups = defaultdict(list)
+    for idx, line in enumerate(lines):
+        fmt = line.get("MarkerType")
+        marker = line.get("MarkerText")
+        if fmt and marker:
+            format_groups[fmt].append((idx, marker))
+
+    # --- kiểm tra MarkerType ---
+    if mode == "marker":
+        for fmt, group in format_groups.items():
+            roman_markers = []
+            for idx, marker in group:
+                m = re.search(r'\b([IVXLC]+)\b', marker)
+                if m and TP.is_roman(m.group(1)):
+                    roman_markers.append((idx, m.group(1)))
+                else:
+                    break
+
+            if roman_markers:
+                roman_numbers = [TP.roman_to_int(rm[1]) for rm in roman_markers]
+                expected = list(range(min(roman_numbers), max(roman_numbers) + 1))
+                if sorted(roman_numbers) != expected:
+                    for idx, _ in roman_markers:
+                        lines[idx]["MarkerType"] = re.sub(r'\b[IVXLC]+\b', replace_with, lines[idx]["MarkerType"])
+
+    # --- Chuẩn hoá toàn bộ Text/MarkerText ---
+    elif mode == "text":
+        for line in lines:
+            for key in ["Text", "MarkerText", "MarkerType"]:
+                if line.get(key):
+                    line[key] = re.sub(r'\b[IVXLC]+\b', replace_with, line[key])
+
+    return lines
 
 # ===============================
 # 2. Word-level functions (mới)
@@ -140,7 +175,7 @@ def getLineStyle(line, exceptions=None):
     """
     Style của line = CaseStyle (min trên từ hợp lệ) + FontStyle (AND spans).
     """
-    words = line.get("words", [])  # ở đây words = list[(word, span)]
+    words = line.get("words", [])
     spans = line.get("spans", [])
 
     # Gom exceptions
@@ -154,7 +189,7 @@ def getLineStyle(line, exceptions=None):
 
     # ===== CaseStyle =====
     cs_values = []
-    for w, _ in words:  # chỉ lấy phần 'UBND'
+    for w, _ in words:
         clean_w = TP.normalize_word(w)
         if not clean_w:
             continue
@@ -465,7 +500,7 @@ def extractData(path, exceptions_path, markers_path, status_path):
 
         # ===== 3. Xử lý PDF =====
         baseJson = getTextStatus(pdf_path, exceptions, patterns)
-        baseJson["lines"] = TP.normalizeRomans(baseJson["lines"])
+        baseJson["lines"] = normalizeRomans(baseJson["lines"])
 
         modifiedJson = setTextStatus(baseJson)
         cleanJson = resetPosition(modifiedJson)

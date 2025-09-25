@@ -120,9 +120,110 @@ class StructureAnalyzer:
 
         result = []
         for t in top:
-            level_dict = {f"Level {i+1}": marker for i, marker in enumerate(t["Structure"])}
+            level_dict = {}
+            for i, marker in enumerate(t["Structure"]):
+                if i == len(t["Structure"]) - 1:
+                    # phần tử cuối cùng
+                    level_dict["Contents"] = marker
+                else:
+                    level_dict[f"Level {i+1}"] = marker
             result.append(level_dict)
 
         if self.verbose:
             print(f"[B4] Selected {len(result)} top structures at depth {max_depth}")
         return result
+
+    def level_rank(level: str) -> int:
+        """Quy đổi level thành số để so sánh"""
+        if level == "Contents":
+            return 9999  # Contents coi như cao nhất
+        if level.startswith("Level "):
+            try:
+                return int(level.split()[1])
+            except Exception:
+                return 0
+        return 0
+
+    def extend_top(self, top: List[Dict[str, Any]], dedup: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Mở rộng top bằng cách thêm tail từ dedup:
+        - Nếu Contents: chỉ giữ tail == ['none']
+        - Các level khác: thêm tail vào các level tiếp theo
+        - Nếu level đã có -> gộp vào list
+        - Luôn chuẩn hóa: mọi giá trị là list
+        """
+        if not top:
+            return []
+
+        expanded = dict(top[0])  # copy để tránh sửa trực tiếp
+        all_markers = set(v for val in expanded.values() for v in (val if isinstance(val, list) else [val]))
+        seen_tails = set()
+
+        # snapshot tránh lỗi "dict changed size"
+        snapshot_items = list(expanded.items())
+
+        for level, marker_values in reversed(snapshot_items):
+            if level == "Level 1":
+                continue
+
+            # chuẩn hóa về list để dễ xử lý
+            markers = marker_values if isinstance(marker_values, list) else [marker_values]
+
+            for marker in markers:
+                for d in dedup:
+                    struct = d["Structure"]
+                    if d["Depth"] < 2:
+                        continue
+
+                    if struct and struct[0] == marker:
+                        if not (set(struct) & (all_markers - {marker})):
+                            tail = tuple(struct[1:])
+
+                            # xử lý riêng cho Contents
+                            if level == "Contents" and tail != ("none",):
+                                continue
+                            if tail in seen_tails:
+                                continue
+                            seen_tails.add(tail)
+
+                            # xác định base level
+                            if level.startswith("Level "):
+                                base_level_num = int(level.split()[1])
+                            elif level == "Contents":
+                                base_level_num = max(
+                                    int(l.split()[1]) for l in expanded if l.startswith("Level ")
+                                )
+                            else:
+                                base_level_num = 0
+
+                            # thêm từng phần tử tail vào level tiếp theo
+                            for i, t in enumerate(tail, start=1):
+                                next_level = f"Level {base_level_num+i}"
+                                if next_level not in expanded:
+                                    expanded[next_level] = []
+                                if not isinstance(expanded[next_level], list):
+                                    expanded[next_level] = [expanded[next_level]]
+                                if t not in expanded[next_level]:
+                                    expanded[next_level].append(t)
+
+        # đổi level cao nhất thành Contents (và gộp nếu đã có)
+        level_nums = [int(l.split()[1]) for l in expanded if l.startswith("Level ")]
+        if level_nums:
+            max_level = f"Level {max(level_nums)}"
+            new_contents = expanded.pop(max_level)
+
+            if "Contents" not in expanded:
+                expanded["Contents"] = []
+            if not isinstance(expanded["Contents"], list):
+                expanded["Contents"] = [expanded["Contents"]]
+
+            for v in (new_contents if isinstance(new_contents, list) else [new_contents]):
+                if v not in expanded["Contents"]:
+                    expanded["Contents"].append(v)
+
+        # chuẩn hóa tất cả value thành list
+        for k, v in expanded.items():
+            if not isinstance(v, list):
+                expanded[k] = [v]
+
+        return [expanded]

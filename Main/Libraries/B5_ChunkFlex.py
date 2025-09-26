@@ -1,94 +1,102 @@
-import re
-import os
-import fitz
+import json
+from copy import deepcopy
+from pathlib import Path
+from collections import OrderedDict
 
-def sentence_end(text):
-    brackets = ["()", "''", '""', "[]", "{}", "«»", "“”", "‘’"]
-    valid_brackets = any(text.startswith(pair[0]) and text.endswith(pair[1]) for pair in brackets)
-    valid_end = text.endswith(('.', '!', '?', ':', ';'))
-    return valid_end or valid_brackets
+class ChunkBuilder:
+    def __init__(self, struct_path: str, merged_path: str, output_path: str):
+        self.struct_path = Path(struct_path)
+        self.merged_path = Path(merged_path)
+        self.output_path = Path(output_path)
 
-def markers(text):
-    return bool(re.match(r'^([-+*•●◦○] )|([0-9a-zA-Z\-\+\*ivxIVX]+[.)\]:] )|(\(\d+\) )|(\(\w+\) )|([0-9]+\s+-\s+[0-9]+ )', text))
+        # Đọc dữ liệu
+        with open(self.struct_path, "r", encoding="utf-8") as f:
+            struct_data = json.load(f)
+        with open(self.merged_path, "r", encoding="utf-8") as f:
+            merged_data = json.load(f)
 
-def unclosed(text):
-    stack = []
-    brackets = {"(": ")", "[": "]", "{": "}", '"': '"', "'": "'", "«": "»", "“": "”", "‘": "’"}
-    for char in text:
-        if char in brackets.keys():
-            stack.append(char)
-        elif char in brackets.values():
-            if stack and brackets[stack[-1]] == char:
-                stack.pop()
+        self.struct_spec = struct_data[0]
+        self.paragraphs = sorted(
+            merged_data.get("paragraphs", []),
+            key=lambda x: x.get("Paragraph", 0)
+        )
+
+        # Chuẩn bị cấu trúc
+        self.ordered_fields = list(self.struct_spec.keys())
+        self.last_field = self.ordered_fields[-1]
+        self.level_fields = self.ordered_fields[:-1]
+
+        # Tập marker cho từng field
+        self.marker_dict = {}
+        for fld in self.ordered_fields:
+            vals = self.struct_spec.get(fld, [])
+            self.marker_dict[fld] = set(vals) if isinstance(vals, list) else set()
+
+        # Biến tạm
+        self.chunk_data = []
+        self.index_counter = 1
+
+    # ===== Các hàm tiện ích =====
+    def _new_temp(self):
+        return {fld: "" for fld in self.level_fields} | {self.last_field: []}
+
+    def _temp_has_data(self, temp):
+        return any(temp[f].strip() for f in self.level_fields) or bool(temp[self.last_field])
+
+    def _reset_deeper(self, temp, touched_field):
+        idx = self.level_fields.index(touched_field)
+        for f in self.level_fields[idx+1:]:
+            temp[f] = ""
+        temp[self.last_field] = []
+
+    def _has_data_from_level(self, temp, fld):
+        """Kiểm tra từ level fld trở xuống có dữ liệu không"""
+        if fld not in self.level_fields:
+            return False
+        idx = self.level_fields.index(fld)
+        for f in self.level_fields[idx:]:
+            if temp[f].strip():
+                return True
+        if temp[self.last_field]:
+            return True
+        return False
+
+    def _with_index(self, temp, idx):
+        """Tạo OrderedDict với Index đứng đầu"""
+        od = OrderedDict()
+        od["Index"] = idx
+        for f in self.level_fields:
+            od[f] = temp[f]
+        od[self.last_field] = temp[self.last_field]
+        return od
+
+    # ===== Hàm chính =====
+    def build(self):
+        temp = self._new_temp()
+        for p in self.paragraphs:
+            text = p.get("Text", "")
+            marker = p.get("MarkerType", None) or "none"
+
+            matched_field = None
+            for fld in self.level_fields:
+                if marker in self.marker_dict.get(fld, set()):
+                    matched_field = fld
+                    break
+
+            if matched_field is not None:
+                # chỉ append nếu từ matched_field trở xuống có dữ liệu
+                if self._has_data_from_level(temp, matched_field):
+                    self.chunk_data.append(self._with_index(deepcopy(temp), self.index_counter))
+                    self.index_counter += 1
+
+                temp[matched_field] = text
+                self._reset_deeper(temp, matched_field)
             else:
-                return False
-    return bool(stack)
+                temp[self.last_field].append(text)
 
-def get_case_style(text, exceptions):
-    words = [word for word in text.split() if word.lower() not in exceptions and word.strip()]
-    if not words:
-        return None
-    
-    is_upper = all(word.isupper() for word in words if word.isalpha() or any(c.isalpha() for c in word))
-    is_lower = all(word.islower() for word in words if word.isalpha() or any(c.isalpha() for c in word))
-    is_title = all(word[0].isupper() and word[1:].islower() if len(word) > 1 else word[0].isupper() 
-                   for word in words if word.isalpha() or any(c.isalpha() for c in word))
-    
-    if is_upper:
-        return "upper"
-    if is_lower:
-        return "lower"
-    if is_title:
-        return "title"
-    return "mixed"
-
-def merge_text(para, new_para):
-    exceptions = {
-        "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
-        "at", "by", "in", "of", "on", "to", "from", "with", "as",
-        "into", "like", "over", "under", "up", "down", "out", "upon", "onto",  
-        "amid", "among", "between", "before", "after", "against"
-    }
-    
-    # Kiểm tra kiểu case của hai đoạn
-    para_case = get_case_style(para, exceptions)
-    new_para_case = get_case_style(new_para, exceptions)
-    
-    # Điều kiện không gộp: kiểu case khác nhau, new_para không bắt đầu bằng chữ hoa, và không có marker
-    different_case = (para_case is not None and new_para_case is not None and 
-                      para_case != new_para_case and 
-                      new_para and new_para[0].isupper())
-    
-    # Điều kiện gộp gốc
-    should_merge = (
-        (not (new_para.isupper() ^ para.isupper()) and 
-         not markers(new_para) and 
-         (not new_para[0].isupper() or not sentence_end(para))) or 
-        unclosed(para)
-    )
-    
-    # Kết hợp điều kiện: không gộp nếu different_case là True
-    return should_merge and not different_case
-def extracted(path):
-    file_ext = os.path.splitext(path)[1].lower()
-    text_data = []
-
-    if file_ext == ".pdf":
-        doc = fitz.open(path)
-        paragraph = ""
-        for page in doc:
-            blocks = sorted(page.get_text("blocks"), key=lambda b: (b[1], b[0]))
-            for block in blocks:
-                for line in block[4].split("\n"):
-                    cleaned_text = " ".join(line.strip().split())
-                    if cleaned_text:
-                        if paragraph and merge_text(paragraph, cleaned_text):
-                            paragraph += " " + cleaned_text
-                        else:
-                            if paragraph:
-                                text_data.append({"text": paragraph})
-                            paragraph = cleaned_text
-        if paragraph:
-            text_data.append({"text": paragraph})
-
-    return text_data
+        if self._temp_has_data(temp):
+            self.chunk_data.append(self._with_index(deepcopy(temp), self.index_counter))
+            self.index_counter += 1
+        
+        return self.chunk_data
+       

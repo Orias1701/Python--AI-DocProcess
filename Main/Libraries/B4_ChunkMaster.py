@@ -97,14 +97,6 @@ class ChunkBuilder:
         if self._temp_has_data(temp):
             self.chunk_data.append(self._with_index(deepcopy(temp), self.index_counter))
             self.index_counter += 1
-
-        # Ghi file
-        with open(self.output_path, "w", encoding="utf-8") as f:
-            json.dump(self.chunk_data, f, ensure_ascii=False, indent=2)
-
-        print(f"✅ Hoàn thành! Đã tạo {len(self.chunk_data)} chunks.")
-        print(f"File kết quả: {self.output_path.resolve()}")
-
-    def get_chunks(self):
-        """Trả về chunk_data (dùng sau khi build)"""
+        
         return self.chunk_data
+       

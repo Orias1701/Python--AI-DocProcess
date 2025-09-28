@@ -1,0 +1,20 @@
+{
+  "type": "status",
+  "items": [
+    {
+      "key": "brackets",
+      "values": {
+        "open": "[\\(\\[\\{«“‘]",
+        "close": "[\\)\\]\\}»”’]",
+        "pairs": ["()", "[]", "{}", "«»", "“”", "‘’"]
+      }
+    },
+    {
+      "key": "sentence_ends",
+      "values": {
+        "punctuation": "[.!?:;]",
+        "valid_brackets": ["()", "[]", "{}"]
+      }
+    }
+  ]
+}

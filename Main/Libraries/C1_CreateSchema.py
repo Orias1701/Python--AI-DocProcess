@@ -1,6 +1,6 @@
 import json
 from typing import Any, Dict, Optional, List
-
+from . import A0_MyUtils as A0
 
 class JSONSchemaExtractor:
     """
@@ -194,17 +194,10 @@ class JSONSchemaExtractor:
         """
         Đọc JSON từ file, tạo schema, và nếu có schema_path thì ghi ra file.
         """
-        with open(json_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        data = A0.read_json(json_path)
 
         schema = self.create_schema_from_data(data)
 
-        if schema_path:
-            self.save_schema(schema, schema_path)
+        A0.write_json(schema, schema_path)
 
         return schema
-
-    @staticmethod
-    def save_schema(schema: Dict[str, str], schema_path: str) -> None:
-        with open(schema_path, "w", encoding="utf-8") as f:
-            json.dump(schema, f, ensure_ascii=False, indent=2)

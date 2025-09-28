@@ -4,8 +4,8 @@ import json
 import fitz
 from typing import Any, Dict, Optional
 from collections import Counter, defaultdict
-from . import A3_TextProcess as TP
-from . import A4_PdfProcess as PP
+from . import A1_TextProcess as TP
+from . import A2_PdfProcess as PP
 
 # ===============================
 # 1. Utils  -> class U1_Utils

@@ -1,0 +1,122 @@
+{
+  "type": "markers",
+  "items": [
+    {
+      "key": "keywords",
+      "values": [
+        "điều",
+        "khoản",
+        "mục",
+        "điểm",
+        "tiểu mục",
+        "chương",
+        "phần",
+        "chapter",
+        "section",
+        "article",
+        "part",
+        "clause",
+        "paragraph",
+        "item",
+        "point"
+      ]
+    },
+    {
+      "key": "markers",
+      "values": [
+        {
+          "pattern": "^([-+*•●◦○])\\s+",
+          "description": "Dấu đầu dòng (ví dụ: -, *, •, v.v.) theo sau bởi khoảng trắng",
+          "type": ""
+        },
+
+        {
+          "pattern": "^(?:{keywords})([0-9]+|[IVX]+)([.\\)\\]:,;-])\\s+",
+          "description": "Từ khóa dính liền số hoặc số La Mã, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:{keywords})([0-9]+|[IVX]+)([.\\)\\]:,;-]?)$",
+          "description": "Từ khóa dính liền số hoặc số La Mã, không có ký tự nào sau marker",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVX]+)([.\\)\\]:,;-])\\s+",
+          "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã, với dấu kết thúc, sau đó là khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:{keywords})\\s+([0-9]+|[a-z]|[A-Z]|[IVX]+)([.\\)\\]:,;-]?)$",
+          "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã, với dấu kết thúc tùy chọn, không có ký tự nào sau marker",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-])\\s+",
+          "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp, với dấu kết thúc, sau đó là khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:{keywords})\\s+([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-]?)$",
+          "description": "Từ khóa theo sau bởi số, chữ cái (1 ký tự), hoặc số La Mã dạng phân cấp, với dấu kết thúc tùy chọn, không có ký tự nào sau marker",
+          "type": ""
+        },
+
+        {
+          "pattern": "^([0-9]+|[a-z]|[A-Z])([.\\)\\]:,;-])\\s+",
+          "description": "Số hoặc chữ cái (1 ký tự) với dấu kết thúc, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^(?:\\(([0-9]+|[a-z]|[A-Z]|[IVX]+)\\)|\"([0-9]+)\"|'([a-z])'|\\{([IVX]+)\\})\\s+",
+          "description": "Nhóm 'trong ngoặc' (tròn: số/chữ/La Mã; kép: số; đơn: chữ thường; nhọn: La Mã), theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^([0-9]+(?:\\.[0-9]+)*|[a-z](?:\\.[a-z])*|[A-Z](?:\\.[A-Z])*|[IVX]+(?:\\.[IVX]+)*)([.\\)\\]:,;-])\\s+",
+          "description": "Số/chữ/La Mã dạng phân cấp có dấu kết thúc, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^([0-9]+)\\s*-\\s*([0-9]+)\\s+",
+          "description": "Khoảng số (ví dụ: 1 - 2), theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^([A-Z]\\+|[IVX]+\\+|[0-9]+\\+)([.\\)\\]:,;-])\\s+",
+          "description": "Chữ hoa, La Mã hoặc số kèm dấu +, bắt buộc có dấu kết thúc, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+
+        {
+          "pattern": "^([đêôơưĐÊÔƠƯ])([.\\)\\]:,;-])\\s+",
+          "description": " == CHỮ CÁI TIẾNG VIỆT == với dấu kết thúc, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^\\(([đêôơưĐÊÔƠƯ])\\)\\s+",
+          "description": " == CHỮ CÁI TIẾNG VIỆT == trong ngoặc tròn, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^\"([đêôơưĐÊÔƠƯ])\"\\s+",
+          "description": " == CHỮ CÁI TIẾNG VIỆT == trong ngoặc kép, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^'([đêôơưĐÊÔƠƯ])'\\s+",
+          "description": " == CHỮ CÁI TIẾNG VIỆT == trong ngoặc đơn, theo sau bởi khoảng trắng",
+          "type": ""
+        },
+        {
+          "pattern": "^\\{([đêôơưĐÊÔƠƯ])\\}\\s+",
+          "description": " == CHỮ CÁI TIẾNG VIỆT == trong ngoặc nhọn, theo sau bởi khoảng trắng",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "key": "notMakers",
+      "values": []
+    }
+  ]
+}

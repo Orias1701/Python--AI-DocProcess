@@ -4,7 +4,7 @@ import json
 import torch
 from copy import deepcopy
 from typing import Any, Dict, List, Tuple, Optional
-from . import A2_MyUtils as MU
+from . import A0_MyUtils as A0
 
 class JSONEmbedding:
     """
@@ -128,14 +128,14 @@ class JSONEmbedding:
         """
         # deepcopy để an toàn với JSON lồng
         original = deepcopy(data)
-        processed = MU.preprocess_data(
+        processed = A0.preprocess_data(
             original,
             non_keep_pattern=self._non_keep_pattern,
             max_chars_per_text=self.max_chars_per_text
         )
 
 
-        flat = MU.flatten_json(
+        flat = A0.flatten_json(
             processed,
             prefix="",
             flatten_mode=self.flatten_mode,

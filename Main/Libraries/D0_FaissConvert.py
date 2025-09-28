@@ -66,8 +66,10 @@ class Torch2FaissConverter:
         if isinstance(data, dict):
             for key, value in data.items():
                 full_key = f"{prefix}.{key}" if prefix else key
-                if full_key.startswith("embeddings") or key == "embeddings":
+
+                if full_key.startswith(self.mode) or key == self.mode:
                     continue
+
                 if isinstance(value, dict):
                     sub_embeds, sub_data = self._extract_embeddings_and_data(value, full_key)
                     embeddings_list.extend(sub_embeds)
@@ -103,8 +105,10 @@ class Torch2FaissConverter:
         elif isinstance(data, list):
             for i, item in enumerate(data):
                 full_key = f"{prefix}.item{i}" if prefix else f"item{i}"
-                if full_key.startswith("embeddings"):
+
+                if full_key.startswith(self.mode):
                     continue
+
                 if isinstance(item, (dict, list)):
                     sub_embeds, sub_data = self._extract_embeddings_and_data(item, full_key)
                     embeddings_list.extend(sub_embeds)

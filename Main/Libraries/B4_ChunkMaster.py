@@ -99,4 +99,3 @@ class ChunkBuilder:
             self.index_counter += 1
         
         return self.chunk_data
-       

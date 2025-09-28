@@ -1,235 +1,230 @@
 import os
+import re
 import json
 import torch
-from typing import Any, Dict
+from copy import deepcopy
+from typing import Any, Dict, List, Tuple, Optional
+from . import A2_MyUtils as MU
 
-""" PREPROCESS TEXT """
+class JSONEmbedding:
+    """
+    Pipeline sinh embedding cho dữ liệu JSON (NO-MERGE, tách phần tử list).
+    - Mọi lời gọi model.encode đều dùng list[str].
+    - Dùng deepcopy để tránh tác dụng phụ trên JSON lồng nhau.
+    - flatten_json hỗ trợ 3 chế độ xử lý list: split | join | keep (mặc định: split).
+    """
 
-def preprocess_text(text):
-    import re
-    if isinstance(text, list):
-        return [preprocess_text(t) for t in text]
-    if isinstance(text, str):
-        text = text.strip()
-        text = re.sub(r'[^\w\s\(\)\.\,\;\:\-–]', '', text)
-        text = re.sub(r'[ ]{2,}', ' ', text)
-        return text
-    return text
+    def __init__(
+        self,
+        model: Any,
+        device: str = "cpu",
+        batch_size: int = 32,
+        show_progress: bool = False,
+        flatten_mode: str = "split",        # "split" | "join" | "keep"
+        join_sep: str = "\n",
+        allowed_schema_types: Tuple[str, ...] = ("string", "array", "dict"),
+        max_chars_per_text: Optional[int] = None,
+        verbose: bool = False,
+    ) -> None:
+        self.model = model
+        self.device = device
+        self.batch_size = batch_size
+        self.show_progress = show_progress
+        self.flatten_mode = flatten_mode
+        self.join_sep = join_sep
+        self.allowed_schema_types = allowed_schema_types
+        self.max_chars_per_text = max_chars_per_text
+        self.verbose = verbose
 
-""" PREPROCESS DATA """
+        # biên dịch regex 1 lần
+        self._non_keep_pattern = re.compile(r"[^\w\s\(\)\.\,\;\:\-–]", flags=re.UNICODE)
 
-def preprocess_data(data):
-    if isinstance(data, dict):
-        return {key: preprocess_data(value) for key, value in data.items()}
-    elif isinstance(data, list):
-        return [preprocess_data(item) for item in data]
-    else:
-        return preprocess_text(data)
-    
-""" LOAD SCHEMA """
+    # ========== 1) Tiền xử lý ==========
 
-def load_schema(schema_path: str) -> Dict[str, str]:
-    try:
-        with open(schema_path, 'r', encoding='utf-8') as f:
+    # ========== 2) Schema ==========
+
+    @staticmethod
+    def load_schema(schema_path: str) -> Dict[str, str]:
+        with open(schema_path, "r", encoding="utf-8") as f:
             return json.load(f)
-    except FileNotFoundError:
-        print(f"Schema file not found: {schema_path}")
-        return {}
-    except json.JSONDecodeError:
-        print(f"Invalid schema file: {schema_path}")
-        return {}
-    
-""" FLATTEN JSON """
 
-def flatten_json(data: Any, prefix: str = "", schema: Dict[str, str] = None) -> Dict[str, Any]:
+    # ========== 3) Flatten JSON ==========
 
-    flat = {}
-    
-    if schema is None:
-        schema = {}
+    # ========== 4) Tương thích schema & chọn trường cần embed ==========
 
-    # Nếu dữ liệu là dict
-    if isinstance(data, dict):
-        for key, value in data.items():
-            # Tạo tiền tố mới cho key
-            new_prefix = f"{prefix}{key}" if prefix else key
+    @staticmethod
+    def _base_key_for_schema(key: str) -> str:
+        """
+        Bỏ chỉ số [i] để đối khớp với khóa trong schema.
+        Ví dụ: "Contents[2]" -> "Contents"; "a.b[3].c" -> "a.b.c"
+        """
+        return re.sub(r"\[\d+\]", "", key)
 
-            # Nếu là dict hoặc list, làm phẳng
-            if isinstance(value, (dict, list)):
-                flat.update(flatten_json(value, f"{new_prefix}.", schema))
-            else:
-                # Nếu là kiểu dữ liệu cơ bản, thêm vào dict
-                flat[new_prefix] = value
+    def _eligible_by_schema(self, key: str, schema: Optional[Dict[str, str]]) -> bool:
+        """
+        Trả về True nếu:
+        - Không có schema (embed mọi key lá dạng text hợp lệ), hoặc
+        - Có schema và kiểu của base_key nằm trong allowed_schema_types.
+        """
+        if schema is None:
+            return True
+        base_key = self._base_key_for_schema(key)
+        typ = schema.get(base_key)
+        return (typ in self.allowed_schema_types) if typ is not None else False
 
-    # Nếu là một danh sách và không rỗng
-    elif isinstance(data, list) and data:
-        # Lưu danh sách vào dictionary với key là tiền tố (bỏ dấu '.')
-        flat[prefix.rstrip('.')] = data
+    # ========== 5) Tạo embedding (luôn dùng list[str]) ==========
 
-    return flat
+    def _encode_texts(self, texts: List[str]) -> torch.Tensor:
+        """
+        Mọi lời gọi model.encode đều dùng list[str].
+        Tự fallback CPU khi thiếu VRAM.
+        """
+        # logging nhẹ
+        if self.verbose:
+            sample = texts[:2] if len(texts) > 1 else texts
+            print(f"[encode] n_texts={len(texts)}, sample={sample!r}, device={self.device}, bs={self.batch_size}")
 
-""" CREATE EMBEDDDING """
-
-def create_embedding(device, model, texts, batch_size=32, batches: bool = False):
-    print(f"Type of texts: {type(texts)}")
-    print(f"Sample texts: {texts[:2] if isinstance(texts, list) else texts}")
-    print(f"Device: {device}, Batch size: {batch_size}")
-    try:
-        embeddings = model.encode(
-            sentences=texts,
-            batch_size=batch_size,
-            convert_to_tensor=True,
-            device=device,
-            show_progress_bar = batches
-        )
-        return embeddings
-    except RuntimeError as e:
-        if "CUDA out of memory" in str(e):
-            print("VRAM overflow. Switching to CPU.")
-            model.to("cpu")
-            return model.encode(
+        try:
+            embs = self.model.encode(
                 sentences=texts,
-                batch_size=batch_size,
+                batch_size=self.batch_size,
                 convert_to_tensor=True,
-                device="cpu",
-                show_progress_bar = batches
+                device=self.device,
+                show_progress_bar=self.show_progress,
             )
-        raise e
-    
+            return embs
+        except RuntimeError as e:
+            if "CUDA out of memory" in str(e):
+                print("⚠️ CUDA OOM. Fallback về CPU.")
+                try:
+                    self.model.to("cpu")  # nếu model có .to
+                except Exception:
+                    pass
+                embs = self.model.encode(
+                    sentences=texts,
+                    batch_size=self.batch_size,
+                    convert_to_tensor=True,
+                    device="cpu",
+                    show_progress_bar=self.show_progress,
+                )
+                return embs
+            raise
 
-""" CREATE EMBEDDDINGS """
+    # ========== 6) Embed dữ liệu ==========
 
-def create_embeddings(MERGE, data: Any, schema: Dict[str, str], model, device: torch.device, batches: bool = False) -> Dict[str, Any]:
-    flat_data = flatten_json(data, schema=schema)
-    embeddings = {}
-    
-    if MERGE == "Merge":
-        # Gộp tất cả các trường
-        merged_texts = []
-        for key, value in flat_data.items():
-            if schema.get(key) in ["string", "array"]:
-                if isinstance(value, str) and value.strip():
-                    merged_texts.append(preprocess_text(value))
-                elif isinstance(value, list):
-                    text = "\n".join([preprocess_text(str(item)) for item in value if str(item).strip()])
-                    if text.strip():
-                        merged_texts.append(text)
-        if merged_texts:
-            # Tạo embedding
-            merged_text = "\n".join(merged_texts)
-            if merged_text.strip():
-                # Sửa lời gọi create_embedding
-                embedding = create_embedding(device, model, merged_text, batch_size=32, batches = batches).to(device)
-                embeddings["merged_embedding"] = embedding
-    else:
-        # Embedding riêng lẻ
-        for key, value in flat_data.items():
-            if schema.get(key) in ["string", "array"]:
-                if isinstance(value, str) and value.strip():
-                    # Sửa lời gọi create_embedding
-                    embedding = create_embedding(device, model, preprocess_text(value), batch_size=32, batches = batches).to(device)
-                    embeddings[f"{key} Embedding"] = embedding
-                elif isinstance(value, list):
-                    text = "\n".join([preprocess_text(str(item)) for item in value if str(item).strip()])
-                    if text.strip():
-                        # Sửa lời gọi create_embedding
-                        embedding = create_embedding(device, model, text, batch_size=32, batches = batches).to(device)
-                        embeddings[f"{key} Embedding"] = embedding
+    def embed_data(
+        self,
+        data: Any,
+        schema: Optional[Dict[str, str]] = None,
+    ) -> Tuple[Dict[str, Any], Dict[str, List[float]]]:
+        """
+        - Tiền xử lý JSON (deepcopy + preprocess).
+        - Làm phẳng (flatten) theo cấu hình list_mode.
+        - Chọn các key hợp lệ theo schema.
+        - Gom toàn bộ text → 1 lần encode theo batch.
+        - Trả về:
+            result: bản sao dữ liệu gốc + các khóa "… Embedding" (đặt đúng nhánh theo tiền tố '.').
+            embed_dict: { "<flat_key> Embedding": [float, ...], ... }
+        """
+        # deepcopy để an toàn với JSON lồng
+        original = deepcopy(data)
+        processed = MU.preprocess_data(
+            original,
+            non_keep_pattern=self._non_keep_pattern,
+            max_chars_per_text=self.max_chars_per_text
+        )
 
-    # Kết hợp dữ liệu gốc và embedding
-    if MERGE == "Merge":
-        result = [{} for _ in range(len(data))] if isinstance(data, list) else {}
-    else:
-        result = data.copy()
 
-    for embed_key, embed_value in embeddings.items():
-        if MERGE == "Merge":
-            result["Merged_text"] = merged_text
-            result["Merged_embedding"] = embed_value.tolist()
-        else:
-            keys = embed_key.split(" Embedding")[0].split('.')
-            current = result
-            for i, k in enumerate(keys[:-1]):
-                current = current.setdefault(k, {})
-            current[keys[-1] + " Embedding"] = embed_value.tolist()
-    return result
+        flat = MU.flatten_json(
+            processed,
+            prefix="",
+            flatten_mode=self.flatten_mode,
+            join_sep=self.join_sep
+        )
 
-""" JSON EMBEDDDING """
+        # Lọc các mục text hợp lệ để embed
+        embed_items: List[Tuple[str, str]] = []  # [(flat_key, text), ...]
+        for k, v in flat.items():
+            if not self._eligible_by_schema(k, schema):
+                continue
+            # chỉ embed khi là chuỗi non-empty
+            if isinstance(v, str) and v.strip():
+                embed_items.append((k, v.strip()))
+            # nếu giữ nguyên list ("keep"), ta không embed cả list; cần "split"/"join" để có str
 
-def json_embeddings(
-                    MERGE: str,
-                    json_file_path: str, 
-                    torch_path: str, 
-                    schema_path: str, 
-                    model, 
-                    device: torch.device, 
-                    DATA_KEY: str, 
-                    EMBE_KEY: str,
-                    batches: bool = False) -> None:
-    
-    # Kiểm tra nếu file embedding đã tồn tại
-    if os.path.exists(torch_path):
-        print(f"\nEmbedding loaded from {torch_path}\n")
-        return
+        if not embed_items:
+            return processed, {}
 
-    print(f"\nCreating embeddings for JSON data...\n")
-    try:
-        # Đọc schema
-        schema = load_schema(schema_path)
-        if not schema:
-            raise ValueError("Schema is empty or invalid")
+        # Gọi encode 1 lần cho tất cả
+        texts = [t for _, t in embed_items]  # luôn là list[str]
+        embs = self._encode_texts(texts)     # Tensor [N, D]
 
-        # Đọc file JSON
-        with open(json_file_path, 'r', encoding='utf-8') as f:
-            data_pairs = json.load(f)
+        # Gắn embedding trở lại cấu trúc dữ liệu (inline)
+        result = deepcopy(processed)
+        embed_dict: Dict[str, List[float]] = {}
 
-        if not isinstance(data_pairs, list):
-            data_pairs = [data_pairs]
+        for (flat_key, _), vec in zip(embed_items, embs):
+            embed_key_full = f"{flat_key} Embedding"
+            embed_list = vec.detach().cpu().tolist()
+            embed_dict[embed_key_full] = embed_list
 
-        # Xử lý từng bộ JSON
-        output_data = []
-        for data in data_pairs:
-            # Tiền xử lý văn bản
-            flat_data = flatten_json(data)
-            for key, value in flat_data.items():
-                if isinstance(value, (str, list)):
-                    flat_data[key] = preprocess_text(value)
-            
-            # Khôi phục cấu trúc gốc với dữ liệu đã tiền xử lý
-            processed_data = data.copy()
-            for key, value in flat_data.items():
-                keys = key.split('.')
-                current = processed_data
-                for k in keys[:-1]:
-                    current = current[k]
-                current[keys[-1]] = value
-
-            # Tạo embedding
-            result = create_embeddings(MERGE, processed_data, schema, model, device, batches)
-            output_data.append(result)
-
-        # Lưu embedding riêng vào file .pt
-        embeddings_only = []
-        # datas_only =[]
-        for item in output_data:
-            flat_item = flatten_json(item)
-            if MERGE == "Merge":
-                # data_dict = {k: v for k, v in flat_item.items() if not k == "Merged_embedding"}
-                embed_dict = {k: v for k, v in flat_item.items() if k == "Merged_embedding"}
+            # chèn theo nhánh (tách theo '.')
+            path_parts = flat_key.split(".")
+            curr = result
+            # đi tới node cha cuối
+            for part in path_parts[:-1]:
+                curr = curr.setdefault(part, {}) if isinstance(curr, dict) else curr
+            # thêm cặp key: "<leaf> Embedding"
+            leaf = path_parts[-1] + " Embedding"
+            if isinstance(curr, dict):
+                curr[leaf] = embed_list
             else:
-                # data_dict = {k: v for k, v in flat_item.items() if not k.endswith("Embedding")}
-                embed_dict = {k: v for k, v in flat_item.items() if k.endswith("Embedding")}
-            # datas_only.append(data_dict)
-            embeddings_only.append(embed_dict)
+                # nếu curr không phải dict (trường hợp hiếm), gắn ở cấp gốc
+                result[embed_key_full] = embed_list
 
+        return result, embed_dict
 
-        torch.save({
-            f"{DATA_KEY}": output_data,
-            f"{EMBE_KEY}": embeddings_only
-        }, torch_path)
+    # ========== 7) Xử lý file JSON & lưu .pt ==========
 
-        print(f"Embedding tensor saved to {torch_path}")
+    def embeddingRun(
+        self,
+        json_path: str,
+        schema_path: Optional[str],
+        torch_path: str,
+        data_key: str = "DATA",
+        embe_key: str = "EMBEDDINGS",
+        skip_if_exists: bool = True,
+    ) -> None:
+        """
+        Đọc JSON đầu vào, sinh embedding theo schema (nếu có), và lưu ra .pt:
+            {
+              data_key:  [result_item1, result_item2, ...],
+              embe_key:  [embed_dict_item1, embed_dict_item2, ...]
+            }
+        """
+        if skip_if_exists and os.path.exists(torch_path):
+            print(f"Embedding đã tồn tại ở {torch_path}. Bỏ qua.")
+            return
 
-    except Exception as e:
-        print(f"Error processing JSON with embeddings: {e}")
-        raise
+        schema: Optional[Dict[str, str]] = None
+        if schema_path:
+            schema = self.load_schema(schema_path)
+            if not schema:
+                raise ValueError("Schema rỗng hoặc không hợp lệ.")
+
+        with open(json_path, "r", encoding="utf-8") as f:
+            data_obj = json.load(f)
+
+        # Chuẩn hoá: đảm bảo xử lý được cả list và đơn lẻ
+        data_list = data_obj if isinstance(data_obj, list) else [data_obj]
+
+        out_results: List[Dict[str, Any]] = []
+        out_embeds: List[Dict[str, List[float]]] = []
+
+        for item in data_list:
+            result, embed_dict = self.embed_data(item, schema=schema)
+            out_results.append(result)
+            out_embeds.append(embed_dict)
+
+        torch.save({data_key: out_results, embe_key: out_embeds}, torch_path)
+        print(f"Đã lưu embedding vào: {torch_path}")

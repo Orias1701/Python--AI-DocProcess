@@ -191,7 +191,7 @@ class JSONEmbedding:
         json_path: str,
         schema_path: Optional[str],
         torch_path: str,
-        data_key: str = "DATA",
+        data_key: str = "CONTENTS",
         embe_key: str = "EMBEDDINGS",
         skip_if_exists: bool = True,
     ) -> None:

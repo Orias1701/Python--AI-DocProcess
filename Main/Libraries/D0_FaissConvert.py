@@ -17,17 +17,19 @@ class Torch2FaissConverter:
     """
     Chuyển đổi file .pt sang FAISS index + mapping + dữ liệu thường.
     Hành vi giữ nguyên so với bản procedural: vẫn đọc .pt, tạo FAISS index, 
-    ghi ra faiss_path, mapping_path, mapping_data.
+    ghi ra faiss_path, mapping_path, map_data_path.
     """
 
-    def __init__(self, torch_path: str, faiss_path: str, mapping_path: str, mapping_data: str, nlist: int = 100, use_pickle: bool = False, mode: str = None):
+    def __init__(self, schema_ex_path: str, torch_path: str, faiss_path: str, mapping_path: str, map_data_path: str, keep_last: int = 2, nlist: int = 100, mode: str = None, use_pickle: bool = False):
+        self.schema_ex_path = schema_ex_path
         self.torch_path = torch_path
         self.faiss_path = faiss_path
         self.mapping_path = mapping_path
-        self.mapping_data = mapping_data
+        self.map_data_path = map_data_path
+        self.keep_last = keep_last
         self.nlist = nlist
-        self.use_pickle = use_pickle
         self.mode = mode
+        self.use_pickle = use_pickle
         
     # ====== Helper ======
     def _inspect_torch_path(self) -> Any:
@@ -197,10 +199,10 @@ class Torch2FaissConverter:
             ex(lambda: json.dump(key_to_index, open(self.mapping_path, "w", encoding="utf-8"), indent=4, ensure_ascii=False))
 
         # 7. Save data
-        logging.info(f"Đang lưu dữ liệu thông thường vào {self.mapping_data}")
+        logging.info(f"Đang lưu dữ liệu thông thường vào {self.map_data_path}")
         if self.use_pickle:
-            ex(lambda: pickle.dump(data_mapping, open(self.mapping_data, "wb")))
+            ex(lambda: pickle.dump(data_mapping, open(self.map_data_path, "wb")))
         else:
-            ex(lambda: json.dump(data_mapping, open(self.mapping_data, "w", encoding="utf-8"), indent=4, ensure_ascii=False))
+            ex(lambda: json.dump(data_mapping, open(self.map_data_path, "w", encoding="utf-8"), indent=4, ensure_ascii=False))
 
         logging.info("Chuyển đổi hoàn tất.")

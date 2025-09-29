@@ -1,8 +1,7 @@
 .vscode
 __*
-Docs/
-Data/
+API*
+*.pkl
+
 lib/
-Config*
-Prompts*
-A*.py
+Data/

@@ -1,4 +1,4 @@
-# Hệ thống Chatbot RAG Quy chế Đào tạo
+# Chatbot RAG Quy chế Đào tạo
 
 ## 1. Mục tiêu
 

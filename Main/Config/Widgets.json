@@ -1,0 +1,21 @@
+{
+  "file_type": ["QA", "Data"],
+  "path_end": [".pt", ".faiss", ".json", ".docx", ".pdf"],
+  "switch_model": ["Auto Model", "Sentence Transformer"],
+  "embedding_model": [
+    "vinai/phobert-base",
+    "keepitreal/vietnamese-sbert",
+    "VoVanPhuc/sup-SimCSE-VietNamese-phobert-base",
+    "paraphrase-multilingual-mpnet-base-v2",
+    "distiluse-base-multilingual-cased-v2",
+    "sentence-transformers/all-roberta-large-v1",
+    "sentence-transformers/bge-small-vi-v2"
+  ],
+  "searching_egine": ["faiss.IndexHNSWFlat", "faiss.IndexFlatIP", "faiss.IndexFlatL2"],
+  "reranking_model": ["BAAI/bge-reranker-base"],
+  "responing_model": [
+    "gemini-2.0-flash-exp",
+    "vinai/PhoGPT-7B5-Instruct",
+    "viet-llm/vietnamese-llama2-7b-chat"
+  ]
+}

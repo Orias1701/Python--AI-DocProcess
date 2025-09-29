@@ -1,5 +1,48 @@
 # Chatbot RAG Quy chế Đào tạo
 
+```
+RAG
+│
+├── Assets/
+│ ├── ex.exceptions.json
+│ ├── ex.markers.json
+│ └── ex.status.json
+│
+├── Data/
+│ ├── Harvard_Regulations/
+│ └── HNMU_Regulations/
+│
+├── Docs/
+│ ├── .xlsx
+│ └── .pdf
+│
+├── Main/
+│ ├── Config/
+│ │ ├── pycache/
+│ │ ├── API.json
+│ │ ├── Configs.py
+│ │ ├── ModelLoader.py
+│ │ └── Widgets.*
+│ │
+│ ├── Libraries/
+│ │ ├── Modules A0 - A2: Common
+│ │ ├── Modules B1 - B6: Preprocess
+│ │ ├── Modules C1 - C4: Embedding
+│ │ └── Modules D1 - D3: Chatbot
+│ │
+│ ├── Prompts/
+│ │
+│ ├── 0.0 Config.ipynb			# Config Test
+│ ├── 0.1 RAG External.ipynb		# Main
+│ ├── 1.0 ExtractData.ipynb		# Only PreProcess
+│ └── 1.1 Embedding.ipynb		# Only Embedding
+│
+├── .gitignore
+├── env.yml
+├── pseudo.txt
+└── README.md
+```
+
 ## 1. Mục tiêu
 
 Hệ thống này xây dựng pipeline xử lý PDF quy chế đào tạo để trích xuất, chuẩn hoá và phân cấp dữ liệu, sau đó sinh embedding và nạp vào FAISS cho chatbot  **RAG (Retrieval-Augmented Generation)**
@@ -14,7 +57,7 @@ Pipeline gồm 3 tầng:
    * Từ PDF → Lines → Paragraphs → Structures → Chunks.
 2. **Schema & Embedding (C1–C3)**
    * Sinh schema → tạo embedding → kiểm tra dữ liệu.
-3. **Vector Index (D0)**
+3. **Vector Index (C4)**
    * Chuyển đổi `.pt` embedding → FAISS Index + mapping.
 
 ---
@@ -59,7 +102,7 @@ Pipeline gồm 3 tầng:
 
 ### C. FAISS
 
-* **D0_FaissConvert**:
+* **C4_FaissConvert**:
 
   * Đọc file `.pt`, trích xuất embedding + data.
   * Tạo FAISS Index (IndexFlatIP).
@@ -80,7 +123,7 @@ Pipeline gồm 3 tầng:
 3. **Kiểm tra embedding**
    * Dùng `C3_CheckStruct` để in và xác minh dữ liệu trong `chunks.pt`.
 4. **Chuyển sang FAISS**
-   * Chạy `D0_FaissConvert` để tạo FAISS Index + mapping.
+   * Chạy `C4_FaissConvert` để tạo FAISS Index + mapping.
 
 ---
 

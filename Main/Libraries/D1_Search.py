@@ -9,26 +9,6 @@ from sentence_transformers import SentenceTransformer
 
 """ SEARCH """
 
-"""
-Tìm kiếm văn bản liên quan đến câu hỏi sử dụng FAISS IndexFlatIP, chỉ so sánh với Câu hỏi Embedding
-và trả về nội dung gộp của Câu hỏi và Câu trả lời.
-
-Args:
-    MERGE: Chế độ ánh xạ ('Merge' để dùng logic cũ, bất kỳ giá trị khác để dùng logic mới)
-    query: Câu hỏi dạng văn bản
-    embedd_model: Tên mô hình embedding
-    faiss_path: Đường dẫn chỉ mục FAISS
-    mapping_path: Đường dẫn file ánh xạ
-    mapping_data: Đường dẫn file dữ liệu text
-    device: Thiết bị PyTorch (cuda hoặc cpu)
-    k: Số lượng kết quả trả về
-    min_score: Ngưỡng điểm FAISS tối thiểu
-    batches: Có hiển thị thanh tiến trình không
-
-Returns:
-    Danh sách các kết quả: {"text": văn bản gộp (câu hỏi + câu trả lời), "faiss_score": điểm FAISS, "key": khóa}
-"""
-
 logging.getLogger("sentence_transformers").setLevel(logging.CRITICAL)
 logging.getLogger("transformers").setLevel(logging.CRITICAL)
 for name in logging.Logger.manager.loggerDict:
@@ -39,7 +19,6 @@ warnings.filterwarnings("ignore", module="sentence_transformers")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 def search_faiss_index(
-    MERGE: str,
     query: str,
     embedd_model: str,
     faiss_path: str,
@@ -94,14 +73,9 @@ def search_faiss_index(
             if content_idx in processed_indices:
                 continue  # Bỏ qua nếu contents.<i> đã được xử lý
             processed_indices.add(content_idx)
-            
-            # Ánh xạ văn bản câu hỏi
-            if MERGE == "Merge":
-                # Logic cũ: không phù hợp, nhưng giữ cho tương thích
-                question_text_key = key.replace("Merged_embedding", "Merged_text")
-            else:
-                # Logic mới: ánh xạ Câu hỏi Embedding → Câu hỏi
-                question_text_key = key.replace("Câu hỏi Embedding", "Câu hỏi")
+
+            # Logic mới: ánh xạ Câu hỏi Embedding → Câu hỏi
+            question_text_key = key.replace("Câu hỏi Embedding", "Câu hỏi")
             
             question_text = data_mapping.get(question_text_key, "")
             if not question_text:
@@ -115,10 +89,7 @@ def search_faiss_index(
             if "Câu trả lời Embedding" not in answer_key:
                 answer_text = ""  # Không tìm thấy câu trả lời tương ứng
             else:
-                if MERGE == "Merge":
-                    answer_text_key = answer_key.replace("Merged_embedding", "Merged_text")
-                else:
-                    answer_text_key = answer_key.replace("Câu trả lời Embedding", "Câu trả lời")
+                answer_text_key = answer_key.replace("Câu trả lời Embedding", "Câu trả lời")
                 
                 answer_text = data_mapping.get(answer_text_key, "")
                 if not answer_text:

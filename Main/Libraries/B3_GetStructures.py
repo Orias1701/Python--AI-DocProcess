@@ -221,6 +221,13 @@ class StructureAnalyzer:
                 if v not in expanded["Contents"]:
                     expanded["Contents"].append(v)
 
+        # --- 🔹 Đổi nhãn ngay trước khi trả kết quả --- #
+        keys = list(expanded.keys())
+        if len(keys) > 1 and keys[-2].startswith("Level "):
+            expanded["Article"] = expanded.pop(keys[-2])
+        if "Contents" in expanded:
+            expanded["Content"] = expanded.pop("Contents")
+
         # chuẩn hóa tất cả value thành list
         for k, v in expanded.items():
             if not isinstance(v, list):

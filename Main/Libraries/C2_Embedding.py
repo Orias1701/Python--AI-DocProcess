@@ -191,9 +191,9 @@ class JSONEmbedding:
         json_path: str,
         schema_path: Optional[str],
         torch_path: str,
-        data_key: str = "CONTENTS",
-        embe_key: str = "EMBEDDINGS",
-        skip_if_exists: bool = True,
+        data_key: str = "contents",
+        embe_key: str = "embeddings",
+        skip_if_exists: bool = False,
     ) -> None:
         """
         Đọc JSON đầu vào, sinh embedding theo schema (nếu có), và lưu ra .pt:

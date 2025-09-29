@@ -4,11 +4,11 @@ from pathlib import Path
 from collections import OrderedDict
 
 class ChunkBuilder:
-    def __init__(self, struct_path: str, merged_path: str, output_path: str):
+    def __init__(self, struct_path: str, merged_path: str):
         self.struct_path = Path(struct_path)
         self.merged_path = Path(merged_path)
-        self.output_path = Path(output_path)
 
+    def readInput(self):
         # Đọc dữ liệu
         with open(self.struct_path, "r", encoding="utf-8") as f:
             struct_data = json.load(f)
@@ -72,9 +72,10 @@ class ChunkBuilder:
 
     # ===== Hàm chính =====
     def build(self):
+        self.readInput()
         temp = self._new_temp()
         for p in self.paragraphs:
-            text = p.get("Text", "")
+            text = p.get("Text") or ""
             marker = p.get("MarkerType", None) or "none"
 
             matched_field = None

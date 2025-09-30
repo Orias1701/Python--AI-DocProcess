@@ -80,9 +80,11 @@ def create_name_form():
         input_folder = []
         for name in os.listdir(folder_path):
             full_path = os.path.join(folder_path, name)
-            if os.path.isfile(full_path):
+            # chỉ nhận file PDF
+            if os.path.isfile(full_path) and name.lower().endswith(".pdf"):
+                # bỏ phần mở rộng, chỉ giữ tên
                 name = os.path.splitext(name)[0]
-            input_folder.append(name)
+                input_folder.append(name)
     else:
         input_folder = []
 

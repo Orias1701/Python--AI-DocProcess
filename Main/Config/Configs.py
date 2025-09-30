@@ -46,7 +46,7 @@ def WidgetValues(widgets_list):
     extracted_path = f"{base_path}_Texts_Extracted.json"
     merged_path = f"{base_path}_Texts_Merged.json"
     struct_path = f"{base_path}_Texts_Struct.json"
-    chunks_base = f"{base_path}_Chunks_Struct.json"
+    chunks_struct = f"{base_path}_Chunks_Struct.json"
     chunks_segment = f"{base_path}_Chunks_Segment.json"
     schema_ex_path = f"{base_path}_Chunks_Schema.json"
     embedding_path = f"{base_path}_Embeddings"
@@ -79,14 +79,14 @@ def WidgetValues(widgets_list):
     print(f"Extract : {extracted_path}")
     print(f"Merge   : {merged_path}")
     print(f"Struct  : {struct_path}")
-    print(f"Chunked : {chunks_base}")
+    print(f"Chunked : {chunks_struct}")
     print(f"Segment : {chunks_segment}")
+    print(f"Schema  : {schema_ex_path}")
     print(f"Torch   : {torch_path}")
     print(f"Faiss   : {faiss_path}")
     print(f"Mapping : {mapping_path}")
     print(f"Map Data: {map_data_path}")
     print(f"Meta    : {meta_path}")
-    print(f"Schema  : {schema_ex_path}")
     print(f"API Key : {API_KEY}")
     print(f"Word    : {WORD_LIMIT}")
 
@@ -98,7 +98,7 @@ def WidgetValues(widgets_list):
         "extracted_path": extracted_path,
         "merged_path": merged_path,
         "struct_path": struct_path,
-        "chunks_base": chunks_base,
+        "chunks_struct": chunks_struct,
         "chunks_segment": chunks_segment,
         "schema_ex_path": schema_ex_path,
         "embedding_path": embedding_path,

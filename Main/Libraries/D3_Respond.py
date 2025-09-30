@@ -10,7 +10,7 @@ Lọc kết quả rerank và sinh câu trả lời tự nhiên bằng Gemini 1.5
 Args:
     query: Câu hỏi dạng văn bản
     results: Danh sách kết quả từ rerank_results ({'text', 'rerank_score', 'faiss_score', 'key'})
-    responser_model: Tên mô hình Gemini (mặc định gemini-2.0-flash-exp)
+    respond_model: Tên mô hình Gemini (mặc định gemini-2.0-flash-exp)
     device: Thiết bị PyTorch (cuda hoặc cpu, chỉ để tương thích)
     score_threshold: Ngưỡng rerank_score để lọc
     max_results: Số kết quả tối đa để tổng hợp
@@ -21,12 +21,10 @@ Returns:
 """
 
 def respond_naturally(
-    # prompt,
     user_question: str,
-    # results: List[Dict[str, Any]],
     context: str,
-    system_prompt: List[Dict[str, Any]],
-    responser_model: str = "gemini-2.0-flash-exp",
+    prompt: List[Dict[str, Any]],
+    respond_model: str = "gemini-2.0-flash-exp",
     score_threshold: float = 0.85,
     max_results: int = 3,
     doc: bool = True,
@@ -35,7 +33,7 @@ def respond_naturally(
     
     try:
         genai.configure(api_key=gemini_api_key)
-        model = genai.GenerativeModel(responser_model)
+        model = genai.GenerativeModel(respond_model)
 
         if (doc):
             # # Sort kết quả
@@ -46,13 +44,13 @@ def respond_naturally(
             
             # context = "\n".join([r["text"] for r in filtered_results])
             prompt = (
-                f"{system_prompt} \n"
+                f"{prompt} \n"
                 f"Tài liệu: {context} \n \n"
                 f"Trả lời cầu hỏi của tôi: {user_question}"
             )
         else:
             prompt = (
-                f"{system_prompt} \n"
+                f"{prompt} \n"
                 f"Trả lời cầu hỏi của tôi: {user_question}"
             )
         

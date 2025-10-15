@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "index": 0,
+      "key": "Content",
+      "text": "Toán học"
+    },
+    {
+      "index": 1,
+      "key": "Content",
+      "text": "Ngữ văn"
+    },
+    {
+      "index": 2,
+      "key": "Content",
+      "text": "Vật lý"
+    },
+    {
+      "index": 3,
+      "key": "Content",
+      "text": "Hóa học"
+    },
+    {
+      "index": 4,
+      "key": "Content",
+      "text": "Tin học"
+    },
+    {
+      "index": 5,
+      "key": "Content",
+      "text": "Khoa học"
+    },
+    {
+      "index": 6,
+      "key": "Content",
+      "text": "Địa lý"
+    },
+    {
+      "index": 7,
+      "key": "Content",
+      "text": "Lịch sử"
+    },
+    {
+      "index": 8,
+      "key": "Content",
+      "text": "Công nghệ"
+    },
+    {
+      "index": 9,
+      "key": "Content",
+      "text": "Sinh học"
+    }
+  ],
+  "meta": {
+    "count": 10,
+    "flatten_mode": "split",
+    "schema_used": true,
+    "list_policy": "split"
+  }
+}

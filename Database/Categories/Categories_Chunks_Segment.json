@@ -1,0 +1,42 @@
+[
+    {
+        "Article": 1,
+        "Content": "Toán học"
+    },
+    {
+        "Article": 2,
+        "Content": "Ngữ văn"
+    },
+    {
+        "Article": 3,
+        "Content": "Vật lý"
+    },
+    {
+        "Article": 4,
+        "Content": "Hóa học"
+    },
+    {
+        "Article": 5,
+        "Content": "Tin học"
+    },
+    {
+        "Article": 6,
+        "Content": "Khoa học"
+    },
+    {
+        "Article": 7,
+        "Content": "Địa lý"
+    },
+    {
+        "Article": 8,
+        "Content": "Lịch sử"
+    },
+    {
+        "Article": 9,
+        "Content": "Công nghệ"
+    },
+    {
+        "Article": 10,
+        "Content": "Sinh học"
+    }
+]

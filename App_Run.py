@@ -17,7 +17,7 @@ def process_pdf():
 
     try:
         pdf_bytes = pdf_file.read()
-        result = App_Caller.mainFunc(pdf_bytes)
+        result = App_Caller.fileProcess(pdf_bytes)
         return jsonify({
             "status": "success",
             "summary": result["summary"],

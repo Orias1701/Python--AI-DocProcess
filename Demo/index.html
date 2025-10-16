@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Chatbot</title>
+    <link rel="stylesheet" href="Assets/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> </head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="active"><a href="#">PDF Assistant</a></li>
+                    <li><a href="#">⚙️ Cài đặt</a></li>
+                    <li><a href="#">❓ Trợ giúp</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="chat-container">
+            <header class="chat-header">
+                <h2>PDF Assistant</h2>
+                <p>Tải lên tài liệu của bạn để tóm tắt và phân loại.</p>
+            </header>
+            
+            <div id="chatBody" class="chat-body">
+                </div>
+
+            <footer class="chat-footer">
+                <form id="chatForm" class="chat-form">
+                    <label for="fileUpload" class="icon-btn" title="Đính kèm file PDF">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </label>
+                    <input type="file" id="fileUpload" accept=".pdf" hidden>
+
+                    <button type="button" class="icon-btn" title="Công cụ (Tóm tắt, Hỏi đáp)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    </button>
+                    
+                    <div class="input-wrapper">
+                        <div id="fileCard" class="file-card">
+                            <span class="file-icon">📄</span>
+                            <span id="fileName"></span>
+                            <button type="button" id="removeFile" class="remove-file-btn">&times;</button>
+                        </div>
+                        <input type="text" placeholder="" disabled>
+                    </div>
+
+                    <button type="submit" class="send-btn" title="Gửi">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"></path></svg>
+                    </button>
+                </form>
+            </footer>
+        </main>
+    </div>
+
+    <script src="Assets/script.js"></script>
+</body>
+</html>

@@ -188,7 +188,7 @@ def mainRun(pdf_doc):
     return best_text
 
 
-def mainFunc(pdf_bytes):
+def fileProcess(pdf_bytes):
     """Nhận file PDF bytes, thực hiện pipeline chính."""
     pdf_doc = fitz.open(stream=pdf_bytes, filetype="pdf")
     RawDataDict = extractRun(pdf_doc)

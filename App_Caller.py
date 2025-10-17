@@ -1,13 +1,11 @@
 # main_pipeline.py
-import fitz, os, faiss
-import re
-import pandas as pd
+import fitz, faiss
 from transformers import pipeline
 from Config import Configs
 from Config import ModelLoader as ML
 from Libraries import Common_MyUtils as MU, Common_TextProcess as TP
 from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData, Json_ChunkUnder as ChunkUnder
-from Libraries import Faiss_Embedding as F_Embedding, Faiss_Searching as F_Searching
+from Libraries import Faiss_Searching as F_Searching
 from sentence_transformers import CrossEncoder
 
 Checkpoint = "vinai/bartpho-syllable"

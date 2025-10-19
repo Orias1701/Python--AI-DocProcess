@@ -58,6 +58,7 @@ class SemanticSearchEngine:
         faissIndex: "faiss.Index",  # type: ignore
         Mapping: Dict[str, Any],
         MapData: Dict[str, Any],
+        MapChunk: Optional[Dict[str, Any]] = None,
         top_k: Optional[int] = None,
         query_embedding: Optional[np.ndarray] = None,
     ) -> List[Dict[str, Any]]:
@@ -87,13 +88,16 @@ class SemanticSearchEngine:
         idx2text, idx2key = self._build_idx_maps(Mapping, MapData)
 
         # 4. Mapping kết quả
+        chunk_map = MapChunk.get("index_to_chunk", {}) if MapChunk else {}
         results = []
         for score, idx in zip(scores[0].tolist(), ids[0].tolist()):
+            chunk_ids = chunk_map.get(str(idx), [])
             results.append({
                 "index": int(idx),
                 "key": idx2key.get(int(idx)),
                 "text": idx2text.get(int(idx)),
                 "faiss_score": float(score),
+                "chunk_ids": chunk_ids,
             })
         return results
 

@@ -130,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
             typing.remove();
 
-            if (response.ok && data.status === "success") {
-                if (data.checkstatus === "accept") {
+            if (response.ok && data.status == "success") {
+                if (data.checkstatus == 1) {
                     appendMessage("bot", `✨**Chatbot**\n Đây là một văn bản về chủ đề **${data.category}** với nội dung được tóm tắt như sau: \n${data.summary}`, true);
                 } else {
-                    appendMessage("bot", `✨**Chatbot**\n Văn bản không được chấp nhận:\n${data.summary}`, true);
+                    appendMessage("bot", `✨**Chatbot**\n Văn bản không được chấp nhận:\n${data.summary}\n Checkstatus: ${data.checkstatus}`, true);
                 }  
             } else {
                 appendMessage("bot", `❌ **Lỗi:** ${data.message || "Không rõ"}`, true);
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         const file = fileInput.files[0];
         if (!file) {
-            appendMessage("bot", "📄 Vui lòng chọn một file PDF để xử lý.", true);
+            appendMessage("bot", "⚠️ Vui lòng chọn một file PDF để xử lý.", true);
             return;
         }
         await sendFile(file);

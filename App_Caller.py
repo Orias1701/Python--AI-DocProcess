@@ -1,11 +1,11 @@
 # main_pipeline.py
-import fitz, os, faiss
-from transformers import pipeline
+import fitz, faiss
 from Config import Configs
 from Config import ModelLoader as ML
 from Libraries import Common_MyUtils as MU, Common_TextProcess as TP
-from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData, PDF_QualityCheck as QualityCheck, Json_ChunkUnder as ChunkUnder
-from Libraries import Faiss_Embedding as F_Embedding, Faiss_Searching as F_Searching
+from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData, PDF_QualityCheck as QualityCheck
+from Libraries import Json_ChunkUnder as ChunkUnder
+from Libraries import Faiss_Searching as F_Searching, Faiss_ChunkMapping as ChunkMapper
 from Libraries import Summarizer_Runner as SummaryRun
 from sentence_transformers import CrossEncoder
 
@@ -78,10 +78,16 @@ chunker, chunksDevice = Loader.load_encoder(CHUNKS_MODEL, CHUNKS_CACHED_MODEL)
 
 tokenizer, summarizer, summaryDevice = Loader.load_summarizer(SUMARY_MODEL, SUMARY_CACHED_MODEL)
 
-Mapping = MU.read_json(MappingPath)
-MapData = MU.read_json(MapDataPath)
-MapChunk = MU.read_json(MapChunkPath)
-faissIndex = faiss.read_index(FaissPath)
+def runPrepareData():
+    SegmentDict = MU.read_json(SegmentPath)
+    Mapping = MU.read_json(MappingPath)
+    MapData = MU.read_json(MapDataPath)
+    
+    MapChunk = MU.read_json(MapChunkPath)
+    faissIndex = faiss.read_index(FaissPath)
+    return SegmentDict, Mapping, MapData, MapChunk, faissIndex
+
+SegmentDict, Mapping, MapData, MapChunk, faissIndex = runPrepareData()
 
 dataExtractor = ExtractData.B1Extractor(
     exceptData,
@@ -131,6 +137,7 @@ def runSearch(query):
         faissIndex=faissIndex,
         Mapping=Mapping,
         MapData=MapData,
+        MapChunk=MapChunk,
         top_k=20
     )
     return results
@@ -147,13 +154,19 @@ def mainRun(pdf_doc):
     RawDataDict = extractRun(pdf_doc)
     full_text = TP.merge_txt(RawDataDict, JsonKey, JsonField)
     summarized = summarizer_engine.summarize(full_text, minInput = 256, maxInput = 1024)
-    print(summarized["summary_text"])
-    resuls = runSearch(summarized["summary_text"])
-    reranked = runRerank(summarized["summary_text"], resuls)
-    best_text = reranked[0]["text"] if reranked else ""
-    print(best_text)
-    return best_text
-
+    summaryText = summarized["summary_text"]
+    resuls = runSearch(summaryText)
+    reranked = runRerank(summaryText, resuls)
+    chunkReturn = ChunkMapper.process_chunks_pipeline(
+        reranked_results=reranked,
+        SegmentDict=SegmentDict,
+        drop_fields=["Index"],
+        fields=["Article"],
+        n_chunks=1,
+    )
+    bestArticles = [item["fields"].get("Article") for item in chunkReturn["extracted_fields"]]
+    bestArticle = bestArticles[0] if len(bestArticles) == 1 else ", ".join(bestArticles)
+    return bestArticle
 
 def fileProcess(pdf_bytes):
     """Nhận file PDF bytes, thực hiện pipeline chính."""
@@ -164,25 +177,33 @@ def fileProcess(pdf_bytes):
 
     if not is_good:
         print("⚠️ Bỏ qua file này.")
-        check_status = "deline"
+        check_status = 0
         summaryText = metrics["check_mess"]
-        best_text = ""
+        bestArticle = ""
         reranked = ""
     else:
         print("✅ Tiếp tục xử lý.")
-        check_status = "accept",
+        check_status = 1,
         RawDataDict = extractRun(pdf_doc)
         full_text = TP.merge_txt(RawDataDict, JsonKey, JsonField)
         summarized = summarizer_engine.summarize(full_text, minInput = 256, maxInput = 1024)
         summaryText = summarized["summary_text"]
         resuls = runSearch(summaryText)
         reranked = runRerank(summaryText, resuls)
-        best_text = reranked[0]["text"] if reranked else ""
+        chunkReturn = ChunkMapper.process_chunks_pipeline(
+            reranked_results=reranked,
+            SegmentDict=SegmentDict,
+            drop_fields=["Index"],
+            fields=["Article"],
+            n_chunks=1,
+        )
+        bestArticles = [item["fields"].get("Article") for item in chunkReturn["extracted_fields"]]
+        bestArticle = bestArticles[0] if len(bestArticles) == 1 else ", ".join(bestArticles)
 
     pdf_doc.close()
     return {
         "checkstatus": check_status,
         "summary": summaryText,
-        "category": best_text,
+        "category": bestArticle,
         "reranked": reranked[:5] if reranked else []
     }

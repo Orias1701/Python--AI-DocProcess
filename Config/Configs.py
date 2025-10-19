@@ -10,7 +10,7 @@ os.environ["TORCH_USE_CUDA_DSA"] = "1"
 def ConfigValues(service="Search", inputs="file.pdf"):
 
     # Inputs
-    inputFolder = f"./Inputs"
+    inputFolder = f"./Private/Tests"
     inputPath = f"{inputFolder}/{inputs}"
 
     # Assets

@@ -1,42 +1,127 @@
 [
     {
-        "Article": 1,
-        "Content": "Toán học"
+        "Article": "Toán học",
+        "Content": {
+            "SubCategory": [
+                "Đại số",
+                "Hình học",
+                "Giải tích",
+                "Xác suất - Thống kê",
+                "Số học",
+                "Tư duy logic"
+            ]
+        }
     },
     {
-        "Article": 2,
-        "Content": "Ngữ văn"
+        "Article": "Ngữ văn",
+        "Content": {
+            "SubCategory": [
+                "Văn học Việt Nam",
+                "Văn học nước ngoài",
+                "Ngữ pháp",
+                "Làm văn",
+                "Phong cách ngôn ngữ",
+                "Tư duy phản biện"
+            ]
+        }
     },
     {
-        "Article": 3,
-        "Content": "Vật lý"
+        "Article": "Vật lý",
+        "Content": {
+            "SubCategory": [
+                "Cơ học",
+                "Nhiệt học",
+                "Điện học",
+                "Quang học",
+                "Vật lý hiện đại"
+            ]
+        }
     },
     {
-        "Article": 4,
-        "Content": "Hóa học"
+        "Article": "Hóa học",
+        "Content": {
+            "SubCategory": [
+                "Hóa vô cơ",
+                "Hóa hữu cơ",
+                "Hóa phân tích",
+                "Dung dịch & phản ứng",
+                "Cấu tạo nguyên tử"
+            ]
+        }
     },
     {
-        "Article": 5,
-        "Content": "Tin học"
+        "Article": "Tin học",
+        "Content": {
+            "SubCategory": [
+                "Lập trình cơ bản",
+                "Thuật toán",
+                "Cơ sở dữ liệu",
+                "Trí tuệ nhân tạo",
+                "Mạng máy tính",
+                "Văn phòng & phần mềm"
+            ]
+        }
     },
     {
-        "Article": 6,
-        "Content": "Khoa học"
+        "Article": "Khoa học",
+        "Content": {
+            "SubCategory": [
+                "Khoa học tự nhiên",
+                "Khoa học xã hội",
+                "Khoa học ứng dụng",
+                "Phương pháp nghiên cứu",
+                "Tư duy khoa học"
+            ]
+        }
     },
     {
-        "Article": 7,
-        "Content": "Địa lý"
+        "Article": "Địa lý",
+        "Content": {
+            "SubCategory": [
+                "Địa lý tự nhiên",
+                "Địa lý kinh tế",
+                "Địa lý dân cư",
+                "Địa lý Việt Nam",
+                "Bản đồ và kỹ năng địa lý"
+            ]
+        }
     },
     {
-        "Article": 8,
-        "Content": "Lịch sử"
+        "Article": "Lịch sử",
+        "Content": {
+            "SubCategory": [
+                "Lịch sử Việt Nam",
+                "Lịch sử thế giới",
+                "Các cuộc cách mạng",
+                "Nhân vật lịch sử",
+                "Văn hóa & xã hội qua các thời kỳ"
+            ]
+        }
     },
     {
-        "Article": 9,
-        "Content": "Công nghệ"
+        "Article": "Công nghệ",
+        "Content": {
+            "SubCategory": [
+                "Công nghệ thông tin",
+                "Công nghệ sinh học",
+                "Công nghệ cơ khí",
+                "Tự động hóa",
+                "Kỹ thuật điện tử",
+                "Vật liệu mới"
+            ]
+        }
     },
     {
-        "Article": 10,
-        "Content": "Sinh học"
+        "Article": "Sinh học",
+        "Content": {
+            "SubCategory": [
+                "Tế bào học",
+                "Di truyền học",
+                "Tiến hóa",
+                "Sinh thái học",
+                "Cấu tạo cơ thể người",
+                "Sinh học phân tử"
+            ]
+        }
     }
 ]

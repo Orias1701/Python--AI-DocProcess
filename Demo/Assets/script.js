@@ -131,8 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
             typing.remove();
 
             if (response.ok && data.status === "success") {
-                // Hiển thị tóm tắt với hiệu ứng gõ chữ
-                appendMessage("bot", `✨**Chatbot**\n Đây là một văn bản về chủ đề **${data.category}** với nội dung được tóm tắt như sau: \n${data.summary}`, true);
+                if (data.checkstatus === "accept") {
+                    appendMessage("bot", `✨**Chatbot**\n Đây là một văn bản về chủ đề **${data.category}** với nội dung được tóm tắt như sau: \n${data.summary}`, true);
+                } else {
+                    appendMessage("bot", `✨**Chatbot**\n Văn bản không được chấp nhận:\n${data.summary}`, true);
+                }  
             } else {
                 appendMessage("bot", `❌ **Lỗi:** ${data.message || "Không rõ"}`, true);
             }

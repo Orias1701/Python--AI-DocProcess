@@ -4,18 +4,6 @@ from sentence_transformers import SentenceTransformer, CrossEncoder
 
 
 class SemanticSearchEngine:
-    """
-    Search Engine (FAISS + Rerank) nhận model đã load sẵn từ ngoài.
-    
-    Parameters:
-        indexer   : Đối tượng SentenceTransformer (bắt buộc)
-        reranker: Đối tượng CrossEncoder hoặc None (tùy chọn)
-        device        : 'cuda' | 'cpu'
-        normalize     : bool  → Chuẩn hóa vector để dùng cosine (True mặc định)
-        top_k : int   → Số lượng top-k khi search
-        rerank_k : int → Số lượng top-k sau rerank
-        rerank_batch_size : int → Batch size khi rerank
-    """
 
     def __init__(
         self,

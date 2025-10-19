@@ -20,6 +20,7 @@ def process_pdf():
         result = App_Caller.fileProcess(pdf_bytes)
         return jsonify({
             "status": "success",
+            "checkstatus": result["checkstatus"],
             "summary": result["summary"],
             "category": result["category"],
             "top_candidates": result["reranked"]

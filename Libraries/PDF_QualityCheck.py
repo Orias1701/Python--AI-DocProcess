@@ -35,7 +35,7 @@ class PDFQualityChecker:
             try:
                 doc = fitz.open(pdf)
             except Exception as e:
-                return False, {"status": f"❌ Không mở được file: {e}"}
+                return False, {"check_mess": f"❌ Không mở được file: {e}"}
         elif isinstance(pdf, fitz.Document):
             doc = pdf
         else:
@@ -62,7 +62,7 @@ class PDFQualityChecker:
         total_chars = len(text_all)
         if total_chars < self.min_total_chars:
             return False, {
-                "status": "❌ File quá ngắn hoặc không có text layer",
+                "check_mess": "❌ File quá ngắn hoặc không có text layer",
                 "total_chars": total_chars,
             }
 
@@ -85,18 +85,18 @@ class PDFQualityChecker:
 
         if not is_good:
             if invalid_ratio > self.max_invalid_ratio:
-                status = "❌ Nhiều ký tự lỗi / encode sai"
+                check_mess = "❌ Nhiều ký tự lỗi / encode sai"
             elif whitespace_ratio > self.max_whitespace_ratio:
-                status = "❌ Nhiều khoảng trắng thừa"
+                check_mess = "❌ Nhiều khoảng trắng thừa"
             elif short_line_ratio > self.max_short_line_ratio:
-                status = "⚠️ OCR hoặc mất ký tự"
+                check_mess = "⚠️ OCR hoặc mất ký tự"
             else:
-                status = "❌ Văn bản lỗi nặng"
+                check_mess = "❌ Văn bản lỗi nặng"
         else:
-            status = "✅ Đạt yêu cầu"
+            check_mess = "✅ Đạt yêu cầu"
 
         metrics = {
-            "status": status,
+            "check_mess": check_mess,
             "total_chars": total_chars,
             "invalid_ratio": round(invalid_ratio, 3),
             "whitespace_ratio": round(whitespace_ratio, 3),

@@ -148,7 +148,7 @@ def isNear(prev, curr):
     top_curr = curr["Position"]["Top"]
     bot_curr = curr["Position"]["Bot"]
     
-    return (top_curr < top_prev * 2) and (top_curr < bot_curr * 2) and (top_curr < hig_curr * 5)
+    return (top_curr < top_prev * 2) and ((top_curr < bot_curr * 2) or bot_curr <= 3.0) and (top_curr < hig_curr * 5)
 
 
 def isSameAlign(prev, curr):

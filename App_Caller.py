@@ -4,13 +4,14 @@ from transformers import pipeline
 from Config import Configs
 from Config import ModelLoader as ML
 from Libraries import Common_MyUtils as MU, Common_TextProcess as TP
-from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData, Json_ChunkUnder as ChunkUnder
+from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData, PDF_QualityCheck as QualityCheck
+from Libraries import Json_ChunkUnder as ChunkUnder
 from Libraries import Faiss_Searching as F_Searching
 from sentence_transformers import CrossEncoder
 
 Checkpoint = "vinai/bartpho-syllable"
 service = "Categories"
-inputs = "VH.pdf"
+inputs = "BAD.pdf"
 JsonKey = "paragraphs"
 JsonField = "Text"
 
@@ -189,20 +190,34 @@ def mainRun(pdf_doc):
 def fileProcess(pdf_bytes):
     """Nhận file PDF bytes, thực hiện pipeline chính."""
     pdf_doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-    RawDataDict = extractRun(pdf_doc)
-    full_text = TP.merge_txt(RawDataDict, JsonKey, JsonField)
-    # 🔹 Summarization
-    if len(full_text.split()) > 512:
-        final_summary = summarize_recursive(text=full_text)
+    checker = QualityCheck.PDFQualityChecker()
+    is_good, info = checker.evaluate(pdf_doc)
+    print(info["status"])
+
+    if not is_good:
+        print("⚠️ Bỏ qua file này.")
+        check_status = "deline"
+        final_summary = ""
+        best_text = ""
+        reranked = []
     else:
-        final_summary = modelTest(full_text, SUMARY_CACHED_MODEL, MAX_TARGET, MIN_TARGET)
-    # 🔹 Search + Rerank
-    resuls = runSearch(final_summary)
-    reranked = runRerank(final_summary, resuls)
-    best_text = reranked[0]["text"] if reranked else ""
+        print("✅ Tiếp tục xử lý.")
+        check_status = "accept",
+        RawDataDict = extractRun(pdf_doc)
+        full_text = TP.merge_txt(RawDataDict, JsonKey, JsonField)
+        # 🔹 Summarization
+        if len(full_text.split()) > 512:
+            final_summary = summarize_recursive(text=full_text)
+        else:
+            final_summary = modelTest(full_text, SUMARY_CACHED_MODEL, MAX_TARGET, MIN_TARGET)
+        # 🔹 Search + Rerank
+        resuls = runSearch(final_summary)
+        reranked = runRerank(final_summary, resuls)
+        best_text = reranked[0]["text"] if reranked else ""
+
     pdf_doc.close()
-    # Trả kết quả dưới dạng dict
     return {
+        "status": check_status,
         "summary": final_summary,
         "category": best_text,
         "reranked": reranked[:5] if reranked else []

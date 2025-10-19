@@ -31,10 +31,14 @@ def read_json(path: str) -> Any:
         return json.load(f)
 
 def write_json(data: Any, path: str, indent: int = 2) -> None:
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=indent, ensure_ascii=False)
 
 def insert_json(data: Any, path: str, indent: int = 2):
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     with open(path, 'a', encoding='utf-8') as f:
         json.dump(data, f, indent=indent, ensure_ascii=False)
 
@@ -47,11 +51,15 @@ def read_jsonl(path: str) -> List[dict]:
         return [json.loads(line) for line in f]
 
 def write_jsonl(data: List[dict], path: str) -> None:
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         for item in data:
             f.write(json.dumps(item, ensure_ascii=False) + "\n")
 
 def insert_jsonl(data: List[dict], path: str):
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     with open(path, 'a', encoding='utf-8') as f:
         for item in data:
             f.write(json.dumps(item, ensure_ascii=False) + '\n')
@@ -65,6 +73,8 @@ def read_csv(path: str) -> List[dict]:
         return list(csv.DictReader(f))
 
 def write_csv(data: List[dict], path: str) -> None:
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     if not data:
         return
     with open(path, "w", encoding="utf-8", newline="") as f:
@@ -84,6 +94,8 @@ def read_xlsx(path: str, sheet_name: str = None) -> List[dict]:
     return [dict(zip(headers, row)) for row in rows[1:]]
 
 def write_xlsx(data: List[dict], path: str, sheet_name: str = "Sheet1") -> None:
+    dir_path = os.path.dirname(path)
+    if dir_path: os.makedirs(dir_path, exist_ok=True)
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = sheet_name
@@ -96,6 +108,7 @@ def write_xlsx(data: List[dict], path: str, sheet_name: str = "Sheet1") -> None:
     wb.save(path)
 
 def convert_to_xlsx(json_path, xlsx_path):
+    os.makedirs(os.path.dirname(xlsx_path), exist_ok=True)
     """Chuyển file JSON (dạng list các object) hoặc JSONL sang XLSX."""
     try:
         if json_path.endswith('.jsonl'):

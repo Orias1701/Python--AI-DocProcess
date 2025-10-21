@@ -1,0 +1,22 @@
+# Python
+API*
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Cache / data
+.cache/
+**/Models/
+**/outputs/
+**/checkpoints/
+
+# OS junk
+.DS_Store
+
+# Hugging Face
+*.bak

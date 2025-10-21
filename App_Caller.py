@@ -152,30 +152,12 @@ def runRerank(query, results):
     )
     return reranked
 
-def mainRun(pdf_doc):
-    RawDataDict = extractRun(pdf_doc)
-    full_text = TP.merge_txt(RawDataDict, JsonKey, JsonField)
-    summarized = summarizer_engine.summarize(full_text, minInput = 256, maxInput = 1024)
-    summaryText = summarized["summary_text"]
-    resuls = runSearch(summaryText)
-    reranked = runRerank(summaryText, resuls)
-    chunkReturn = ChunkMapper.process_chunks_pipeline(
-        reranked_results=reranked,
-        SegmentDict=SegmentDict,
-        drop_fields=["Index"],
-        fields=["Article"],
-        n_chunks=1,
-    )
-    bestArticles = [item["fields"].get("Article") for item in chunkReturn["extracted_fields"]]
-    bestArticle = bestArticles[0] if len(bestArticles) == 1 else ", ".join(bestArticles)
-    return bestArticle
-
 def fileProcess(pdf_bytes):
     """Nhận file PDF bytes, thực hiện pipeline chính."""
     pdf_doc = fitz.open(stream=pdf_bytes, filetype="pdf")
     checker = QualityCheck.PDFQualityChecker()
     is_good, metrics = checker.evaluate(pdf_doc)
-    print(metrics["check_mess"])
+    print(metrics)
 
     if not is_good:
         print("⚠️ Bỏ qua file này.")
@@ -205,6 +187,7 @@ def fileProcess(pdf_bytes):
     pdf_doc.close()
     return {
         "checkstatus": check_status,
+        "metrics": metrics,
         "summary": summaryText,
         "category": bestArticle,
         "reranked": reranked[:5] if reranked else []

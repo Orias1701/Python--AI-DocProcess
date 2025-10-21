@@ -22,6 +22,7 @@ def process_pdf():
         return jsonify({
             "status": "success",
             "checkstatus": result["checkstatus"],
+            "metrics": result["metrics"],
             "summary": result["summary"],
             "category": result["category"],
             "top_candidates": result["reranked"]

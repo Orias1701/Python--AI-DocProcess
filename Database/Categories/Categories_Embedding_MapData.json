@@ -7,597 +7,782 @@
     },
     {
       "index": 1,
-      "key": "Content.SubCategory[0]",
-      "text": "Đại số"
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Tư duy logic và lập luận toán học"
     },
     {
       "index": 2,
-      "key": "Content.SubCategory[1]",
-      "text": "Hình học phẳng"
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Cấu trúc đại số và hình học cơ bản"
     },
     {
       "index": 3,
-      "key": "Content.SubCategory[2]",
-      "text": "Hình học không gian"
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Phân tích số và tính toán"
     },
     {
       "index": 4,
-      "key": "Content.SubCategory[3]",
-      "text": "Giải tích"
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Khái niệm về hàm số và giới hạn"
     },
     {
       "index": 5,
-      "key": "Content.SubCategory[4]",
-      "text": "Lượng giác"
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Nguyên lý xác suất và thống kê"
     },
     {
       "index": 6,
-      "key": "Content.SubCategory[5]",
-      "text": "Xác suất - Thống kê"
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Toán học trong đời sống và kỹ thuật"
     },
     {
       "index": 7,
-      "key": "Content.SubCategory[6]",
-      "text": "Tổ hợp - Đếm"
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Mô hình hóa và giải quyết vấn đề"
     },
     {
       "index": 8,
-      "key": "Content.SubCategory[7]",
-      "text": "Số học"
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Phân tích dữ liệu định lượng"
     },
     {
       "index": 9,
-      "key": "Content.SubCategory[8]",
-      "text": "Logic toán học"
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Phương pháp tối ưu và ra quyết định"
     },
     {
       "index": 10,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Toán học trong khoa học máy tính"
+    },
+    {
+      "index": 11,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Toán học trong kinh tế và tài chính"
+    },
+    {
+      "index": 12,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Toán học trong khoa học tự nhiên"
+    },
+    {
+      "index": 13,
       "key": "Article",
       "text": "Tin Học"
     },
     {
-      "index": 11,
-      "key": "Content.SubCategory[0]",
-      "text": "Thuật toán và lập trình"
-    },
-    {
-      "index": 12,
-      "key": "Content.SubCategory[1]",
-      "text": "Cấu trúc dữ liệu"
-    },
-    {
-      "index": 13,
-      "key": "Content.SubCategory[2]",
-      "text": "Cơ sở dữ liệu"
-    },
-    {
       "index": 14,
-      "key": "Content.SubCategory[3]",
-      "text": "Mạng máy tính"
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Nguyên lý tính toán và thuật toán"
     },
     {
       "index": 15,
-      "key": "Content.SubCategory[4]",
-      "text": "Hệ điều hành"
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Cấu trúc dữ liệu và lập trình cơ bản"
     },
     {
       "index": 16,
-      "key": "Content.SubCategory[5]",
-      "text": "Trí tuệ nhân tạo"
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Hệ thống máy tính và phần mềm"
     },
     {
       "index": 17,
-      "key": "Content.SubCategory[6]",
-      "text": "Khoa học dữ liệu"
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Cơ sở dữ liệu và tổ chức thông tin"
     },
     {
       "index": 18,
-      "key": "Content.SubCategory[7]",
-      "text": "Phần mềm và ứng dụng"
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Mạng và truyền thông số"
     },
     {
       "index": 19,
-      "key": "Content.SubCategory[8]",
-      "text": "Bảo mật thông tin"
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Phát triển ứng dụng và phần mềm"
     },
     {
       "index": 20,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Phân tích và xử lý dữ liệu"
+    },
+    {
+      "index": 21,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Tự động hóa và trí tuệ nhân tạo"
+    },
+    {
+      "index": 22,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "An ninh và bảo mật thông tin"
+    },
+    {
+      "index": 23,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Tin học trong giáo dục và khoa học"
+    },
+    {
+      "index": 24,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Tin học trong kinh tế và xã hội"
+    },
+    {
+      "index": 25,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Tin học trong y học và sinh học"
+    },
+    {
+      "index": 26,
       "key": "Article",
       "text": "Vật Lý"
     },
     {
-      "index": 21,
-      "key": "Content.SubCategory[0]",
-      "text": "Cơ học"
-    },
-    {
-      "index": 22,
-      "key": "Content.SubCategory[1]",
-      "text": "Điện học"
-    },
-    {
-      "index": 23,
-      "key": "Content.SubCategory[2]",
-      "text": "Quang học"
-    },
-    {
-      "index": 24,
-      "key": "Content.SubCategory[3]",
-      "text": "Nhiệt học"
-    },
-    {
-      "index": 25,
-      "key": "Content.SubCategory[4]",
-      "text": "Vật lý hạt nhân"
-    },
-    {
-      "index": 26,
-      "key": "Content.SubCategory[5]",
-      "text": "Vật lý lượng tử cơ bản"
-    },
-    {
       "index": 27,
-      "key": "Content.SubCategory[6]",
-      "text": "Dao động - Sóng"
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Khái niệm về vật chất và năng lượng"
     },
     {
       "index": 28,
-      "key": "Content.SubCategory[7]",
-      "text": "Điện từ học"
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Cơ học và chuyển động"
     },
     {
       "index": 29,
-      "key": "Content.SubCategory[8]",
-      "text": "Vật lý thiên văn"
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Điện từ và sóng"
     },
     {
       "index": 30,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Quang học và âm học"
+    },
+    {
+      "index": 31,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Nhiệt học và cân bằng năng lượng"
+    },
+    {
+      "index": 32,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Công nghệ điện và điện tử"
+    },
+    {
+      "index": 33,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Vật lý trong kỹ thuật và chế tạo"
+    },
+    {
+      "index": 34,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Ứng dụng vật lý trong y học và môi trường"
+    },
+    {
+      "index": 35,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Mô hình hóa và thí nghiệm vật lý"
+    },
+    {
+      "index": 36,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Vật lý và khoa học vật liệu"
+    },
+    {
+      "index": 37,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Vật lý và công nghệ thông tin"
+    },
+    {
+      "index": 38,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Vật lý và năng lượng tái tạo"
+    },
+    {
+      "index": 39,
       "key": "Article",
       "text": "Hóa Học"
     },
     {
-      "index": 31,
-      "key": "Content.SubCategory[0]",
-      "text": "Hóa vô cơ"
-    },
-    {
-      "index": 32,
-      "key": "Content.SubCategory[1]",
-      "text": "Hóa hữu cơ"
-    },
-    {
-      "index": 33,
-      "key": "Content.SubCategory[2]",
-      "text": "Hóa lý"
-    },
-    {
-      "index": 34,
-      "key": "Content.SubCategory[3]",
-      "text": "Hóa phân tích"
-    },
-    {
-      "index": 35,
-      "key": "Content.SubCategory[4]",
-      "text": "Hóa học môi trường"
-    },
-    {
-      "index": 36,
-      "key": "Content.SubCategory[5]",
-      "text": "Hóa sinh học"
-    },
-    {
-      "index": 37,
-      "key": "Content.SubCategory[6]",
-      "text": "Cấu trúc nguyên tử - liên kết hóa học"
-    },
-    {
-      "index": 38,
-      "key": "Content.SubCategory[7]",
-      "text": "Phản ứng hóa học"
-    },
-    {
-      "index": 39,
-      "key": "Content.SubCategory[8]",
-      "text": "Công nghệ hóa học"
-    },
-    {
       "index": 40,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Cấu tạo chất và phản ứng hóa học"
+    },
+    {
+      "index": 41,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Nguyên tố và hợp chất cơ bản"
+    },
+    {
+      "index": 42,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Liên kết và cấu trúc phân tử"
+    },
+    {
+      "index": 43,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Động học và nhiệt động hóa học"
+    },
+    {
+      "index": 44,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Tính chất vật lý - hóa học của vật chất"
+    },
+    {
+      "index": 45,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Hóa học trong đời sống và sản xuất"
+    },
+    {
+      "index": 46,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Phân tích và kiểm nghiệm hóa học"
+    },
+    {
+      "index": 47,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Công nghệ và vật liệu hóa học"
+    },
+    {
+      "index": 48,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Hóa học môi trường và năng lượng"
+    },
+    {
+      "index": 49,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Hóa học và sinh học"
+    },
+    {
+      "index": 50,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Hóa học và vật lý"
+    },
+    {
+      "index": 51,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Hóa học và công nghệ nano"
+    },
+    {
+      "index": 52,
       "key": "Article",
       "text": "Công Nghệ"
     },
     {
-      "index": 41,
-      "key": "Content.SubCategory[0]",
-      "text": "Công nghệ thông tin"
+      "index": 53,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Nguyên lý thiết kế và chế tạo"
     },
     {
-      "index": 42,
-      "key": "Content.SubCategory[1]",
-      "text": "Cơ khí - Chế tạo"
+      "index": 54,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Kỹ thuật cơ khí và điện tử cơ bản"
     },
     {
-      "index": 43,
-      "key": "Content.SubCategory[2]",
-      "text": "Điện - Điện tử"
+      "index": 55,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Tự động hóa và điều khiển"
     },
     {
-      "index": 44,
-      "key": "Content.SubCategory[3]",
-      "text": "Tự động hóa"
+      "index": 56,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Công nghệ vật liệu và sản xuất"
     },
     {
-      "index": 45,
-      "key": "Content.SubCategory[4]",
-      "text": "Công nghệ sinh học"
+      "index": 57,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "An toàn và tiêu chuẩn kỹ thuật"
     },
     {
-      "index": 46,
-      "key": "Content.SubCategory[5]",
-      "text": "Công nghệ vật liệu"
+      "index": 58,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Ứng dụng công nghệ trong công nghiệp"
     },
     {
-      "index": 47,
-      "key": "Content.SubCategory[6]",
-      "text": "Công nghệ năng lượng"
+      "index": 59,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Công nghệ môi trường và năng lượng"
     },
     {
-      "index": 48,
-      "key": "Content.SubCategory[7]",
-      "text": "Công nghệ thực phẩm"
+      "index": 60,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Công nghệ sinh học và thực phẩm"
     },
     {
-      "index": 49,
-      "key": "Content.SubCategory[8]",
-      "text": "Kỹ thuật sản xuất"
+      "index": 61,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Kỹ thuật thông minh và IoT"
     },
     {
-      "index": 50,
+      "index": 62,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Công nghệ và quản lý kinh tế"
+    },
+    {
+      "index": 63,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Công nghệ và khoa học dữ liệu"
+    },
+    {
+      "index": 64,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Công nghệ và phát triển bền vững"
+    },
+    {
+      "index": 65,
       "key": "Article",
       "text": "Sinh Học"
     },
     {
-      "index": 51,
-      "key": "Content.SubCategory[0]",
-      "text": "Tế bào học"
+      "index": 66,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Cấu trúc và chức năng của sự sống"
     },
     {
-      "index": 52,
-      "key": "Content.SubCategory[1]",
-      "text": "Di truyền học"
+      "index": 67,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Di truyền và tiến hóa"
     },
     {
-      "index": 53,
-      "key": "Content.SubCategory[2]",
-      "text": "Sinh thái học"
+      "index": 68,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Hệ thống sinh học và thích nghi"
     },
     {
-      "index": 54,
-      "key": "Content.SubCategory[3]",
-      "text": "Tiến hóa"
+      "index": 69,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Sinh thái học và môi trường"
     },
     {
-      "index": 55,
-      "key": "Content.SubCategory[4]",
-      "text": "Sinh lý học người và động vật"
+      "index": 70,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Sự phát triển của sinh vật"
     },
     {
-      "index": 56,
-      "key": "Content.SubCategory[5]",
-      "text": "Thực vật học"
+      "index": 71,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Ứng dụng sinh học trong nông nghiệp và y học"
     },
     {
-      "index": 57,
-      "key": "Content.SubCategory[6]",
-      "text": "Vi sinh vật học"
+      "index": 72,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Công nghệ sinh học và môi trường"
     },
     {
-      "index": 58,
-      "key": "Content.SubCategory[7]",
-      "text": "Sinh học phân tử"
+      "index": 73,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Phân tích dữ liệu sinh học"
     },
     {
-      "index": 59,
+      "index": 74,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Thực hành và quan sát sinh học"
+    },
+    {
+      "index": 75,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Sinh học và hóa học"
+    },
+    {
+      "index": 76,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Sinh học và tin học"
+    },
+    {
+      "index": 77,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Sinh học và y học"
+    },
+    {
+      "index": 78,
       "key": "Article",
       "text": "Văn Học"
     },
     {
-      "index": 60,
-      "key": "Content.SubCategory[0]",
-      "text": "Văn học Việt Nam"
+      "index": 79,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Bản chất và chức năng của văn học"
     },
     {
-      "index": 61,
-      "key": "Content.SubCategory[1]",
-      "text": "Văn học nước ngoài"
+      "index": 80,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Ngôn ngữ và phong cách nghệ thuật"
     },
     {
-      "index": 62,
-      "key": "Content.SubCategory[2]",
-      "text": "Lý luận văn học"
+      "index": 81,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Các thể loại và hình thức biểu đạt"
     },
     {
-      "index": 63,
-      "key": "Content.SubCategory[3]",
-      "text": "Ngữ pháp và ngôn ngữ"
+      "index": 82,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Lịch sử và tiến trình văn học"
     },
     {
-      "index": 64,
-      "key": "Content.SubCategory[4]",
-      "text": "Làm văn - Nghị luận"
+      "index": 83,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Phân tích và cảm thụ tác phẩm"
     },
     {
-      "index": 65,
-      "key": "Content.SubCategory[5]",
-      "text": "Phân tích tác phẩm"
+      "index": 84,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Sáng tác và viết văn"
     },
     {
-      "index": 66,
-      "key": "Content.SubCategory[6]",
-      "text": "Thơ ca và nghệ thuật ngôn từ"
+      "index": 85,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Phê bình và lý luận văn học"
     },
     {
-      "index": 67,
-      "key": "Content.SubCategory[7]",
-      "text": "Phong cách học"
+      "index": 86,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Giáo dục và truyền thông văn học"
     },
     {
-      "index": 68,
-      "key": "Content.SubCategory[8]",
-      "text": "Tư duy phản biện văn học"
+      "index": 87,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Văn học trong đời sống hiện đại"
     },
     {
-      "index": 69,
+      "index": 88,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Văn học và văn hóa"
+    },
+    {
+      "index": 89,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Văn học và xã hội"
+    },
+    {
+      "index": 90,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Văn học và ngôn ngữ học"
+    },
+    {
+      "index": 91,
       "key": "Article",
       "text": "Địa Lý"
     },
     {
-      "index": 70,
-      "key": "Content.SubCategory[0]",
-      "text": "Địa lý tự nhiên"
+      "index": 92,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Không gian và môi trường địa lý"
     },
     {
-      "index": 71,
-      "key": "Content.SubCategory[1]",
-      "text": "Địa lý kinh tế"
+      "index": 93,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Địa hình, khí hậu và sinh quyển"
     },
     {
-      "index": 72,
-      "key": "Content.SubCategory[2]",
-      "text": "Địa lý dân cư"
+      "index": 94,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Dân cư và kinh tế vùng"
     },
     {
-      "index": 73,
-      "key": "Content.SubCategory[3]",
-      "text": "Địa lý Việt Nam"
+      "index": 95,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Tài nguyên và phát triển"
     },
     {
-      "index": 74,
-      "key": "Content.SubCategory[4]",
-      "text": "Địa lý thế giới"
+      "index": 96,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Quan hệ giữa con người và thiên nhiên"
     },
     {
-      "index": 75,
-      "key": "Content.SubCategory[5]",
-      "text": "Bản đồ học"
+      "index": 97,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Phân tích bản đồ và dữ liệu không gian"
     },
     {
-      "index": 76,
-      "key": "Content.SubCategory[6]",
-      "text": "Khí hậu học"
+      "index": 98,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Quản lý và quy hoạch lãnh thổ"
     },
     {
-      "index": 77,
-      "key": "Content.SubCategory[7]",
-      "text": "Địa lý môi trường"
+      "index": 99,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Nghiên cứu môi trường và biến đổi khí hậu"
     },
     {
-      "index": 78,
-      "key": "Content.SubCategory[8]",
-      "text": "Địa chính - Quy hoạch"
+      "index": 100,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Phát triển bền vững vùng và đô thị"
     },
     {
-      "index": 79,
+      "index": 101,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Địa lý và kinh tế"
+    },
+    {
+      "index": 102,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Địa lý và chính trị"
+    },
+    {
+      "index": 103,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Địa lý và khoa học môi trường"
+    },
+    {
+      "index": 104,
       "key": "Article",
       "text": "Lịch Sử"
     },
     {
-      "index": 80,
-      "key": "Content.SubCategory[0]",
-      "text": "Lịch sử Việt Nam cổ đại"
+      "index": 105,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Quá trình phát triển của nhân loại"
     },
     {
-      "index": 81,
-      "key": "Content.SubCategory[1]",
-      "text": "Lịch sử Việt Nam hiện đại"
+      "index": 106,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Các nền văn minh và thời kỳ lịch sử"
     },
     {
-      "index": 82,
-      "key": "Content.SubCategory[2]",
-      "text": "Lịch sử thế giới cổ đại"
+      "index": 107,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Nhân vật và sự kiện tiêu biểu"
     },
     {
-      "index": 83,
-      "key": "Content.SubCategory[3]",
-      "text": "Lịch sử thế giới cận đại"
+      "index": 108,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Nguồn tư liệu và phương pháp sử học"
     },
     {
-      "index": 84,
-      "key": "Content.SubCategory[4]",
-      "text": "Chiến tranh và cách mạng"
+      "index": 109,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Tư tưởng và chuyển biến xã hội"
     },
     {
-      "index": 85,
-      "key": "Content.SubCategory[5]",
-      "text": "Văn hóa - xã hội qua các thời kỳ"
+      "index": 110,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Nghiên cứu lịch sử địa phương và thế giới"
     },
     {
-      "index": 86,
-      "key": "Content.SubCategory[6]",
-      "text": "Nhân vật lịch sử"
+      "index": 111,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Phân tích sự kiện và trào lưu lịch sử"
     },
     {
-      "index": 87,
-      "key": "Content.SubCategory[7]",
-      "text": "Tư tưởng - triết học lịch sử"
+      "index": 112,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Di sản và văn hóa lịch sử"
     },
     {
-      "index": 88,
-      "key": "Content.SubCategory[8]",
-      "text": "Phương pháp nghiên cứu lịch sử"
+      "index": 113,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Giáo dục lịch sử và nhận thức công dân"
     },
     {
-      "index": 89,
+      "index": 114,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Lịch sử và chính trị"
+    },
+    {
+      "index": 115,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Lịch sử và văn hóa"
+    },
+    {
+      "index": 116,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Lịch sử và triết học"
+    },
+    {
+      "index": 117,
       "key": "Article",
       "text": "Kinh Tế"
     },
     {
-      "index": 90,
-      "key": "Content.SubCategory[0]",
-      "text": "Kinh tế vi mô"
+      "index": 118,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Nguyên lý cung cầu và thị trường"
     },
     {
-      "index": 91,
-      "key": "Content.SubCategory[1]",
-      "text": "Kinh tế vĩ mô"
+      "index": 119,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Sản xuất, phân phối và tiêu dùng"
     },
     {
-      "index": 92,
-      "key": "Content.SubCategory[2]",
-      "text": "Tài chính - Ngân hàng"
+      "index": 120,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Hệ thống tài chính và tiền tệ"
     },
     {
-      "index": 93,
-      "key": "Content.SubCategory[3]",
-      "text": "Kế toán - Kiểm toán"
+      "index": 121,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Phân tích số liệu và dự báo kinh tế"
     },
     {
-      "index": 94,
-      "key": "Content.SubCategory[4]",
-      "text": "Kinh tế quốc tế"
+      "index": 122,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Cơ chế quản lý và điều tiết kinh tế"
     },
     {
-      "index": 95,
-      "key": "Content.SubCategory[5]",
-      "text": "Quản trị kinh doanh"
+      "index": 123,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Kinh doanh và quản trị"
     },
     {
-      "index": 96,
-      "key": "Content.SubCategory[6]",
-      "text": "Marketing"
+      "index": 124,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Tài chính và đầu tư"
     },
     {
-      "index": 97,
-      "key": "Content.SubCategory[7]",
-      "text": "Thương mại điện tử"
+      "index": 125,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Kinh tế quốc tế và thương mại"
     },
     {
-      "index": 98,
-      "key": "Content.SubCategory[8]",
-      "text": "Đầu tư và phát triển"
+      "index": 126,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Phát triển và chính sách công"
     },
     {
-      "index": 99,
+      "index": 127,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Kinh tế và xã hội học"
+    },
+    {
+      "index": 128,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Kinh tế và chính trị"
+    },
+    {
+      "index": 129,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Kinh tế và công nghệ"
+    },
+    {
+      "index": 130,
       "key": "Article",
       "text": "Chính Trị"
     },
     {
-      "index": 100,
-      "key": "Content.SubCategory[0]",
-      "text": "Chủ nghĩa Mác - Lênin"
+      "index": 131,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Hệ thống quyền lực và nhà nước"
     },
     {
-      "index": 101,
-      "key": "Content.SubCategory[1]",
-      "text": "Tư tưởng Hồ Chí Minh"
+      "index": 132,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Tư tưởng và triết học chính trị"
     },
     {
-      "index": 102,
-      "key": "Content.SubCategory[2]",
-      "text": "Hệ thống chính trị Việt Nam"
+      "index": 133,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Chính thể và pháp quyền"
     },
     {
-      "index": 103,
-      "key": "Content.SubCategory[3]",
-      "text": "Nhà nước và pháp luật"
+      "index": 134,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Chủ nghĩa và ý thức hệ chính trị"
     },
     {
-      "index": 104,
-      "key": "Content.SubCategory[4]",
-      "text": "Quan hệ quốc tế"
+      "index": 135,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Lãnh đạo và tổ chức xã hội"
     },
     {
-      "index": 105,
-      "key": "Content.SubCategory[5]",
-      "text": "Chính trị học so sánh"
+      "index": 136,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Chính sách công và quản lý nhà nước"
     },
     {
-      "index": 106,
-      "key": "Content.SubCategory[6]",
-      "text": "Công tác Đảng và chính quyền"
+      "index": 137,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Quan hệ quốc tế và đối ngoại"
     },
     {
-      "index": 107,
-      "key": "Content.SubCategory[7]",
-      "text": "Vận động quần chúng"
+      "index": 138,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Truyền thông và hành chính công"
     },
     {
-      "index": 108,
-      "key": "Content.SubCategory[8]",
-      "text": "Triết học chính trị"
+      "index": 139,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Phân tích hành vi và chiến lược chính trị"
     },
     {
-      "index": 109,
+      "index": 140,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Chính trị và kinh tế"
+    },
+    {
+      "index": 141,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Chính trị và truyền thông"
+    },
+    {
+      "index": 142,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Chính trị và văn hóa"
+    },
+    {
+      "index": 143,
       "key": "Article",
       "text": "Ngoại Ngữ"
     },
     {
-      "index": 110,
-      "key": "Content.SubCategory[0]",
-      "text": "Ngữ pháp cơ bản"
+      "index": 144,
+      "key": "Content.SubCategory.Core[0]",
+      "text": "Ngữ âm, từ vựng và ngữ pháp"
     },
     {
-      "index": 111,
-      "key": "Content.SubCategory[1]",
-      "text": "Từ vựng và ngữ nghĩa"
+      "index": 145,
+      "key": "Content.SubCategory.Core[1]",
+      "text": "Kỹ năng nghe, nói, đọc, viết"
     },
     {
-      "index": 112,
-      "key": "Content.SubCategory[2]",
-      "text": "Kỹ năng nghe"
+      "index": 146,
+      "key": "Content.SubCategory.Core[2]",
+      "text": "Giao tiếp và ngữ dụng học"
     },
     {
-      "index": 113,
-      "key": "Content.SubCategory[3]",
-      "text": "Kỹ năng nói"
+      "index": 147,
+      "key": "Content.SubCategory.Core[3]",
+      "text": "Văn hóa và ngữ cảnh ngôn ngữ"
     },
     {
-      "index": 114,
-      "key": "Content.SubCategory[4]",
-      "text": "Kỹ năng đọc hiểu"
+      "index": 148,
+      "key": "Content.SubCategory.Core[4]",
+      "text": "Tư duy ngôn ngữ và diễn đạt"
     },
     {
-      "index": 115,
-      "key": "Content.SubCategory[5]",
-      "text": "Kỹ năng viết"
+      "index": 149,
+      "key": "Content.SubCategory.Applied[0]",
+      "text": "Học thuật và biên phiên dịch"
     },
     {
-      "index": 116,
-      "key": "Content.SubCategory[6]",
-      "text": "Ngữ âm - Phát âm"
+      "index": 150,
+      "key": "Content.SubCategory.Applied[1]",
+      "text": "Giao tiếp trong công việc và xã hội"
     },
     {
-      "index": 117,
-      "key": "Content.SubCategory[7]",
-      "text": "Văn hóa - giao tiếp liên văn hóa"
+      "index": 151,
+      "key": "Content.SubCategory.Applied[2]",
+      "text": "Ngôn ngữ trong giáo dục và nghiên cứu"
     },
     {
-      "index": 118,
-      "key": "Content.SubCategory[8]",
-      "text": "Dịch thuật và biên phiên dịch"
+      "index": 152,
+      "key": "Content.SubCategory.Applied[3]",
+      "text": "Ngôn ngữ trong công nghệ và truyền thông"
+    },
+    {
+      "index": 153,
+      "key": "Content.SubCategory.Interdisciplinary[0]",
+      "text": "Ngôn ngữ và văn hóa"
+    },
+    {
+      "index": 154,
+      "key": "Content.SubCategory.Interdisciplinary[1]",
+      "text": "Ngôn ngữ và tâm lý học"
+    },
+    {
+      "index": 155,
+      "key": "Content.SubCategory.Interdisciplinary[2]",
+      "text": "Ngôn ngữ và trí tuệ nhân tạo"
     }
   ],
   "meta": {
-    "count": 119,
+    "count": 156,
     "flatten_mode": "split",
     "schema_used": true,
     "list_policy": "split"

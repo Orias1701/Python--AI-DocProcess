@@ -1,5 +1,8 @@
 {
   "Article": "string",
   "Content": "object",
-  "Content.SubCategory": "array"
+  "Content.SubCategory": "object",
+  "Content.SubCategory.Core": "array",
+  "Content.SubCategory.Applied": "array",
+  "Content.SubCategory.Interdisciplinary": "array"
 }

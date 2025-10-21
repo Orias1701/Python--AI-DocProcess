@@ -1,5 +1,7 @@
+import faiss
 import numpy as np
-from typing import Any, Dict, List, Optional
+
+from typing import Dict, List, Any, Optional
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 

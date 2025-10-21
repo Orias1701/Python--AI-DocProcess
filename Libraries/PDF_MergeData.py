@@ -1,5 +1,5 @@
-from statistics import mean, multimode
 from collections import Counter
+from statistics import mean, multimode
 
 # ===============================
 # HÀM CHÍNH

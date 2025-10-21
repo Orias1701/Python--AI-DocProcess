@@ -1,5 +1,8 @@
-# main_pipeline.py
-import fitz, faiss
+import faiss
+import fitz
+
+from sentence_transformers import CrossEncoder
+
 from Config import Configs
 from Config import ModelLoader as ML
 from Libraries import Common_MyUtils as MU, Common_TextProcess as TP
@@ -7,7 +10,6 @@ from Libraries import PDF_ExtractData as ExtractData, PDF_MergeData as MergeData
 from Libraries import Json_ChunkUnder as ChunkUnder
 from Libraries import Faiss_Searching as F_Searching, Faiss_ChunkMapping as ChunkMapper
 from Libraries import Summarizer_Runner as SummaryRun
-from sentence_transformers import CrossEncoder
 
 Checkpoint = "vinai/bartpho-syllable"
 service = "Categories"

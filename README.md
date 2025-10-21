@@ -49,9 +49,9 @@ RAG
 │
 ├── .gitignore
 │
-├── App_Caller.py		# Backend Main --Extract - Filter - Chunk - Summary - Search Best Category
+├── App_Caller.py		# Backend Main --Extract - Filter - Chunk - Summary - Search
 ├── App_Run.py			# API Runner --Call to App_Caller.py
-├── Pipeline_PDFprocess.ipynb	# Notebook --Extract - Filter - Chunk - Summary - Search Best Category
+├── Pipeline_PDFprocess.ipynb	# Notebook --Extract - Filter - Chunk - Summary - Search
 ├── Pipeline_Summarizer.ipynb	# Notebook --Use to Train Summarizers
 ├── Pipeline_VectorGener.ipynb	# Notebook --Extract - Chunk - Embedding to Faiss Index
 ├── Pipeline_VectorSearch.ipynb	# Notebook --Search highest faiss score for queries

@@ -1,6 +1,4 @@
-import json
-from typing import Any, Dict, Optional, List
-from . import Common_MyUtils as MyUtils
+from typing import Dict, List, Any
 
 class JSONSchemaExtractor:
 

@@ -1,6 +1,7 @@
-import fitz
 import re
-from typing import Tuple, Dict, Union
+import fitz
+
+from typing import Dict, Tuple, Union
 
 class PDFQualityChecker:
     """

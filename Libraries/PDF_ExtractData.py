@@ -1,10 +1,8 @@
-# file: Libraries/PDF_ExtractData.py
 import re
-import os
-import json
-import fitz
-from typing import Any, Dict, Optional
+
+from typing import Dict, Any
 from collections import Counter, defaultdict
+
 from . import Common_TextProcess as TextProcess
 from . import Common_PdfProcess as PdfProcess
 

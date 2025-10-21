@@ -1,7 +1,7 @@
-import json
 import re
+
+from typing import Dict, List, Any
 from collections import Counter, defaultdict
-from typing import List, Dict, Any
 
 class StructureAnalyzer:
     def __init__(self, verbose: bool = False):

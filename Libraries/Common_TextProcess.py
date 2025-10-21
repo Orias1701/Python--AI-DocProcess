@@ -1,5 +1,7 @@
 import re
+
 from difflib import SequenceMatcher
+
 from . import Common_MyUtils as MyUtils
 
 ex = MyUtils.exc

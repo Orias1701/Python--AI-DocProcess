@@ -1,8 +1,7 @@
 import re
 import numpy as np
-import torch
-from underthesea import sent_tokenize
 
+from underthesea import sent_tokenize
 
 class ChunkUndertheseaBuilder:
     """

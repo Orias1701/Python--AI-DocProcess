@@ -1,126 +1,193 @@
 [
     {
-        "Article": "Toán học",
+        "Article": "Toán Học",
         "Content": {
             "SubCategory": [
                 "Đại số",
-                "Hình học",
+                "Hình học phẳng",
+                "Hình học không gian",
                 "Giải tích",
+                "Lượng giác",
                 "Xác suất - Thống kê",
+                "Tổ hợp - Đếm",
                 "Số học",
-                "Tư duy logic"
+                "Logic toán học"
             ]
         }
     },
     {
-        "Article": "Ngữ văn",
+        "Article": "Tin Học",
         "Content": {
             "SubCategory": [
-                "Văn học Việt Nam",
-                "Văn học nước ngoài",
-                "Ngữ pháp",
-                "Làm văn",
-                "Phong cách ngôn ngữ",
-                "Tư duy phản biện"
+                "Thuật toán và lập trình",
+                "Cấu trúc dữ liệu",
+                "Cơ sở dữ liệu",
+                "Mạng máy tính",
+                "Hệ điều hành",
+                "Trí tuệ nhân tạo",
+                "Khoa học dữ liệu",
+                "Phần mềm và ứng dụng",
+                "Bảo mật thông tin"
             ]
         }
     },
     {
-        "Article": "Vật lý",
+        "Article": "Vật Lý",
         "Content": {
             "SubCategory": [
                 "Cơ học",
-                "Nhiệt học",
                 "Điện học",
                 "Quang học",
-                "Vật lý hiện đại"
+                "Nhiệt học",
+                "Vật lý hạt nhân",
+                "Vật lý lượng tử cơ bản",
+                "Dao động - Sóng",
+                "Điện từ học",
+                "Vật lý thiên văn"
             ]
         }
     },
     {
-        "Article": "Hóa học",
+        "Article": "Hóa Học",
         "Content": {
             "SubCategory": [
                 "Hóa vô cơ",
                 "Hóa hữu cơ",
+                "Hóa lý",
                 "Hóa phân tích",
-                "Dung dịch & phản ứng",
-                "Cấu tạo nguyên tử"
+                "Hóa học môi trường",
+                "Hóa sinh học",
+                "Cấu trúc nguyên tử - liên kết hóa học",
+                "Phản ứng hóa học",
+                "Công nghệ hóa học"
             ]
         }
     },
     {
-        "Article": "Tin học",
+        "Article": "Công Nghệ",
         "Content": {
             "SubCategory": [
-                "Lập trình cơ bản",
-                "Thuật toán",
-                "Cơ sở dữ liệu",
-                "Trí tuệ nhân tạo",
-                "Mạng máy tính",
-                "Văn phòng & phần mềm"
+                "Công nghệ thông tin",
+                "Cơ khí - Chế tạo",
+                "Điện - Điện tử",
+                "Tự động hóa",
+                "Công nghệ sinh học",
+                "Công nghệ vật liệu",
+                "Công nghệ năng lượng",
+                "Công nghệ thực phẩm",
+                "Kỹ thuật sản xuất"
             ]
         }
     },
     {
-        "Article": "Khoa học",
+        "Article": "Sinh Học",
         "Content": {
             "SubCategory": [
-                "Khoa học tự nhiên",
-                "Khoa học xã hội",
-                "Khoa học ứng dụng",
-                "Phương pháp nghiên cứu",
-                "Tư duy khoa học"
+                "Tế bào học",
+                "Di truyền học",
+                "Sinh thái học",
+                "Tiến hóa",
+                "Sinh lý học người và động vật",
+                "Thực vật học",
+                "Vi sinh vật học",
+                "Sinh học phân tử",
+                "Công nghệ sinh học"
             ]
         }
     },
     {
-        "Article": "Địa lý",
+        "Article": "Văn Học",
+        "Content": {
+            "SubCategory": [
+                "Văn học Việt Nam",
+                "Văn học nước ngoài",
+                "Lý luận văn học",
+                "Ngữ pháp và ngôn ngữ",
+                "Làm văn - Nghị luận",
+                "Phân tích tác phẩm",
+                "Thơ ca và nghệ thuật ngôn từ",
+                "Phong cách học",
+                "Tư duy phản biện văn học"
+            ]
+        }
+    },
+    {
+        "Article": "Địa Lý",
         "Content": {
             "SubCategory": [
                 "Địa lý tự nhiên",
                 "Địa lý kinh tế",
                 "Địa lý dân cư",
                 "Địa lý Việt Nam",
-                "Bản đồ và kỹ năng địa lý"
+                "Địa lý thế giới",
+                "Bản đồ học",
+                "Khí hậu học",
+                "Địa lý môi trường",
+                "Địa chính - Quy hoạch"
             ]
         }
     },
     {
-        "Article": "Lịch sử",
+        "Article": "Lịch Sử",
         "Content": {
             "SubCategory": [
-                "Lịch sử Việt Nam",
-                "Lịch sử thế giới",
-                "Các cuộc cách mạng",
+                "Lịch sử Việt Nam cổ đại",
+                "Lịch sử Việt Nam hiện đại",
+                "Lịch sử thế giới cổ đại",
+                "Lịch sử thế giới cận đại",
+                "Chiến tranh và cách mạng",
+                "Văn hóa - xã hội qua các thời kỳ",
                 "Nhân vật lịch sử",
-                "Văn hóa & xã hội qua các thời kỳ"
+                "Tư tưởng - triết học lịch sử",
+                "Phương pháp nghiên cứu lịch sử"
             ]
         }
     },
     {
-        "Article": "Công nghệ",
+        "Article": "Kinh Tế",
         "Content": {
             "SubCategory": [
-                "Công nghệ thông tin",
-                "Công nghệ sinh học",
-                "Công nghệ cơ khí",
-                "Tự động hóa",
-                "Kỹ thuật điện tử",
-                "Vật liệu mới"
+                "Kinh tế vi mô",
+                "Kinh tế vĩ mô",
+                "Tài chính - Ngân hàng",
+                "Kế toán - Kiểm toán",
+                "Kinh tế quốc tế",
+                "Quản trị kinh doanh",
+                "Marketing",
+                "Thương mại điện tử",
+                "Đầu tư và phát triển"
             ]
         }
     },
     {
-        "Article": "Sinh học",
+        "Article": "Chính Trị",
         "Content": {
             "SubCategory": [
-                "Tế bào học",
-                "Di truyền học",
-                "Tiến hóa",
-                "Sinh thái học",
-                "Cấu tạo cơ thể người",
-                "Sinh học phân tử"
+                "Chủ nghĩa Mác - Lênin",
+                "Tư tưởng Hồ Chí Minh",
+                "Hệ thống chính trị Việt Nam",
+                "Nhà nước và pháp luật",
+                "Quan hệ quốc tế",
+                "Chính trị học so sánh",
+                "Công tác Đảng và chính quyền",
+                "Vận động quần chúng",
+                "Triết học chính trị"
+            ]
+        }
+    },
+    {
+        "Article": "Ngoại Ngữ",
+        "Content": {
+            "SubCategory": [
+                "Ngữ pháp cơ bản",
+                "Từ vựng và ngữ nghĩa",
+                "Kỹ năng nghe",
+                "Kỹ năng nói",
+                "Kỹ năng đọc hiểu",
+                "Kỹ năng viết",
+                "Ngữ âm - Phát âm",
+                "Văn hóa - giao tiếp liên văn hóa",
+                "Dịch thuật và biên phiên dịch"
             ]
         }
     }

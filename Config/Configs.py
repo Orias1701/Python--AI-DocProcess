@@ -56,7 +56,7 @@ def ConfigValues(service="Search", inputs="file.pdf"):
     CHUNKS_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"
     EMBEDD_MODEL = "VoVanPhuc/sup-SimCSE-VietNamese-phobert-base"
     RESPON_MODEL = "gpt-3.5-turbo"
-    SUMARY_MODEL = "vinai/bartpho-syllable"
+    SUMARY_MODEL = "LongK171/bartpho-syllable-vnexpress"
 
     WORD_LIMIT = 1000
 

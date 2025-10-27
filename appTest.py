@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-import App_Caller
+import appCalled
 
 app = Flask(__name__)
 CORS(app)
@@ -18,7 +18,7 @@ def process_pdf():
 
     try:
         pdf_bytes = pdf_file.read()
-        result = App_Caller.fileProcess(pdf_bytes)
+        result = appCalled.fileProcess(pdf_bytes)
         return jsonify({
             "status": "success",
             "checkstatus": result["checkstatus"],

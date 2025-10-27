@@ -1,13 +1,7 @@
-# ===============================
-# Core Deep Learning (CPU)
-# ===============================
 torch==2.3.1
 torchvision==0.18.1
 torchaudio==2.3.1
 
-# ===============================
-# Transformers / NLP Ecosystem
-# ===============================
 transformers==4.44.2
 sentence-transformers==3.0.1
 tokenizers>=0.19.1
@@ -21,34 +15,35 @@ protobuf>=4.25.2
 nltk>=3.9
 rouge-score>=0.1.2
 
-# ===============================
-# Semantic Search / FAISS (CPU)
-# ===============================
 faiss-cpu==1.8.0
 
-# ===============================
-# PDF / Text Processing
-# ===============================
 PyMuPDF>=1.23.0
 underthesea>=6.8.0
 numpy>=1.26.0
 pandas>=2.2.0
 openpyxl>=3.1.3
+lxml
+beautifulsoup4
 
-# ===============================
-# Web / API (FastAPI)
-# ===============================
 fastapi>=0.111.0
 uvicorn[standard]>=0.30.0
 pydantic>=2.8.0
 python-multipart>=0.0.9
 aiofiles>=24.1.0
+flask
+flask-cors
 
-# ===============================
-# Utility & Helpers
-# ===============================
 regex>=2024.4.16
 tqdm>=4.66.3
 requests>=2.31.0
 psutil>=5.9.0
 scikit-learn>=1.4.0
+fsspec
+cloudpathlib
+multiprocess
+dill
+typer
+rich
+google-generativeai
+filelock
+pyyaml

@@ -13,7 +13,10 @@ pinned: false
 ---
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
-# ENGINE XỬ LÝ TÀI LIỆU [PDF]
+---
+
+
+# [PDF] PROCESSOR
 
 ```
 RAG
@@ -28,8 +31,7 @@ RAG
 │ ├── Configs.py
 │ └── ModelLoader.py
 │
-├── Database/
-│ └── FolderName = Sevices
+├── Database/			*.json - faiss
 │
 ├── Demo/
 │ ├── Assets
@@ -38,18 +40,18 @@ RAG
 │ └── index.html
 │
 ├── Documents/
-│ ├── *.xlsx	# FileName = Service
-│ └── *.pdf	# FileName = Service
+│ ├── *.xlsx			# FileName = Service
+│ └── *.pdf			# FileName = Service
 │
 ├── Environment/
-│ └── *.yml
+│ └── *.yml			# Read-only
 │
 ├── Libraries/
-│ ├── Common_*.py	# Common Modules
-│ ├── PDF_*.py		# PDF Extractor
-│ ├── Json_*.py		# Chunk Processor
-│ ├── Summarizer_*.py	# Texts Summary
-│ └── Faiss_*.py	# Vector Embedding + Searching
+│ ├── Common_*.py		# Common Modules
+│ ├── Faiss_*.py		# Vector Embedding + Searching
+│ ├── Json_*.py			# Chunk Processor
+│ ├── PDF_*.py			# PDF Extractor
+│ └── Summarizer_*.py		# Texts Summary
 │
 ├── Models/
 │ ├── Sentence_Transformer/	# Transformer Cached Models
@@ -62,18 +64,30 @@ RAG
 │ ├── Data/			# Test input Files
 │ └── pdfGenerate.ipynb		# Bad version pdf generator
 │
+├── _*ipynb			# Notebooks - Test
+│
+├── .gitattributes
 ├── .gitignore
 │
-├── App_Caller.py		# Backend Main --Extract - Filter - Chunk - Summary - Search
-├── App_Run.py			# API Runner --Call to App_Caller.py
-├── Pipeline_PDFprocess.ipynb	# Notebook --Extract - Filter - Chunk - Summary - Search
-├── Pipeline_Summarizer.ipynb	# Notebook --Use to Train Summarizers
-├── Pipeline_VectorGener.ipynb	# Notebook --Extract - Chunk - Embedding to Faiss Index
-├── Pipeline_VectorSearch.ipynb	# Notebook --Search highest faiss score for queries
+├── app.py			# BE Deployed Runner 	--Call to App_Caller.py
+├── appCalled.py		# Backend Main 		--Extract - Filter - Chunk - Summary - Search
+├── appTest.py			# BE Local Runner 	--Call to App_Caller.py
 │
-└── README.md
+├── Dockerfile
+├── README.md
+├── requirements.txt		# Virtual Environment Resource --Deploy
+├── requirements.yml		# Virtual Environment Resource --Local
+└── start.sh
+
 ```
 
 ---
+
+
+
+# USAGES
+
+1. conda env create -f requirements.yml
+
 
 ---

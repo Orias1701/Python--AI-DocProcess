@@ -1,7 +1,7 @@
 """
-FastAPI gateway for your App_Caller pipeline.
+FastAPI gateway for your appCalled pipeline.
 
-✅ Giữ nguyên pipeline gốc (App_Caller.py)
+✅ Giữ nguyên pipeline gốc (appCalled.py)
 ✅ Tương thích Hugging Face Spaces (Docker)
 ✅ Có Bearer token, Swagger UI (/docs)
 ✅ Endpoint: /, /health, /process_pdf, /search, /summarize
@@ -35,11 +35,11 @@ def require_bearer(authorization: Optional[str] = Header(None)):
 # 🧩 Import project modules
 # -------------------------
 try:
-    import App_Caller as APP_CALLER
-    print("✅ Đã load App_Caller.")
+    import appCalled as APP_CALLED
+    print("✅ Đã load appCalled.")
 except Exception as e:
-    APP_CALLER = None
-    print(f"⚠️ Không thể import App_Caller: {e}")
+    APP_CALLED = None
+    print(f"⚠️ Không thể import appCalled: {e}")
 
 # -------------------------
 # 🚀 Init FastAPI
@@ -81,8 +81,8 @@ def health(_=Depends(require_bearer)):
     return {
         "status": "ok",
         "time": time.time(),
-        "App_Caller": bool(APP_CALLER),
-        "has_fileProcess": hasattr(APP_CALLER, "fileProcess") if APP_CALLER else False,
+        "appCalled": bool(APP_CALLED),
+        "has_fileProcess": hasattr(APP_CALLED, "fileProcess") if APP_CALLED else False,
     }
 
 # -------------------------
@@ -90,17 +90,17 @@ def health(_=Depends(require_bearer)):
 # -------------------------
 @app.post("/process_pdf")
 async def process_pdf(file: UploadFile = File(...), _=Depends(require_bearer)):
-    """Nhận file PDF → chạy App_Caller.fileProcess → trả về summary + category."""
+    """Nhận file PDF → chạy appCalled.fileProcess → trả về summary + category."""
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Chỉ chấp nhận file PDF.")
 
     pdf_bytes = await file.read()
 
-    if not APP_CALLER or not hasattr(APP_CALLER, "fileProcess"):
-        raise HTTPException(status_code=500, detail="Không tìm thấy App_Caller.fileProcess().")
+    if not APP_CALLED or not hasattr(APP_CALLED, "fileProcess"):
+        raise HTTPException(status_code=500, detail="Không tìm thấy appCalled.fileProcess().")
 
     try:
-        result = APP_CALLER.fileProcess(pdf_bytes)
+        result = APP_CALLED.fileProcess(pdf_bytes)
         return {
             "status": "success",
             "checkstatus": result.get("checkstatus"),
@@ -120,16 +120,16 @@ class SearchIn(BaseModel):
 
 @app.post("/search")
 def search(body: SearchIn, _=Depends(require_bearer)):
-    """Tìm kiếm bằng FAISS + Rerank từ App_Caller.runSearch()."""
+    """Tìm kiếm bằng FAISS + Rerank từ appCalled.runSearch()."""
     q = (body.query or "").strip()
     if not q:
         raise HTTPException(status_code=400, detail="query không được để trống")
 
-    if not APP_CALLER or not hasattr(APP_CALLER, "runSearch"):
-        raise HTTPException(status_code=500, detail="Không tìm thấy App_Caller.runSearch().")
+    if not APP_CALLED or not hasattr(APP_CALLED, "runSearch"):
+        raise HTTPException(status_code=500, detail="Không tìm thấy appCalled.runSearch().")
 
     try:
-        results = APP_CALLER.runSearch(q)
+        results = APP_CALLED.runSearch(q)
         if isinstance(results, list):
             formatted = results[:body.k]
         elif isinstance(results, dict) and "results" in results:
@@ -150,16 +150,16 @@ class SummIn(BaseModel):
 
 @app.post("/summarize")
 def summarize_text(body: SummIn, _=Depends(require_bearer)):
-    """Tóm tắt văn bản bằng App_Caller.summarizer_engine."""
+    """Tóm tắt văn bản bằng appCalled.summarizer_engine."""
     text = (body.text or "").strip()
     if not text:
         raise HTTPException(status_code=400, detail="text không được để trống")
 
-    if not APP_CALLER or not hasattr(APP_CALLER, "summarizer_engine"):
-        raise HTTPException(status_code=500, detail="Không tìm thấy App_Caller.summarizer_engine.")
+    if not APP_CALLED or not hasattr(APP_CALLED, "summarizer_engine"):
+        raise HTTPException(status_code=500, detail="Không tìm thấy appCalled.summarizer_engine.")
 
     try:
-        summarized = APP_CALLER.summarizer_engine.summarize(
+        summarized = APP_CALLED.summarizer_engine.summarize(
             text, minInput=body.minInput, maxInput=body.maxInput
         )
         return {"status": "success", "summary": summarized.get("summary_text", "")}

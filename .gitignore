@@ -3,6 +3,21 @@ __*
 API*
 *.pkl
 
-Models/
-Private/
-Fonts
+*.py[cod]
+*.so
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+
+.cache/
+**/Models/
+**/Private/
+**/Fonts/
+**/outputs/
+**/checkpoints/
+
+.DS_Store
+
+*.bak

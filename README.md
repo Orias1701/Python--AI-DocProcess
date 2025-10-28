@@ -15,11 +15,10 @@ Check out the configuration reference at https://huggingface.co/docs/hub/spaces-
 
 ---
 
-
 # [PDF] PROCESSOR
 
 ```
-RAG
+PDF PROCESSOR
 │
 ├── Assets/
 │ ├── ex.exceptions.json
@@ -83,11 +82,8 @@ RAG
 
 ---
 
-
-
 # USAGES
 
 1. conda env create -f requirements.yml
-
 
 ---

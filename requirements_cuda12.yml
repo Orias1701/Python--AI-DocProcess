@@ -45,9 +45,6 @@ dependencies:
   - flask-cors
 
   - pip:
-      - torch==2.3.1
-      - torchvision==0.18.1
-      - torchaudio==2.3.1
       - transformers==4.44.2
       - sentence-transformers==3.0.1
       - tokenizers>=0.19.1
@@ -80,4 +77,5 @@ dependencies:
       - dill
       - typer
       - rich
+      - llama-cpp-python
       - google-generativeai

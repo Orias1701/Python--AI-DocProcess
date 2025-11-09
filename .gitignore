@@ -1,6 +1,6 @@
 .vscode
 __*
-API*
+APIs.json*
 *.pkl
 
 *.py[cod]

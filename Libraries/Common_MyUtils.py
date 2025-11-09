@@ -20,7 +20,11 @@ def exc(func, fallback=None):
     except Exception as e:
         logging.warning(e)
         return fallback
-    
+
+def file_exists(path: str) -> bool:
+    """Kiểm tra file có tồn tại không."""
+    return os.path.exists(path)
+
 # ===============================
 # 1. JSON
 # ===============================
@@ -239,6 +243,9 @@ def flatten_json(
     return flat
 
 
+# ================================================================
+#  Lọc trùng theo key
+# ================================================================
 def deduplicates_by_key(pairs: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
     """
     Lọc trùng theo value trong cùng key (hoặc base_key).
@@ -271,3 +278,25 @@ def deduplicates_by_key(pairs: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
         filtered.append((key, text_norm))
 
     return filtered
+
+# ================================================================
+#  Ghi ChunkMapping
+# ================================================================
+def write_chunkmap(MapChunkPath: str, SegmentPath: str, chunk_groups: List[List[int]]) -> None:
+    # Ghi chunk mapping dạng gọn: mỗi index một dòng
+    with open(MapChunkPath, "w", encoding="utf-8") as f:
+        f.write('{\n')
+        f.write('  "index_to_chunk": {\n')
+
+        items = list(enumerate(chunk_groups))
+        for i, (idx, group) in enumerate(items):
+            group_str = "[" + ", ".join(map(str, group)) + "]"
+            comma = "," if i < len(items) - 1 else ""
+            f.write(f'    "{idx}": {group_str}{comma}\n')
+
+        f.write('  },\n')
+        f.write('  "meta": {\n')
+        f.write(f'    "count": {len(chunk_groups)},\n')
+        f.write(f'    "source": "{os.path.basename(SegmentPath)}"\n')
+        f.write('  }\n')
+        f.write('}\n')

@@ -1,34 +1,34 @@
 name: master
 
 channels:
-  - nvidia
   - pytorch
+  - nvidia
   - conda-forge
   - defaults
 
 dependencies:
-  - python=3.11
+  - python=3.10
   - pip
   - setuptools
   - wheel
 
-  - numpy
+  - numpy=1.26.4
   - pandas
   - scipy
   - scikit-learn
   - matplotlib
   - seaborn
-  - networkx
   - sympy
   - pillow
   - statsmodels
   - joblib
+  - networkx
 
   - pytorch=2.3.1
   - torchvision=0.18.1
   - torchaudio=2.3.1
-  - pytorch-cuda=12.1
-  - faiss-gpu=1.8.0
+  - pytorch-cuda=11.8
+  - faiss-gpu=1.7.4
 
   - psutil
   - pyyaml
@@ -59,7 +59,7 @@ dependencies:
       - rouge-score>=0.1.2
 
       - PyMuPDF>=1.23.0
-      - underthesea>=6.8.0
+      - underthesea==6.5.2
       - openpyxl>=3.1.3
       - lxml
       - beautifulsoup4
@@ -71,11 +71,10 @@ dependencies:
 
       - regex>=2024.4.16
       - tqdm>=4.66.3
-      - fsspec
-      - cloudpathlib
       - multiprocess
       - dill
       - typer
       - rich
-      - llama-cpp-python
+      - cloudpathlib
+      - fsspec
       - google-generativeai

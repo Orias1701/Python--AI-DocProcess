@@ -87,3 +87,22 @@ PDF PROCESSOR
 1. conda env create -f requirements.yml
 
 ---
+
+1. Load Categories
+2. Load/Read PDF
+3. QualityCheck
+4. Extract
+5. Merge
+6. ChunkSegment (Merge)
+7. Summary
+8. Search Category
+9. Rerank Category
+10. Mapping Category
+11. GetStruct (Merge)
+12. ChunkStruct
+13. GetSchema
+14. Embedding
+15. ReadInput
+16. Search
+17. Rerank
+18. Respond

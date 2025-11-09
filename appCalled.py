@@ -179,7 +179,7 @@ def fileProcess(pdf_bytes):
             SegmentDict=SegmentDict,
             drop_fields=["Index"],
             fields=["Article"],
-            n_chunks=1,
+            n_chunks=1
         )
         bestArticles = [item["fields"].get("Article") for item in chunkReturn["extracted_fields"]]
         bestArticle = bestArticles[0] if len(bestArticles) == 1 else ", ".join(bestArticles)

@@ -1,61 +1,88 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Chatbot</title>
+    <title>PDF Assistant</title>
     <link rel="stylesheet" href="Assets/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> </head>
-<body>
-    <div class="app-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h3>Menu</h3>
-            </div>
-            <nav class="menu">
-                <ul>
-                    <li class="active"><a href="#">PDF Assistant</a></li>
-                    <li><a href="#">⚙️ Cài đặt</a></li>
-                    <li><a href="#">❓ Trợ giúp</a></li>
-                </ul>
-            </nav>
-        </aside>
+</head>
 
-        <main class="chat-container">
-            <header class="chat-header">
-                <h2>PDF Assistant</h2>
-                <p>Tải lên tài liệu của bạn để tóm tắt và phân loại.</p>
-            </header>
-            
-            <div id="chatBody" class="chat-body">
+<body>
+
+    <div id="appContainer" class="app-container layout-centered">
+
+        <header class="app-header">
+            <button class="header-btn">CLI</button>
+            <button class="header-btn">Download</button>
+        </header>
+
+        <div id="chatBody" class="chat-body">
+            </div>
+
+        <div id="inputWrapper" class="input-wrapper">
+
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2.5C12.41 2.5 12.75 2.84 12.75 3.25V7.81C12.75 8.22 12.41 8.56 12 8.56C11.59 8.56 11.25 8.22 11.25 7.81V3.25C11.25 2.84 11.59 2.5 12 2.5ZM8.5 4.38C8.84 4.16 9.27 4.3 9.49 4.64L11.64 8.36C11.86 8.7 11.72 9.13 11.38 9.35C11.04 9.57 10.61 9.43 10.39 9.09L8.24 5.37C8.02 5.03 8.16 4.6 8.5 4.38ZM15.5 4.38C15.84 4.6 15.98 5.03 15.76 5.37L13.61 9.09C13.39 9.43 12.96 9.57 12.62 9.35C12.28 9.13 12.14 8.7 12.36 8.36L14.51 4.64C14.73 4.3 15.16 4.16 15.5 4.38ZM4.38 8.5C4.6 8.16 5.03 8.02 5.37 8.24L9.09 10.39C9.43 10.61 9.57 11.04 9.35 11.38C9.13 11.72 8.7 11.86 8.36 11.64L4.64 9.49C4.3 9.27 4.16 8.84 4.38 8.5ZM19.62 8.5C19.84 8.84 19.7 9.27 19.36 9.49L15.64 11.64C15.3 11.86 14.87 11.72 14.65 11.38C14.43 11.04 14.57 10.61 14.91 10.39L18.63 8.24C18.97 8.02 19.4 8.16 19.62 8.5ZM4.38 15.5C4.16 15.16 4.3 14.73 4.64 14.51L8.36 12.36C8.7 12.14 9.13 12.28 9.35 12.62C9.57 12.96 9.43 13.39 9.09 13.61L5.37 15.76C5.03 15.98 4.6 15.84 4.38 15.5ZM19.62 15.5C19.4 15.84 18.97 15.98 18.63 15.76L14.91 13.61C14.57 13.39 14.43 12.96 14.65 12.62C14.87 12.28 15.3 12.14 15.64 12.36L19.36 14.51C19.7 14.73 19.84 15.16 19.62 15.5ZM8.5 19.62C8.16 19.84 7.73 19.7 7.51 19.36L5.36 15.64C5.14 15.3 5.28 14.87 5.62 14.65C5.96 14.43 6.39 14.57 6.61 14.91L8.76 18.63C8.98 18.97 8.84 19.4 8.5 19.62ZM15.5 19.62C15.16 19.4 15.02 18.97 15.24 18.63L17.39 14.91C17.61 14.57 18.04 14.43 18.38 14.65C18.72 14.87 18.86 15.3 18.64 15.64L16.49 19.36C16.27 19.7 15.84 19.84 15.5 19.62ZM12 15.44C12.41 15.44 12.75 15.78 12.75 16.19V20.75C12.75 21.16 12.41 21.5 12 21.5C11.59 21.5 11.25 21.16 11.25 20.75V16.19C11.25 15.78 11.59 15.44 12 15.44Z"
+                        fill="#89929B" />
+                </svg>
+            </div>
+
+            <form id="chatForm" class="chat-form">
+                <div id="fileCard" class="file-card">
+                    <svg class="file-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span id="fileName"></span>
+                    <button type="button" id="removeFile" class="remove-file-btn">&times;</button>
                 </div>
 
-            <footer class="chat-footer">
-                <form id="chatForm" class="chat-form">
-                    <label for="fileUpload" class="icon-btn" title="Đính kèm file PDF">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    </label>
-                    <input type="file" id="fileUpload" accept=".pdf" hidden>
-
-                    <button type="button" class="icon-btn" title="Công cụ (Tóm tắt, Hỏi đáp)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                    </button>
+                <div class="input-area">
+                    <textarea id="textInput" placeholder="Ask anything..." rows="1"></textarea>
                     
-                    <div class="input-wrapper">
-                        <div id="fileCard" class="file-card">
-                            <span class="file-icon">📄</span>
-                            <span id="fileName"></span>
-                            <button type="button" id="removeFile" class="remove-file-btn">&times;</button>
-                        </div>
-                        <input type="text" placeholder="" disabled>
-                    </div>
+                    <div class="input-toolbar">
+                        <label for="fileUpload" class="toolbar-btn" title="Đính kèm file PDF">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 3.5V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M3.5 8H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span>Add repositories, files, and spaces</span>
+                        </label>
+                        <input type="file" id="fileUpload" accept=".pdf" hidden>
 
-                    <button type="submit" class="send-btn" title="Gửi">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"></path></svg>
-                    </button>
-                </form>
-            </footer>
-        </main>
+                        <button type="submit" class="send-btn" title="Gửi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="action-buttons">
+                <button class="action-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13V3H13V13H3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span>Task</span>
+                </button>
+                <button class="action-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span>Create issue</span>
+                </button>
+                <button class="action-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5L9.31286 5.68714L13.5 7L9.31286 8.31286L8 12.5L6.68714 8.31286L2.5 7L6.68714 5.68714L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span>Spark</span>
+                </button>
+            </div>
+
+        </div> <footer class="app-footer">
+            Check for mistakes.
+        </footer>
+
     </div>
 
     <script src="Assets/script.js"></script>

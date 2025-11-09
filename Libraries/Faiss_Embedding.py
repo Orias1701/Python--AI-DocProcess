@@ -156,7 +156,7 @@ class DirectFaissIndexer:
         # base_key -> text_norm -> index trong filtered_pairs
 
         filtered_pairs: List[Tuple[str, str]] = []
-        chunk_groups: List[List[int]] = []  # song song với filtered_pairs
+        chunk_groups: List[List[int]] = []
 
         for (key, text), c in zip(pairs, chunk_map):
             text_norm = text.strip()
@@ -180,28 +180,6 @@ class DirectFaissIndexer:
             chunk_groups.append([c])
 
         return filtered_pairs, chunk_groups
-    
-    # ================================================================
-    #  Ghi ChunkMapping
-    # ================================================================
-    def write_chunk_mapping(self, MapChunkPath: str, SegmentPath: str, chunk_groups: List[List[int]]) -> None:
-        # Ghi chunk mapping dạng gọn: mỗi index một dòng
-        with open(MapChunkPath, "w", encoding="utf-8") as f:
-            f.write('{\n')
-            f.write('  "index_to_chunk": {\n')
-
-            items = list(enumerate(chunk_groups))
-            for i, (idx, group) in enumerate(items):
-                group_str = "[" + ", ".join(map(str, group)) + "]"
-                comma = "," if i < len(items) - 1 else ""
-                f.write(f'    "{idx}": {group_str}{comma}\n')
-
-            f.write('  },\n')
-            f.write('  "meta": {\n')
-            f.write(f'    "count": {len(chunk_groups)},\n')
-            f.write(f'    "source": "{os.path.basename(SegmentPath)}"\n')
-            f.write('  }\n')
-            f.write('}\n')
 
     # ================================================================
     #  Hàm build_from_json
@@ -257,9 +235,9 @@ class DirectFaissIndexer:
             embs = self._l2_normalize(embs)
 
         # 5️⃣ FAISS
-        index = self._create_faiss_index(embs)
-        faiss.write_index(index, FaissPath)
-        logging.info(f"✅ Đã xây FAISS: {FaissPath}")
+        FaissIndex = self._create_faiss_index(embs)
+        # faiss.write_index(FaissIndex, FaissPath)
+        # logging.info(f"✅ Đã xây FAISS: {FaissPath}")
         
         # 6️⃣ Mapping + MapData
 
@@ -284,5 +262,4 @@ class DirectFaissIndexer:
             }
         }
 
-        self.write_chunk_mapping(MapChunkPath, SegmentPath, chunk_groups)
-        return Mapping, MapData
+        return FaissIndex, Mapping, MapData, chunk_groups

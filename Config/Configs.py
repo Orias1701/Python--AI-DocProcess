@@ -7,39 +7,40 @@ os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 os.environ["TORCH_USE_CUDA_DSA"] = "1"
 
-def ConfigValues(service="Search", inputs="file.pdf"):
+def ConfigValues(pdfname="HNMU", service="Categories"):
 
-    # Inputs
-    inputFolder = f"./Private/Tests"
-    inputPath = f"{inputFolder}/{inputs}"
-
-    # Assets
+    serviceFolder = f"./Services"
     assetsFolder = f"./Assets"
+    dataFolder = f"./Database"
+
+    servicePath = f"{serviceFolder}/{service}/{service}"
+    serviceEmbeddingPath = f"{servicePath}_Embedding"
+    serviceFaissPath = f"{serviceEmbeddingPath}_Index.faiss"
+    serviceMappingPath = f"{serviceEmbeddingPath}_Mapping.json"
+    serviceMapDataPath = f"{serviceEmbeddingPath}_MapData.json"
+    serviceMapChunkPath = f"{serviceEmbeddingPath}_MapChunk.json"
+    serviceMetaPath = f"{serviceEmbeddingPath}_Meta.json"
+    serviceSegmentPath = f"{servicePath}_Segment.json"
+    
     exceptPath = f"{assetsFolder}/ex.exceptions.json"
     markerPath = f"{assetsFolder}/ex.markers.json"
     statusPath = f"{assetsFolder}/ex.status.json"
 
     # Documents
-    DocFolder = "./Documents"
-    DocPath = f"{DocFolder}/{service}"
-    PdfPath = f"{DocPath}.pdf"
-    DocPath = f"{DocPath}.docx"
-
+    PdfFolder = f"./Documents"
+    PdfPath = f"{PdfFolder}/{pdfname}.pdf"
+        
     # Database
-    DBFolder = "./Database"
-    DBPath = f"{DBFolder}/{service}/{service}"
+    DBPath = f"{dataFolder}/{pdfname}/{pdfname}"
 
     RawExtractPath = f"{DBPath}_Extract"
     ChunksPath = f"{DBPath}_Chunks"
     EmbeddingPath = f"{DBPath}_Embedding"
-
     RawDataPath = f"{RawExtractPath}_Raw.json"
     RawLvlsPath = f"{RawExtractPath}_Levels.json"
-
     StructsPath = f"{ChunksPath}_Struct.json"
     SegmentPath = f"{ChunksPath}_Segment.json"
     SchemaPath = f"{ChunksPath}_Schema.json"
-    
     FaissPath = f"{EmbeddingPath}_Index.faiss"
     MappingPath = f"{EmbeddingPath}_Mapping.json"
     MapDataPath = f"{EmbeddingPath}_MapData.json"
@@ -61,9 +62,7 @@ def ConfigValues(service="Search", inputs="file.pdf"):
     WORD_LIMIT = 1000
 
     return {
-        "inputPath": inputPath,
         "PdfPath": PdfPath,
-        "DocPath": DocPath,
         "exceptPath": exceptPath,
         "markerPath": markerPath,
         "statusPath": statusPath,
@@ -77,6 +76,12 @@ def ConfigValues(service="Search", inputs="file.pdf"):
         "MapDataPath": MapDataPath,
         "MapChunkPath": MapChunkPath,
         "MetaPath": MetaPath,
+        "serviceSegmentPath": serviceSegmentPath,
+        "serviceFaissPath": serviceFaissPath,
+        "serviceMappingPath": serviceMappingPath,
+        "serviceMapDataPath": serviceMapDataPath,
+        "serviceMapChunkPath": serviceMapChunkPath,
+        "serviceMetaPath": serviceMetaPath,
         "DATA_KEY": DATA_KEY,
         "EMBE_KEY": EMBE_KEY,
         "SEARCH_EGINE": SEARCH_EGINE,

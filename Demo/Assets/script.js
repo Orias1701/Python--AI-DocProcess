@@ -29,20 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- HÀM HIỂN THỊ NÚT GỬI ---
-    // Hiển thị nút gửi nếu có text
     textInput.addEventListener("input", () => {
         if (textInput.value.trim().length > 0) {
             sendBtn.style.display = "flex";
         } else {
             sendBtn.style.display = "none";
         }
-        
-        // Tự động tăng chiều cao textarea
+
         textInput.style.height = 'auto';
         textInput.style.height = (textInput.scrollHeight) + 'px';
     });
 
-    // --- CÁC HÀM XỬ LÝ CHAT (Giữ nguyên từ script cũ) ---
+    // --- CÁC HÀM XỬ LÝ CHAT ---
 
     function typeWriter(element, text, delay = 10) {
         let i = 0;
@@ -217,36 +215,41 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- HÀM SUBMIT FORM CHÍNH (Cập nhật) ---
+    // --- HÀM SUBMIT FORM CHÍNH ---
     chatForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        
+        sendBtn.disabled = true;
+
         const file = fileInput.files[0];
         const query = textInput.value.trim();
 
-        if (file) {
-            await sendFile(file);
-            // Xóa file sau khi gửi
-            fileInput.value = "";
-            fileCard.style.display = "none";
-        } else if (query) {
-            await sendQuery(query);
-        } else {
-            // Không có gì để gửi (có thể thêm thông báo lỗi)
-            return;
-        }
-
-        // Xóa text và reset chiều cao textarea sau khi gửi
+        // 🔹 Xoá input NGAY khi người dùng nhấn gửi
         textInput.value = "";
-        textInput.style.height = 'auto';
+        requestAnimationFrame(() => {
+            textInput.style.height = 'auto';
+        });
         sendBtn.style.display = 'none';
+
+        try {
+            if (file) {
+                await sendFile(file);
+                fileInput.value = "";
+                fileCard.style.display = "none";
+            } else if (query) {
+                await sendQuery(query);
+            } else {
+                return;
+            }
+        } finally {
+            sendBtn.disabled = false;
+        }
     });
 
     // Cho phép gửi bằng Enter (và Shift+Enter để xuống dòng)
     textInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault(); // Ngăn xuống dòng
-            chatForm.dispatchEvent(new Event("submit")); // Kích hoạt sự kiện submit
+            e.preventDefault();
+            chatForm.requestSubmit();
         }
     });
 
